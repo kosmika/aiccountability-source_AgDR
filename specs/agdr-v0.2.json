@@ -1,0 +1,48 @@
+{
+  "spec": "AgDR_Atomic_Kernel_AKI_v0.2",
+  "title": "Atomic Kernel Inference (AKI) — AgDR Enforcement Layer",
+  "version": "0.2",
+  "effective_date": "March 2026",
+  "status": "published_open_canadian_standard",
+  "acronym": "AKI",
+  "full_name": "Atomic Kernel Inference",
+  "i_definition": "the exact atomic capture point at model inference instant",
+  "mission": {
+    "statement": "To deliver an evidentiary standard for autonomous agents that is mathematically and legally above reproach by making every decision verifiable at the exact inference point.",
+    "policy_definition": "Policy = PPP (Provenance · Place · Purpose)",
+    "ppp_note": "The precise meaning of each P is of the beholder. AgDR captures atomic PPP Provenance for every inference.",
+    "enforcement": "The PPP triplet SHALL be captured verbatim and atomically with every inference, reasoning trace, and human delta chain"
+  },
+  "data_capture_mode": {
+    "reasoning_capture": "full trace captured atomically at the 'i' point",
+    "human_delta_policy": {
+      "type": "binary",
+      "escalation": "unlimited layers terminating in Fiduciary Office Intervener (FOI)"
+    },
+    "policy_triplet": {
+      "required": true,
+      "guarantee": "captured at inference instant — no post-facto editing or reconstruction possible"
+    }
+  },
+  "universal_inference_wrapper": {
+    "wrapper_signature": "agdr_capture(ctx, prompt, model_id, reasoning_trace, output, ppp_triplet, human_delta_chain)",
+    "compatibility": "any current or future inference model"
+  },
+  "core_guarantee": {
+    "formal_definition": "AtomicInferenceCapture(...) ≡ { sign(BLAKE3(ctx ‖ reasoning_trace ‖ ppp_triplet ‖ human_delta_chain)), persist(Merkle-append), return committed }",
+    "invariants": [
+      "Policy = PPP captured atomically",
+      "Evidentiary standard remains mathematically indivisible and legally above reproach",
+      "Full record directly enforceable under existing fiduciary and corporate governance rules"
+    ]
+  },
+  "architecture": {
+    "type": "single_path_kernel_only",
+    "entry_point": "universal wrapper triggers AKI at inference instant"
+  },
+  "agdr_integration": {
+    "one_line_addition": "Capture SHALL include the Policy = PPP triplet (meaning of the beholder) with atomic PPP Provenance, binary Human Delta Policy, and FOI terminal role.",
+    "backward_compatible": true
+  },
+  "why_this_is_final": "Reduced to clean acronym PPP. Meaning of the beholder. Provenance front-and-center. This is now the definitive, timeless, above-reproach Canadian standard."
+}
