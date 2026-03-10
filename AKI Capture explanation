@@ -1,0 +1,55 @@
+AKI Capture Deep Explanation
+Atomic Kernel Inference Capture (AKI Capture) is the core innovation of AgDR v0.2.
+It is the mechanism that makes every autonomous agent decision mathematically indivisible and contemporaneous with its evidentiary record.
+It is not a log, not a callback, and not post-hoc auditing.
+It is a kernel-level atomic transaction that forces the decision, its reasoning, the PPP triplet, and the cryptographic signature to be created as a single, uninterruptible operation inside the CPU kernel itself.
+Formal Definition
+AtomicInferenceCapture(ctx, reasoning_trace, output, ppp_triplet, human_delta_chain) ≡
+{
+sign(BLAKE3(ctx ∥ reasoning_trace ∥ ppp_triplet ∥ human_delta_chain)),
+persist(Merkle-append to forward-secret chain),
+return committed
+}
+This entire block executes as one indivisible kernel transaction. There is no partial state visible to the system at any point.
+Execution Flow (Step by Step)
+
+Inference Entry
+The model begins inference. The universal wrapper immediately triggers AKI.
+Kernel Atomic Section Begins
+local_irq_save(flags) disables all interrupts.
+preempt_disable() disables kernel preemption.
+The CPU now runs in a protected, non-interruptible bubble.
+Payload Assembly
+The full payload is assembled in kernel memory:
+ctx (system context)
+reasoning_trace (structured JSON of every step)
+output (final decision)
+ppp_triplet (Provenance · Place · Purpose)
+human_delta_chain (binary deltas + FOI escalation)
+
+Cryptographic Operations
+BLAKE3 hash of the entire payload
+Ed25519 signature using kernel-held key
+Merkle tree append to the forward-secret chain
+Commit or Rollback
+If successful, the record is committed.
+If anything fails, the entire transaction rolls back — the record never exists.
+Kernel Atomic Section Ends
+Interrupts and preemption are restored.
+
+Why This Is Mathematically Indivisible
+
+No other process, interrupt, or core can observe or modify the payload mid-operation.
+The CPU primitives create a true critical section at hardware level.
+Zero clocks or timers are used — atomicity is enforced by CPU instruction ordering.
+
+Integration with PPP Triplet
+The PPP triplet is not added afterward. It is part of the payload that is hashed and signed inside the atomic block. This guarantees that the meaning of each P is frozen at the exact inference instant and can never be rewritten.
+Security & Evidentiary Properties
+
+Tamper-evident: Any post-facto change breaks the Merkle chain.
+Non-repudiable: Signed at the exact moment of thought.
+Compromise-resistant: Even if user-space is fully owned, the kernel still executes the capture.
+Court-ready: Meets and exceeds the Canada Evidence Act reliability test.
+
+This is the mechanism that turns AgDR from “nice-to-have logging” into the first mathematically guaranteed evidentiary infrastructure for autonomous agents.
