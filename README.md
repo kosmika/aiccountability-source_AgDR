@@ -15,7 +15,11 @@ This is the canonical, mathematically indivisible, tamper-evident flight recorde
 Every inference is captured atomically at the exact "i" point via AKI (kernel-level, zero clocks, Merkle chain).
 
 **License**  
-This work is dedicated to the public domain under **CC0 1.0 Universal**. No rights reserved.
+
+This project is licensed under either of the following licenses at your choice:
+
+CC0-1.0 (Public Domain Dedication)
+Apache License 2.0
 
 **Canonical source**  
 https://github.com/aiccountability-source/agdr-spec
