@@ -27,7 +27,7 @@ jobs:
             TITLE=$(basename "${f%.md}" | tr '-' ' ')
             pandoc "$f" -o "${f%.md}.html" \
               --from markdown+fenced_code_blocks+backtick_code_blocks \
-              --template=template.html \
+              --template=./template.html \
               --metadata title="$TITLE"
           done
 
