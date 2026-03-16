@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /*?trk=
+Disallow: /archive/
+
+Sitemap: https://accountability.ai/sitemap.xml
