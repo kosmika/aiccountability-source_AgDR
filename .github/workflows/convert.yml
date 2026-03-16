@@ -22,6 +22,19 @@ jobs:
               -H <(echo '<meta name="description" content="Agent Decision Record specification and AI accountability infrastructure. Accountability.ai — the measurement standard for AI.">')
           done
 
+      - name: Generate sitemap
+        run: |
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+          echo '  <url><loc>https://accountability.ai/</loc><priority>1.0</priority></url>' >> sitemap.xml
+          echo '  <url><loc>https://accountability.ai/sandbox.html</loc><priority>0.9</priority></url>' >> sitemap.xml
+          for f in *.html; do
+            if [ "$f" != "index.html" ] && [ "$f" != "sandbox.html" ]; then
+              echo "  <url><loc>https://accountability.ai/${f}</loc><priority>0.7</priority></url>" >> sitemap.xml
+            fi
+          done
+          echo '</urlset>' >> sitemap.xml
+
       - name: Deploy to DoRoyal via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
