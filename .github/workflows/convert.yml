@@ -1,11 +1,11 @@
-name: Convert MD to HTML
+name: Convert MD to HTML and Deploy
 
 on:
   push:
     branches: [main]
 
 jobs:
-  convert:
+  convert-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,11 +19,10 @@ jobs:
             pandoc "$f" -o "${f%.md}.html"
           done
 
-- name: Push HTML files back
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git pull --rebase origin main
-          git add *.html
-          git commit -m "Auto-converted MD to HTML" || exit 0
-          git push
+      - name: Deploy to DoRoyal via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/
