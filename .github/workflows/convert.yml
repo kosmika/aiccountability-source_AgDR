@@ -1,0 +1,28 @@
+name: Convert MD to HTML
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: sudo apt-get install -y pandoc
+
+      - name: Convert all MD to HTML
+        run: |
+          for f in *.md; do
+            pandoc "$f" -o "${f%.md}.html"
+          done
+
+      - name: Push HTML files back
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add *.html
+          git commit -m "Auto-converted MD to HTML" || exit 0
+          git push
