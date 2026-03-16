@@ -16,7 +16,10 @@ jobs:
       - name: Convert all MD to HTML
         run: |
           for f in *.md; do
-            pandoc "$f" -o "${f%.md}.html"
+            TITLE=$(basename "${f%.md}" | tr '-' ' ')
+            pandoc "$f" -o "${f%.md}.html" \
+              --metadata title="$TITLE" \
+              -H <(echo '<meta name="description" content="Agent Decision Record specification and AI accountability infrastructure. Accountability.ai — the measurement standard for AI.">')
           done
 
       - name: Deploy to DoRoyal via FTP
