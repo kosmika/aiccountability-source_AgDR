@@ -45,3 +45,8 @@ jobs:
           git stash pop
           git commit -m "Auto-generated HTML and sitemap" || exit 0
           git push
+
+      - name: Trigger DoRoyal deploy
+        run: |
+          curl -u "${{ secrets.DOROYAL_USER }}:${{ secrets.DOROYAL_PASS }}" \
+            "https://royal2.doroyal.com/clientarea.php?action=productdetails&id=833&mg-page=Git&modop=custom&a=deploy&name=Nameaccountability-site"
