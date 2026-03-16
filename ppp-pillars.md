@@ -16,7 +16,7 @@ At the exact “i” point (inference instant), the Atomic Kernel Inference (AKI
 
 - No post-facto editing is possible  
 - Binary human delta chain shows every human intervention  
-- Escalation always ends with the Fiduciary Office Intervener (FOI)  
+- Escalation always ends with the Fiduciary Office Intervener (FOI) 
 
 This creates the first mathematically guaranteed contemporaneous record of agent decisions.
 
