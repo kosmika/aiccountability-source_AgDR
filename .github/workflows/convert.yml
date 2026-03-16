@@ -13,12 +13,20 @@ jobs:
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
 
+      - name: Delete old HTML files
+        run: |
+          find . -maxdepth 1 -name "*.html" \
+            ! -name "index.html" \
+            ! -name "sandbox.html" \
+            -delete
+
       - name: Convert all MD to HTML
         run: |
           touch *.md
           for f in *.md; do
             TITLE=$(basename "${f%.md}" | tr '-' ' ')
             pandoc "$f" -o "${f%.md}.html" \
+              --from markdown+fenced_code_blocks+backtick_code_blocks \
               --template=template.html \
               --metadata title="$TITLE"
           done
