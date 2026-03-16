@@ -1,0 +1,49 @@
+<h1 id="technical-note-on-coherence">Technical Note on Coherence</h1>
+<p><strong>AgDR v0.2 Technical Note</strong><br />
+Published March 2026</p>
+<h3 id="quantum-coherence-a-brief-explanation">Quantum Coherence – A
+Brief Explanation</h3>
+<p>Quantum coherence is a real physical phenomenon in which a quantum
+system maintains a fixed phase relationship between its possible states.
+This allows true superposition and interference effects that have no
+classical equivalent.</p>
+<p>When a quantum system interacts with its environment, this phase
+relationship is lost through decoherence — the beautiful quantum
+behaviour collapses into ordinary classical statistics.</p>
+<h3 id="what-agdr-actually-achieves">What AgDR Actually Achieves</h3>
+<p>The Atomic Kernel Inference (AKI) in AgDR v0.2 is <strong>classical
+computing</strong>. It uses standard CPU primitives
+(<code>local_irq_save</code>, <code>preempt_disable</code>, and atomic
+stores) to enforce one indivisible transaction at the exact inference
+point.</p>
+<p>We do not create quantum superposition, entanglement, or true quantum
+coherence. The 2.8 billion decision threshold is a practical memory and
+throughput limit on classical hardware — not a quantum threshold.</p>
+<h3 id="the-useful-metaphor">The Useful Metaphor</h3>
+<p>There is a powerful and accurate analogy worth keeping:</p>
+<p>By forcing the decision, the full reasoning trace, the PPP triplet,
+and the cryptographic signature to exist as one synchronized,
+indivisible unit, we create a form of <strong>informational
+coherence</strong>. The record cannot drift or leak. The decision and
+its proof remain perfectly locked together from the first instant.</p>
+<p>Beyond that atomic window, information leakage and post-facto
+reconstruction become possible — the digital equivalent of decoherence.
+By keeping everything inside the kernel transaction, we prevent that
+decay.</p>
+<p>This is the closest classical equivalent to preserving a protected
+state.</p>
+<h3 id="why-this-matters-for-the-mission">Why This Matters for the
+Mission</h3>
+<p>We did not need quantum hardware to achieve something profound.<br />
+By pushing classical atomicity to its practical limit, we created the
+first mathematically guaranteed contemporaneous record for autonomous
+agents.</p>
+<p>This classical breakthrough is already sufficient to change
+governance, liability, and trust at machine speed.</p>
+<p>It is the foundation upon which future quantum-ready systems can be
+built.</p>
+<p>We stand at the pinnacle of the standard of care that I wish to one
+day achieve.</p>
+<p><em>Part of the AgDR v0.2 foundational standard</em><br />
+Canonical source:
+https://github.com/aiccountability-source/agdr-spec</p>

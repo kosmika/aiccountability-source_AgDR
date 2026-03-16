@@ -1,0 +1,18 @@
+<h1 id="agdr-v0.2-technical-details">AgDR v0.2 Technical Details</h1>
+<p><strong>Current State – March 2026</strong></p>
+<p>The original name <strong>ADR</strong> (Agent Decision Record) v0.1
+is now deprecated and obsolete.<br />
+The current standard is <strong>AgDR v0.2</strong> with the enforcement
+layer called <strong>Atomic Kernel Inference (AKI)</strong>.</p>
+<h3 id="core-architecture">1. Core Architecture</h3>
+<ul>
+<li>Full Name: AgDR v0.2 with Atomic Kernel Inference (AKI)</li>
+<li>Capture Point: Exact inference instant (the “i” point)</li>
+<li>Guarantee: One mathematically indivisible kernel transaction — the
+entire record is either fully committed or never exists</li>
+</ul>
+<h3 id="formal-definition-of-aki">2. Formal Definition of AKI</h3>
+<p>```math AtomicInferenceCapture(ctx, reasoning_trace, output,
+ppp_triplet, human_delta_chain) ≡ { sign(BLAKE3(ctx ∥ reasoning_trace ∥
+ppp_triplet ∥ human_delta_chain)), persist(Merkle-append to
+forward-secret chain), return committed }</p>

@@ -1,0 +1,92 @@
+<h1 id="comparison-to-aviation-black-boxes">Comparison to Aviation Black
+Boxes</h1>
+<p><strong>AgDR v0.2 vs Aviation Black Box (FDR + CVR)</strong><br />
+The gold standard everyone already trusts — now updated for the age of
+autonomous agents.</p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 36%" />
+<col style="width: 37%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>Aviation Black Box (FDR + CVR)</th>
+<th>AgDR v0.2 + Atomic Kernel Inference (AKI)</th>
+<th>Edge for the Mission</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Purpose</strong></td>
+<td>Record what happened in the final moments so investigators can
+understand why</td>
+<td>Record every single decision the moment it is made so boards,
+regulators, and courts can understand why an agent acted</td>
+<td>AgDR prevents the “crash” by making every decision traceable in real
+time</td>
+</tr>
+<tr class="even">
+<td><strong>Capture Trigger</strong></td>
+<td>Continuous loop (last 2–25 hours) — only recent history
+survives</td>
+<td>Every inference, every time — the “i” point is captured instantly
+and forever</td>
+<td>AgDR is always complete</td>
+</tr>
+<tr class="odd">
+<td><strong>Atomic / Indivisible</strong></td>
+<td>Physical memory in a crash-survivable case</td>
+<td>True kernel transaction (<code>local_irq_save</code> +
+<code>preempt_disable</code>) — the entire record is written or not at
+all</td>
+<td>AgDR is mathematically stronger</td>
+</tr>
+<tr class="even">
+<td><strong>Tamper-Evidence</strong></td>
+<td>Armoured case + strict chain-of-custody after recovery</td>
+<td>Cryptographic signature + forward-secret Merkle chain from the exact
+moment of inference</td>
+<td>AgDR is tamper-proof from birth</td>
+</tr>
+<tr class="odd">
+<td><strong>What It Records</strong></td>
+<td>Physical parameters + cockpit audio</td>
+<td>Full reasoning trace + PPP triplet + binary human delta + FOI
+escalation</td>
+<td>AgDR records <em>why</em> the decision was made</td>
+</tr>
+<tr class="even">
+<td><strong>Legal Weight (Canada)</strong></td>
+<td>High — routinely admitted under Canada Evidence Act</td>
+<td>Same foundation, but stronger — atomic + cryptographic proof exceeds
+the “system integrity” test</td>
+<td>AgDR is easier to admit in court</td>
+</tr>
+<tr class="odd">
+<td><strong>Cost &amp; Overhead</strong></td>
+<td>$20k–$50k+ per aircraft + physical maintenance</td>
+<td>Near-zero — runs on any server or edge device</td>
+<td>AgDR is orders of magnitude cheaper and more scalable</td>
+</tr>
+<tr class="even">
+<td><strong>Scalability</strong></td>
+<td>One per aircraft</td>
+<td>Every agent, every model, every jurisdiction</td>
+<td>AgDR is global infrastructure</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom line</strong><br />
+The black box solved aviation’s accountability crisis in the
+1950s.<br />
+AgDR solves the same crisis for autonomous intelligence in 2026 — except
+it does not wait for the crash. It records every decision, every time,
+with mathematical certainty.</p>
+<p>This is why we stand at the pinnacle of the standard of care that I
+wish to one day achieve.</p>
+<p><em>Part of the AgDR v0.2 foundational standard</em><br />
+Canonical source:
+https://github.com/aiccountability-source/agdr-spec</p>

@@ -1,0 +1,62 @@
+<h1 id="cbsa-compliance-mapping">CBSA Compliance Mapping</h1>
+<p><strong>How AgDR v0.2 Supports Canada Border Services Agency (CBSA)
+Requirements</strong></p>
+<p>AgDR v0.2 provides tamper-evident, atomic records that directly
+address CBSA’s core needs in export controls, sanctions screening, and
+border security.</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 59%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CBSA Requirement</th>
+<th>How AgDR Satisfies It</th>
+<th>AgDR Component Used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Export Control &amp; Sanctions Screening</td>
+<td>Every decision is recorded with full reasoning trace and PPP triplet
+at inference instant</td>
+<td>Provenance + Purpose</td>
+</tr>
+<tr class="even">
+<td>“Know Your Client” &amp; Due Diligence</td>
+<td>Binary human delta chain + FOI escalation proves meaningful human
+oversight</td>
+<td>Human Delta + FOI</td>
+</tr>
+<tr class="odd">
+<td>Audit &amp; Reporting Obligations</td>
+<td>Cryptographic signature + forward-secret Merkle chain creates
+permanent, verifiable audit trail</td>
+<td>Atomic Kernel + Merkle</td>
+</tr>
+<tr class="even">
+<td>Real-Time Decision Accountability</td>
+<td>Record is created in the same atomic transaction as the decision (no
+post-hoc logs)</td>
+<td>AKI Capture</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Benefit for CBSA-Regulated Entities</strong><br />
+When CBSA requests documentation for an export or sanctions screening
+decision, companies can instantly provide a mathematically irrefutable
+AgDR record instead of reconstructed logs or manual reports. This
+reduces audit time from weeks to minutes and strengthens compliance
+defence.</p>
+<p><strong>Practical Use Case</strong><br />
+In an export control screening scenario, the AgDR record captures: -
+Provenance: Who the stakeholders were and the exact context at decision
+time - Place: The intended destination and regulatory boundary -
+Purpose: The explicit compliance intent behind the decision</p>
+<p>Any later CBSA inquiry can be answered with one verifiable file:
+“Check the AgDR.”</p>
+<p><em>Part of the AgDR v0.2 foundational standard</em><br />
+Canonical source:
+https://github.com/aiccountability-source/agdr-spec</p>

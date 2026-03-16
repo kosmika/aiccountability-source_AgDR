@@ -1,0 +1,28 @@
+<h1 id="aki-formal-definition">AKI Formal Definition</h1>
+<p><strong>Atomic Kernel Inference (AKI)</strong> — AgDR v0.2
+Enforcement Layer</p>
+<h3 id="formal-mathematical-definition">Formal Mathematical
+Definition</h3>
+<p>AKI is defined as a single indivisible kernel transaction:</p>
+[ (ctx,  reasoning_trace,  output,  ppp_triplet,  human_delta_chain)
+<p>]</p>
+<h3 id="execution-invariants-enforced-by-cpu">Execution Invariants
+(Enforced by CPU)</h3>
+<ul>
+<li>Interrupts disabled: <code>local_irq_save(flags)</code></li>
+<li>Preemption disabled: <code>preempt_disable()</code></li>
+<li>No clocks or timers used (clock-independent)</li>
+<li>Zero-copy signing path</li>
+<li>Full rollback on failure — record never becomes visible</li>
+</ul>
+<h3 id="integration-with-ppp-triplet">Integration with PPP Triplet</h3>
+<p>The PPP triplet (Provenance · Place · Purpose) is captured verbatim
+inside the same atomic block. This guarantees that the meaning of each P
+is frozen at the exact inference instant and cannot be altered
+later.</p>
+<h3 id="how-to-import-and-use-aki">How to Import and Use AKI</h3>
+<p><strong>Python Wrapper Example</strong> (import this): ```python from
+agdr_aki import aki_capture</p>
+<p>record = aki_capture( ctx=system_context, reasoning_trace=full_trace,
+output=decision_output, ppp_triplet=ppp_dict,
+human_delta_chain=delta_chain )</p>

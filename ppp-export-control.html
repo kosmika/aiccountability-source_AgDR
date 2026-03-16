@@ -1,0 +1,65 @@
+<h1 id="ppp-export-control-mapping">PPP Export Control Mapping</h1>
+<p><strong>How AgDR v0.2 Supports CBSA Export Control &amp; Sanctions
+Screening</strong></p>
+<p>AgDR v0.2 provides atomic, tamper-evident records that directly
+satisfy Canada Border Services Agency (CBSA) requirements for export
+compliance, sanctions screening, and controlled goods.</p>
+<table>
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 59%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>CBSA Requirement</th>
+<th>How AgDR Satisfies It</th>
+<th>AgDR Component Used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Export Control Decision Traceability</td>
+<td>Full reasoning trace captured at inference instant</td>
+<td>Reasoning Trace</td>
+</tr>
+<tr class="even">
+<td>Sanctions &amp; Jurisdiction Screening</td>
+<td>Provenance records exact stakeholder context and jurisdiction at
+decision time</td>
+<td>Provenance pillar</td>
+</tr>
+<tr class="odd">
+<td>Intended Outcome Verification</td>
+<td>Place defines the intended destination and regulatory boundary</td>
+<td>Place pillar</td>
+</tr>
+<tr class="even">
+<td>Intent &amp; Human Oversight</td>
+<td>Purpose captures explicit compliance intent + binary human delta
+chain</td>
+<td>Purpose + Human Delta</td>
+</tr>
+<tr class="odd">
+<td>Audit-Ready Reporting</td>
+<td>Cryptographic signature + Merkle chain provides permanent,
+verifiable evidence</td>
+<td>Atomic Kernel + Merkle</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Benefit</strong><br />
+When CBSA requests documentation for an export licence or sanctions
+screening decision, companies can instantly provide a mathematically
+irrefutable AgDR record instead of reconstructed logs. This reduces
+audit time from weeks to minutes and strengthens compliance defence.</p>
+<p><strong>Practical Use Case</strong><br />
+In an export control screening scenario, the AgDR record captures: -
+Provenance: Who the stakeholders were and the exact context - Place: The
+intended destination and CBSA regulatory boundary - Purpose: The
+explicit compliance intent behind the decision</p>
+<p>Any later CBSA inquiry can be answered with one verifiable file:
+“Check the AgDR.”</p>
+<p><em>Part of the AgDR v0.2 foundational standard</em><br />
+Canonical source:
+https://github.com/aiccountability-source/agdr-spec</p>
