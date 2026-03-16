@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agent Decision Record specification and AI accountability infrastructure. Accountability.ai — the measurement standard for AI.">
+  <title>comparison medical records | Accountability.ai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #5eead4; }
+    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #99f6e4; }
+    .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #ccfbf1; }
+    .prose p { margin-bottom: 1rem; line-height: 1.75; }
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .prose li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .prose a { color: #5eead4; text-decoration: underline; }
+    .prose a:hover { color: #99f6e4; }
+    .prose code { background: #27272a; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #5eead4; }
+    .prose pre { background: #18181b; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1rem; }
+    .prose pre code { background: none; padding: 0; }
+    .prose blockquote { border-left: 4px solid #0f766e; padding-left: 1rem; color: #a1a1aa; font-style: italic; margin-bottom: 1rem; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    .prose th { background: #18181b; padding: 0.75rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; }
+    .prose td { padding: 0.75rem 1rem; border: 1px solid #3f3f46; }
+    .prose tr:nth-child(even) { background: #18181b; }
+    .prose hr { border-color: #3f3f46; margin: 2rem 0; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- NAV -->
+  <nav style="background: linear-gradient(135deg, #0F766E 0%, #164E63 100%);" class="py-4 px-6">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
+      <div class="flex gap-6 text-sm">
+        <a href="/" class="hover:text-teal-300 transition">Home</a>
+        <a href="/sandbox.html" class="hover:text-teal-300 transition">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" class="hover:text-teal-300 transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <article class="prose">
+      <h1 id="comparison-to-medical-records">Comparison to Medical
+      Records</h1>
+      <p><strong>AgDR v0.2 vs Medical Records (Electronic Health Records
+      / EHR)</strong><br />
+      The gold standard for accountability in human decisions — now
+      extended to autonomous agents.</p>
+      <table>
+      <colgroup>
+      <col style="width: 14%" />
+      <col style="width: 36%" />
+      <col style="width: 37%" />
+      <col style="width: 11%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Dimension</th>
+      <th>Medical Records (EHR/EMR)</th>
+      <th>AgDR v0.2 + Atomic Kernel Inference (AKI)</th>
+      <th>Edge for the Mission</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td><strong>Purpose</strong></td>
+      <td>Create a longitudinal, auditable record of clinical decisions
+      for treatment, continuity, and legal protection</td>
+      <td>Create an instantaneous, mathematically indivisible record of
+      every agent decision for accountability and fiduciary
+      protection</td>
+      <td>AgDR prevents harm in real time</td>
+      </tr>
+      <tr class="even">
+      <td><strong>Capture Trigger</strong></td>
+      <td>Human entry or system logging after the decision</td>
+      <td>Automatic at the exact inference instant (“i” point) — no
+      human required</td>
+      <td>AgDR captures the decision at the moment of thought</td>
+      </tr>
+      <tr class="odd">
+      <td><strong>Atomicity</strong></td>
+      <td>Best-effort (notes can be amended)</td>
+      <td>True kernel-level transaction — the entire record is written
+      or never exists</td>
+      <td>AgDR is mathematically stronger</td>
+      </tr>
+      <tr class="even">
+      <td><strong>Tamper-Evidence</strong></td>
+      <td>Audit logs and access controls (still editable in some
+      systems)</td>
+      <td>Cryptographic signature + forward-secret Merkle chain from the
+      exact moment of inference</td>
+      <td>AgDR is tamper-proof from birth</td>
+      </tr>
+      <tr class="odd">
+      <td><strong>What It Records</strong></td>
+      <td>Observations, orders, rationale notes</td>
+      <td>Full reasoning trace + PPP triplet + binary human delta chain
+      ending in Fiduciary Office Intervener</td>
+      <td>AgDR records <em>why</em> with provable intent</td>
+      </tr>
+      <tr class="even">
+      <td><strong>Legal Weight (Canada)</strong></td>
+      <td>Extremely high — presumed reliable under PHIPA and Canada
+      Evidence Act</td>
+      <td>Same foundation + cryptographic proof exceeds typical EHR
+      tests</td>
+      <td>AgDR carries equal or greater weight</td>
+      </tr>
+      <tr class="odd">
+      <td><strong>Accountability Layer</strong></td>
+      <td>Treating physician or nurse as the responsible party</td>
+      <td>Binary human delta escalation ending in catalogued Fiduciary
+      Office Intervener (FOI)</td>
+      <td>AgDR forces clear escalation to existing fiduciary duty</td>
+      </tr>
+      <tr class="even">
+      <td><strong>Standard of Care</strong></td>
+      <td>Defines the legal and ethical duty of care in healthcare</td>
+      <td>Elevates the standard of care for autonomous systems to the
+      same level</td>
+      <td>This is the aspiration we stand at the pinnacle of</td>
+      </tr>
+      <tr class="odd">
+      <td><strong>Scalability &amp; Cost</strong></td>
+      <td>High cost, siloed per institution</td>
+      <td>Near-zero cost, universal across any model or agent</td>
+      <td>AgDR is global infrastructure</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>Bottom line</strong><br />
+      Medical records set the standard of care for human decisions in
+      life-critical domains.<br />
+      AgDR brings that same standard — and in many technical respects a
+      higher one — to autonomous agents.</p>
+      <p>This is why we stand at the pinnacle of the standard of care
+      that I wish to one day achieve.</p>
+      <p><em>Part of the AgDR v0.2 foundational standard</em><br />
+      Canonical source:
+      https://github.com/aiccountability-source/agdr-spec</p>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-black text-center text-zinc-400 text-sm">
+    The AgDR Standard is open, royalty-free, and dual-licensed:
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-400 hover:text-teal-300">CC0 1.0 Universal</a> OR
+    <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-400 hover:text-teal-300">Apache License 2.0</a> — your choice.
+    See full texts in the <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-400 hover:text-teal-300">GitHub repo</a>.
+    © 2026 Accountability.ai
+  </footer>
+
+</body>
+</html>

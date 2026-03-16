@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agent Decision Record specification and AI accountability infrastructure. Accountability.ai — the measurement standard for AI.">
+  <title>ppp export control | Accountability.ai</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    body { font-family: system-ui, sans-serif; }
+    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #5eead4; }
+    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #99f6e4; }
+    .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #ccfbf1; }
+    .prose p { margin-bottom: 1rem; line-height: 1.75; }
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .prose li { margin-bottom: 0.4rem; line-height: 1.7; }
+    .prose a { color: #5eead4; text-decoration: underline; }
+    .prose a:hover { color: #99f6e4; }
+    .prose code { background: #27272a; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #5eead4; }
+    .prose pre { background: #18181b; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1rem; }
+    .prose pre code { background: none; padding: 0; }
+    .prose blockquote { border-left: 4px solid #0f766e; padding-left: 1rem; color: #a1a1aa; font-style: italic; margin-bottom: 1rem; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    .prose th { background: #18181b; padding: 0.75rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; }
+    .prose td { padding: 0.75rem 1rem; border: 1px solid #3f3f46; }
+    .prose tr:nth-child(even) { background: #18181b; }
+    .prose hr { border-color: #3f3f46; margin: 2rem 0; }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- NAV -->
+  <nav style="background: linear-gradient(135deg, #0F766E 0%, #164E63 100%);" class="py-4 px-6">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
+      <div class="flex gap-6 text-sm">
+        <a href="/" class="hover:text-teal-300 transition">Home</a>
+        <a href="/sandbox.html" class="hover:text-teal-300 transition">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" class="hover:text-teal-300 transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <article class="prose">
+      <h1 id="ppp-export-control-mapping">PPP Export Control
+      Mapping</h1>
+      <p><strong>How AgDR v0.2 Supports CBSA Export Control &amp;
+      Sanctions Screening</strong></p>
+      <p>AgDR v0.2 provides atomic, tamper-evident records that directly
+      satisfy Canada Border Services Agency (CBSA) requirements for
+      export compliance, sanctions screening, and controlled goods.</p>
+      <table>
+      <colgroup>
+      <col style="width: 26%" />
+      <col style="width: 59%" />
+      <col style="width: 14%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>CBSA Requirement</th>
+      <th>How AgDR Satisfies It</th>
+      <th>AgDR Component Used</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Export Control Decision Traceability</td>
+      <td>Full reasoning trace captured at inference instant</td>
+      <td>Reasoning Trace</td>
+      </tr>
+      <tr class="even">
+      <td>Sanctions &amp; Jurisdiction Screening</td>
+      <td>Provenance records exact stakeholder context and jurisdiction
+      at decision time</td>
+      <td>Provenance pillar</td>
+      </tr>
+      <tr class="odd">
+      <td>Intended Outcome Verification</td>
+      <td>Place defines the intended destination and regulatory
+      boundary</td>
+      <td>Place pillar</td>
+      </tr>
+      <tr class="even">
+      <td>Intent &amp; Human Oversight</td>
+      <td>Purpose captures explicit compliance intent + binary human
+      delta chain</td>
+      <td>Purpose + Human Delta</td>
+      </tr>
+      <tr class="odd">
+      <td>Audit-Ready Reporting</td>
+      <td>Cryptographic signature + Merkle chain provides permanent,
+      verifiable evidence</td>
+      <td>Atomic Kernel + Merkle</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>Key Benefit</strong><br />
+      When CBSA requests documentation for an export licence or
+      sanctions screening decision, companies can instantly provide a
+      mathematically irrefutable AgDR record instead of reconstructed
+      logs. This reduces audit time from weeks to minutes and
+      strengthens compliance defence.</p>
+      <p><strong>Practical Use Case</strong><br />
+      In an export control screening scenario, the AgDR record captures:
+      - Provenance: Who the stakeholders were and the exact context -
+      Place: The intended destination and CBSA regulatory boundary -
+      Purpose: The explicit compliance intent behind the decision</p>
+      <p>Any later CBSA inquiry can be answered with one verifiable
+      file: “Check the AgDR.”</p>
+      <p><em>Part of the AgDR v0.2 foundational standard</em><br />
+      Canonical source:
+      https://github.com/aiccountability-source/agdr-spec</p>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-12 bg-black text-center text-zinc-400 text-sm">
+    The AgDR Standard is open, royalty-free, and dual-licensed:
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-400 hover:text-teal-300">CC0 1.0 Universal</a> OR
+    <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-400 hover:text-teal-300">Apache License 2.0</a> — your choice.
+    See full texts in the <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-400 hover:text-teal-300">GitHub repo</a>.
+    © 2026 Accountability.ai
+  </footer>
+
+</body>
+</html>
