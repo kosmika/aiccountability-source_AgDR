@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="eu ai act
+mapping — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
+  <title>eu ai act mapping | Accountability.ai</title>
+  <link rel="canonical" href="https://accountability.ai/eu ai act
+mapping">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:title" content="eu ai act
+mapping | Accountability.ai">
+  <meta property="og:description" content="eu ai act
+mapping — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; }
+
+    /* Typography */
+    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
+    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
+    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
+    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
+
+    /* Body text */
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
+    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
+    .prose strong { color: #f4f4f5; font-weight: 600; }
+    .prose em { color: #a1a1aa; }
+
+    /* Lists */
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
+    .prose li strong { color: #f4f4f5; }
+
+    /* Links */
+    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: #99f6e4; }
+
+    /* Code */
+    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
+    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
+    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
+
+    /* Blockquotes */
+    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
+    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
+
+    /* Tables */
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
+    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
+    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
+    .prose tr:nth-child(even) td { background: #18181b; }
+    .prose tr:hover td { background: #1f2937; }
+
+    /* HR */
+    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
+
+    /* Nav gradient */
+    .nav-bg { background: linear-gradient(135deg, #0F766E 0%, #164E63 100%); }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- NAV -->
+  <nav class="nav-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
+      <div class="flex flex-wrap gap-5 text-sm font-medium">
+        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
+        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
+        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
+        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <article class="prose">
+      <h1 id="eu-ai-act-mapping">EU AI Act Mapping</h1>
+      <p><strong>AgDR v0.2 — European Union AI Act Compliance
+      Analysis</strong> Published March 2026</p>
+      <hr />
+      <h2 id="overview">Overview</h2>
+      <p>The EU AI Act (Regulation 2024/1689, in force August 2024) is
+      the world’s first comprehensive legal framework for artificial
+      intelligence. It imposes tiered obligations based on risk level,
+      with the highest requirements for “high-risk” AI systems. AgDR
+      v0.2 addresses the evidentiary and accountability requirements of
+      the EU AI Act directly through its atomic capture
+      architecture.</p>
+      <p>This document maps AgDR components to EU AI Act obligations. It
+      is not legal advice. Organizations deploying AI systems subject to
+      the Act should obtain qualified EU legal counsel.</p>
+      <hr />
+      <h2 id="risk-tier-mapping">Risk Tier Mapping</h2>
+      <table>
+      <colgroup>
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>EU AI Act Tier</th>
+      <th>Examples</th>
+      <th>AgDR Applicability</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td><strong>Unacceptable risk</strong> (prohibited)</td>
+      <td>Social scoring, real-time biometric surveillance</td>
+      <td>AgDR is an evidentiary standard, not a use-case authorizer —
+      prohibited systems remain prohibited</td>
+      </tr>
+      <tr class="even">
+      <td><strong>High risk</strong> (Title III)</td>
+      <td>Credit scoring, employment, education, critical
+      infrastructure, law enforcement, migration, administration of
+      justice</td>
+      <td><strong>Full AgDR compliance directly addresses mandatory
+      obligations</strong></td>
+      </tr>
+      <tr class="odd">
+      <td><strong>Limited risk</strong></td>
+      <td>Chatbots, emotion recognition (transparency obligation
+      only)</td>
+      <td>AgDR provides stronger-than-required audit trail</td>
+      </tr>
+      <tr class="even">
+      <td><strong>Minimal risk</strong></td>
+      <td>Spam filters, AI in video games</td>
+      <td>AgDR applicable but not required</td>
+      </tr>
+      </tbody>
+      </table>
+      <hr />
+      <h2
+      id="high-risk-system-obligations-article-by-article-mapping">High-Risk
+      System Obligations — Article-by-Article Mapping</h2>
+      <h3 id="article-9-risk-management-system">Article 9 — Risk
+      Management System</h3>
+      <p><strong>Requirement:</strong> Providers must establish,
+      implement, document, and maintain a risk management system
+      throughout the lifecycle.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>AgDR Component</th>
+      <th>How It Satisfies Article 9</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>AKI atomic capture</td>
+      <td>Every inference is captured — risk events are never
+      unrecorded</td>
+      </tr>
+      <tr class="even">
+      <td>PPP triplet — Place</td>
+      <td>Defines the intended operational boundary at every decision
+      point</td>
+      </tr>
+      <tr class="odd">
+      <td>Human delta chain</td>
+      <td>Demonstrates ongoing human oversight as part of the risk
+      management process</td>
+      </tr>
+      <tr class="even">
+      <td>Merkle chain</td>
+      <td>Provides tamper-evident lifecycle record from deployment
+      through decommission</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>Gap AgDR does not fill:</strong> Prospective risk
+      assessment documentation (Article 9 §2) must be produced
+      separately. AgDR captures what happened; organizations must
+      separately document what risks they assessed before
+      deployment.</p>
+      <hr />
+      <h3 id="article-10-training-validation-and-testing-data">Article
+      10 — Training, Validation and Testing Data</h3>
+      <p><strong>Requirement:</strong> Data governance and management
+      practices; datasets must be free of errors and biases to the
+      extent possible.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>AgDR Component</th>
+      <th>How It Contributes</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Provenance pillar</td>
+      <td>Captures data provenance at every inference — who supplied the
+      context and under what conditions</td>
+      </tr>
+      <tr class="even">
+      <td>Reasoning trace</td>
+      <td>Records what data was actually used at each inference
+      instant</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>Note:</strong> AgDR captures inference-time data
+      provenance. Pre-deployment training data governance is a separate
+      obligation outside AgDR’s scope.</p>
+      <hr />
+      <h3 id="article-11-technical-documentation">Article 11 — Technical
+      Documentation</h3>
+      <p><strong>Requirement:</strong> Providers must draw up technical
+      documentation before placing a high-risk AI system on the market
+      and keep it up to date.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>AgDR Component</th>
+      <th>How It Contributes</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td><code>agdr-v0.2.json</code> (this spec)</td>
+      <td>Machine-readable technical specification, dual-licensed
+      CC0/Apache</td>
+      </tr>
+      <tr class="even">
+      <td>AKI formal definition</td>
+      <td>Satisfies documentation of capture mechanism</td>
+      </tr>
+      <tr class="odd">
+      <td>PPP triplet schema</td>
+      <td>Satisfies documentation of data structure and policy
+      triplet</td>
+      </tr>
+      <tr class="even">
+      <td>Human delta chain spec</td>
+      <td>Satisfies documentation of human oversight architecture</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>AgDR records, taken together, constitute real-time technical
+      documentation of system behaviour — not just design intent.</p>
+      <hr />
+      <h3 id="article-12-record-keeping">Article 12 —
+      Record-Keeping</h3>
+      <p><strong>Requirement:</strong> High-risk AI systems must have
+      the capability to automatically generate logs throughout their
+      operation; logs must enable monitoring for serious incidents and
+      substantial modifications.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>EU AI Act Article 12 Requirement</th>
+      <th>AgDR Fulfilment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Automatic logging</td>
+      <td>AKI captures every inference — no manual logging, no gaps</td>
+      </tr>
+      <tr class="even">
+      <td>Log integrity</td>
+      <td>BLAKE3 + Merkle chain — any tampering is detectable</td>
+      </tr>
+      <tr class="odd">
+      <td>Log durability</td>
+      <td>Forward-secret Merkle chain is designed to be permanently
+      verifiable</td>
+      </tr>
+      <tr class="even">
+      <td>Serious incident traceability</td>
+      <td>Every decision record links to the full reasoning trace and
+      human delta chain</td>
+      </tr>
+      <tr class="odd">
+      <td>Substantial modification detection</td>
+      <td>Merkle chain continuity — a system modification breaks the
+      expected chain pattern</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>AgDR exceeds Article 12 requirements</strong> by
+      providing cryptographic proof of log integrity, not just log
+      existence.</p>
+      <hr />
+      <h3
+      id="article-13-transparency-and-provision-of-information-to-deployers">Article
+      13 — Transparency and Provision of Information to Deployers</h3>
+      <p><strong>Requirement:</strong> High-risk AI systems must be
+      transparent and provide deployers with information enabling them
+      to use the system in an informed manner, including instructions
+      for use.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>AgDR Component</th>
+      <th>How It Satisfies Article 13</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>PPP triplet — Purpose</td>
+      <td>Explicit statement of intent captured at every inference</td>
+      </tr>
+      <tr class="even">
+      <td>Reasoning trace</td>
+      <td>Full chain-of-thought recorded — system behaviour is never a
+      black box</td>
+      </tr>
+      <tr class="odd">
+      <td>Getting Started guide</td>
+      <td>Clear implementation documentation</td>
+      </tr>
+      <tr class="even">
+      <td>Industry templates</td>
+      <td>Sector-specific guidance for informed deployment</td>
+      </tr>
+      </tbody>
+      </table>
+      <hr />
+      <h3 id="article-14-human-oversight">Article 14 — Human
+      Oversight</h3>
+      <p><strong>Requirement:</strong> High-risk AI systems must be
+      designed and developed in such a way that they can be effectively
+      overseen by natural persons during the period they are in use.</p>
+      <p>This is the article where AgDR’s contribution is most
+      direct.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>EU AI Act Article 14 Requirement</th>
+      <th>AgDR Fulfilment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Ability to understand capabilities and limitations</td>
+      <td>PPP triplet + reasoning trace make every decision
+      interpretable</td>
+      </tr>
+      <tr class="even">
+      <td>Ability to disregard, override, or reverse output</td>
+      <td>Human delta chain records every override with actor,
+      rationale, and timestamp</td>
+      </tr>
+      <tr class="odd">
+      <td>Ability to intervene through halt or pause</td>
+      <td><code>action: -1</code> (halted) in delta chain; FOI terminal
+      halt</td>
+      </tr>
+      <tr class="even">
+      <td>Natural person oversight</td>
+      <td>FOI formal definition — named human fiduciary is always the
+      terminal node</td>
+      </tr>
+      <tr class="odd">
+      <td>Oversight measures described before deployment</td>
+      <td>FOI designation process + escalation trigger conditions</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>AgDR directly implements Article 14 human oversight
+      architecture</strong> through the human delta chain and FOI.</p>
+      <hr />
+      <h3
+      id="article-16-obligations-of-providers-of-high-risk-ai-systems">Article
+      16 — Obligations of Providers of High-Risk AI Systems</h3>
+      <p><strong>Requirement:</strong> Providers must implement quality
+      management systems, register systems in the EU database, affix CE
+      marking, draw up EU declaration of conformity.</p>
+      <p>AgDR addresses the audit-trail and quality management
+      components. CE marking and EU database registration are separate
+      administrative obligations outside AgDR’s scope.</p>
+      <hr />
+      <h3
+      id="article-26-obligations-of-deployers-of-high-risk-ai-systems">Article
+      26 — Obligations of Deployers of High-Risk AI Systems</h3>
+      <p><strong>Requirement:</strong> Deployers must use high-risk AI
+      systems in accordance with instructions, assign human oversight to
+      competent persons, monitor operation, and report serious
+      incidents.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Article 26 Requirement</th>
+      <th>AgDR Fulfilment</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Assign human oversight to competent persons</td>
+      <td>FOI designation process with named individuals and defined
+      scope</td>
+      </tr>
+      <tr class="even">
+      <td>Monitor operation for risks</td>
+      <td>AKI captures every inference — monitoring is the record</td>
+      </tr>
+      <tr class="odd">
+      <td>Report serious incidents</td>
+      <td>AgDR record provides the evidentiary basis for incident
+      reporting to market surveillance authorities</td>
+      </tr>
+      </tbody>
+      </table>
+      <hr />
+      <h3 id="article-72-post-market-monitoring">Article 72 —
+      Post-Market Monitoring</h3>
+      <p><strong>Requirement:</strong> Providers must establish and
+      document a post-market monitoring system.</p>
+      <p>AgDR’s Merkle chain constitutes a continuous, tamper-evident
+      post-market monitoring record. Every inference, from first
+      deployment to decommission, is part of the same forward-secret
+      chain. Post-market monitoring is not a separate exercise — it is
+      the natural output of AgDR operation.</p>
+      <hr />
+      <h2 id="gdpr-interaction">GDPR Interaction</h2>
+      <p>The EU AI Act operates alongside GDPR. Where AI systems process
+      personal data, both apply.</p>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>AgDR Component</th>
+      <th>GDPR Relevance</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>PPP — Place</td>
+      <td>Captures purpose limitation at inference time (GDPR Article
+      5(1)(b))</td>
+      </tr>
+      <tr class="even">
+      <td>PPP — Provenance</td>
+      <td>Records data subject context and consent basis</td>
+      </tr>
+      <tr class="odd">
+      <td>Reasoning trace</td>
+      <td>Supports right of explanation (GDPR Article 22 + Recital
+      71)</td>
+      </tr>
+      <tr class="even">
+      <td>Human delta chain</td>
+      <td>Demonstrates human involvement in significant automated
+      decisions</td>
+      </tr>
+      </tbody>
+      </table>
+      <p><strong>Note:</strong> AgDR records themselves may contain
+      personal data. Organizations must apply appropriate data
+      protection measures to AgDR records under GDPR, including
+      retention periods and access controls. The evidentiary value of
+      AgDR records must be balanced against data minimization
+      principles.</p>
+      <hr />
+      <h2 id="summary-assessment">Summary Assessment</h2>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>EU AI Act Domain</th>
+      <th>AgDR Coverage</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Automatic logging (Article 12)</td>
+      <td>Full — exceeds requirements</td>
+      </tr>
+      <tr class="even">
+      <td>Human oversight (Article 14)</td>
+      <td>Full — direct architectural implementation</td>
+      </tr>
+      <tr class="odd">
+      <td>Transparency (Article 13)</td>
+      <td>Full — PPP + reasoning trace</td>
+      </tr>
+      <tr class="even">
+      <td>Risk management (Article 9)</td>
+      <td>Partial — captures what happened; prospective assessment is
+      separate</td>
+      </tr>
+      <tr class="odd">
+      <td>Technical documentation (Article 11)</td>
+      <td>Substantial — spec + schemas</td>
+      </tr>
+      <tr class="even">
+      <td>Post-market monitoring (Article 72)</td>
+      <td>Full — Merkle chain is continuous monitoring record</td>
+      </tr>
+      <tr class="odd">
+      <td>Data governance (Article 10)</td>
+      <td>Partial — inference-time provenance; training data is
+      separate</td>
+      </tr>
+      <tr class="even">
+      <td>CE marking / EU database registration</td>
+      <td>Outside AgDR scope — administrative obligations</td>
+      </tr>
+      </tbody>
+      </table>
+      <hr />
+      <p><em>Part of the AgDR v0.2 foundational standard</em> Canonical
+      source: https://github.com/aiccountability-source/AgDR</p>
+    </article>
+  </main>
+
+  <!-- DOCUMENT NAVIGATION FOOTER -->
+  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
+      <div class="grid md:grid-cols-4 gap-5">
+        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
+          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
+        </a>
+        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
+          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
+        </a>
+        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
+          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
+        </a>
+        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
+          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
+        </a>
+        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
+          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
+        </a>
+        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
+          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
+        </a>
+        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
+          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
+        </a>
+        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
+          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
+    <p class="mb-2">
+      The AgDR Standard is open, royalty-free, and dual-licensed:
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
+      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
+    </p>
+    <p>
+      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
+      &nbsp;·&nbsp; © 2026 Accountability.ai
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="human delta chain
+spec — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
+  <title>human delta chain spec | Accountability.ai</title>
+  <link rel="canonical" href="https://accountability.ai/human delta
+chain spec">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:title" content="human delta chain
+spec | Accountability.ai">
+  <meta property="og:description" content="human delta chain
+spec — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; }
+
+    /* Typography */
+    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
+    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
+    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
+    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
+
+    /* Body text */
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
+    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
+    .prose strong { color: #f4f4f5; font-weight: 600; }
+    .prose em { color: #a1a1aa; }
+
+    /* Lists */
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
+    .prose li strong { color: #f4f4f5; }
+
+    /* Links */
+    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: #99f6e4; }
+
+    /* Code */
+    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
+    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
+    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
+
+    /* Blockquotes */
+    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
+    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
+
+    /* Tables */
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
+    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
+    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
+    .prose tr:nth-child(even) td { background: #18181b; }
+    .prose tr:hover td { background: #1f2937; }
+
+    /* HR */
+    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
+
+    /* Nav gradient */
+    .nav-bg { background: linear-gradient(135deg, #0F766E 0%, #164E63 100%); }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- NAV -->
+  <nav class="nav-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
+      <div class="flex flex-wrap gap-5 text-sm font-medium">
+        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
+        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
+        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
+        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-6 py-16">
+    <article class="prose">
+      <h1 id="human-delta-chain-formal-specification">Human Delta Chain
+      — Formal Specification</h1>
+      <p><strong>AgDR v0.2 — Human Accountability Layer</strong>
+      Published March 2026</p>
+      <hr />
+      <h2 id="what-is-the-human-delta-chain">What Is the Human Delta
+      Chain?</h2>
+      <p>The <strong>Human Delta Chain</strong> is the ordered,
+      append-only sequence of human interventions recorded atomically
+      alongside every AgDR decision. It is the formal proof that the
+      right humans were involved, at the right points, with the right
+      authority — and that their involvement (or deliberate
+      non-involvement) is on permanent, tamper-evident record.</p>
+      <p>“Delta” means the difference a human made. A delta of zero is
+      itself meaningful: it means a human reviewed and chose not to
+      change the decision. That choice is as accountable as any
+      modification.</p>
+      <hr />
+      <h2 id="data-structure">Data Structure</h2>
+      <h3 id="single-delta-record">Single Delta Record</h3>
+      <div class="sourceCode" id="cb1"><pre
+      class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;delta_id&quot;</span><span class="fu">:</span> <span class="st">&quot;d_20260315_001_0&quot;</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;sequence&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;actor&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;J. Smith&quot;</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Senior Trader&quot;</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;employee_id&quot;</span><span class="fu">:</span> <span class="st">&quot;EMP-04421&quot;</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;jurisdiction&quot;</span><span class="fu">:</span> <span class="st">&quot;Ontario, Canada&quot;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;action_label&quot;</span><span class="fu">:</span> <span class="st">&quot;approved_with_modification&quot;</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;modification&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;field&quot;</span><span class="fu">:</span> <span class="st">&quot;output.order_size&quot;</span><span class="fu">,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;original&quot;</span><span class="fu">:</span> <span class="dv">10000</span><span class="fu">,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;revised&quot;</span><span class="fu">:</span> <span class="dv">8000</span><span class="fu">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;unit&quot;</span><span class="fu">:</span> <span class="st">&quot;shares&quot;</span><span class="fu">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;rationale&quot;</span><span class="fu">:</span> <span class="st">&quot;Reduced to stay within intraday risk limit per mandate 2026-Q1&quot;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;timestamp_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000000</span><span class="fu">,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;latency_ns&quot;</span><span class="fu">:</span> <span class="dv">142000000</span><span class="fu">,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;escalated&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;signature&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;Ed25519 signature over this delta record&gt;&quot;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+      <h3 id="action-codes">Action Codes</h3>
+      <table>
+      <colgroup>
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      <col style="width: 33%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Code</th>
+      <th>Label</th>
+      <th>Meaning</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td><code>1</code></td>
+      <td><code>approved_as_is</code></td>
+      <td>Human reviewed, accepted the agent’s decision without
+      change</td>
+      </tr>
+      <tr class="even">
+      <td><code>2</code></td>
+      <td><code>approved_with_modification</code></td>
+      <td>Human reviewed, accepted with documented change</td>
+      </tr>
+      <tr class="odd">
+      <td><code>0</code></td>
+      <td><code>escalated</code></td>
+      <td>Human reviewed, escalated to next layer — decision not yet
+      final</td>
+      </tr>
+      <tr class="even">
+      <td><code>-1</code></td>
+      <td><code>halted</code></td>
+      <td>Human reviewed, halted the decision — agent must not
+      proceed</td>
+      </tr>
+      </tbody>
+      </table>
+      <h3 id="full-chain-structure">Full Chain Structure</h3>
+      <div class="sourceCode" id="cb2"><pre
+      class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;chain_id&quot;</span><span class="fu">:</span> <span class="st">&quot;chain_20260315_001&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;agent_decision_ref&quot;</span><span class="fu">:</span> <span class="st">&quot;agdr_20260315_001&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;initiated_at_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000000</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;resolved&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;resolution&quot;</span><span class="fu">:</span> <span class="st">&quot;approved_with_modification&quot;</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;terminal_node&quot;</span><span class="fu">:</span> <span class="st">&quot;human_delta&quot;</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;deltas&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;delta_id&quot;</span><span class="fu">:</span> <span class="st">&quot;d_20260315_001_0&quot;</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;sequence&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;actor&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;J. Smith&quot;</span><span class="fu">,</span> <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Senior Trader&quot;</span> <span class="fu">},</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action_label&quot;</span><span class="fu">:</span> <span class="st">&quot;approved_with_modification&quot;</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;modification&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="er">...</span> <span class="fu">},</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;escalated&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;timestamp_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000000</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;foi_escalation&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;merkle_root&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;root hash of this chain&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;chain_signature&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;Ed25519 signature over the complete chain&gt;&quot;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+      <hr />
+      <h2 id="fully-autonomous-decision-empty-chain">Fully Autonomous
+      Decision (Empty Chain)</h2>
+      <p>When an agent acts fully within its authorized boundary with no
+      human review, the chain is empty — and that emptiness is itself
+      recorded and signed:</p>
+      <div class="sourceCode" id="cb3"><pre
+      class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;chain_id&quot;</span><span class="fu">:</span> <span class="st">&quot;chain_20260315_002&quot;</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;agent_decision_ref&quot;</span><span class="fu">:</span> <span class="st">&quot;agdr_20260315_002&quot;</span><span class="fu">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;deltas&quot;</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;foi_escalation&quot;</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;autonomous&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;autonomous_authority_ref&quot;</span><span class="fu">:</span> <span class="st">&quot;mandate_2026-Q1_section_3.2&quot;</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;merkle_root&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;root hash&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;chain_signature&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;signature&gt;&quot;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+      <p>The <code>autonomous_authority_ref</code> is critical: it
+      points to the governance document that authorized the agent to act
+      without human review for this class of decision.
+      <strong>Autonomous action without an authority reference is a
+      compliance gap.</strong></p>
+      <hr />
+      <h2 id="multi-layer-escalation">Multi-Layer Escalation</h2>
+      <p>When a decision escalates through multiple human reviewers:</p>
+      <div class="sourceCode" id="cb4"><pre
+      class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;deltas&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;sequence&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;actor&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;J. Smith&quot;</span><span class="fu">,</span> <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Junior Analyst&quot;</span> <span class="fu">},</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action_label&quot;</span><span class="fu">:</span> <span class="st">&quot;escalated&quot;</span><span class="fu">,</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;escalation_reason&quot;</span><span class="fu">:</span> <span class="st">&quot;Decision magnitude exceeds my delegated authority&quot;</span><span class="fu">,</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;timestamp_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000000</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;sequence&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;actor&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;M. Chen&quot;</span><span class="fu">,</span> <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="st">&quot;Head of Desk&quot;</span> <span class="fu">},</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;action_label&quot;</span><span class="fu">:</span> <span class="st">&quot;escalated&quot;</span><span class="fu">,</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;escalation_reason&quot;</span><span class="fu">:</span> <span class="st">&quot;Requires compliance sign-off&quot;</span><span class="fu">,</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;timestamp_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000100</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;foi_escalation&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;actor&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;C. Wong&quot;</span><span class="fu">,</span> <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Chief Compliance Officer&quot;</span> <span class="fu">},</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;decision&quot;</span><span class="fu">:</span> <span class="st">&quot;HALT — requires board resolution&quot;</span><span class="fu">,</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;decision_code&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;timestamp_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000200</span><span class="fu">,</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;signature&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;FOI Ed25519 signature&gt;&quot;</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;terminal_node&quot;</span><span class="fu">:</span> <span class="st">&quot;foi&quot;</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+      <p>The chain grows by append only. No delta can be removed or
+      modified after it is written. Each delta is signed by the actor at
+      the time of their review. Any modification to a past delta breaks
+      every subsequent signature.</p>
+      <hr />
+      <h2 id="invariants">Invariants</h2>
+      <p>These are enforced by the AKI kernel layer and must be
+      validated by any AgDR-compliant verifier:</p>
+      <ol type="1">
+      <li><strong>Sequence is monotonically increasing</strong> — no
+      gaps, no reordering</li>
+      <li><strong>Each delta is signed by the actor</strong> — no
+      unsigned deltas</li>
+      <li><strong>Escalated deltas must be followed by the next delta or
+      FOI escalation</strong> — an escalated decision cannot be the last
+      record in a resolved chain</li>
+      <li><strong>Halted decisions have no subsequent deltas</strong> —
+      once halted, the chain is terminal</li>
+      <li><strong>Autonomous chains must carry an authority
+      reference</strong> — no empty chain without
+      <code>autonomous_authority_ref</code></li>
+      <li><strong>The FOI node, if present, is always last</strong> —
+      FOI is terminal by definition</li>
+      <li><strong>The chain’s Merkle root commits to all deltas and the
+      FOI node</strong> — verified by the top-level AgDR record</li>
+      </ol>
+      <hr />
+      <h2 id="timing-requirements">Timing Requirements</h2>
+      <table>
+      <colgroup>
+      <col style="width: 50%" />
+      <col style="width: 50%" />
+      </colgroup>
+      <thead>
+      <tr class="header">
+      <th>Requirement</th>
+      <th>Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="odd">
+      <td>Maximum latency per delta</td>
+      <td>Organization-defined (e.g., 30s for trading, 24h for
+      clinical)</td>
+      </tr>
+      <tr class="even">
+      <td>Timestamp precision</td>
+      <td>Nanosecond (<code>timestamp_ns</code>)</td>
+      </tr>
+      <tr class="odd">
+      <td>Clock source</td>
+      <td>System monotonic clock at capture instant</td>
+      </tr>
+      <tr class="even">
+      <td>Latency recorded</td>
+      <td><code>latency_ns</code> — time from agent decision to human
+      action</td>
+      </tr>
+      </tbody>
+      </table>
+      <p>Latency is evidence of genuine review. A delta timestamped 1
+      millisecond after the agent decision is not credible review — it
+      is a rubber stamp. Organizations should define minimum credible
+      review times per decision class and flag anomalies.</p>
+      <hr />
+      <h2 id="schema-reference">Schema Reference</h2>
+      <p>Full JSON Schema for the human delta chain is included in
+      <code>specs/agdr-v0.2.json</code> under
+      <code>human_delta_chain_schema</code>.</p>
+      <div class="sourceCode" id="cb5"><pre
+      class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Validate a chain against the schema</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">agdr</span> validate-chain <span class="at">--chain</span> chain_20260315_001.json</span></code></pre></div>
+      <hr />
+      <h2 id="legal-significance">Legal Significance</h2>
+      <p>The human delta chain is the instrument that answers the
+      question every court and regulator will ask:</p>
+      <p><strong>“Was there meaningful human oversight?”</strong></p>
+      <p>Not just “was a human in the loop” — but: - Which human? - What
+      was their authority? - What did they actually do? - How long did
+      they take? - Did they escalate when they should have? - Who
+      ultimately bore fiduciary responsibility?</p>
+      <p>The chain answers all of these, atomically, at the time of the
+      decision. Not reconstructed. Not explained after the fact. Present
+      and signed at the inference instant.</p>
+      <p>This is the architecture that makes AgDR more than logging. It
+      is the proof of governance.</p>
+      <p><em>Part of the AgDR v0.2 foundational standard</em> Canonical
+      source: https://github.com/aiccountability-source/AgDR</p>
+    </article>
+  </main>
+
+  <!-- DOCUMENT NAVIGATION FOOTER -->
+  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
+      <div class="grid md:grid-cols-4 gap-5">
+        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
+          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
+        </a>
+        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
+          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
+        </a>
+        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
+          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
+        </a>
+        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
+          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
+        </a>
+        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
+          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
+        </a>
+        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
+          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
+        </a>
+        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
+          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
+        </a>
+        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
+          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
+    <p class="mb-2">
+      The AgDR Standard is open, royalty-free, and dual-licensed:
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
+      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
+    </p>
+    <p>
+      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
+      &nbsp;·&nbsp; © 2026 Accountability.ai
+    </p>
+  </footer>
+
+</body>
+</html>

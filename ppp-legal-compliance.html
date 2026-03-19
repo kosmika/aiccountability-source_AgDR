@@ -3,42 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Agent Decision Record specification and AI accountability infrastructure. Accountability.ai — the measurement standard for AI.">
+  <meta name="description" content="ppp legal
+compliance — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
   <title>ppp legal compliance | Accountability.ai</title>
+  <link rel="canonical" href="https://accountability.ai/ppp legal
+compliance">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:title" content="ppp legal
+compliance | Accountability.ai">
+  <meta property="og:description" content="ppp legal
+compliance — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+
   <style>
-    body { font-family: system-ui, sans-serif; }
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; color: #5eead4; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #99f6e4; }
-    .prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose p { margin-bottom: 1rem; line-height: 1.75; }
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
-    .prose li { margin-bottom: 0.4rem; line-height: 1.7; }
-    .prose a { color: #5eead4; text-decoration: underline; }
+    body { font-family: system-ui, -apple-system, sans-serif; }
+
+    /* Typography */
+    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
+    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
+    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
+    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
+
+    /* Body text */
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
+    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
+    .prose strong { color: #f4f4f5; font-weight: 600; }
+    .prose em { color: #a1a1aa; }
+
+    /* Lists */
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
+    .prose li strong { color: #f4f4f5; }
+
+    /* Links */
+    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
     .prose a:hover { color: #99f6e4; }
-    .prose code { background: #27272a; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #5eead4; }
-    .prose pre { background: #18181b; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1rem; }
-    .prose pre code { background: none; padding: 0; }
-    .prose blockquote { border-left: 4px solid #0f766e; padding-left: 1rem; color: #a1a1aa; font-style: italic; margin-bottom: 1rem; }
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
-    .prose th { background: #18181b; padding: 0.75rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose td { padding: 0.75rem 1rem; border: 1px solid #3f3f46; }
-    .prose tr:nth-child(even) { background: #18181b; }
-    .prose hr { border-color: #3f3f46; margin: 2rem 0; }
+
+    /* Code */
+    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
+    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
+    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
+
+    /* Blockquotes */
+    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
+    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
+
+    /* Tables */
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
+    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
+    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
+    .prose tr:nth-child(even) td { background: #18181b; }
+    .prose tr:hover td { background: #1f2937; }
+
+    /* HR */
+    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
+
+    /* Nav gradient */
+    .nav-bg { background: linear-gradient(135deg, #0F766E 0%, #164E63 100%); }
   </style>
 </head>
 <body class="bg-zinc-950 text-white">
 
   <!-- NAV -->
-  <nav style="background: linear-gradient(135deg, #0F766E 0%, #164E63 100%);" class="py-4 px-6">
-    <div class="max-w-4xl mx-auto flex items-center justify-between">
+  <nav class="nav-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
       <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex gap-6 text-sm">
-        <a href="/" class="hover:text-teal-300 transition">Home</a>
-        <a href="/sandbox.html" class="hover:text-teal-300 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" class="hover:text-teal-300 transition">GitHub</a>
+      <div class="flex flex-wrap gap-5 text-sm font-medium">
+        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
+        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
+        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
+        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
       </div>
     </div>
   </nav>
@@ -124,17 +164,62 @@
       fundamental duty of care owed to humanity.</p>
       <p><em>Part of the AgDR v0.2 foundational standard</em><br />
       Canonical source:
-      https://github.com/aiccountability-source/agdr-spec</p>
+      https://github.com/aiccountability-source/AgDR</p>
     </article>
   </main>
 
+  <!-- DOCUMENT NAVIGATION FOOTER -->
+  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
+      <div class="grid md:grid-cols-4 gap-5">
+        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
+          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
+        </a>
+        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
+          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
+        </a>
+        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
+          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
+        </a>
+        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
+          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
+        </a>
+        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
+          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
+        </a>
+        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
+          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
+        </a>
+        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
+          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
+        </a>
+        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
+          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
-  <footer class="py-12 bg-black text-center text-zinc-400 text-sm">
-    The AgDR Standard is open, royalty-free, and dual-licensed:
-    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-400 hover:text-teal-300">CC0 1.0 Universal</a> OR
-    <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-400 hover:text-teal-300">Apache License 2.0</a> — your choice.
-    See full texts in the <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-400 hover:text-teal-300">GitHub repo</a>.
-    © 2026 Accountability.ai
+  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
+    <p class="mb-2">
+      The AgDR Standard is open, royalty-free, and dual-licensed:
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
+      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
+    </p>
+    <p>
+      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
+      &nbsp;·&nbsp; © 2026 Accountability.ai
+    </p>
   </footer>
 
 </body>
