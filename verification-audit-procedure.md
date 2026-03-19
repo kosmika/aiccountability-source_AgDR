@@ -1,0 +1,243 @@
+# Verification & Audit Procedure
+
+**AgDR v0.2 — How to Verify a Record and Package Evidence for Courts and Regulators**
+Published March 2026
+
+---
+
+## What Verification Proves
+
+An AgDR verification answers four questions simultaneously:
+
+1. **Integrity** — Has this record been modified since it was created?
+2. **Authenticity** — Was this record created by the claimed system at the claimed time?
+3. **Completeness** — Is this record part of an unbroken chain — no records deleted or inserted?
+4. **Accountability** — Who was the named human accountable for this decision?
+
+A passed verification proves all four, cryptographically, without requiring access to the original system.
+
+---
+
+## Verification Methods
+
+### Method 1 — CLI (fastest, for internal audit)
+
+```bash
+# Install the AgDR CLI
+pip install agdr-aki
+
+# Verify a single record
+agdr verify --record record_20260315_001.agdr
+
+# Verify with expected Merkle root
+agdr verify --record record_20260315_001.agdr --merkle-root <root_hash>
+
+# Verify a range of records in a chain
+agdr verify-chain \
+  --chain-dir ./agdr-records/ \
+  --from-position 1 \
+  --to-position 1000000 \
+  --merkle-root <root_hash>
+
+# Output
+# ✅ Record integrity: PASS
+# ✅ Signature valid: PASS
+# ✅ Chain position verified: PASS (position 442,817 of 1,000,000)
+# ✅ PPP triplet present: PASS
+# ✅ Human delta chain: PASS (1 delta, 0 FOI escalations)
+# ✅ Tamper-free: CONFIRMED
+```
+
+### Method 2 — Python (for integration into audit systems)
+
+```python
+from agdr_aki import verify_record, verify_chain, package_evidence
+
+# Single record verification
+result = verify_record("record_20260315_001.agdr")
+
+assert result.integrity_valid       # BLAKE3 hash matches
+assert result.signature_valid       # Ed25519 signature valid
+assert result.chain_intact          # Merkle position consistent
+assert result.ppp_triplet_present   # All three P fields populated
+assert result.tamper_free           # No post-facto modification
+
+print(result.actor_name)            # "J. Smith"
+print(result.actor_role)            # "Senior Trader"
+print(result.timestamp_ns)          # 1742000000000000000
+print(result.foi_involved)          # False
+
+# Chain verification
+chain_result = verify_chain(
+    chain_dir="./agdr-records/",
+    from_position=1,
+    to_position=100_000_000,
+    expected_merkle_root=root_hash
+)
+
+assert chain_result.all_records_present
+assert chain_result.no_gaps
+assert chain_result.no_insertions
+print(f"Verified {chain_result.record_count:,} records")
+print(f"Chain integrity: {chain_result.integrity_score}")  # 1.0 = perfect
+```
+
+### Method 3 — Manual cryptographic verification (court standard, no tools required)
+
+Any party with basic cryptographic tooling can verify an AgDR record independently:
+
+```bash
+# Step 1: Extract the payload from the record
+cat record_20260315_001.agdr | jq '.payload' > payload.json
+
+# Step 2: Recompute the BLAKE3 hash
+b3sum payload.json
+
+# Step 3: Compare to the stored hash
+cat record_20260315_001.agdr | jq '.merkle_hash'
+# If they match: record has not been modified
+
+# Step 4: Verify the Ed25519 signature
+# Using the public key from the organization's AgDR keyring:
+openssl dgst -verify pubkey.pem -signature sig.bin payload.json
+# Output: Verified OK
+
+# Step 5: Verify Merkle chain position
+# Each record contains prev_merkle_hash
+# Hash chain: record[n].merkle_hash must equal record[n+1].prev_merkle_hash
+```
+
+This method requires no proprietary tools. It uses standard cryptographic primitives available in any jurisdiction. It is the method designed for court use.
+
+---
+
+## Packaging Evidence for Courts and Regulators
+
+### What to Produce
+
+When responding to a legal demand, regulatory inquiry, or court order, produce:
+
+| Package Component | File | Purpose |
+|---|---|---|
+| Specific record(s) | `record_{id}.agdr` | The decision under review |
+| Verification report | `verification_report_{id}.pdf` | Signed attestation that records are authentic |
+| Chain integrity proof | `chain_integrity_{range}.proof` | Proof that no records were deleted from the chain |
+| PPP summary | `ppp_summary_{id}.json` | Human-readable PPP triplet for the specific decision(s) |
+| Human delta summary | `delta_summary_{id}.json` | Who reviewed, what they did, when |
+| FOI record (if applicable) | `foi_{id}.agdr` | FOI escalation record |
+| Public key certificate | `agdr_pubkey_{org}.pem` | For independent verification of signatures |
+
+### Generating the Evidence Package
+
+```bash
+agdr package-evidence \
+  --record record_20260315_001.agdr \
+  --include-chain-proof \
+  --include-ppp-summary \
+  --include-delta-summary \
+  --output-dir ./evidence_package_20260315/ \
+  --sign-with org_signing_key.pem
+```
+
+### The Verification Report
+
+The verification report is a signed attestation produced by the organization's AgDR system:
+
+```
+AGDR VERIFICATION REPORT
+========================
+Record ID:        agdr_20260315_001
+Generated:        2026-03-19T14:30:00Z
+Generated by:     AgDR CLI v0.2.1
+
+INTEGRITY CHECK
+  BLAKE3 hash:    PASS — 7f4a2c...b9e1 (matches stored hash)
+  Ed25519 sig:    PASS — valid signature under org key cert-2026-001
+  Chain position: PASS — position 442,817 in unbroken chain of 1,000,000
+
+CONTENT SUMMARY
+  Inference time:   2026-03-15T09:42:17.000000000Z
+  Model:            trading-agent-v3
+  PPP Provenance:   "TSX equity desk — RY.TO buy — J.Smith EMP-04421"
+  PPP Place:        "Fill at market open, ±0.5% VWAP, IIROC boundary"
+  PPP Purpose:      "Rebalance to target allocation per mandate 2026-Q1"
+
+HUMAN OVERSIGHT
+  Delta chain:      1 delta recorded
+  Reviewer:         J. Smith, Senior Trader
+  Action:           approved_with_modification
+  Modification:     Order reduced 10,000 → 8,000 shares
+  Review latency:   14.2 seconds
+  FOI escalation:   None
+
+CHAIN INTEGRITY
+  Records verified: 1,000,000 of 1,000,000
+  Gaps detected:    0
+  Insertions:       0
+  Merkle root:      a8f3c1...2e9d (matches expected root)
+
+VERDICT: AUTHENTIC — TAMPER-FREE — CHAIN INTACT
+
+This report was generated by the AgDR verification system and signed with
+the organization's AgDR verification key (cert-2026-001).
+```
+
+---
+
+## Responding to a Court Order
+
+### Step 1 — Identify the scope
+Determine the record IDs, time range, or decision class covered by the order.
+
+### Step 2 — Freeze the chain segment
+Do not append new records to the segment under production while the order is active. Preserve a snapshot.
+
+### Step 3 — Generate the evidence package
+Use `agdr package-evidence` with the identified scope.
+
+### Step 4 — Produce the public key certificate
+Include the organization's AgDR public key and its chain of custody (who generated it, when, under what governance).
+
+### Step 5 — Provide the independent verification instructions
+Include the Manual Verification instructions (Method 3 above) so the receiving party's experts can independently verify without any AgDR tooling.
+
+### Step 6 — Produce the FOI designation record
+If a FOI was involved, produce the AgDR record of the FOI's designation (the appointment was itself captured as an AgDR record).
+
+---
+
+## What Courts and Regulators Need to Know
+
+**The Canada Evidence Act question:** Are these records reliable?
+
+AgDR records satisfy the business records exception (s.30 Canada Evidence Act) because:
+- They were created in the ordinary course of business
+- They were created at or near the time of the event (at the inference instant — nanosecond precision)
+- The method of creation ensures the accuracy of the record (AKI atomic capture — no partial states)
+- Tampering is cryptographically detectable
+
+**The "best evidence" question:** Is this the original?
+
+Every AgDR record is the original. There is no prior record from which it was copied. The Merkle chain position and the timestamp prove that this record was created at that moment and has not been modified since.
+
+**The authentication question:** How do we know this came from the claimed system?
+
+The Ed25519 signature was made with the organization's private key at the inference instant. The corresponding public key, with its certificate of custody, is produced alongside the record. Any cryptographer can verify the signature independently.
+
+---
+
+## Audit Use Cases
+
+| Use Case | What to Run |
+|---|---|
+| Internal audit — specific decision | Single record verification + PPP summary |
+| Regulatory examination | Full chain verification for examination period + evidence package |
+| Court production | Evidence package + independent verification instructions |
+| Post-incident review | Chain segment verification + delta chain analysis |
+| Annual compliance attestation | Full chain verification + integrity report |
+| FOI review | FOI records only — filtered by `foi_escalation != null` |
+
+---
+
+*Part of the AgDR v0.2 foundational standard*
+Canonical source: https://github.com/aiccountability-source/AgDR

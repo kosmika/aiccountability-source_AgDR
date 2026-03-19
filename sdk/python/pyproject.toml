@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "agdr-aki"
+version = "0.2.0"
+description = "AgDR v0.2 — Atomic Kernel Inference (AKI) Python SDK"
+readme = "README.md"
+license = {text = "CC0-1.0 OR Apache-2.0"}
+requires-python = ">=3.11"
+keywords = ["agdr", "aki", "accountability", "ai-governance", "audit-trail", "merkle"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Legal Industry",
+    "Intended Audience :: Financial and Insurance Industry",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = []
+
+[project.optional-dependencies]
+crypto = [
+    "cryptography>=42.0",
+    "blake3>=0.4",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
+
+[project.urls]
+Homepage = "https://accountability.ai"
+Repository = "https://github.com/aiccountability-source/AgDR"
+Documentation = "https://github.com/aiccountability-source/AgDR/blob/main/getting-started.md"
+"Bug Tracker" = "https://github.com/aiccountability-source/AgDR/issues"
+
+[project.scripts]
+agdr = "agdr_aki.cli:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
