@@ -28,4 +28,4 @@ The Atomic Kernel Inference (AKI) primitives held perfectly — no partial recor
 **This is the proof that AgDR works at market scale.**
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

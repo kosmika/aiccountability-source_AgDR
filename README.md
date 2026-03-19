@@ -29,9 +29,9 @@ As I stand at the Pinnacle of the standard of care I hope to one day achieve.
 
 — @aiccountability, Founder
 
-**Canonical source**  
-https://github.com/aiccountability-source/agdr-spec
+**Canonical source**
+https://github.com/aiccountability-source/AgDR
 
 **Quick start**
 ```bash
-curl -O https://raw.githubusercontent.com/aiccountability-source/agdr-spec/main/specs/agdr-v0.2.json
+curl -O https://raw.githubusercontent.com/aiccountability-source/AgDR/main/specs/agdr-v0.2.json

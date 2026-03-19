@@ -19,4 +19,4 @@ When asked “Did the agent act lawfully and with proper oversight?”, the AgDR
 This is why we stand at the pinnacle of the standard of care that I wish to one day achieve — where every autonomous agent decision carries verifiable accountability as the expected, fundamental duty of care owed to humanity.
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

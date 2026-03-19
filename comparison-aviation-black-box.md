@@ -21,4 +21,4 @@ AgDR solves the same crisis for autonomous intelligence in 2026 — except it do
 This is why we stand at the pinnacle of the standard of care that I wish to one day achieve.
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

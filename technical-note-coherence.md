@@ -37,4 +37,4 @@ It is the foundation upon which future quantum-ready systems can be built.
 We stand at the pinnacle of the standard of care that I wish to one day achieve.
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

@@ -21,4 +21,4 @@ At the exact “i” point (inference instant), the Atomic Kernel Inference (AKI
 This creates the first mathematically guaranteed contemporaneous record of agent decisions.
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

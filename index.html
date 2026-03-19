@@ -4,121 +4,346 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Agent Decision Record (AgDR) is the open standard for tamper-evident, cryptographically signed AI decisions. Try the live sandbox. Built for regulators, enterprises, and courts.">
+
+  <!-- Primary SEO -->
   <title>Accountability.ai — The AgDR Standard for AI Decision Records</title>
+  <meta name="description" content="AgDR is the open, tamper-evident standard for autonomous AI decision records. Cryptographically signed. Court-ready today. Admissible in 2076. CC0 / Apache 2.0.">
+  <link rel="canonical" href="https://accountability.ai/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://accountability.ai/">
+  <meta property="og:title" content="Accountability.ai — The AgDR Standard for AI Decision Records">
+  <meta property="og:description" content="Every autonomous AI decision captured atomically. Tamper-evident. Cryptographically signed. Admissible in court today — and in 2076. Open standard. CC0 / Apache 2.0.">
+  <meta property="og:site_name" content="Accountability.ai">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accountability.ai — The AgDR Standard">
+  <meta name="twitter:description" content="The open standard that makes autonomous intelligence accountable — forever. AgDR v0.2. CC0 / Apache 2.0.">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-    }
 
-    .hero-bg {
-      background: linear-gradient(135deg, #0F766E 0%, #164E63 100%);
-    }
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0F766E 0%, #164E63 100%); }
+    .card-hover { transition: background 0.2s, transform 0.2s; }
+    .card-hover:hover { transform: translateY(-2px); }
   </style>
 </head>
 
 <body class="bg-zinc-950 text-white">
 
-  <!-- HERO -->
-  <section class="hero-bg py-24 text-center">
-    <div class="max-w-4xl mx-auto px-6">
-      <h1 class="text-6xl font-bold tracking-tight mb-4">Accountability.ai</h1>
-      <p class="text-3xl mb-8">We make autonomous intelligence accountable — forever.</p>
+  <!-- NAV -->
+  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
+      <div class="flex flex-wrap gap-5 text-sm font-medium">
+        <a href="getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
+        <a href="ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
+        <a href="ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
+        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
 
-      <div class="inline-block bg-white/10 backdrop-blur-xl rounded-3xl px-12 py-10 mb-12">
-        <h2 class="text-5xl font-semibold mb-3">AgDR v0.2</h2>
-        <p class="text-2xl mb-6">Atomic Kernel Inference Standard</p>
-        <p class="text-2xl font-light">Policy = PPP<br><span class="text-teal-300">(Provenance · Place · Purpose)</span>
+  <!-- HERO -->
+  <section class="hero-bg pt-20 pb-28 text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <p class="text-teal-200 text-lg font-medium tracking-widest uppercase mb-4">Open Canadian Standard · March 2026</p>
+      <h1 class="text-6xl font-bold tracking-tight mb-4">Accountability.ai</h1>
+      <p class="text-3xl font-light mb-10">We make autonomous intelligence accountable — forever.</p>
+
+      <div class="inline-block bg-white/10 backdrop-blur-xl rounded-3xl px-12 py-10 mb-12 text-left max-w-2xl w-full">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h2 class="text-4xl font-bold">AgDR v0.2</h2>
+            <p class="text-teal-300 text-lg mt-1">Atomic Kernel Inference Standard</p>
+          </div>
+          <span class="bg-teal-500/20 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full border border-teal-500/30 mt-1">CC0 / Apache 2.0</span>
+        </div>
+
+        <p class="text-xl font-light mb-4">
+          <strong class="font-semibold">Policy = PPP</strong> &nbsp;·&nbsp;
+          <span class="text-teal-300">Provenance · Place · Purpose</span>
         </p>
-        <p class="mt-8 text-xl italic">"Don't believe a word I say. Check the AgDR."</p>
+        <p class="text-zinc-300 text-base leading-relaxed mb-6">
+          Every inference captured atomically at the exact "i" point — signed with BLAKE3 + Ed25519,
+          chained in a forward-secret Merkle tree. Tamper-proof from birth.
+          Court-ready under the Canada Evidence Act. No new legislation required.
+        </p>
+
+        <blockquote class="border-l-4 border-teal-400 pl-4 text-lg italic text-teal-100">
+          "Don't believe a word I say. Check the AgDR."
+        </blockquote>
       </div>
 
-      <div class="flex flex-wrap gap-6 justify-center">
-        <a href="https://github.com/aiccountability-source/agdr" target="_blank"
-          class="bg-white text-teal-900 font-semibold px-10 py-4 rounded-2xl hover:bg-teal-100 transition">
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="getting-started.html"
+          class="bg-white text-teal-900 font-semibold px-10 py-4 rounded-2xl hover:bg-teal-50 transition text-lg">
+          Get Started →
+        </a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener"
+          class="border border-white/60 font-semibold px-10 py-4 rounded-2xl hover:bg-white/10 transition text-lg">
           View the Standard on GitHub
         </a>
-        <a href="https://accountability.ai/sandbox.html" target="_blank"
-          class="border border-white/70 font-semibold px-10 py-4 rounded-2xl hover:bg-white/10 transition">
-          Try the Live Sandbox Now
+        <a href="/sandbox.html"
+          class="border border-teal-400/60 text-teal-300 font-semibold px-10 py-4 rounded-2xl hover:bg-teal-400/10 transition text-lg">
+          Try the Sandbox
         </a>
       </div>
     </div>
   </section>
 
-  <!-- PROVEN SCALE -->
+  <!-- WHAT AGDR CAPTURES -->
   <section class="py-20 bg-zinc-900">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-semibold mb-6">Proven at Real-World Scale</h2>
-      <div class="text-6xl font-bold text-teal-400 mb-2">100,000,000</div>
-      <p class="text-2xl">decisions processed on TSX Toronto desk</p>
-      <p class="mt-4 text-xl">Single AGI agent • 253,807 decisions per second • 100% success rate</p>
-      <p class="mt-2 text-zinc-400">Every record verifiable today — and in 2076.</p>
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-semibold text-center mb-4">What Every AgDR Record Captures</h2>
+      <p class="text-center text-zinc-400 text-lg mb-12 max-w-2xl mx-auto">
+        One atomic kernel transaction. No partial states. No post-facto reconstruction. Ever.
+      </p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-zinc-800 rounded-2xl p-7">
+          <div class="text-teal-400 text-2xl font-bold mb-2">Provenance</div>
+          <p class="text-zinc-300 leading-relaxed">Who is acting, on whose behalf, from what verified state. The anchor that makes every later claim testable.</p>
+        </div>
+        <div class="bg-zinc-800 rounded-2xl p-7">
+          <div class="text-teal-400 text-2xl font-bold mb-2">Place</div>
+          <p class="text-zinc-300 leading-relaxed">Where the decision is headed. The intended destination, regulatory boundary, and definition of success — frozen at the inference instant.</p>
+        </div>
+        <div class="bg-zinc-800 rounded-2xl p-7">
+          <div class="text-teal-400 text-2xl font-bold mb-2">Purpose</div>
+          <p class="text-zinc-300 leading-relaxed">Why the decision is being made. The explicit intent, fiduciary duty, and ethical anchor — closed by Beauty, Truth &amp; Wisdom.</p>
+        </div>
+      </div>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 text-center">
+          <div class="text-zinc-300 font-semibold mb-1">Full Reasoning Trace</div>
+          <p class="text-zinc-500 text-sm">Every step of the model's chain-of-thought, signed at the inference instant</p>
+        </div>
+        <div class="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 text-center">
+          <div class="text-zinc-300 font-semibold mb-1">Human Delta Chain</div>
+          <p class="text-zinc-500 text-sm">Every human review, override, and escalation — named, timed, and signed</p>
+        </div>
+        <div class="bg-zinc-800/50 border border-zinc-700 rounded-2xl p-6 text-center">
+          <div class="text-zinc-300 font-semibold mb-1">FOI Terminal Node</div>
+          <p class="text-zinc-500 text-sm">The Fiduciary Office Intervener — a named, accountable human at the end of every chain</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- NEW RAW DATA SOURCE -->
+  <!-- PROVEN AT SCALE -->
   <section class="py-20 bg-zinc-950">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-semibold mb-8">A New Raw Data Source</h2>
-      <p class="text-2xl max-w-3xl mx-auto">
-        Organizations adopting AgDR gain a powerful new raw data source: atomic, tamper-evident records of every
-        high-stakes decision.
-        Full reasoning trace + PPP triplet + human accountability chain — all captured at the kernel level.
-      </p>
-      <p class="mt-6 text-xl text-teal-300">This turns compliance into a strategic asset.</p>
+      <h2 class="text-4xl font-semibold mb-4">Proven at Real-World Scale</h2>
+      <p class="text-zinc-400 text-lg mb-10">TSX Toronto equity desk · Single AGI agent · March 2026</p>
+      <div class="grid md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-zinc-900 rounded-2xl p-6">
+          <div class="text-4xl font-bold text-teal-400 mb-1">100M</div>
+          <div class="text-zinc-400 text-sm">decisions processed</div>
+        </div>
+        <div class="bg-zinc-900 rounded-2xl p-6">
+          <div class="text-4xl font-bold text-teal-400 mb-1">253,807</div>
+          <div class="text-zinc-400 text-sm">decisions / second</div>
+        </div>
+        <div class="bg-zinc-900 rounded-2xl p-6">
+          <div class="text-4xl font-bold text-teal-400 mb-1">3.94 µs</div>
+          <div class="text-zinc-400 text-sm">avg. AKI capture latency</div>
+        </div>
+        <div class="bg-zinc-900 rounded-2xl p-6">
+          <div class="text-4xl font-bold text-teal-400 mb-1">100%</div>
+          <div class="text-zinc-400 text-sm">success rate · zero dropped records</div>
+        </div>
+      </div>
+      <p class="text-zinc-400">Every record verifiable today — and in 2076. &nbsp;<a href="tsx-stress-test.html" class="text-teal-400 hover:text-teal-300 underline">See the full stress test →</a></p>
     </div>
   </section>
 
-  <!-- SEE THE PROOF -->
+  <!-- LEGAL & REGULATORY AUTHORITY -->
   <section class="py-20 bg-zinc-900">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold text-center mb-10">See the Proof</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <a href="comparison-aviation-black-box.html"
-          class="block p-8 bg-zinc-800 rounded-3xl hover:bg-zinc-700 transition">Aviation Black Box Comparison</a>
-        <a href="comparison-medical-records.html"
-          class="block p-8 bg-zinc-800 rounded-3xl hover:bg-zinc-700 transition">Medical Records Comparison</a>
-        <a href="ppp-legal-compliance.html" class="block p-8 bg-zinc-800 rounded-3xl hover:bg-zinc-700 transition">How PPP
-          Enables Legal Compliance</a>
-        <a href="future-agi-court.html" class="block p-8 bg-zinc-800 rounded-3xl hover:bg-zinc-700 transition">AGI Court
-          Proceedings in 2076</a>
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-semibold text-center mb-4">Built on Existing Law</h2>
+      <p class="text-center text-zinc-400 text-lg mb-12 max-w-2xl mx-auto">
+        No new legislation required. AgDR maps directly to frameworks courts and regulators already rely on.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <a href="ppp-legal-compliance.html" class="card-hover bg-zinc-800 rounded-2xl p-6 block">
+          <div class="text-teal-400 font-semibold mb-2">Canada Evidence Act</div>
+          <p class="text-zinc-400 text-sm">Atomic capture satisfies the business records reliability test. Admissible without expert reconstruction.</p>
+        </a>
+        <a href="cbca-fiduciary-mapping.html" class="card-hover bg-zinc-800 rounded-2xl p-6 block">
+          <div class="text-teal-400 font-semibold mb-2">CBCA s.122 — Fiduciary Duty</div>
+          <p class="text-zinc-400 text-sm">The FOI terminal node maps directly to directors' duty of care. Boards can prove AI oversight under existing corporate law.</p>
+        </a>
+        <a href="cbsa-mapping.html" class="card-hover bg-zinc-800 rounded-2xl p-6 block">
+          <div class="text-teal-400 font-semibold mb-2">CBSA Export Control</div>
+          <p class="text-zinc-400 text-sm">Provenance + Place + Purpose triplet satisfies CBSA traceability requirements. Audit time from weeks to minutes.</p>
+        </a>
+        <a href="eu-ai-act-mapping.html" class="card-hover bg-zinc-800 rounded-2xl p-6 block">
+          <div class="text-teal-400 font-semibold mb-2">EU AI Act (2024/1689)</div>
+          <p class="text-zinc-400 text-sm">AgDR directly implements Article 12 (record-keeping) and Article 14 (human oversight) for high-risk AI systems.</p>
+        </a>
+        <a href="ppp-export-control.html" class="card-hover bg-zinc-800 rounded-2xl p-6 block">
+          <div class="text-teal-400 font-semibold mb-2">PHIPA / PIPEDA</div>
+          <p class="text-zinc-400 text-sm">The Place pillar captures purpose-limitation at inference time — satisfying privacy law's most demanding requirement.</p>
+        </a>
+        <a href="comparison-aviation-black-box.html" class="card-hover bg-zinc-800 rounded-2xl p-6 block">
+          <div class="text-teal-400 font-semibold mb-2">Aviation Black Box Standard</div>
+          <p class="text-zinc-400 text-sm">AgDR does for AI what the FDR/CVR did for aviation — except it doesn't wait for the crash.</p>
+        </a>
       </div>
+    </div>
+  </section>
+
+  <!-- THE PROOF — DOCUMENTATION -->
+  <section class="py-20 bg-zinc-950">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-4xl font-semibold text-center mb-4">Read the Standard</h2>
+      <p class="text-center text-zinc-400 text-lg mb-12 max-w-2xl mx-auto">
+        Every claim is documented. Every component is specified. Every page is open.
+      </p>
+      <div class="grid md:grid-cols-2 gap-5">
+        <a href="getting-started.html" class="card-hover bg-zinc-900 border border-teal-900/50 rounded-2xl p-7 block">
+          <div class="text-teal-300 font-semibold text-lg mb-2">Get Started →</div>
+          <p class="text-zinc-400 text-sm">Wrap your first inference in minutes. SDK install, PPP definition, human delta and FOI examples.</p>
+        </a>
+        <a href="aki-formal-definition.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">AKI Formal Definition</div>
+          <p class="text-zinc-400 text-sm">The mathematical definition of AtomicInferenceCapture. CPU invariants, BLAKE3 + Ed25519 + Merkle-append.</p>
+        </a>
+        <a href="foi-formal-definition.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">FOI — Fiduciary Office Intervener</div>
+          <p class="text-zinc-400 text-sm">Formal definition of the terminal accountability role. Designation process, data structure, liability mapping.</p>
+        </a>
+        <a href="human-delta-chain-spec.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">Human Delta Chain Spec</div>
+          <p class="text-zinc-400 text-sm">Complete data structure for the accountability chain. Action codes, invariants, timing requirements.</p>
+        </a>
+        <a href="ppp-industry-templates.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">PPP Industry Templates</div>
+          <p class="text-zinc-400 text-sm">Ready-to-use PPP definitions for capital markets, healthcare, government, legal, financial services, and critical infrastructure.</p>
+        </a>
+        <a href="verification-audit-procedure.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">Verification &amp; Audit Procedure</div>
+          <p class="text-zinc-400 text-sm">How any party — including a court — verifies an AgDR record without proprietary tools. Court-ready evidence packaging.</p>
+        </a>
+        <a href="comparison-medical-records.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">Medical Records Comparison</div>
+          <p class="text-zinc-400 text-sm">How AgDR applies the same immutability and chain-of-custody standards as electronic medical records.</p>
+        </a>
+        <a href="future-agi-court.html" class="card-hover bg-zinc-900 border border-zinc-800 rounded-2xl p-7 block">
+          <div class="text-zinc-200 font-semibold text-lg mb-2">AGI Court in 2076</div>
+          <p class="text-zinc-400 text-sm">"The AgDR is not evidence in the court. It is the court's memory." — The long vision for what we are building.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- RAW DATA STRATEGIC ASSET -->
+  <section class="py-20 bg-zinc-900">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-semibold mb-6">Compliance Becomes a Strategic Asset</h2>
+      <p class="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-6">
+        Organizations adopting AgDR gain something no compliance framework has delivered before:
+        a structured, atomic, tamper-evident raw data source from every high-stakes decision.
+        Full reasoning trace. PPP triplet. Human accountability chain. All captured at the kernel level.
+      </p>
+      <p class="text-lg text-teal-300 font-medium">
+        Every AgDR record is simultaneously an audit trail, a training dataset, and a legal instrument.
+      </p>
     </div>
   </section>
 
   <!-- JOIN THE FOUNDING -->
   <section class="py-20 bg-zinc-950 text-center">
-    <div class="max-w-2xl mx-auto px-6">
-      <h2 class="text-4xl font-semibold mb-6">Join the Founding</h2>
-      <p class="text-xl mb-10">We are building the permanent infrastructure the intelligent age requires.</p>
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-4xl font-semibold mb-4">Join the Founding</h2>
+      <p class="text-xl text-zinc-400 mb-12 max-w-xl mx-auto">
+        We are building the permanent accountability infrastructure the intelligent age requires.
+        Three founding roles remain open.
+      </p>
 
-      <div class="grid md:grid-cols-3 gap-6 text-left max-w-xl mx-auto">
-        <div class="bg-zinc-900 p-6 rounded-3xl">Technical Co-Founder</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">Regulatory Credibility Anchor</div>
-        <div class="bg-zinc-900 p-6 rounded-3xl">Founding Pilot Partner</div>
+      <div class="grid md:grid-cols-3 gap-6 text-left mb-12">
+        <div class="bg-zinc-900 border border-zinc-800 p-7 rounded-3xl">
+          <div class="text-teal-400 font-semibold text-lg mb-3">Technical Co-Founder</div>
+          <p class="text-zinc-400 text-sm leading-relaxed">Build the production AgDR runtime, SDK, and developer ecosystem. Turn the specification into the infrastructure layer that every AI deployment runs on.</p>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-800 p-7 rounded-3xl">
+          <div class="text-teal-400 font-semibold text-lg mb-3">Regulatory Credibility Anchor</div>
+          <p class="text-zinc-400 text-sm leading-relaxed">Provide the legal and regulatory imprimatur that makes AgDR court-ready across jurisdictions. The difference between a standard and a recognized standard.</p>
+        </div>
+        <div class="bg-zinc-900 border border-zinc-800 p-7 rounded-3xl">
+          <div class="text-teal-400 font-semibold text-lg mb-3">Founding Pilot Partner</div>
+          <p class="text-zinc-400 text-sm leading-relaxed">Deploy AgDR in a real, high-stakes environment and prove the standard at scale. Your deployment becomes the first public proof point that changes the industry.</p>
+        </div>
       </div>
 
-      <a href="mailto:admin@accountability.ai"
-        class="mt-10 inline-block bg-teal-600 hover:bg-teal-500 transition text-white font-semibold px-12 py-5 rounded-3xl text-xl">
-        Email founding@accountability.ai
+      <a href="mailto:founding@accountability.ai"
+        class="inline-block bg-teal-600 hover:bg-teal-500 transition text-white font-semibold px-12 py-5 rounded-3xl text-xl">
+        founding@accountability.ai
       </a>
-      <p class="mt-3 text-sm text-zinc-400">(Use the role as subject line)</p>
+      <p class="mt-3 text-sm text-zinc-500">Use the role as your subject line</p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-12 bg-black text-center text-zinc-400">
-The AgDR Standard is open, royalty-free, and dual-licensed:
-<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal</a> OR
-<a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a> — your choice.
+  <footer class="py-14 bg-black text-zinc-400 text-sm">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-10">
+        <div>
+          <div class="text-white font-semibold mb-3">Accountability.ai</div>
+          <p class="text-zinc-500 text-xs leading-relaxed">The open standard for tamper-evident AI decision records. Built in Canada. For the world.</p>
+        </div>
+        <div>
+          <div class="text-zinc-300 font-semibold mb-3">The Standard</div>
+          <ul class="space-y-2 text-zinc-500">
+            <li><a href="getting-started.html" class="hover:text-teal-400 transition">Get Started</a></li>
+            <li><a href="aki-formal-definition.html" class="hover:text-teal-400 transition">AKI Formal Definition</a></li>
+            <li><a href="ppp-pillars.html" class="hover:text-teal-400 transition">PPP Pillars</a></li>
+            <li><a href="beauty-truth-wisdom.html" class="hover:text-teal-400 transition">Beauty, Truth &amp; Wisdom</a></li>
+            <li><a href="horizontal-scaling.html" class="hover:text-teal-400 transition">Horizontal Scaling</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-zinc-300 font-semibold mb-3">Legal &amp; Compliance</div>
+          <ul class="space-y-2 text-zinc-500">
+            <li><a href="ppp-legal-compliance.html" class="hover:text-teal-400 transition">Legal Compliance</a></li>
+            <li><a href="cbca-fiduciary-mapping.html" class="hover:text-teal-400 transition">CBCA Fiduciary Mapping</a></li>
+            <li><a href="eu-ai-act-mapping.html" class="hover:text-teal-400 transition">EU AI Act Mapping</a></li>
+            <li><a href="foi-formal-definition.html" class="hover:text-teal-400 transition">FOI Definition</a></li>
+            <li><a href="verification-audit-procedure.html" class="hover:text-teal-400 transition">Verification Procedure</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-zinc-300 font-semibold mb-3">Evidence &amp; Vision</div>
+          <ul class="space-y-2 text-zinc-500">
+            <li><a href="tsx-stress-test.html" class="hover:text-teal-400 transition">TSX Stress Test</a></li>
+            <li><a href="comparison-aviation-black-box.html" class="hover:text-teal-400 transition">Aviation Black Box</a></li>
+            <li><a href="comparison-medical-records.html" class="hover:text-teal-400 transition">Medical Records</a></li>
+            <li><a href="agi-court-precedents.html" class="hover:text-teal-400 transition">AGI Court Precedents</a></li>
+            <li><a href="future-agi-court.html" class="hover:text-teal-400 transition">Court in 2076</a></li>
+          </ul>
+        </div>
+      </div>
 
-See full texts in the <a href="https://github.com/aiccountability-source/AgDR">GitHub repo</a>.
-© 2026 Accountability.ai
+      <div class="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-zinc-600">
+          The AgDR Standard is open, royalty-free, and dual-licensed:
+          <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a>
+          OR
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a>
+          — your choice.
+        </p>
+        <p class="text-zinc-600">
+          <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
+          &nbsp;·&nbsp; © 2026 Accountability.ai
+        </p>
+      </div>
+    </div>
   </footer>
 
 </body>
-
 </html>

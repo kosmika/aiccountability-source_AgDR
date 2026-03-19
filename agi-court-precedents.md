@@ -30,4 +30,4 @@ The AgDR is not evidence in the court.
 **It is the court’s memory.**
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

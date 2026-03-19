@@ -44,5 +44,140 @@
     "one_line_addition": "Capture SHALL include the Policy = PPP triplet (meaning of the beholder) with atomic PPP Provenance, binary Human Delta Policy, and FOI terminal role.",
     "backward_compatible": true
   },
+  "ppp_triplet_schema": {
+    "description": "JSON schema for the PPP triplet captured at every inference instant. Meaning of each field is of the beholder — these are the structural requirements only.",
+    "required_fields": ["provenance", "place", "purpose"],
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://accountability.ai/schemas/ppp-triplet-v0.2.json",
+      "title": "PPP Triplet",
+      "description": "The three-field policy triplet captured atomically at every AgDR inference instant",
+      "type": "object",
+      "required": ["provenance", "place", "purpose"],
+      "properties": {
+        "provenance": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where we are today. Who is acting, on whose behalf, from what verified state. Meaning of the beholder."
+        },
+        "place": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Where we are going. The intended destination, target state, and regulatory boundary. Meaning of the beholder."
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Why we are going. The explicit intent, desired behaviour, and ethical anchor. Closed by Beauty, Truth & Wisdom. Meaning of the beholder."
+        }
+      },
+      "additionalProperties": true,
+      "note": "additionalProperties: true — organizations may extend the triplet with domain-specific fields. The three core fields are mandatory."
+    }
+  },
+  "human_delta_chain_schema": {
+    "description": "JSON schema for the human delta chain appended to every AgDR record.",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://accountability.ai/schemas/human-delta-chain-v0.2.json",
+      "title": "Human Delta Chain",
+      "type": "object",
+      "required": ["chain_id", "agent_decision_ref", "deltas", "resolved"],
+      "properties": {
+        "chain_id": { "type": "string" },
+        "agent_decision_ref": { "type": "string" },
+        "initiated_at_ns": { "type": "integer" },
+        "resolved": { "type": "boolean" },
+        "terminal_node": { "type": "string", "enum": ["human_delta", "foi", "autonomous"] },
+        "deltas": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["delta_id", "sequence", "actor", "action", "timestamp_ns"],
+            "properties": {
+              "delta_id": { "type": "string" },
+              "sequence": { "type": "integer", "minimum": 0 },
+              "actor": {
+                "type": "object",
+                "required": ["name", "role"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "role": { "type": "string" },
+                  "employee_id": { "type": "string" },
+                  "jurisdiction": { "type": "string" }
+                }
+              },
+              "action": { "type": "integer", "enum": [-1, 0, 1, 2] },
+              "action_label": {
+                "type": "string",
+                "enum": ["halted", "escalated", "approved_as_is", "approved_with_modification"]
+              },
+              "modification": { "type": "object" },
+              "escalation_reason": { "type": "string" },
+              "latency_ns": { "type": "integer" },
+              "escalated": { "type": "boolean" },
+              "timestamp_ns": { "type": "integer" },
+              "signature": { "type": "string" }
+            }
+          }
+        },
+        "foi_escalation": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["actor", "decision", "decision_code", "timestamp_ns", "signature"],
+              "properties": {
+                "actor": {
+                  "type": "object",
+                  "required": ["name", "title"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "title": { "type": "string" },
+                    "jurisdiction": { "type": "string" }
+                  }
+                },
+                "decision": { "type": "string" },
+                "decision_code": { "type": "integer", "enum": [0, 1] },
+                "rationale": { "type": "string" },
+                "timestamp_ns": { "type": "integer" },
+                "signature": { "type": "string" }
+              }
+            }
+          ]
+        },
+        "autonomous": { "type": "boolean" },
+        "autonomous_authority_ref": { "type": "string" },
+        "merkle_root": { "type": "string" },
+        "chain_signature": { "type": "string" }
+      }
+    }
+  },
+  "agdr_record_schema": {
+    "description": "Top-level schema for a complete AgDR record — the unit of evidentiary capture.",
+    "schema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://accountability.ai/schemas/agdr-record-v0.2.json",
+      "title": "AgDR Record",
+      "type": "object",
+      "required": ["record_id", "spec_version", "ctx", "reasoning_trace", "output", "ppp_triplet", "human_delta_chain", "merkle_hash", "signature", "timestamp_ns", "committed"],
+      "properties": {
+        "record_id": { "type": "string" },
+        "spec_version": { "type": "string", "const": "0.2" },
+        "ctx": { "type": "object", "description": "System context at inference instant" },
+        "model_id": { "type": "string" },
+        "reasoning_trace": { "type": "object", "description": "Full structured reasoning chain" },
+        "output": { "description": "The agent's decision output" },
+        "ppp_triplet": { "$ref": "https://accountability.ai/schemas/ppp-triplet-v0.2.json" },
+        "human_delta_chain": { "$ref": "https://accountability.ai/schemas/human-delta-chain-v0.2.json" },
+        "merkle_hash": { "type": "string", "description": "BLAKE3 hash of this record" },
+        "merkle_position": { "type": "integer", "description": "Position in the forward-secret Merkle chain" },
+        "prev_merkle_hash": { "type": "string", "description": "Hash of the preceding record" },
+        "signature": { "type": "string", "description": "Ed25519 signature over the BLAKE3 hash" },
+        "timestamp_ns": { "type": "integer", "description": "Nanosecond-precision inference instant" },
+        "committed": { "type": "boolean", "const": true, "description": "Always true — partial records never exist" }
+      }
+    }
+  },
   "why_this_is_final": "Reduced to clean acronym PPP. Meaning of the beholder. Provenance front-and-center. This is now the definitive, timeless, above-reproach Canadian standard."
 }

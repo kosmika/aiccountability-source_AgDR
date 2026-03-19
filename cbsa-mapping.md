@@ -23,4 +23,4 @@ In an export control screening scenario, the AgDR record captures:
 Any later CBSA inquiry can be answered with one verifiable file: “Check the AgDR.”
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR

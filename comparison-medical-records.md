@@ -22,4 +22,4 @@ AgDR brings that same standard â€” and in many technical respects a higher one â
 This is why we stand at the pinnacle of the standard of care that I wish to one day achieve.
 
 *Part of the AgDR v0.2 foundational standard*  
-Canonical source: https://github.com/aiccountability-source/agdr-spec
+Canonical source: https://github.com/aiccountability-source/AgDR
