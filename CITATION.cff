@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+  message: If you use this standard, please cite it as below.
+  title: Atomic Kernel Inference (AKI) - AgDR v0.2
+type: standard
+authors:
+  - name: Accountability.ai
+      city: Toronto
+      country: CA
+  version: '0.2'
+  date-released: '2026-03-01'
+  url: https://github.com/aiccountability-source/AgDR
+repository-code: https://github.com/aiccountability-source/AgDR
+license:
+  - CC0-1.0
+      - Apache-2.0
+    keywords:
+  - agent decision record
+  - atomic kernel inference
+  - evidentiary standard
+  - provenance
+    - PPP triplet
+  - Canada
+  abstract: AgDR v0.2 defines the Atomic Kernel Inference (AKI) enforcement layer, a mathematically indivisible tamper-evident flight recorder for autonomous agents. Policy equals PPP (Provenance Place Purpose). Published as an open Canadian standard.
