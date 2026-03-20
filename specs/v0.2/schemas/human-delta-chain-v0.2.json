@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "$id": "https://accountability.ai/schemas/human-delta-chain-v0.2.json",
+      "title": "Human Delta Chain",
+      "description": "JSON schema for the human delta chain appended to every AgDR record. Captures binary human intervention decisions with unlimited escalation layers terminating in Fiduciary Office Intervener (FOI).",
+      "type": "object",
+      "required": ["chain_id", "agent_decision_ref", "deltas", "resolved"],
+  "properties": {
+    "chain_id": { "type": "string" },
+    "agent_decision_ref": { "type": "string" },
+    "initiated_at_ns": { "type": "integer" },
+    "resolved": { "type": "boolean" },
+    "terminal_node": { "type": "string", "enum": ["human_delta", "foi", "autonomous"] },
+    "deltas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["delta_id", "sequence", "actor", "action", "timestamp_ns"],
+        "properties": {
+          "delta_id": { "type": "string" },
+          "sequence": { "type": "integer", "minimum": 0 },
+                      "actor": {
+            "type": "object",
+            "required": ["name", "role"],
+                          "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string" },
+                              "employee_id": { "type": "string" },
+              "jurisdiction": { "type": "string" }
+}
+            },
+          "action": { "type": "integer", "enum": [-1, 0, 1, 2] },
+                      "action_label": { "type": "string", "enum": ["halted", "escalated", "approved_as_is", "approved_with_modification"] },
+                      "modification": { "type": "object" },
+          "escalation_reason": { "type": "string" },
+                      "latency_ns": { "type": "integer" },
+          "escalated": { "type": "boolean" },
+                      "timestamp_ns": { "type": "integer" },
+          "signature": { "type": "string" }
+                       }
+                               }
+                                      },
+    "foi_escalation": {
+      "oneOf": [
+        { "type": "null" },
+{
+                  "type": "object",
+                  "required": ["actor", "decision", "decision_code", "timestamp_ns", "signature"],
+                  "properties": {
+            "actor": {
+              "type": "object",
+                              "required": ["name", "title"],
+                              "properties": {
+                "name": { "type": "string" },
+                "title": { "type": "string" },
+                "jurisdiction": { "type": "string" }
+}
+},
+            "decision": { "type": "string" },
+            "decision_code": { "type": "integer", "enum": [0, 1] },
+            "rationale": { "type": "string" },
+            "timestamp_ns": { "type": "integer" },
+            "signature": { "type": "string" }
+                            }
+}
+      ]
+},
+    "autonomous": { "type": "boolean" },
+    "autonomous_authority_ref": { "type": "string" },
+    "merkle_root": { "type": "string" },
+    "chain_signature": { "type": "string" }
+}
+}
