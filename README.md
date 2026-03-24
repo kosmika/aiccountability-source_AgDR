@@ -1,6 +1,6 @@
 # AgDR Specification v0.2
 
-**AgDR** — Agent Decision Record  
+**AgDR** — Agent Genesis Decision Record  
 **AKI** — Atomic Kernel Inference  
 **Open Canadian Evidentiary Standard**  
 Published March 2026
