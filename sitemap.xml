@@ -1,8 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://accountability.ai/</loc><priority>1.0</priority></url>
-  <url><loc>https://accountability.ai/sandbox.html</loc><priority>0.9</priority></url>
-  <url><loc>https://accountability.ai/CHANGELOG.html</loc><priority>0.7</priority></url>
-  <url><loc>https://accountability.ai/CONTRIBUTING.html</loc><priority>0.7</priority></url>
-  <url><loc>https://accountability.ai/getting-started.html</loc><priority>0.7</priority></url>
+
+    <!-- Homepage -->
+    <url>
+          <loc>https://accountability.ai/</loc>
+          <priority>1.0</priority>
+    </url>
+
+    <!-- Core Pages -->
+    <url>
+          <loc>https://accountability.ai/sandbox.html</loc>
+          <priority>0.9</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/getting-started.html</loc>
+          <priority>0.9</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/technical-details.html</loc>
+          <priority>0.8</priority>
+    </url>
+
+    <!-- AKI (Atomic Kernel Inference) -->
+    <url>
+          <loc>https://accountability.ai/aki-formal-definition.html</loc>
+          <priority>0.8</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/technical-note-coherence.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/human-delta-chain-spec.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/horizontal-scaling.html</loc>
+          <priority>0.7</priority>
+    </url>
+
+    <!-- PPP (Provenance · Place · Purpose) -->
+    <url>
+          <loc>https://accountability.ai/ppp-pillars.html</loc>
+          <priority>0.8</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/ppp-legal-compliance.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/ppp-export-control.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/ppp-industry-templates.html</loc>
+          <priority>0.7</priority>
+    </url>
+
+    <!-- Legal & Regulatory Mappings -->
+    <url>
+          <loc>https://accountability.ai/cbca-fiduciary-mapping.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/cbsa-mapping.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/eu-ai-act-mapping.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/foi-formal-definition.html</loc>
+          <priority>0.7</priority>
+    </url>
+
+    <!-- AGI Court & Precedents -->
+    <url>
+          <loc>https://accountability.ai/future-agi-court.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/agi-court-precedents.html</loc>
+          <priority>0.7</priority>
+    </url>
+
+    <!-- Comparisons & Context -->
+    <url>
+          <loc>https://accountability.ai/comparison-aviation-black-box.html</loc>
+          <priority>0.6</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/comparison-medical-records.html</loc>
+          <priority>0.6</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/beauty-truth-wisdom.html</loc>
+          <priority>0.6</priority>
+    </url>
+
+              <!-- Verification & Testing -->
+    <url>
+          <loc>https://accountability.ai/verification-audit-procedure.html</loc>
+          <priority>0.7</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/tsx-stress-test.html</loc>
+          <priority>0.6</priority>
+    </url>
+
+    <!-- Project Meta -->
+    <url>
+          <loc>https://accountability.ai/CHANGELOG.html</loc>
+          <priority>0.5</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/CONTRIBUTING.html</loc>
+          <priority>0.5</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/LICENSE-UPDATE.html</loc>
+          <priority>0.4</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/README.html</loc>
+          <priority>0.5</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/template.html</loc>
+          <priority>0.3</priority>
+    </url>
+    <url>
+          <loc>https://accountability.ai/404.html</loc>
+          <priority>0.1</priority>
+    </url>
+
 </urlset>
