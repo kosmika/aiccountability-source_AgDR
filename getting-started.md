@@ -236,7 +236,7 @@
         <h1>Getting Started with AgDR v0.2</h1>
         
         <p class="lead" style="font-size: 1.2rem; color: #2c3e50; margin-bottom: 2rem;">
-            Welcome to the <strong>Atomic Kernel Inference Standard</strong>. 
+            Welcome to the <strong>Atomic Genesis Decision Record Standard</strong>. 
             AgDR gives every autonomous agent decision a tamper-evident, cryptographically signed record 
             that is admissible in court today — and in 2076.
         </p>
