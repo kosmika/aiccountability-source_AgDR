@@ -81,39 +81,39 @@
   <body class="bg-zinc-950 text-white">
 
     <!-- Skip to content link — WCAG 2.4.1 -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>a>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- NAV — identical to index.html -->
     <nav class="nav-bg py-4 px-6 sticky top-0 z-50 shadow-lg" aria-label="Primary navigation">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
-              <a href="/" class="text-xl font-bold tracking-tight" aria-label="Accountability.ai home">Accountability.ai</a>a>
+              <a href="/" class="text-xl font-bold tracking-tight" aria-label="Accountability.ai home">Accountability.ai</a>
               <div class="flex flex-wrap gap-5 text-sm font-medium" role="list">
-                      <a href="/getting-started.html" class="hover:text-teal-200 transition" role="listitem">Get Started</a>a>
-                      <a href="/ppp-pillars.html" class="hover:text-teal-200 transition" role="listitem">The Standard</a>a>
-                      <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition" role="listitem">Legal</a>a>
-                      <a href="/sandbox.html" class="hover:text-teal-200 transition font-bold text-teal-300" role="listitem" aria-current="page">Sandbox</a>a>
-                      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition" role="listitem">GitHub<span class="sr-only"> (opens in new tab)</span>span></a>a>
-              </div>div>
-        </div>div>
-    </nav>nav>
+                      <a href="/getting-started.html" class="hover:text-teal-200 transition" role="listitem">Get Started</a>
+                      <a href="/ppp-pillars.html" class="hover:text-teal-200 transition" role="listitem">The Standard</a>
+                      <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition" role="listitem">Legal</a>
+                      <a href="/sandbox.html" class="hover:text-teal-200 transition font-bold text-teal-300" role="listitem" aria-current="page">Sandbox</a>
+                      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition" role="listitem">GitHub<span class="sr-only"> (opens in new tab)</span></a>
+              </div>
+        </div>
+    </nav>
 
     <!-- Breadcrumb -->
     <div class="max-w-5xl mx-auto px-6 py-3">
         <nav aria-label="Breadcrumb">
               <ol class="flex gap-2 text-xs text-zinc-500">
-                      <li><a href="/" class="hover:text-teal-400 transition">Home</a>a><span class="mx-1" aria-hidden="true">/</span>span></li>
+                      <li><a href="/" class="hover:text-teal-400 transition">Home</a><span class="mx-1" aria-hidden="true">/</span></li>
                     <li aria-current="page" class="text-zinc-300">Sandbox</li>
-              </ol>ol>
-        </nav>nav>
-    </div>div>
+              </ol>
+        </nav>
+    </div>
   
   <!-- HERO -->
   <header class="hero-bg py-16 px-6">
     <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-300">AgDR v0.2 Supervariable Demo</h1>h1>
-        <p class="text-lg text-zinc-300 max-w-2xl">One supervariable adapts across domains. PPP triplet captured atomically. See what a tamper-evident AI decision record looks like — generated live in your browser.</p>p>
-    </div>div>
-  </header>header>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-teal-300">AgDR v0.2 Supervariable Demo</h1>
+        <p class="text-lg text-zinc-300 max-w-2xl">One supervariable adapts across domains. PPP triplet captured atomically. See what a tamper-evident AI decision record looks like — generated live in your browser.</p>
+    </div>
+  </header>
   
   <!-- MAIN CONTENT -->
   <main id="main-content" class="max-w-4xl mx-auto px-6 py-12" role="main">
@@ -121,9 +121,9 @@
     
         <!-- Configure Panel -->
         <section class="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl" aria-label="Configure supervariable">
-              <h2 class="text-2xl font-semibold mb-6 text-white">Configure Supervariable</h2>h2>
+              <h2 class="text-2xl font-semibold mb-6 text-white">Configure Supervariable</h2>
         
-              <label for="domain" class="block mb-2 text-zinc-300 font-medium">Domain</label>label>
+              <label for="domain" class="block mb-2 text-zinc-300 font-medium">Domain</label>
               <select id="domain" class="w-full p-4 bg-zinc-800 border border-zinc-700 rounded-xl mb-6 text-white" aria-describedby="domain-help">
                       <option>Loan Approval</option>
                       <option>Export Control</option>
@@ -131,107 +131,107 @@
                       <option>Autonomous Driving</option>
                       <option>Grid Load Balancing</option>
                       <option>Custom</option>
-              </select>select>
-              <p id="domain-help" class="sr-only">Select the domain context for the AgDR atomic capture demonstration</p>p>
+              </select>
+              <p id="domain-help" class="sr-only">Select the domain context for the AgDR atomic capture demonstration</p>
         
-              <label for="context" class="block mb-2 text-zinc-300 font-medium">Key Context</label>label>
+              <label for="context" class="block mb-2 text-zinc-300 font-medium">Key Context</label>
               <input type="text" id="context" placeholder="e.g. Income $120k, Risk Level High" class="w-full p-4 bg-zinc-800 border border-zinc-700 rounded-xl mb-6 text-white placeholder-zinc-500" aria-describedby="context-help">
-              <p id="context-help" class="sr-only">Optional context string to include in the generated AgDR record</p>p>
+              <p id="context-help" class="sr-only">Optional context string to include in the generated AgDR record</p>
         
               <button onclick="runAtomicCapture()" class="btn-primary w-full py-4 rounded-xl transition" aria-label="Generate an AgDR atomic capture record">
                       Run Atomic Capture
-              </button>button>
-        </section>section>
+              </button>
+        </section>
     
         <!-- Output Panel -->
         <section class="bg-zinc-900 border border-zinc-800 p-8 rounded-2xl" aria-label="Atomic capture output">
-              <h2 class="text-2xl font-semibold mb-6 text-white">AgDR Atomic Record</h2>h2>
-              <div class="output-panel p-6 rounded-xl min-h-[300px] text-sm text-teal-300 whitespace-pre-wrap overflow-auto" id="output" role="log" aria-live="polite" aria-label="Generated AgDR record output">Waiting for input...</div>div>
-        </section>section>
+              <h2 class="text-2xl font-semibold mb-6 text-white">AgDR Atomic Record</h2>
+              <div class="output-panel p-6 rounded-xl min-h-[300px] text-sm text-teal-300 whitespace-pre-wrap overflow-auto" id="output" role="log" aria-live="polite" aria-label="Generated AgDR record output">Waiting for input...</div>
+        </section>
     
-    </div>div>
+    </div>
   
     <!-- Explanatory note -->
     <div class="mt-12 bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
-        <h2 class="text-xl font-semibold mb-3 text-teal-300">What this demo shows</h2>h2>
-        <p class="text-zinc-400 leading-relaxed mb-4">Every AgDR record captures the complete PPP triplet — Provenance, Place, and Purpose — at the exact inference instant. The supervariable adapts the triplet to any domain while maintaining the same atomic structure. In production, each record is cryptographically signed with BLAKE3 + Ed25519 and chained in a forward-secret Merkle tree.</p>p>
-        <p class="text-zinc-500 text-sm">This is a client-side simulation. Production AgDR records are generated server-side with hardware-backed signing. <a href="/getting-started.html" class="text-teal-500 hover:text-teal-400 underline">Get Started with the SDK</a>a> to generate real records.</p>p>
-    </div>div>
-  </main>main>
+        <h2 class="text-xl font-semibold mb-3 text-teal-300">What this demo shows</h2>
+        <p class="text-zinc-400 leading-relaxed mb-4">Every AgDR record captures the complete PPP triplet — Provenance, Place, and Purpose — at the exact inference instant. The supervariable adapts the triplet to any domain while maintaining the same atomic structure. In production, each record is cryptographically signed with BLAKE3 + Ed25519 and chained in a forward-secret Merkle tree.</p>
+        <p class="text-zinc-500 text-sm">This is a client-side simulation. Production AgDR records are generated server-side with hardware-backed signing. <a href="/getting-started.html" class="text-teal-500 hover:text-teal-400 underline">Get Started with the SDK</a> to generate real records.</p>
+    </div>
+  </main>
   
   <!-- RELATED PAGES -->
   <section class="bg-zinc-900 border-t border-zinc-800 py-14" aria-label="Related documentation">
     <div class="max-w-5xl mx-auto px-6">
-        <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>h3>
+        <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
         <div class="grid md:grid-cols-4 gap-5">
               <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-                      <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>div>
-                      <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>p>
-              </a>a>
+                      <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
+                      <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
+              </a>
               <a href="/aki-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-                      <div class="text-zinc-300 text-sm font-semibold mb-1">AKI Formal Definition</div>div>
-                      <p class="text-zinc-500 text-xs">The mathematical definition</p>p>
-              </a>a>
+                      <div class="text-zinc-300 text-sm font-semibold mb-1">AKI Formal Definition</div>
+                      <p class="text-zinc-500 text-xs">The mathematical definition</p>
+              </a>
               <a href="/ppp-pillars.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-                      <div class="text-zinc-300 text-sm font-semibold mb-1">PPP Pillars</div>div>
-                      <p class="text-zinc-500 text-xs">Provenance, Place, Purpose</p>p>
-              </a>a>
+                      <div class="text-zinc-300 text-sm font-semibold mb-1">PPP Pillars</div>
+                      <p class="text-zinc-500 text-xs">Provenance, Place, Purpose</p>
+              </a>
               <a href="/tsx-stress-test.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-                      <div class="text-zinc-300 text-sm font-semibold mb-1">TSX Stress Test</div>div>
-                      <p class="text-zinc-500 text-xs">100M decisions, 253K/sec</p>p>
-              </a>a>
-        </div>div>
-    </div>div>
-  </section>section>
+                      <div class="text-zinc-300 text-sm font-semibold mb-1">TSX Stress Test</div>
+                      <p class="text-zinc-500 text-xs">100M decisions, 253K/sec</p>
+              </a>
+        </div>
+    </div>
+  </section>
   
   <!-- FOOTER — matches index.html design system -->
   <footer class="py-14 bg-black text-zinc-400 text-sm" role="contentinfo">
     <div class="max-w-5xl mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-8 mb-10">
               <div>
-                        <p class="font-semibold text-white text-base mb-2">Accountability.ai</p>p>
-                        <p class="text-zinc-500 leading-relaxed">The open standard for AI governance and tamper-evident AI decision records. Built in Canada. For every institution that deploys autonomous intelligence.</p>p>
+                        <p class="font-semibold text-white text-base mb-2">Accountability.ai</p>
+                        <p class="text-zinc-500 leading-relaxed">The open standard for AI governance and tamper-evident AI decision records. Built in Canada. For every institution that deploys autonomous intelligence.</p>
               </div>
                 <div>
-                          <p class="font-semibold text-zinc-200 mb-3">The Standard</p>p>
+                          <p class="font-semibold text-zinc-200 mb-3">The Standard</p>
                           <ul class="space-y-2">
-                                      <li><a href="/getting-started.html" class="hover:text-teal-400 transition">Get Started</a>a></li>
-                                    <li><a href="/aki-formal-definition.html" class="hover:text-teal-400 transition">AKI Formal Definition</a>a></li>
-                                    <li><a href="/ppp-pillars.html" class="hover:text-teal-400 transition">PPP Pillars</a>a></li>
-                                    <li><a href="/beauty-truth-wisdom.html" class="hover:text-teal-400 transition">Beauty, Truth &amp; Wisdom</a>a></li>
-                                    <li><a href="/horizontal-scaling.html" class="hover:text-teal-400 transition">Horizontal Scaling</a>a></li>
-                          </ul>ul>
+                                      <li><a href="/getting-started.html" class="hover:text-teal-400 transition">Get Started</a></li>
+                                    <li><a href="/aki-formal-definition.html" class="hover:text-teal-400 transition">AKI Formal Definition</a></li>
+                                    <li><a href="/ppp-pillars.html" class="hover:text-teal-400 transition">PPP Pillars</a></li>
+                                    <li><a href="/beauty-truth-wisdom.html" class="hover:text-teal-400 transition">Beauty, Truth &amp; Wisdom</a></li>
+                                    <li><a href="/horizontal-scaling.html" class="hover:text-teal-400 transition">Horizontal Scaling</a></li>
+                          </ul>
                 </div>
               <div>
-                      <p class="font-semibold text-zinc-200 mb-3">Legal &amp; Compliance</p>p>
+                      <p class="font-semibold text-zinc-200 mb-3">Legal &amp; Compliance</p>
                       <ul class="space-y-2">
-                                <li><a href="/ppp-legal-compliance.html" class="hover:text-teal-400 transition">Legal Compliance</a>a></li>
-                                <li><a href="/cbca-fiduciary-mapping.html" class="hover:text-teal-400 transition">CBCA Fiduciary Mapping</a>a></li>
-                                <li><a href="/eu-ai-act-mapping.html" class="hover:text-teal-400 transition">EU AI Act Mapping</a>a></li>
-                                <li><a href="/foi-formal-definition.html" class="hover:text-teal-400 transition">FOI Definition</a>a></li>
-                                <li><a href="/verification-audit-procedure.html" class="hover:text-teal-400 transition">Verification Procedure</a>a></li>
-                      </ul>ul>
+                                <li><a href="/ppp-legal-compliance.html" class="hover:text-teal-400 transition">Legal Compliance</a></li>
+                                <li><a href="/cbca-fiduciary-mapping.html" class="hover:text-teal-400 transition">CBCA Fiduciary Mapping</a></li>
+                                <li><a href="/eu-ai-act-mapping.html" class="hover:text-teal-400 transition">EU AI Act Mapping</a></li>
+                                <li><a href="/foi-formal-definition.html" class="hover:text-teal-400 transition">FOI Definition</a></li>
+                                <li><a href="/verification-audit-procedure.html" class="hover:text-teal-400 transition">Verification Procedure</a></li>
+                      </ul>
               </div>
               <div>
-                      <p class="font-semibold text-zinc-200 mb-3">Evidence &amp; Vision</p>p>
+                      <p class="font-semibold text-zinc-200 mb-3">Evidence &amp; Vision</p>
                       <ul class="space-y-2">
-                                <li><a href="/tsx-stress-test.html" class="hover:text-teal-400 transition">TSX Stress Test</a>a></li>
-                                <li><a href="/comparison-aviation-black-box.html" class="hover:text-teal-400 transition">Aviation Black Box</a>a></li>
-                                <li><a href="/comparison-medical-records.html" class="hover:text-teal-400 transition">Medical Records</a>a></li>
-                                <li><a href="/agi-court-precedents.html" class="hover:text-teal-400 transition">AGI Court Precedents</a>a></li>
-                                <li><a href="/future-agi-court.html" class="hover:text-teal-400 transition">Court in 2076</a>a></li>
-                      </ul>ul>
+                                <li><a href="/tsx-stress-test.html" class="hover:text-teal-400 transition">TSX Stress Test</a></li>
+                                <li><a href="/comparison-aviation-black-box.html" class="hover:text-teal-400 transition">Aviation Black Box</a></li>
+                                <li><a href="/comparison-medical-records.html" class="hover:text-teal-400 transition">Medical Records</a></li>
+                                <li><a href="/agi-court-precedents.html" class="hover:text-teal-400 transition">AGI Court Precedents</a></li>
+                                <li><a href="/future-agi-court.html" class="hover:text-teal-400 transition">Court in 2076</a></li>
+                      </ul>
               </div>
         </div>
         <div class="border-t border-zinc-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
               <p class="text-zinc-600">The AgDR Standard is open, royalty-free, and dual-licensed:
-                <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-600 hover:text-teal-400">CC0 1.0 Universal</a>a> OR
-                <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-600 hover:text-teal-400">Apache License 2.0</a>a> — your choice.
-              </p>p>
-              <p class="text-zinc-600"><a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-600 hover:text-teal-400">GitHub</a>a> &middot; &copy; 2026 Accountability.ai</p>p>
+                <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-600 hover:text-teal-400">CC0 1.0 Universal</a> OR
+                <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-600 hover:text-teal-400">Apache License 2.0</a> — your choice.
+              </p>
+              <p class="text-zinc-600"><a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-600 hover:text-teal-400">GitHub</a> &middot; &copy; 2026 Accountability.ai</p>
         </div>
     </div>
-  </footer>footer>
+  </footer>
   
   <script>
     function runAtomicCapture() {
@@ -269,8 +269,8 @@
     }
   </script>
 
-  </body>body>
-</html>html>
+  </body>
+</html>
   </script></li></li>
                 </div>
               </div></option></option></li>
