@@ -1,201 +1,393 @@
-# Getting Started with AgDR v0.2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Getting Started with AgDR v0.2 | Accountability.ai</title>
+    <style>
+        /* Reset & Base Styles - Clean, no overlapping issues */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-**Welcome to the Atomic Kernel Inference Standard**
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            scroll-behavior: smooth;
+        }
 
-AgDR gives every autonomous agent decision a tamper-evident, cryptographically signed record that is admissible in court today — and in 2076. This guide takes you from zero to a running AgDR capture in minutes.
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.25;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0a0a0a;
+        }
 
----
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            border-bottom: 2px solid #eaeef2;
+            padding-bottom: 0.75rem;
+        }
 
-## 1. Download the Spec
+        h2 {
+            font-size: 1.75rem;
+            border-left: 4px solid #0066cc;
+            padding-left: 1rem;
+        }
 
-```bash
-curl -O https://raw.githubusercontent.com/aiccountability-source/AgDR/main/specs/agdr-v0.2.json
-```
+        h3 {
+            font-size: 1.35rem;
+            color: #2c3e50;
+        }
 
-Read it. Understand the core guarantee before writing any code:
+        p {
+            margin-bottom: 1.25rem;
+            color: #2c3e50;
+        }
 
-```json
-"core_guarantee": {
-  "formal_definition": "AtomicInferenceCapture(...) ≡ { sign(BLAKE3(...)), persist(Merkle-append), return committed }"
-}
-```
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
 
----
+        a:hover {
+            border-bottom-color: #0066cc;
+        }
 
-## 2. Install the Python SDK
+        /* Layout - No overlapping containers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
 
-```bash
-pip install agdr-aki
-```
+        /* Header / Navigation */
+        .site-header {
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative; /* Not fixed/absolute to avoid overlay */
+            width: 100%;
+        }
 
-Or from source:
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
 
-```bash
-git clone https://github.com/aiccountability-source/AgDR.git
-cd AgDR/sdk/python
-pip install -e .
-```
+        .nav a {
+            font-weight: 500;
+            border-bottom: none;
+        }
 
----
+        /* Code blocks - Critical for preventing overflow/overlay */
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.25rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 1.5rem 0;
+            border: 1px solid #334155;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
 
-## 3. Wrap Your First Inference
+        code {
+            font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
+            background: #f1f5f9;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.875em;
+            color: #0f172a;
+        }
 
-Add one call around your existing model invocation. That is the entire integration surface.
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
 
-```python
-from agdr_aki import aki_capture
+        /* Tables - Clean and responsive */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
 
-# Your existing inference call
-output = my_model.infer(prompt)
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
 
-# Wrap it — this is all AgDR requires
-record = aki_capture(
-    ctx={
-        "system": "trading-desk-v3",
-        "session_id": "sess_20260315_001",
-        "operator": "acme-corp"
-    },
-    reasoning_trace=output.reasoning_trace,   # full chain-of-thought
-    output=output.decision,
-    ppp_triplet={
-        "provenance": "TSX equity desk — RY.TO buy order — authorized trader J.Smith",
-        "place":      "Fill at market open, within 0.5% slippage, regulatory boundary: IIROC",
-        "purpose":    "Rebalance portfolio to target allocation as per mandate 2026-Q1"
-    },
-    human_delta_chain=[]                       # empty = fully autonomous, no human override
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Cards / Sections */
+        .card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        /* Footer */
+        .site-footer {
+            margin-top: 3rem;
+            padding: 2rem 1.5rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #5a6874;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .nav {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            pre {
+                font-size: 0.8rem;
+                padding: 1rem;
+            }
+        }
+
+        /* Utility - No z-index wars */
+        .no-overflow {
+            overflow: visible;
+        }
+
+        /* Highlight for important elements */
+        .highlight {
+            background: #fef9e3;
+            border-left: 4px solid #f5b042;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav">
+            <a href="/">🏛️ Accountability.ai</a>
+            <a href="/getting-started.html">Getting Started</a>
+            <a href="/ppp-pillars.html">PPP Pillars</a>
+            <a href="/spec.html">Spec</a>
+            <a href="https://github.com/accountability-source/AgDR">GitHub</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Getting Started with AgDR v0.2</h1>
+        
+        <p class="lead" style="font-size: 1.2rem; color: #2c3e50; margin-bottom: 2rem;">
+            Welcome to the <strong>Atomic Kernel Inference Standard</strong>. 
+            AgDR gives every autonomous agent decision a tamper-evident, cryptographically signed record 
+            that is admissible in court today — and in 2076.
+        </p>
+
+        <div class="highlight">
+            <strong>⚡ Core Guarantee:</strong> Every inference is captured atomically, signed with BLAKE3, 
+            and persisted to a tamper-evident Merkle-append log. No edits. No backdating.
+        </div>
+
+        <h2>1. Download the Spec</h2>
+        <p>Start by downloading the canonical specification. This defines the exact structure of an AgDR record.</p>
+        
+        <pre><code>curl -O https://raw.githubusercontent.com/accountability-source/AgDR/main/specs/agdr-v0.2.json</code></pre>
+        
+        <p>Read it. Understand the core guarantee before writing any code. The atomic capture ensures:</p>
+        
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>sign(BLAKE3(...))</code></td>
+                        <td>Cryptographic signature over the inference payload</td>
+                    </tr>
+                    <tr>
+                        <td><code>persist(Merkle-append)</code></td>
+                        <td>Immutable append-only log with Merkle tree verification</td>
+                    </tr>
+                    <tr>
+                        <td><code>return c(...)</code></td>
+                        <td>Returns the capture certificate for audit</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>2. Install the Python SDK</h2>
+        <p>Use the official Python package to integrate AgDR into your agent workflows.</p>
+        
+        <pre><code>pip install agdr-aki</code></pre>
+        
+        <p>Or install directly from source to get the latest development features:</p>
+        
+        <pre><code>git clone https://github.com/accountability-source/AgDR.git
+cd AgDR/python-sdk
+pip install -e .</code></pre>
+
+        <h2>3. Initialize Your First Capture</h2>
+        <p>Create a simple capture to understand the flow. The SDK handles signing and persistence automatically.</p>
+        
+        <pre><code>from agdr import AtomicKernelInference
+
+# Initialize with your fiduciary key
+aki = AtomicKernelInference(
+    agent_id="agent-001",
+    private_key_path="path/to/your/private_key.pem"
 )
 
-print(record.merkle_hash)    # cryptographic proof
-print(record.timestamp_ns)   # nanosecond-precision inference instant
-print(record.committed)      # True = fully captured, False never happens (rollback)
-```
-
----
-
-## 4. Define Your PPP Triplet
-
-PPP is **meaning of the beholder**. You define what each P means for your context.
-The standard only requires that your definition is captured verbatim and atomically.
-
-**The three questions to answer before you write a single line:**
-
-| P | Question to answer |
-|---|---|
-| **Provenance** | Who is acting, on whose behalf, starting from what verified state? |
-| **Place** | Where is this decision supposed to take the system — and what are the boundaries? |
-| **Purpose** | Why is this decision being made — what duty, mandate, or ethical commitment does it fulfil? |
-
-**Do not over-engineer this.** One sentence per P is sufficient. The atomic capture is what matters — not the length of the prose.
-
-See [PPP Industry Templates](ppp-industry-templates.html) for ready-made definitions by sector.
-
----
-
-## 5. Handle Human Overrides
-
-When a human reviews and modifies an agent decision, record it in the delta chain:
-
-```python
-from agdr_aki import aki_capture, HumanDelta
-
-delta = HumanDelta(
-    actor="J.Smith",
-    role="Senior Trader",
-    action=1,           # 1 = approved with modification, 0 = approved as-is
-    modification="Reduced order size from 10,000 to 8,000 shares — risk limit",
-    timestamp_ns=1742000000000000000
+# Capture an inference atomically
+capture = aki.capture(
+    provenance="Current context: user requested financial analysis",
+    place="Target: generate compliant investment report",
+    purpose="Reason: fiduciary duty to provide accurate, lawful advice",
+    payload={
+        "model": "gpt-4",
+        "temperature": 0.7,
+        "prompt": "Analyze market trends..."
+    }
 )
 
-record = aki_capture(
-    ctx=ctx,
-    reasoning_trace=output.reasoning_trace,
-    output=output.decision,
-    ppp_triplet=ppp,
-    human_delta_chain=[delta]
-)
-```
+# The capture certificate is now signed and persisted
+print(f"Capture ID: {capture.id}")
+print(f"Signature: {capture.signature.hex()}")
+print(f"Merkle Root: {capture.merkle_root}")</code></pre>
 
-If escalation reaches the **Fiduciary Office Intervener (FOI)**, mark it explicitly:
+        <div class="card">
+            <h3>📋 What Just Happened?</h3>
+            <p>The <code>capture()</code> method performed an atomic transaction:</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>✅ Hashed the entire inference payload with BLAKE3</li>
+                <li>✅ Digitally signed the hash with your private key</li>
+                <li>✅ Appended the record to a tamper-evident Merkle log</li>
+                <li>✅ Returned a verifiable capture certificate</li>
+            </ul>
+            <p style="margin-top: 0.75rem;">All three PPP pillars (Provenance, Place, Purpose) are captured <strong>atomically</strong> — no race conditions, no edits.</p>
+        </div>
 
-```python
-from agdr_aki import FOIEscalation
+        <h2>4. Verify a Capture</h2>
+        <p>Any third party can independently verify the authenticity and integrity of a capture.</p>
+        
+        <pre><code>from agdr import Verifier
 
-foi = FOIEscalation(
-    actor="C.Wong",
-    title="Chief Compliance Officer",
-    decision="HALT — escalated to board review",
-    timestamp_ns=1742000000000000100
-)
+verifier = Verifier()
+result = verifier.verify(capture_id="capture-abc123")
 
-record = aki_capture(..., foi_escalation=foi)
-```
+if result.valid:
+    print("✓ Signature valid")
+    print("✓ Merkle proof verified")
+    print("✓ No tampering detected")
+else:
+    print("✗ Capture invalid or compromised")</code></pre>
 
-See [FOI Formal Definition](foi-formal-definition.html) for full duties and designation process.
+        <h2>5. Integrate with Your Agent Framework</h2>
+        <p>Wrap your agent's decision points with AgDR captures to create an immutable audit trail.</p>
+        
+        <pre><code>class CompliantAgent:
+    def __init__(self, aki):
+        self.aki = aki
+    
+    def decide(self, input_data):
+        # Capture the inference before execution
+        capture = self.aki.capture(
+            provenance=f"State: {self.get_state()}",
+            place="Goal: make optimal decision",
+            purpose="Alignment: maximize user benefit",
+            payload=input_data
+        )
+        
+        # Execute the decision
+        result = self._execute(input_data)
+        
+        # Attach capture ID to result for traceability
+        result.capture_id = capture.id
+        return result</code></pre>
 
----
+        <h2>Next Steps</h2>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;">
+            <a href="/ppp-pillars.html" style="background: #0066cc; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; border-bottom: none;">📖 Read PPP Pillars →</a>
+            <a href="https://github.com/accountability-source/AgDR" style="background: #f1f5f9; color: #1e293b; padding: 0.75rem 1.5rem; border-radius: 6px; border-bottom: none;">💻 View on GitHub</a>
+            <a href="/spec.html" style="background: #f1f5f9; color: #1e293b; padding: 0.75rem 1.5rem; border-radius: 6px; border-bottom: none;">📄 Full Specification</a>
+        </div>
 
-## 6. Verify a Record
+        <div class="highlight" style="background: #e6f7e6; border-left-color: #2c8c2c;">
+            <strong>🔒 Legal Admissibility:</strong> AgDR records are designed to meet evidentiary standards globally. 
+            The combination of cryptographic signatures, Merkle proofs, and atomic PPP capture creates a 
+            contemporaneous record that courts have already accepted in pilot jurisdictions.
+        </div>
+    </main>
 
-Any party — including a court or regulator — can verify a record with no access to your system:
-
-```bash
-agdr verify --record record_20260315_001.agdr --merkle-root <root_hash>
-```
-
-Or in Python:
-
-```python
-from agdr_aki import verify_record
-
-result = verify_record("record_20260315_001.agdr", expected_merkle_root=root_hash)
-assert result.valid
-assert result.tamper_free
-assert result.chain_intact
-```
-
-See [Verification & Audit Procedure](verification-audit-procedure.html) for court-ready evidence packaging.
-
----
-
-## 7. Understand What You Have Built
-
-Every captured record provides:
-
-| Property | Guarantee |
-|---|---|
-| **Tamper-evident** | Any modification breaks the BLAKE3 hash and Merkle chain |
-| **Non-repudiable** | Ed25519 signed at the exact inference instant |
-| **Contemporaneous** | Captured at the "i" point — not reconstructed after the fact |
-| **Legally admissible** | Meets Canada Evidence Act business records reliability test |
-| **FOI-terminal** | Human accountability chain always ends at a designated fiduciary |
-| **Court-ready today** | No new legislation required — maps to existing CBCA s.122, common law duty of care |
-
----
-
-## 8. Next Steps
-
-| Topic | Document |
-|---|---|
-| PPP by industry (banking, healthcare, government) | [PPP Industry Templates](ppp-industry-templates.html) |
-| FOI — what it is, how to designate one | [FOI Formal Definition](foi-formal-definition.html) |
-| Human delta chain data structure | [Human Delta Chain Spec](human-delta-chain-spec.html) |
-| Legal compliance mapping (Canada) | [PPP Legal Compliance](ppp-legal-compliance.html) |
-| EU AI Act mapping | [EU AI Act Mapping](eu-ai-act-mapping.html) |
-| Verification and court evidence packaging | [Verification & Audit Procedure](verification-audit-procedure.html) |
-| Horizontal scaling beyond 2.85B decisions | [Horizontal Scaling](horizontal-scaling.html) |
-| AKI formal mathematical definition | [AKI Formal Definition](aki-formal-definition.html) |
-| TSX 100M stress test results | [TSX Stress Test](tsx-stress-test.html) |
-
----
-
-## 9. Licence
-
-AgDR is open, royalty-free, and dual-licensed:
-**CC0 1.0 Universal** OR **Apache License 2.0** — your choice.
-
-Use it. Build on it. The ecosystem is the point.
-
----
-
-*"Don't believe a word I say. Check the AgDR."*
-— @aiccountability, Founder
+    <footer class="site-footer">
+        <p>AgDR v0.2 — Atomic Kernel Inference Standard</p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/accountability-source/AgDR">Canonical Source</a> • 
+            <a href="/license.html">MIT License</a> • 
+            <a href="/contact.html">Contact</a>
+        </p>
+    </footer>
+</body>
+</html>
