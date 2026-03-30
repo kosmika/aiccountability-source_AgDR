@@ -1,606 +1,122 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebPage">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="theme-color" content="#0d7377">
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-      <meta name="description" content="getting started | Accountability.ai">
-      <meta name="keywords" content="AI governance, AI accountability, AI audit trail, AgDR">
-      <title>getting started | Accountability.ai</title>
-    <link rel="canonical" href="https://accountability.ai/">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-  
-    <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Accountability.ai">
-    <meta property="og:url" content="https://accountability.ai/">
-    <meta property="og:title" content="getting started | Accountability.ai">
-    <meta property="og:description" content="getting started | Accountability.ai">
-  
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="getting started | Accountability.ai">
-    <meta name="twitter:description" content="getting started | Accountability.ai">
-  
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": "getting started",
-        "author": {"@type": "Organization", "name": "Accountability.ai", "url": "https://accountability.ai"},
-        "publisher": {"@type": "Organization", "name": "Accountability.ai"},
-        "isPartOf": {"@type": "WebSite", "name": "Accountability.ai", "url": "https://accountability.ai"},
-        "inLanguage": "en",
-        "license": "https://creativecommons.org/publicdomain/zero/1.0/"
-      }
-    </script>
-  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Getting Started with AgDR v0.2 | Accountability.ai">
+    <title>Getting Started | Accountability.ai</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
     <style>
-          body { font-family: system-ui, -apple-system, sans-serif; }
+        body { font-family: system-ui, -apple-system, sans-serif; background-color: #09090b; color: #fafafa; }
+        
+        .nav-bg { 
+            background: linear-gradient(135deg, #0F766E 0%, #164E63 100%); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
+            transform: translateZ(0); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
 
-          /* Skip link */
-          .skip-link { position: absolute; top: -100%; left: 0; background: #0d7377; color: #fff; padding: 0.75rem 1.5rem; z-index: 100; font-weight: 600; border-radius: 0 0 0.5rem 0; }
-          .skip-link:focus { top: 0; }
+        /* Technical Prose Overrides */
+        .prose { color: #d4d4d8; max-width: none; }
+        .prose h1, .prose h2, .prose h3 { color: #5eead4; font-weight: 700; }
+        .prose code { color: #5eead4; background: #27272a; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+        .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; }
+        .prose strong { color: #ffffff; }
+        
+        .highlight-card { 
+            background: #134e4a; 
+            border-left: 4px solid #2dd4bf; 
+            padding: 1.5rem; 
+            border-radius: 0.5rem; 
+            margin: 2rem 0; 
+        }
 
-          /* Focus styles — WCAG 2.1 AA */
-          *:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 2px; border-radius: 4px; }
-          a:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 2px; }
+        table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: #18181b; border-radius: 0.5rem; overflow: hidden; }
+        th { background: #27272a; color: #5eead4; text-align: left; padding: 0.75rem; border-bottom: 1px solid #3f3f46; }
+        td { padding: 0.75rem; border-bottom: 1px solid #27272a; color: #d4d4d8; }
+    </style>
+</head>
+<body>
 
-          /* Typography */
-          .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-          .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-          .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-          .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
-
-          /* Body text */
-          .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-          .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-          .prose strong { color: #f4f4f5; font-weight: 600; }
-          .prose em { color: #a1a1aa; }
-
-          /* Lists */
-          .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-          .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-          .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-          .prose li strong { color: #f4f4f5; }
-
-          /* Links */
-          .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-          .prose a:hover { color: #99f6e4; }
-
-          /* Code */
-          .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-          .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-          .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-          /* Blockquotes */
-          .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-          .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-          /* Tables */
-          .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-          .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-          .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-          .prose tr:nth-child(even) td { background: #18181b; }
-          .prose tr:hover td { background: #1f2937; }
-
-          /* HR */
-          .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-          /* Nav gradient */
-          .nav-bg { background: linear-gradient(135deg, #0F766E 0%, #164E63 100%); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-                               </style>
-  </head>
-
-  <body class="bg-zinc-950 text-white">
-
-    <!-- Skip to content link — WCAG 2.4.1 -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- NAV -->
-    <nav class="nav-bg py-4 px-6 sticky top-0 z-50 shadow-lg" aria-label="Primary navigation">
+    <nav class="nav-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
         <div class="max-w-5xl mx-auto flex items-center justify-between">
-              <a href="/" class="text-xl font-bold tracking-tight" aria-label="Accountability.ai home">Accountability.ai</a>
-              <div class="flex flex-wrap gap-5 text-sm font-medium" role="list">
-                      <a href="/getting-started.html" class="hover:text-teal-200 transition" role="listitem">Get Started</a>
-                      <a href="/ppp-pillars.html" class="hover:text-teal-200 transition" role="listitem">The Standard</a>
-                      <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition" role="listitem">Legal</a>
-                      <a href="/sandbox.html" class="hover:text-teal-200 transition" role="listitem">Sandbox</a>
-                      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition" role="listitem">GitHub<span class="sr-only"> (opens in new tab)</span></a>
-              </div>
+            <a href="/" class="text-xl font-bold">Accountability.ai</a>
+            <div class="flex gap-6 text-sm font-medium">
+                <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
+                <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
+                <a href="https://github.com/aiccountability-source/AgDR" class="hover:text-teal-200 transition">GitHub</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Breadcrumb — WCAG 2.4.8, Schema.org BreadcrumbList -->
-    <div class="max-w-5xl mx-auto px-6 py-3">
-        <nav aria-label="Breadcrumb">
-              <ol class="flex gap-2 text-xs text-zinc-500" itemscope itemtype="https://schema.org/BreadcrumbList">
-                      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a href="/" itemprop="item" class="hover:text-teal-400 transition"><span itemprop="name">Home</span></a>
-                                <meta itemprop="position" content="1">
-                                <span class="mx-1" aria-hidden="true">/</span>
-                      </li>
-                      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
-                                <span itemprop="name" class="text-zinc-300">getting started</span>
-                                <meta itemprop="position" content="2">
-                      </li>
-              </ol>
-        </nav>
-    </div>
+    <main id="main-content" class="max-w-4xl mx-auto px-6 pt-24 pb-12">
+        <article class="prose lg:prose-xl">
+            <h1>Getting Started with AgDR v0.2</h1>
+            <p class="lead">
+                The <strong>Atomic Genesis Decision Record Standard</strong> provides autonomous agents with a tamper-evident, cryptographically signed record admissible in court.
+            </p>
 
-    <!-- CONTENT -->
-    <main id="main-content" class="max-w-4xl mx-auto px-6 py-12" role="main">
-        <article class="prose" itemscope itemtype="https://schema.org/TechArticle">
-              <meta itemprop="author" content="Accountability.ai">
-              &lt;!DOCTYPE html&gt;
-              <html lang="en">
-              <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-              <title>
-              Getting Started with AgDR v0.2 | Accountability.ai
-              </title>
-              <style>
-                      /* Reset & Base Styles - Clean, no overlapping issues */
-                      * {
-                          margin: 0;
-                          padding: 0;
-                          box-sizing: border-box;
-                      }
+            <div class="highlight-card">
+                <strong>⚡ Core Guarantee:</strong> Every inference is captured atomically, signed with BLAKE3, and persisted to a tamper-evident Merkle-append log.
+            </div>
 
-                      body {
-                          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-                          line-height: 1.6;
-                          color: #1a1a1a;
-                          background: #ffffff;
-                          scroll-behavior: smooth;
-                      }
+            <h2>1. Download the Spec</h2>
+            <p>Download the canonical JSON specification to define your record structure:</p>
+            <pre><code>curl -O https://raw.githubusercontent.com/accountability-source/AgDR/main/specs/agdr-v0.2.json</code></pre>
 
-                      /* Typography */
-                      h1, h2, h3 {
-                          font-weight: 600;
-                          line-height: 1.25;
-                          margin-top: 2rem;
-                          margin-bottom: 1rem;
-                          color: #0a0a0a;
-                      }
+            <h2>2. Install the Python SDK</h2>
+            <p>The Atomic Kernel Inference (AKI) library is available via pip.</p>
+            <pre><code>pip install agdr-aki</code></pre>
 
-                      h1 {
-                          font-size: 2.5rem;
-                          margin-top: 0;
-                          border-bottom: 2px solid #eaeef2;
-                          padding-bottom: 0.75rem;
-                      }
+            <h2>3. Initialize Your First Capture</h2>
+            <p>The SDK handles signing and Merkle persistence automatically. This ensures your agent's decisions are mathematically linked to the genesis record.</p>
+            
+            <pre><code>from agdr import AtomicKernelInference
 
-                      h2 {
-                          font-size: 1.75rem;
-                          border-left: 4px solid #0066cc;
-                          padding-left: 1rem;
-                      }
+# Initialize with your fiduciary key
+aki = AtomicKernelInference(
+    agent_id="agent-001",
+    private_key_path="path/to/private_key.pem"
+)
 
-                      h3 {
-                          font-size: 1.35rem;
-                          color: #2c3e50;
-                      }
+# Capture an inference atomically
+capture = aki.capture(
+    provenance="User requested financial analysis",
+    place="Target: generate compliant report",
+    purpose="Fiduciary duty: accurate advice",
+    payload={"model": "gpt-4", "temp": 0.7}
+)</code></pre>
 
-                      p {
-                          margin-bottom: 1.25rem;
-                          color: #2c3e50;
-                      }
-
-                      a {
-                          color: #0066cc;
-                          text-decoration: none;
-                          border-bottom: 1px solid transparent;
-                          transition: border-color 0.2s ease;
-                      }
-
-                      a:hover {
-                          border-bottom-color: #0066cc;
-                      }
-
-                      /* Layout - No overlapping containers */
-                      .container {
-                          max-width: 1200px;
-                          margin: 0 auto;
-                          padding: 2rem 1.5rem;
-                      }
-
-                      /* Header / Navigation */
-                      .site-header {
-                          background: #f8fafc;
-                          border-bottom: 1px solid #e2e8f0;
-                          position: relative; /* Not fixed/absolute to avoid overlay */
-                          width: 100%;
-                      }
-
-                      .nav {
-                          max-width: 1200px;
-                          margin: 0 auto;
-                          padding: 1rem 1.5rem;
-                          display: flex;
-                          gap: 2rem;
-                          flex-wrap: wrap;
-                      }
-
-                      .nav a {
-                          font-weight: 500;
-                          border-bottom: none;
-                      }
-
-                      /* Code blocks - Critical for preventing overflow/overlay */
-                      pre {
-                          background: #1e293b;
-                          color: #e2e8f0;
-                          padding: 1.25rem;
-                          border-radius: 8px;
-                          overflow-x: auto;
-                          overflow-y: hidden;
-                          white-space: pre-wrap;
-                          word-wrap: break-word;
-                          font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
-                          font-size: 0.9rem;
-                          line-height: 1.5;
-                          margin: 1.5rem 0;
-                          border: 1px solid #334155;
-                          box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-                      }
-
-                      code {
-                          font-family: 'SF Mono', 'Menlo', 'Courier New', monospace;
-                          background: #f1f5f9;
-                          padding: 0.2rem 0.4rem;
-                          border-radius: 4px;
-                          font-size: 0.875em;
-                          color: #0f172a;
-                      }
-
-                      pre code {
-                          background: transparent;
-                          padding: 0;
-                          color: inherit;
-                      }
-
-                      /* Tables - Clean and responsive */
-                      .table-wrapper {
-                          overflow-x: auto;
-                          margin: 1.5rem 0;
-                          border-radius: 8px;
-                          border: 1px solid #e2e8f0;
-                      }
-
-                      table {
-                          width: 100%;
-                          border-collapse: collapse;
-                          font-size: 0.95rem;
-                      }
-
-                      th, td {
-                          padding: 0.75rem 1rem;
-                          text-align: left;
-                          border-bottom: 1px solid #e2e8f0;
-                      }
-
-                      th {
-                          background: #f8fafc;
-                          font-weight: 600;
-                          color: #0f172a;
-                      }
-
-                      tr:last-child td {
-                          border-bottom: none;
-                      }
-
-                      /* Cards / Sections */
-                      .card {
-                          background: #f8fafc;
-                          border-radius: 12px;
-                          padding: 1.5rem;
-                          margin: 1.5rem 0;
-                          border: 1px solid #e2e8f0;
-                          box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-                      }
-
-                      .card h3 {
-                          margin-top: 0;
-                      }
-
-                      /* Footer */
-                      .site-footer {
-                          margin-top: 3rem;
-                          padding: 2rem 1.5rem;
-                          background: #f8fafc;
-                          border-top: 1px solid #e2e8f0;
-                          text-align: center;
-                          font-size: 0.875rem;
-                          color: #5a6874;
-                      }
-
-                      /* Responsive */
-                      @media (max-width: 768px) {
-                          .container {
-                              padding: 1.5rem;
-                          }
-                          
-                          h1 {
-                              font-size: 2rem;
-                          }
-                          
-                          h2 {
-                              font-size: 1.5rem;
-                          }
-                          
-                          .nav {
-                              gap: 1rem;
-                              flex-direction: column;
-                              align-items: flex-start;
-                          }
-                          
-                          pre {
-                              font-size: 0.8rem;
-                              padding: 1rem;
-                          }
-                      }
-
-                      /* Utility - No z-index wars */
-                      .no-overflow {
-                          overflow: visible;
-                      }
-
-                      /* Highlight for important elements */
-                      .highlight {
-                          background: #fef9e3;
-                          border-left: 4px solid #f5b042;
-                          padding: 1rem;
-                          margin: 1.5rem 0;
-                          border-radius: 4px;
-                      }
-                  </style>
-              </head>
-              <body>
-              <header class="site-header">
-              <div class="nav">
-              <pre><code>        &lt;a href=&quot;/&quot;&gt;🏛️ Accountability.ai&lt;/a&gt;
-        &lt;a href=&quot;/getting-started.html&quot;&gt;Getting Started&lt;/a&gt;
-        &lt;a href=&quot;/ppp-pillars.html&quot;&gt;PPP Pillars&lt;/a&gt;
-        &lt;a href=&quot;/spec.html&quot;&gt;Spec&lt;/a&gt;
-        &lt;a href=&quot;https://github.com/accountability-source/AgDR&quot;&gt;GitHub&lt;/a&gt;
-    &lt;/div&gt;
-&lt;/header&gt;
-
-&lt;main class=&quot;container&quot;&gt;
-    &lt;h1&gt;Getting Started with AgDR v0.2&lt;/h1&gt;
-    
-    &lt;p class=&quot;lead&quot; style=&quot;font-size: 1.2rem; color: #2c3e50; margin-bottom: 2rem;&quot;&gt;
-        Welcome to the &lt;strong&gt;Atomic Genesis Decision Record Standard&lt;/strong&gt;. 
-        AgDR gives every autonomous agent decision a tamper-evident, cryptographically signed record 
-        that is admissible in court today — and in 2076.
-    &lt;/p&gt;
-
-    &lt;div class=&quot;highlight&quot;&gt;
-        &lt;strong&gt;⚡ Core Guarantee:&lt;/strong&gt; Every inference is captured atomically, signed with BLAKE3, 
-        and persisted to a tamper-evident Merkle-append log. No edits. No backdating.
-    &lt;/div&gt;
-
-    &lt;h2&gt;1. Download the Spec&lt;/h2&gt;
-    &lt;p&gt;Start by downloading the canonical specification. This defines the exact structure of an AgDR record.&lt;/p&gt;
-    
-    &lt;pre&gt;&lt;code&gt;curl -O https://raw.githubusercontent.com/accountability-source/AgDR/main/specs/agdr-v0.2.json&lt;/code&gt;&lt;/pre&gt;
-    
-    &lt;p&gt;Read it. Understand the core guarantee before writing any code. The atomic capture ensures:&lt;/p&gt;
-    
-    &lt;div class=&quot;table-wrapper&quot;&gt;
-        &lt;table&gt;
-            &lt;thead&gt;
-                &lt;tr&gt;
-                    &lt;th&gt;Component&lt;/th&gt;
-                    &lt;th&gt;Description&lt;/th&gt;
-                &lt;/tr&gt;
-            &lt;/thead&gt;
-            &lt;tbody&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;&lt;code&gt;sign(BLAKE3(...))&lt;/code&gt;&lt;/td&gt;
-                    &lt;td&gt;Cryptographic signature over the inference payload&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;&lt;code&gt;persist(Merkle-append)&lt;/code&gt;&lt;/td&gt;
-                    &lt;td&gt;Immutable append-only log with Merkle tree verification&lt;/td&gt;
-                &lt;/tr&gt;
-                &lt;tr&gt;
-                    &lt;td&gt;&lt;code&gt;return c(...)&lt;/code&gt;&lt;/td&gt;
-                    &lt;td&gt;Returns the capture certificate for audit&lt;/td&gt;
-                &lt;/tr&gt;
-            &lt;/tbody&gt;
-        &lt;/table&gt;
-    &lt;/div&gt;
-
-    &lt;h2&gt;2. Install the Python SDK&lt;/h2&gt;
-    &lt;p&gt;Use the official Python package to integrate AgDR into your agent workflows.&lt;/p&gt;
-    
-    &lt;pre&gt;&lt;code&gt;pip install agdr-aki&lt;/code&gt;&lt;/pre&gt;
-    
-    &lt;p&gt;Or install directly from source to get the latest development features:&lt;/p&gt;
-    
-    &lt;pre&gt;&lt;code&gt;git clone https://github.com/accountability-source/AgDR.git</code></pre>
-              cd AgDR/python-sdk pip install -e .</code>
-              </pre>
-              <pre><code>    &lt;h2&gt;3. Initialize Your First Capture&lt;/h2&gt;
-    &lt;p&gt;Create a simple capture to understand the flow. The SDK handles signing and persistence automatically.&lt;/p&gt;
-    
-    &lt;pre&gt;&lt;code&gt;from agdr import AtomicKernelInference</code></pre>
-              <h1 id="initialize-with-your-fiduciary-key">Initialize with your fiduciary key</h1>
-              <p>aki = AtomicKernelInference( agent_id=“agent-001”, private_key_path=“path/to/your/private_key.pem” )</p>
-              <h1 id="capture-an-inference-atomically">Capture an inference atomically</h1>
-              <p>capture = aki.capture( provenance=“Current context: user requested financial analysis”, place=“Target: generate compliant investment report”, purpose=“Reason: fiduciary duty to provide accurate, lawful advice”, payload={ “model”: “gpt-4”, “temperature”: 0.7, “prompt”: “Analyze market trends…” } )</p>
-              <h1 id="the-capture-certificate-is-now-signed-and-persisted">The capture certificate is now signed and persisted</h1>
-              print(f”Capture ID: {capture.id}“) print(f”Signature: {capture.signature.hex()}“) print(f”Merkle Root: {capture.merkle_root}“)</code>
-              </pre>
-              <pre><code>    &lt;div class=&quot;card&quot;&gt;
-        &lt;h3&gt;📋 What Just Happened?&lt;/h3&gt;
-        &lt;p&gt;The &lt;code&gt;capture()&lt;/code&gt; method performed an atomic transaction:&lt;/p&gt;
-        &lt;ul style=&quot;margin-left: 1.5rem; margin-top: 0.5rem;&quot;&gt;
-            &lt;li&gt;✅ Hashed the entire inference payload with BLAKE3&lt;/li&gt;
-            &lt;li&gt;✅ Digitally signed the hash with your private key&lt;/li&gt;
-            &lt;li&gt;✅ Appended the record to a tamper-evident Merkle log&lt;/li&gt;
-            &lt;li&gt;✅ Returned a verifiable capture certificate&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;p style=&quot;margin-top: 0.75rem;&quot;&gt;All three PPP pillars (Provenance, Place, Purpose) are captured &lt;strong&gt;atomically&lt;/strong&gt; — no race conditions, no edits.&lt;/p&gt;
-    &lt;/div&gt;
-
-    &lt;h2&gt;4. Verify a Capture&lt;/h2&gt;
-    &lt;p&gt;Any third party can independently verify the authenticity and integrity of a capture.&lt;/p&gt;
-    
-    &lt;pre&gt;&lt;code&gt;from agdr import Verifier</code></pre>
-              <p>verifier = Verifier() result = verifier.verify(capture_id=“capture-abc123”)</p>
-              if result.valid: print(“✓ Signature valid”) print(“✓ Merkle proof verified”) print(“✓ No tampering detected”) else: print(“✗ Capture invalid or compromised”)</code>
-              </pre>
-              <pre><code>    &lt;h2&gt;5. Integrate with Your Agent Framework&lt;/h2&gt;
-    &lt;p&gt;Wrap your agent&#39;s decision points with AgDR captures to create an immutable audit trail.&lt;/p&gt;
-    
-    &lt;pre&gt;&lt;code&gt;class CompliantAgent:
-def __init__(self, aki):
-    self.aki = aki
-
-def decide(self, input_data):
-    # Capture the inference before execution
-    capture = self.aki.capture(
-        provenance=f&quot;State: {self.get_state()}&quot;,
-        place=&quot;Goal: make optimal decision&quot;,
-        purpose=&quot;Alignment: maximize user benefit&quot;,
-        payload=input_data
-    )
-    
-    # Execute the decision
-    result = self._execute(input_data)
-    
-    # Attach capture ID to result for traceability
-    result.capture_id = capture.id
-    return result&lt;/code&gt;&lt;/pre&gt;
-
-    &lt;h2&gt;Next Steps&lt;/h2&gt;
-    &lt;div style=&quot;display: flex; gap: 1rem; flex-wrap: wrap; margin: 2rem 0;&quot;&gt;
-        &lt;a href=&quot;/ppp-pillars.html&quot; style=&quot;background: #0066cc; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; border-bottom: none;&quot;&gt;📖 Read PPP Pillars →&lt;/a&gt;
-        &lt;a href=&quot;https://github.com/accountability-source/AgDR&quot; style=&quot;background: #f1f5f9; color: #1e293b; padding: 0.75rem 1.5rem; border-radius: 6px; border-bottom: none;&quot;&gt;💻 View on GitHub&lt;/a&gt;
-        &lt;a href=&quot;/spec.html&quot; style=&quot;background: #f1f5f9; color: #1e293b; padding: 0.75rem 1.5rem; border-radius: 6px; border-bottom: none;&quot;&gt;📄 Full Specification&lt;/a&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;highlight&quot; style=&quot;background: #e6f7e6; border-left-color: #2c8c2c;&quot;&gt;
-        &lt;strong&gt;🔒 Legal Admissibility:&lt;/strong&gt; AgDR records are designed to meet evidentiary standards globally. 
-        The combination of cryptographic signatures, Merkle proofs, and atomic PPP capture creates a 
-        contemporaneous record that courts have already accepted in pilot jurisdictions.
-    &lt;/div&gt;
-&lt;/main&gt;
-
-&lt;footer class=&quot;site-footer&quot;&gt;
-    &lt;p&gt;AgDR v0.2 — Atomic Kernel Inference Standard&lt;/p&gt;
-    &lt;p style=&quot;margin-top: 0.5rem;&quot;&gt;
-        &lt;a href=&quot;https://github.com/accountability-source/AgDR&quot;&gt;Canonical Source&lt;/a&gt; • 
-        &lt;a href=&quot;/license.html&quot;&gt;MIT License&lt;/a&gt; • 
-        &lt;a href=&quot;/contact.html&quot;&gt;Contact&lt;/a&gt;
-    &lt;/p&gt;
-&lt;/footer&gt;</code></pre>
-              </body>
-              </html>
+            <h2>4. Verify Integrity</h2>
+            <p>Verification is public and decentralized. Anyone with the public key can verify the decision record's validity.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>sign(BLAKE3)</code></td>
+                        <td>Cryptographic signature over the full payload.</td>
+                    </tr>
+                    <tr>
+                        <td><code>Merkle-append</code></td>
+                        <td>Immutable, verifiable entry into the global log.</td>
+                    </tr>
+                </tbody>
+            </table>
         </article>
     </main>
 
-    <!-- DOCUMENT NAVIGATION FOOTER -->
-    <section class="bg-zinc-900 border-t border-zinc-800 py-14" aria-label="Related documentation">
-        <div class="max-w-5xl mx-auto px-6">
-              <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-              <div class="grid md:grid-cols-4 gap-5">
-                      <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-                                <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-                      </a>
-                      <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-                                <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-                      </a>
-                      <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-                                <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-                      </a>
-                      <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-                                <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-                      </a>
-                      <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-                                <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-                      </a>
-                      <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-                                <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-                      </a>
-                      <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-                                <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-                      </a>
-                      <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-                                <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-                      </a>
-              </div>
-        </div>
-    </section>
-
-    <!-- FOOTER — matches index.html design system -->
-    <footer class="py-14 bg-black text-zinc-400 text-sm" role="contentinfo">
-        <div class="max-w-5xl mx-auto px-6">
-              <div class="grid md:grid-cols-4 gap-8 mb-10">
-                      <div>
-                                <p class="font-semibold text-white text-base mb-2">Accountability.ai</p>
-                                <p class="text-zinc-500 leading-relaxed">The open standard for AI governance and tamper-evident AI decision records. Built in Canada. For every institution that deploys autonomous intelligence.</p>
-                      </div>
-                      <div>
-                                <p class="font-semibold text-zinc-200 mb-3">The Standard</p>
-                                <ul class="space-y-2">
-                                            <li><a href="/getting-started.html" class="hover:text-teal-400 transition">Get Started</a></li>
-                                          <li><a href="/aki-formal-definition.html" class="hover:text-teal-400 transition">AKI Formal Definition</a></li>
-                                          <li><a href="/ppp-pillars.html" class="hover:text-teal-400 transition">PPP Pillars</a></li>
-                                          <li><a href="/beauty-truth-wisdom.html" class="hover:text-teal-400 transition">Beauty, Truth &amp; Wisdom</a></li>
-                                          <li><a href="/horizontal-scaling.html" class="hover:text-teal-400 transition">Horizontal Scaling</a></li>
-                                </ul>
-                      </div>
-                    <div>
-                            <p class="font-semibold text-zinc-200 mb-3">Legal &amp; Compliance</p>
-                            <ul class="space-y-2">
-                                      <li><a href="/ppp-legal-compliance.html" class="hover:text-teal-400 transition">Legal Compliance</a></li>
-                                      <li><a href="/cbca-fiduciary-mapping.html" class="hover:text-teal-400 transition">CBCA Fiduciary Mapping</a></li>
-                                      <li><a href="/eu-ai-act-mapping.html" class="hover:text-teal-400 transition">EU AI Act Mapping</a></li>
-                                      <li><a href="/foi-formal-definition.html" class="hover:text-teal-400 transition">FOI Definition</a></li>
-                                      <li><a href="/verification-audit-procedure.html" class="hover:text-teal-400 transition">Verification Procedure</a></li>
-                            </ul>
-                    </div>
-                    <div>
-                            <p class="font-semibold text-zinc-200 mb-3">Evidence &amp; Vision</p>
-                            <ul class="space-y-2">
-                                      <li><a href="/tsx-stress-test.html" class="hover:text-teal-400 transition">TSX Stress Test</a></li>
-                                      <li><a href="/comparison-aviation-black-box.html" class="hover:text-teal-400 transition">Aviation Black Box</a></li>
-                                      <li><a href="/comparison-medical-records.html" class="hover:text-teal-400 transition">Medical Records</a></li>
-                                      <li><a href="/agi-court-precedents.html" class="hover:text-teal-400 transition">AGI Court Precedents</a></li>
-                                      <li><a href="/future-agi-court.html" class="hover:text-teal-400 transition">Court in 2076</a></li>
-                            </ul>
-                    </div>
-              </div>
-            <div class="border-t border-zinc-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                  <p class="text-zinc-600">The AgDR Standard is open, royalty-free, and dual-licensed:
-                    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-600 hover:text-teal-400">CC0 1.0 Universal</a> OR
-                    <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-600 hover:text-teal-400">Apache License 2.0</a> — your choice.
-                  </p>
-                  <p class="text-zinc-600"><a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-600 hover:text-teal-400">GitHub</a> &middot; &copy; 2026 Accountability.ai</p>
-            </div>
-        </div>
+    <footer class="py-14 bg-black border-t border-zinc-900 text-center text-zinc-500 text-sm">
+        <p>&copy; 2026 Accountability.ai • <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-600 hover:underline">GitHub</a></p>
     </footer>
-  
-  </body>
-</html></li></li>
-                      </div>
-                      </div>
-    </style></title>
-  </head>
+
+</body>
+</html>
