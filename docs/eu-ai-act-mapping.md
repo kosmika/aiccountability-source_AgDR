@@ -1,5 +1,10 @@
-# EU AI Act Mapping
+---
+title: "AgDR v0.2 — EU AI Act Mapping"
+description: "Article-by-article mapping of AgDR v0.2 to the EU AI Act (Regulation 2024/1689), showing how AgDR satisfies high-risk AI obligations and GDPR interaction."
+slug: "docs/eu-ai-act-mapping"
+---
 
+# EU AI Act Mapping
 **AgDR v0.2 — European Union AI Act Compliance Analysis**
 Published March 2026
 
