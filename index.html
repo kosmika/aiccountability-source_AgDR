@@ -72,6 +72,13 @@
         [30,60,120].forEach(function(sec){ setTimeout(function(){ gtag('event','time_on_page',{event_category:'engagement',seconds:sec,page_path:window.location.pathname}); }, sec*1000); });
       });
     </script>
+
+    <!-- Vercel Web Analytics -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+
 <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
