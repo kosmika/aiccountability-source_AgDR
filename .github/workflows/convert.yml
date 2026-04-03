@@ -22,7 +22,13 @@ jobs:
 
       - name: Delete old converted HTML files
         run: |
-          find . -maxdepth 1 -name "*.html" ! -name "index.html" ! -name "sandbox.html" ! -name "template.html" -delete
+          find . -name "*.html" \
+            ! -name "index.html" \
+            ! -name "sandbox.html" \
+            ! -name "template.html" \
+            ! -name "404.html" \
+            ! -path "./.github/*" \
+            -delete
 
       - name: Create local templates directory
         run: mkdir -p templates
@@ -36,39 +42,37 @@ jobs:
             echo "Warning: template.html not found in workspace"
             # Create a default template if none exists
             echo '<!DOCTYPE html>
-            <html>
-            <head>
-            <meta charset="UTF-8">
-            <title>$title$</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; }
-            code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
-            pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
-            </style>
-            </head>
-            <body>
-            <main>
-            <h1>$title$</h1>
-            $body$
-            </main>
-            </body>
-            </html>' > templates/template.html
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: 0 auto; }
+    code { background: #f4f4f4; padding: 2px 5px; border-radius: 3px; }
+    pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+    </head>
+    <body>
+    <main>
+    <h1>$title$</h1>
+    $body$
+    </main>
+    </body>
+    </html>' > templates/template.html
           fi
 
-      - name: Convert all MD to HTML
+      - name: Convert all MD to HTML (root and subdirectories)
         run: |
-          for f in *.md; do
-            [ -f "$f" ] || continue
-            # Skip README.md if you don't want to convert it
-            if [ "$f" = "README.md" ]; then
-              echo "Skipping $f"
-              continue
-            fi
-            
-            TITLE=$(basename "${f%.md}" | sed 's/-/ /g')
-            echo "Converting $f to ${f%.md}.html with title: $TITLE"
-            
+          find . -name "*.md" \
+            ! -name "README.md" \
+            ! -path "./.github/*" \
+            ! -path "./node_modules/*" \
+            | while read -r f; do
+            OUTFILE="${f%.md}.html"
+            SLUG=$(basename "${f%.md}")
+            TITLE=$(basename "${f%.md}" | sed 's/-/ /g; s/_/ /g')
+            echo "Converting $f -> $OUTFILE with title: $TITLE"
             pandoc "$f" \
               --from markdown+fenced_code_blocks+backtick_code_blocks+pipe_tables \
               --to html5 \
@@ -76,10 +80,10 @@ jobs:
               --template=template.html \
               --data-dir=./templates \
               --metadata title="$TITLE" \
-              --output "${f%.md}.html"
-            
+              --metadata slug="$SLUG" \
+              --output "$OUTFILE"
             if [ $? -eq 0 ]; then
-              echo "✅ Converted: $f -> ${f%.md}.html"
+              echo "✅ Converted: $f -> $OUTFILE"
             else
               echo "❌ Failed to convert: $f"
               exit 1
@@ -90,8 +94,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add *.html
-          
+          git add -A
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
