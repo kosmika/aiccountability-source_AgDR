@@ -1,3 +1,9 @@
+---
+title: "Getting Started with AgDR v0.2"
+description: "Step-by-step guide to implementing AgDR — install the SDK, capture your first atomic decision record, and verify the chain in minutes."
+slug: "docs/getting-started"
+---
+
 # Getting Started with AgDR v0.2
 
 **Welcome to the Atomic Kernel Inference Standard**
