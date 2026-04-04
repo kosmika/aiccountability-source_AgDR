@@ -1,191 +1,195 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebPage">
-    <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <meta name="description" content="Getting Started with AgDR v0.2 | Accountability.ai">
-          <title>Getting Started | Accountability.ai</title>
-      <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-      <style>
-              body { font-family: system-ui, -apple-system, sans-serif; }
-              .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-              nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-              .prose { color: #d4d4d8; max-width: none; }
-              .prose h1, .prose h2, .prose h3 { color: #5eead4; font-weight: 700; }
-              .prose code { color: #5eead4; background: #27272a; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
-              .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; }
-              .prose strong { color: #ffffff; }
-              .highlight-card {
-                        background: #134e4a;
-                        border-left: 4px solid #2dd4bf;
-                        padding: 1.5rem;
-                        border-radius: 0.5rem;
-                        margin: 2rem 0;
-              }
-              table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: #18181b; border-radius: 0.5rem; overflow: hidden; }
-              th { background: #27272a; color: #5eead4; text-align: left; padding: 0.75rem; border-bottom: 1px solid #3f3f46; }
-              td { padding: 0.75rem; border-bottom: 1px solid #27272a; color: #d4d4d8; }
-            </style>
-    </head>
-    <body class="bg-zinc-950 text-white">
-          <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
-                  <div class="max-w-5xl mx-auto flex items-center justify-between">
-                            <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-                            <div class="flex flex-wrap gap-5 text-sm font-medium">
-                                        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-                                        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-                                        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-                                        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-                                        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
-                            </div>
-                  </div>
-          </nav>
-
-          <main id="main-content" class="max-w-4xl mx-auto px-6 pt-24 pb-12">
-                  <article class="prose lg:prose-xl">
-
-                            <h1>Getting Started with AgDR v0.2</h1>
-                  
-                        <p class="lead">
-                          The <strong>Atomic Genesis Decision Record Standard</strong> provides autonomous agents with a
-                          tamper-evident, cryptographically signed record admissible in court.
-                        </p>
-                  
-                        <div class="highlight-card">
-                                <strong>&#9889; Core Guarantee:</strong> Every inference is captured atomically, signed with BLAKE3,
-                                and persisted to a tamper-evident Merkle-append log.
+      <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <meta name="description" content="Getting Started with AgDR v0.2 | Accountability.ai">
+              <title>Getting Started | Accountability.ai</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+          <style>
+                    body { font-family: system-ui, -apple-system, sans-serif; }
+                    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
+                    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+                    article { color: #d4d4d8; max-width: none; }
+                    article h1 { color: #ffffff; font-weight: 700; font-size: 2.25rem; margin-bottom: 1rem; }
+                    article h2 { color: #ffffff; font-weight: 700; font-size: 1.875rem; margin-top: 3rem; margin-bottom: 1rem; }
+                    article h3 { color: #2dd4bf; font-weight: 600; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+                    article p { color: #d4d4d8; font-size: 1rem; line-height: 1.625; margin-bottom: 1.25rem; }
+                    article p.lead { color: rgba(255,255,255,0.7); font-size: 1.25rem; line-height: 1.75; }
+                    article a { color: #5eead4; text-decoration: underline; }
+                    article a:hover { color: #99f6e4; }
+                    article code { color: #2dd4bf; background: #27272a; padding: 0.2rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+                    article pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.5rem; }
+                    article pre code { background: none; padding: 0; font-size: 0.875rem; }
+                    article strong { color: #ffffff; }
+                    article ul { padding-left: 1.25rem; margin-bottom: 1.25rem; }
+                    article li { color: #d4d4d8; margin-bottom: 0.5rem; line-height: 1.625; }
+                    .highlight-card {
+                                background: rgba(255,255,255,0.07);
+                                border: 1px solid rgba(255,255,255,0.12);
+                                border-left: 4px solid rgba(45,212,191,0.5);
+                                padding: 1.5rem;
+                                border-radius: 0.75rem;
+                                margin: 2rem 0;
+                                box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+                    }
+                    .highlight-card strong { color: #ffffff; }
+                    .highlight-card li { color: rgba(255,255,255,0.92); }
+                    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; background: #18181b; border-radius: 0.5rem; overflow: hidden; }
+                    th { background: #27272a; color: #ffffff; text-align: left; padding: 0.75rem; border-bottom: 1px solid #3f3f46; }
+                    td { padding: 0.75rem; border-bottom: 1px solid #27272a; color: rgba(255,255,255,0.85); }
+                    footer { border-top: 1px solid rgba(255,255,255,0.06); }
+                  </style>
+      </head>
+      <body class="bg-zinc-950 text-white">
+              <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
+                        <div class="max-w-5xl mx-auto flex items-center justify-between">
+                                    <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
+                                    <div class="flex flex-wrap gap-5 text-sm font-medium">
+                                                  <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
+                                                  <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
+                                                  <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
+                                                  <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
+                                                  <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+                                    </div>
                         </div>
-                  
-                        <h2>1. Download the Spec</h2>
-                        <p>Download the canonical JSON specification to define your record structure:</p>
-                        <pre><code>curl -O https://raw.githubusercontent.com/aiccountability-source/AgDR/main/specs/agdr-v0.2.json</code></pre>
-                  
-                        <h2>2. Install the Python SDK</h2>
-                        <p>The Atomic Kernel Inference (AKI) library is available via pip.</p>
-                        <pre><code>pip install agdr-aki</code></pre>
-                        <p>Or install directly from source:</p>
-                        <pre><code>git clone https://github.com/aiccountability-source/AgDR.git
-                        cd AgDR/sdk/python
-                        pip install -e .</code></pre>
-                  
-                        <h2>3. Initialize Your First Capture</h2>
-                        <p>The SDK handles signing and Merkle persistence automatically.</p>
-                        <pre><code>from agdr import AtomicKernelInference
-                        
-                        # Initialize with your fiduciary key
-                        aki = AtomicKernelInference(
-                            agent_id="agent-001",
-                            private_key_path="path/to/private_key.pem"
-                        )
-                        
-                        # Capture an inference atomically
-                        capture = aki.capture(
-                            provenance="User requested financial analysis",
-                            place="Target: generate compliant report",
-                            purpose="Fiduciary duty: accurate advice",
-                            payload={"model": "gpt-4", "temp": 0.7}
-                        )
-                        
-                        print(f"Capture ID: {capture.id}")
-                        print(f"Signature:  {capture.signature.hex()}")
-                        print(f"Merkle Root: {capture.merkle_root}")</code></pre>
-                  
-                        <div class="highlight-card">
-                                <strong>&#128203; What Just Happened?</strong>
-                                <ul style="margin-top:0.75rem; padding-left:1.25rem;">
-                                          <li>&#9989; Hashed the inference payload with BLAKE3</li>
-                                          <li>&#9989; Digitally signed the hash with your private key</li>
-                                          <li>&#9989; Appended the record to a tamper-evident Merkle log</li>
-                                          <li>&#9989; Returned a verifiable capture certificate</li>
-                                </ul>
-                        </div>
-                  
-                        <h2>4. Verify Integrity</h2>
-                        <p>Anyone with the public key can independently verify a decision record.</p>
-                        <pre><code>from agdr import Verifier
-                        
-                        verifier = Verifier()
-                        result = verifier.verify(capture_id="capture-abc123")
-                        
-                        if result.valid:
-                            print("&#10003; Signature valid")
-                            print("&#10003; Merkle proof verified")
-                            print("&#10003; No tampering detected")
-                        else:
-                            print("&#10007; Capture invalid or compromised")</code></pre>
-                  
-                        <table>
-                                    <thead>
-                                                  <tr>
-                                                                  <th>Component</th>
-                                                <th>Description</th>
-                                                  </tr>
-                                    </thead>
-                                <tbody>
-                                              <tr>
-                                                              <td><code>sign(BLAKE3)</code></td>
-                                    <td>Cryptographic signature over the full payload.</td>
-                                              </tr>
-                                  <tr>
-                                                  <td><code>Merkle-append</code></td>
-                                    <td>Immutable, verifiable entry into the global log.</td>
-                                  </tr>
-                                </tbody>
-                        </table>
-                  
-                        <h2>5. Integrate with Your Agent Framework</h2>
-                        <p>Wrap your agent's decision points with AgDR captures to create an immutable audit trail.</p>
-                        <pre><code>class CompliantAgent:
-                            def __init__(self, aki):
-                                self.aki = aki
-                        
-                            def decide(self, input_data):
-                                capture = self.aki.capture(
-                                    provenance=f"State: {self.get_state()}",
-                                    place="Goal: make optimal decision",
-                                    purpose="Alignment: maximize user benefit",
-                                    payload=input_data
+              </nav>
+
+              <main id="main-content" class="max-w-4xl mx-auto px-6 pt-24 pb-12">
+                        <article>
+
+                                    <h1>Getting Started with AgDR v0.2</h1>
+                                
+                                <p class="lead">
+                                  The <strong>Atomic Genesis Decision Record Standard</strong> provides autonomous agents with a
+                                  tamper-evident, cryptographically signed record admissible in court.
+                                </p>
+                                
+                                <div class="highlight-card">
+                                          <strong>&#9889; Core Guarantee:</strong> Every inference is captured atomically, signed with BLAKE3,
+                                          and persisted to a tamper-evident Merkle-append log.
+                                </div>
+                                
+                                <h2>1. Download the Spec</h2>
+                                <p>Download the canonical JSON specification to define your record structure:</p>
+                                <pre><code>curl -O https://raw.githubusercontent.com/aiccountability-source/AgDR/main/specs/agdr-v0.2.json</code></pre>
+                                
+                                <h2>2. Install the Python SDK</h2>
+                                <p>The Atomic Kernel Inference (AKI) library is available via pip.</p>
+                                <pre><code>pip install agdr-aki</code></pre>
+                                <p>Or install directly from source:</p>
+                                <pre><code>git clone https://github.com/aiccountability-source/AgDR.git
+                                cd AgDR/sdk/python
+                                pip install -e .</code></pre>
+                                
+                                <h2>3. Initialize Your First Capture</h2>
+                                <p>The SDK handles signing and Merkle persistence automatically.</p>
+                                <pre><code>from agdr import AtomicKernelInference
+                                
+                                # Initialize with your fiduciary key
+                                aki = AtomicKernelInference(
+                                    agent_id="agent-001",
+                                    private_key_path="path/to/private_key.pem"
                                 )
-                                result = self._execute(input_data)
-                                result.capture_id = capture.id
-                                return result</code></pre>
-                  
-                        <h2>Next Steps</h2>
-                        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin:2rem 0;">
-                                <a href="/ppp-pillars.html" style="background:#0d9488; color:white; padding:0.75rem 1.5rem; border-radius:6px; text-decoration:none;">&#128216; Read PPP Pillars &#8594;</a>
-                                <a href="https://github.com/aiccountability-source/AgDR" style="background:#27272a; color:#fafafa; padding:0.75rem 1.5rem; border-radius:6px; text-decoration:none;">&#128187; View on GitHub</a>
-                                <a href="/sandbox.html" style="background:#27272a; color:#fafafa; padding:0.75rem 1.5rem; border-radius:6px; text-decoration:none;">&#9881; Try the Sandbox</a>
-                        </div>
-                  
-                        <div class="highlight-card" style="background:#134e4a; border-left-color:#22c55e;">
-                                <strong>&#128274; Legal Admissibility:</strong> AgDR records meet evidentiary standards globally.
-                                Cryptographic signatures, Merkle proofs, and atomic PPP capture create a contemporaneous record
-                                admissible under the Canada Evidence Act.
-                        </div>
-                  
-                  </article>
-          </main>
-    
-      <footer class="py-14 bg-black border-t border-zinc-900 text-center text-zinc-500 text-sm">
-          <p>AgDR v0.2 &#8212; Atomic Kernel Inference Standard</p>
-          <p style="margin-top:0.5rem;">
-                    <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-600 hover:underline">GitHub</a>
-                    &#8226;
-                    <a href="/ppp-legal-compliance.html" class="text-teal-600 hover:underline">Legal</a>
-                    &#8226;
-                    <a href="/sandbox.html" class="text-teal-600 hover:underline">Sandbox</a>
-          </p>
-      </footer>
+                                
+                                # Capture an inference atomically
+                                capture = aki.capture(
+                                    provenance="User requested financial analysis",
+                                    place="Target: generate compliant report",
+                                    purpose="Fiduciary duty: accurate advice",
+                                    payload={"model": "gpt-4", "temp": 0.7}
+                                )
+                                
+                                print(f"Capture ID: {capture.id}")
+                                print(f"Signature: {capture.signature.hex()}")
+                                print(f"Merkle Root: {capture.merkle_root}")</code></pre>
+                                
+                                <div class="highlight-card">
+                                          <strong>&#128203; What Just Happened?</strong>
+                                          <ul style="margin-top:0.75rem; padding-left:1.25rem;">
+                                                      <li>&#9989; Hashed the inference payload with BLAKE3</li>
+                                                      <li>&#9989; Digitally signed the hash with your private key</li>
+                                                      <li>&#9989; Appended the record to a tamper-evident Merkle log</li>
+                                                      <li>&#9989; Returned a verifiable capture certificate</li>
+                                          </ul>
+                                </div>
+                                
+                                <h2>4. Verify Integrity</h2>
+                                <p>Anyone with the public key can independently verify a decision record.</p>
+                                <pre><code>from agdr import Verifier
+                                
+                                verifier = Verifier()
+                                result = verifier.verify(capture_id="capture-abc123")
+                                
+                                if result.valid:
+                                    print("&#10003; Signature valid")
+                                    print("&#10003; Merkle proof verified")
+                                    print("&#10003; No tampering detected")
+                                else:
+                                    print("&#10007; Capture invalid or compromised")</code></pre>
+                                
+                                <table>
+                                              <thead>
+                                                              <tr>
+                                                                                <th>Component</th>
+                                                            <th>Description</th>
+                                                              </tr>
+                                              </thead>
+                                          <tbody>
+                                                          <tr>
+                                                                            <td><code>sign(BLAKE3)</code></td>
+                                              <td>Cryptographic signature over the full payload.</td>
+                                                          </tr>
+                                            <tr>
+                                                              <td><code>Merkle-append</code></td>
+                                              <td>Immutable, verifiable entry into the global log.</td>
+                                            </tr>
+                                          </tbody>
+                                </table>
+                                
+                                <h2>5. Integrate with Your Agent Framework</h2>
+                                <p>Wrap your agent's decision points with AgDR captures to create an immutable audit trail.</p>
+                                <pre><code>class CompliantAgent:
+                                    def __init__(self, aki):
+                                        self.aki = aki
+                                    
+                                    def decide(self, input_data):
+                                        capture = self.aki.capture(
+                                            provenance=f"State: {self.get_state()}",
+                                            place="Goal: make optimal decision",
+                                            purpose="Alignment: maximize user benefit",
+                                            payload=input_data
+                                        )
+                                        result = self._execute(input_data)
+                                        result.capture_id = capture.id
+                                        return result</code></pre>
+                                
+                                <h2>Next Steps</h2>
+                                <div style="display:flex; gap:1rem; flex-wrap:wrap; margin:2rem 0;">
+                                          <a href="/ppp-pillars.html" style="background:#0d9488; color:white; padding:0.75rem 1.5rem; border-radius:6px; text-decoration:none;">&#128216; Read PPP Pillars &#8594;</a>
+                                          <a href="https://github.com/aiccountability-source/AgDR" style="background:#27272a; color:#fafafa; padding:0.75rem 1.5rem; border-radius:6px; text-decoration:none;">&#128187; View on GitHub</a>
+                                          <a href="/sandbox.html" style="background:#27272a; color:#fafafa; padding:0.75rem 1.5rem; border-radius:6px; text-decoration:none;">&#9881; Try the Sandbox</a>
+                                </div>
+                                
+                                <div class="highlight-card" style="background:#134e4a; border-left-color:#22c55e;">
+                                          <strong>&#128274; Legal Admissibility:</strong> AgDR records meet evidentiary standards globally.
+                                          Cryptographic signatures, Merkle proofs, and atomic PPP capture create a contemporaneous record
+                                          admissible under the Canada Evidence Act.
+                                </div>
+                                
+                        </article>
+              </main>
+          
+          <footer class="py-14 bg-black border-t border-zinc-900 text-center text-zinc-500 text-sm">
+                <p>AgDR v0.2 &#8212; Atomic Kernel Inference Standard</p>
+                <p style="margin-top:0.5rem;">
+                            <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-600 hover:underline">GitHub</a>
+                            &#8226;
+                            <a href="/ppp-legal-compliance.html" class="text-teal-600 hover:underline">Legal</a>
+                            &#8226;
+                            <a href="/sandbox.html" class="text-teal-600 hover:underline">Sandbox</a>
+                </p>
+          </footer>
 
-    </body>
+      </body>
 </html>
-          </p></p></code></td>
-                                  </tr></code></td>
-                                              </tr>
-                                </tbody></th></th>
-                                                  </tr>
-                                    </thead>
-                        </table></p></li></li></p></p></code></pre></p></strong></strong></h1>
-    </body>
-      </style></title>
-    </head>
