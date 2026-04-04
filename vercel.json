@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    {
+      "source": "/groundzero",
+      "destination": "/groundzero/index.html"
+    },
+    {
+      "source": "/groundzero/(.*)",
+      "destination": "/groundzero/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/groundzero/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
+        }
+      ]
+    }
+  ]
+}
