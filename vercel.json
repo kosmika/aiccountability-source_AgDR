@@ -1,23 +1,32 @@
 {
   "rewrites": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "groundzero.accountability.ai"
+        }
+      ],
+      "destination": "/groundzero/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "groundzero.accountability.ai"
+        }
+      ],
+      "destination": "/groundzero/$1"
+    },
+    {
       "source": "/groundzero",
       "destination": "/groundzero/index.html"
     },
     {
       "source": "/groundzero/(.*)",
       "destination": "/groundzero/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/groundzero/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow"
-        }
-      ]
     }
   ]
 }
