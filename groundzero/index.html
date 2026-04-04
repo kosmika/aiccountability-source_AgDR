@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Zero — Accountability.AI | Proprietary Commercial Software</title>
+<meta name="description" content="Ground Zero by Genesis Glass Foundation — The commercial implementation layer of the AgDR Accountability Standard. Evidentiary. Vendor-neutral. Court-admissible.">
+<style>
+  :root {
+    --teal: #0d9488;
+    --teal-dark: #0f766e;
+    --teal-light: #14b8a6;
+    --teal-pale: #ccfbf1;
+    --navy: #0f172a;
+    --navy-mid: #1e293b;
+    --navy-light: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border: rgba(13,148,136,0.2);
+    --glow: rgba(13,148,136,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,23,42,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo {
+    width: 36px; height: 36px;
+    position: relative;
+  }
+  .nav-logo svg { width: 100%; height: 100%; }
+  .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-brand-text .site-name {
+    font-size: 0.95rem; font-weight: 700; color: var(--text-primary); letter-spacing: 0.02em;
+  }
+  .nav-brand-text .site-sub {
+    font-size: 0.7rem; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links a {
+    color: var(--text-secondary); text-decoration: none; font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal-light); }
+  .nav-cta {
+    background: var(--teal); color: white !important; padding: 0.4rem 1rem;
+    border-radius: 6px; font-weight: 600; transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--teal-dark) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 2rem 80px;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(13,148,136,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(13,148,136,0.06) 0%, transparent 60%),
+                var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(13,148,136,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(13,148,136,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 900px; width: 100%; text-align: center; position: relative;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(13,148,136,0.1); border: 1px solid var(--border);
+    border-radius: 100px; padding: 0.35rem 1rem;
+    font-size: 0.75rem; color: var(--teal-light); text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal-light);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800; line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 .gz {
+    color: var(--teal-light);
+    display: block;
+  }
+  .hero h1 .tagline {
+    color: var(--text-primary);
+    font-size: 0.55em; font-weight: 400;
+    display: block; margin-top: 0.5rem;
+    letter-spacing: 0.01em;
+  }
+  .hero-desc {
+    font-size: 1.1rem; color: var(--text-secondary);
+    max-width: 640px; margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .hero-pills {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    justify-content: center; margin-bottom: 2.5rem;
+  }
+  .pill {
+    background: rgba(13,148,136,0.08);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.35rem 0.9rem;
+    font-size: 0.8rem;
+    color: var(--teal-pale);
+    font-weight: 500;
+  }
+  .hero-actions {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--teal); color: white;
+    padding: 0.8rem 2rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 700;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); box-shadow: 0 8px 25px rgba(13,148,136,0.3); }
+  .btn-outline {
+    background: transparent; color: var(--text-primary);
+    padding: 0.8rem 2rem; border-radius: 8px;
+    font-size: 0.95rem; font-weight: 600;
+    text-decoration: none; border: 1px solid rgba(255,255,255,0.15); cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal-light); background: rgba(13,148,136,0.05); }
+
+  /* SECTION */
+  section { padding: 80px 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--teal); font-weight: 600; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800;
+    margin-bottom: 1rem; letter-spacing: -0.01em;
+  }
+  .section-desc {
+    font-size: 1rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7;
+  }
+
+  /* FEATURES GRID */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .feature-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .feature-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(13,148,136,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .feature-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+  /* PROPRIETARY NOTICE */
+  .proprietary-section {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .proprietary-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+  @media (max-width: 768px) {
+    .proprietary-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { display: none; }
+  }
+  .prop-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.25);
+    border-radius: 100px; padding: 0.35rem 1rem;
+    font-size: 0.75rem; color: #fca5a5; text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 600; margin-bottom: 1.25rem;
+  }
+  .license-box {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem; color: var(--text-secondary);
+    line-height: 1.8;
+  }
+  .license-box .key { color: var(--teal-light); }
+  .license-box .val { color: var(--text-primary); }
+
+  /* TIERS */
+  .tiers-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .tier-card {
+    background: var(--navy-mid);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 2rem;
+    position: relative;
+  }
+  .tier-card.featured {
+    border-color: var(--teal);
+    background: linear-gradient(135deg, rgba(13,148,136,0.08) 0%, var(--navy-mid) 100%);
+  }
+  .tier-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--teal); color: white;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.2rem 0.75rem; border-radius: 100px;
+  }
+  .tier-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+  .tier-price { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .tier-features { list-style: none; }
+  .tier-features li {
+    font-size: 0.875rem; color: var(--text-secondary);
+    padding: 0.4rem 0;
+    display: flex; align-items: flex-start; gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .tier-features li:last-child { border-bottom: none; }
+  .tier-features li::before {
+    content: '→'; color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px;
+  }
+  .tier-cta { margin-top: 1.5rem; display: block; text-align: center; width: 100%; }
+
+  /* STATS */
+  .stats-row {
+    display: flex; flex-wrap: wrap; gap: 2rem;
+    justify-content: center; margin-top: 3rem;
+  }
+  .stat-item { text-align: center; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--teal-light); display: block; }
+  .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* CTA STRIP */
+  .cta-strip {
+    background: linear-gradient(135deg, rgba(13,148,136,0.12), rgba(13,148,136,0.04));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .cta-strip h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.75rem; }
+  .cta-strip p { color: var(--text-secondary); margin-bottom: 2rem; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    background: rgba(15,23,42,0.6);
+  }
+  .footer-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-brand-text .name { font-size: 0.875rem; font-weight: 700; color: var(--text-primary); }
+  .footer-brand-text .sub { font-size: 0.75rem; color: var(--text-muted); }
+  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--teal-light); }
+  .footer-copy { font-size: 0.75rem; color: var(--text-muted); text-align: right; }
+  .footer-copy .prop { color: var(--teal); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-brand" href="https://accountability.ai">
+    <div class="nav-logo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="24,3 45,42 3,42" fill="rgba(13,148,136,0.1)" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="24,10 39,38 9,38" fill="rgba(173,230,224,0.12)" stroke="none"/>
+        <text x="24" y="34" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="16" fill="#0d9488">G</text>
+        <text x="24" y="46" text-anchor="middle" font-family="sans-serif" font-weight="600" font-size="5.5" fill="#64748b">AgDR</text>
+      </svg>
+    </div>
+    <div class="nav-brand-text">
+      <span class="site-name">Ground Zero</span>
+      <span class="site-sub">Accountability.AI</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#platform">Platform</a>
+    <a href="#licensing">Licensing</a>
+    <a href="#tiers">Plans</a>
+    <a href="https://accountability.ai/legal">Legal</a>
+    <a href="https://accountability.ai" class="nav-cta">Main Site</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Proprietary Commercial Software &nbsp;·&nbsp; Genesis Glass Foundation
+    </div>
+    <h1>
+      <span class="gz">Ground Zero</span>
+      <span class="tagline">Where AI Accountability Begins</span>
+    </h1>
+    <p class="hero-desc">
+      The commercial implementation layer of the AgDR Standard. 
+      Ground Zero turns open evidentiary principles into production-grade software — 
+      court-admissible, tamper-evident, and built for the age when machines decide.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">AgDR-Native</span>
+      <span class="pill">Court-Admissible Records</span>
+      <span class="pill">BLAKE3 + Ed25519</span>
+      <span class="pill">Canada Evidence Act</span>
+      <span class="pill">Zero-Trust Architecture</span>
+      <span class="pill">Multi-Jurisdiction</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#tiers" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Get Started
+      </a>
+      <a href="https://accountability.ai" class="btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+        Open Standard
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM FEATURES -->
+<section id="platform">
+  <div class="container">
+    <div class="section-label">The Platform</div>
+    <h2 class="section-title">Enterprise AI Accountability Infrastructure</h2>
+    <p class="section-desc">Ground Zero operationalizes the AgDR standard into a complete commercial stack — from atomic capture at inference time to court-ready evidence packages.</p>
+    
+    <div class="stats-row">
+      <div class="stat-item"><span class="stat-num">&lt; 72&mu;s</span><span class="stat-label">Capture Latency</span></div>
+      <div class="stat-item"><span class="stat-num">99.9998%</span><span class="stat-label">BFT Success Rate</span></div>
+      <div class="stat-item"><span class="stat-num">17,400+</span><span class="stat-label">Decisions / Second</span></div>
+      <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Merkle Verified</span></div>
+      <div class="stat-item"><span class="stat-num">40%</span><span class="stat-label">Byzantine Tolerance</span></div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚛</div>
+        <div class="feature-title">Atomic Kernel Inference (AKI)</div>
+        <div class="feature-desc">Every inference captured at the exact decision point — zero-clock, kernel-level, with BLAKE3 hash and Ed25519 signature. Tamper-proof from birth.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔗</div>
+        <div class="feature-title">Sparse Merkle Tree Chain</div>
+        <div class="feature-desc">Forward-secret Merkle spine ensures historical immutability. Every record links cryptographically to its predecessor — no gaps, no edits.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚖</div>
+        <div class="feature-title">Court-Ready Evidence Packages</div>
+        <div class="feature-desc">Automated compilation of AgDR records into legally admissible packages under the Canada Evidence Act and equivalent international frameworks.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡</div>
+        <div class="feature-title">Byzantine Fault Tolerance</div>
+        <div class="feature-desc">WeightedQuorumBFT with Swift HotStuff Pipelining. Survives up to 40% malicious or failed nodes while maintaining sub-100&mu;s capture integrity.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <div class="feature-title">Zero-Knowledge Proofs</div>
+        <div class="feature-desc">NANOZK layerwise proofs and FROST2+ threshold signatures. Prove accountability without exposing proprietary model internals.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <div class="feature-title">Multi-Jurisdiction FOI</div>
+        <div class="feature-desc">Built-in Freedom of Information and regulatory disclosure workflows. Supports PIPEDA, GDPR, EU AI Act, and Canada's AIDA — single platform, global compliance.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">Multi-Agent Swarm Orchestration</div>
+        <div class="feature-desc">Full accountability chain maintained across autonomous agent swarms. Every agent decision, delegation, and cascade is captured atomically.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Embedding Deviation Critic</div>
+        <div class="feature-desc">Real-time semantic drift detection. Flags when model outputs deviate from expected policy-aligned embedding space — before harm occurs.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <div class="feature-title">Vendor-Neutral Integration</div>
+        <div class="feature-desc">OpenAI, Anthropic, Cohere, Mistral, open-weights models. Ground Zero wraps any LLM or agent runtime with identical accountability guarantees.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPRIETARY LICENSING -->
+<section class="proprietary-section" id="licensing">
+  <div class="container">
+    <div class="proprietary-inner">
+      <div>
+        <div class="prop-badge">
+          🔒 Proprietary Commercial Software
+        </div>
+        <h2 class="section-title">Built on Open Standards.<br>Protected by Commercial Law.</h2>
+        <p class="section-desc" style="margin-bottom:1.5rem;">
+          The AgDR specification is open (CC0 / Apache 2.0) and dedicated to the ecosystem. 
+          Ground Zero is the commercial implementation — proprietary software owned and operated 
+          by Genesis Glass Foundation, licensed under strict commercial terms.
+        </p>
+        <p class="section-desc">
+          Clients receive a non-transferable, non-sublicensable license to deploy Ground Zero 
+          within their organization. Source code, algorithmic implementations, and cryptographic 
+          protocols remain the exclusive intellectual property of Genesis Glass Foundation.
+        </p>
+      </div>
+      <div>
+        <div class="license-box">
+          <div><span class="key">Software:</span> <span class="val">Ground Zero v1.0</span></div>
+          <div><span class="key">Vendor:</span> <span class="val">Genesis Glass Foundation</span></div>
+          <div><span class="key">Standard:</span> <span class="val">AgDR v0.2 — AKI</span></div>
+          <div><span class="key">License:</span> <span class="val">Commercial — Proprietary</span></div>
+          <div><span class="key">Source:</span> <span class="val">Closed — Not OSS</span></div>
+          <div><span class="key">Distribution:</span> <span class="val">Licensed Clients Only</span></div>
+          <div><span class="key">Jurisdiction:</span> <span class="val">Canada (primary)</span></div>
+          <div><span class="key">IP Owner:</span> <span class="val">Genesis Glass Foundation</span></div>
+          <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid rgba(13,148,136,0.15);">
+            <span class="key">Underlying Spec:</span> <span class="val">CC0 / Apache 2.0 ✓</span>
+          </div>
+          <div><span class="key">Implementation:</span> <span class="val">Proprietary ©2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS/TIERS -->
+<section id="tiers">
+  <div class="container">
+    <div class="section-label">Commercial Plans</div>
+    <h2 class="section-title">Deployment Tiers</h2>
+    <p class="section-desc">Ground Zero is available under three commercial licensing tiers. All tiers include the full AgDR atomic capture stack and court-admissible record generation.</p>
+    
+    <div class="tiers-grid">
+      <div class="tier-card">
+        <div class="tier-name">Sentinel</div>
+        <div class="tier-price">Single-tenant · SME deployment</div>
+        <ul class="tier-features">
+          <li>AKI atomic capture engine</li>
+          <li>Sparse Merkle Tree record spine</li>
+          <li>Up to 3 AI model endpoints</li>
+          <li>Court-ready evidence export</li>
+          <li>PIPEDA / Canadian law baseline</li>
+          <li>Email support (48h SLA)</li>
+          <li>Annual security audit report</li>
+        </ul>
+        <a href="mailto:legal@accountability.ai?subject=Ground Zero Sentinel Inquiry" class="btn-outline tier-cta">Contact for Pricing</a>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-name">Citadel</div>
+        <div class="tier-price">Multi-tenant · Enterprise deployment</div>
+        <ul class="tier-features">
+          <li>Everything in Sentinel</li>
+          <li>Unlimited AI model endpoints</li>
+          <li>Multi-agent swarm accountability</li>
+          <li>BFT consensus cluster (5-node)</li>
+          <li>ZK-proof audit trails</li>
+          <li>Multi-jurisdiction compliance pack</li>
+          <li>Dedicated implementation engineer</li>
+          <li>8h SLA · 99.99% uptime SLA</li>
+        </ul>
+        <a href="mailto:legal@accountability.ai?subject=Ground Zero Citadel Inquiry" class="btn-primary tier-cta">Contact for Pricing</a>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">Sovereign</div>
+        <div class="tier-price">Air-gapped · Government &amp; regulated</div>
+        <ul class="tier-features">
+          <li>Everything in Citadel</li>
+          <li>Air-gapped on-premise deployment</li>
+          <li>FROST2+ threshold signatures</li>
+          <li>FOI / ATIP automation module</li>
+          <li>Parliamentary testimony package</li>
+          <li>Custom jurisdiction legal opinions</li>
+          <li>Source escrow arrangement</li>
+          <li>Dedicated 24/7 response team</li>
+        </ul>
+        <a href="mailto:legal@accountability.ai?subject=Ground Zero Sovereign Inquiry" class="btn-outline tier-cta">Contact for Pricing</a>
+      </div>
+    </div>
+
+    <div class="cta-strip">
+      <h2>Ready to establish accountability at ground zero?</h2>
+      <p>Every AI decision captured. Every record signed. Every audit trail court-admissible.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="mailto:legal@accountability.ai?subject=Ground Zero Inquiry" class="btn-primary">Request a Demo</a>
+        <a href="https://accountability.ai" class="btn-outline">Learn the Standard</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="28" height="28" viewBox="0 0 48 48" fill="none">
+        <polygon points="24,3 45,42 3,42" fill="rgba(13,148,136,0.12)" stroke="#0d9488" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="24" y="33" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="#0d9488">G</text>
+      </svg>
+      <div class="footer-brand-text">
+        <div class="name">Genesis Glass Foundation</div>
+        <div class="sub">accountability.ai &nbsp;·&nbsp; groundzero.accountability.ai</div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://accountability.ai">Standard</a>
+      <a href="https://accountability.ai/legal">Legal</a>
+      <a href="https://github.com/aiccountability-source/AgDR">GitHub</a>
+      <a href="mailto:legal@accountability.ai">Contact</a>
+    </div>
+    <div class="footer-copy">
+      <div class="prop">© 2026 Genesis Glass Foundation</div>
+      <div>Ground Zero is proprietary commercial software.</div>
+      <div>AgDR specification: CC0 / Apache 2.0</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
