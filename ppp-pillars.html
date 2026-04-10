@@ -1,211 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ppp
-pillars — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
-  <title>ppp pillars | Accountability.ai</title>
-  <link rel="canonical" href="https://accountability.ai/ppp pillars">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Accountability.ai">
-  <meta property="og:title" content="ppp pillars | Accountability.ai">
-  <meta property="og:description" content="ppp
-pillars — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
-
-  <style>
-    body { font-family: system-ui, -apple-system, sans-serif; }
-
-    /* Typography */
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
-
-    /* Body text */
-    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-    .prose strong { color: #f4f4f5; font-weight: 600; }
-    .prose em { color: #a1a1aa; }
-
-    /* Lists */
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-    .prose li strong { color: #f4f4f5; }
-
-    /* Links */
-    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-    .prose a:hover { color: #99f6e4; }
-
-    /* Code */
-    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-    /* Blockquotes */
-    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-    /* Tables */
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-    .prose tr:nth-child(even) td { background: #18181b; }
-    .prose tr:hover td { background: #1f2937; }
-
-    /* HR */
-    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-    /* Nav gradient */
-    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The PPP Pillars | The AgDR Standard</title>
+    <style>
+        :root { --teal: #2dd4bf; --bg: #050505; --text: #a1a1aa; --border: #1a1a1a; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: sans-serif; line-height: 1.7; }
+        nav { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        header { padding: 10rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+        h1 { color: #fff; font-size: clamp(2.5rem, 7vw, 4.5rem); letter-spacing: -3px; line-height: 0.9; }
+        
+        main { max-width: 900px; margin: 0 auto; padding: 2rem 2rem 8rem; }
+        .pillar-section { margin-bottom: 6rem; }
+        .pillar-head { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .pillar-num { color: var(--teal); font-family: monospace; font-weight: bold; font-size: 1.5rem; }
+        h2 { color: #fff; margin: 0; font-size: 2rem; letter-spacing: -1px; }
+        
+        .spec-box { background: #0a0a0a; border: 1px solid var(--border); padding: 2rem; border-radius: 8px; margin-top: 2rem; }
+        .spec-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #555; display: block; margin-bottom: 1rem; }
+        
+        .sitemap { background: #080808; padding: 6rem 2rem; border-top: 1px solid var(--border); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto; }
+        .col a { display: block; color: #444; text-decoration: none; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        footer { text-align: center; padding: 4rem; font-size: 0.7rem; color: #333; }
+    </style>
 </head>
-<body class="bg-zinc-950 text-white">
+<body>
 
-  <!-- NAV -->
-  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex flex-wrap gap-5 text-sm font-medium">
-        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
-      </div>
-    </div>
-  </nav>
+    <nav>
+        <a href="/" style="color:#fff; text-decoration:none; font-weight:bold; letter-spacing:-1px;">ACCOUNTABILITY.AI</a>
+        <a href="/getting-started.html" style="color:var(--teal); text-decoration:none; font-size:0.75rem; font-weight:bold;">GET STARTED</a>
+    </nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-4xl mx-auto px-6 py-16">
-    <article class="prose">
-      <h1 id="the-three-ppp-pillars-of-agdr-v0.2">The Three PPP Pillars
-      of AgDR v0.2</h1>
-      <p><strong>Policy = PPP</strong><br />
-      (Provenance · Place · Purpose)</p>
-      <p>The precise meaning of each P is of the beholder and is
-      captured verbatim at the exact moment of inference.</p>
-      <table>
-      <colgroup>
-      <col style="width: 9%" />
-      <col style="width: 35%" />
-      <col style="width: 44%" />
-      <col style="width: 10%" />
-      </colgroup>
-      <thead>
-      <tr class="header">
-      <th>Pillar</th>
-      <th>Meaning (of the beholder)</th>
-      <th>What It Captures at Inference Instant</th>
-      <th>Why It Matters</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td><strong>Provenance</strong></td>
-      <td>Where we are today</td>
-      <td>Current state, stakeholders, context, “what’s in it for me”
-      (WIIFM)</td>
-      <td>Proves <strong>who</strong> decided and that the record is
-      authentic from the first moment</td>
-      </tr>
-      <tr class="even">
-      <td><strong>Place</strong></td>
-      <td>Where we are going</td>
-      <td>Intended destination, target state, “what success looks
-      like”</td>
-      <td>Proves the decision was aimed at a lawful and intended
-      outcome</td>
-      </tr>
-      <tr class="odd">
-      <td><strong>Purpose</strong></td>
-      <td>Why we are going</td>
-      <td>Explicit reason, desired agent behaviour, “how” we get there
-      (closed by Beauty, Truth &amp; Wisdom)</td>
-      <td>Proves genuine intent and fiduciary motivation</td>
-      </tr>
-      </tbody>
-      </table>
-      <h3 id="how-the-pillars-work-together">How the Pillars Work
-      Together</h3>
-      <p>At the exact “i” point (inference instant), the Atomic Kernel
-      Inference (AKI) captures all three pillars
-      <strong>atomically</strong> in one indivisible transaction.</p>
-      <ul>
-      <li>No post-facto editing is possible<br />
-      </li>
-      <li>Binary human delta chain shows every human intervention<br />
-      </li>
-      <li>Escalation always ends with the Fiduciary Office Intervener
-      (FOI)</li>
-      </ul>
-      <p>This creates the first mathematically guaranteed
-      contemporaneous record of agent decisions.</p>
-      <p><em>Part of the AgDR v0.2 foundational standard</em><br />
-      Canonical source:
-      https://github.com/aiccountability-source/AgDR</p>
-    </article>
-  </main>
+    <header>
+        <h1>The Three <br>Pillars.</h1>
+        <p style="font-size:1.25rem; margin-top:1.5rem;">The PPP Triplet is the minimum viable data required for a defensible AI inference.</p>
+    </header>
 
-  <!-- DOCUMENT NAVIGATION FOOTER -->
-  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
-    <div class="max-w-5xl mx-auto px-6">
-      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-      <div class="grid md:grid-cols-4 gap-5">
-        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-        </a>
-        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-        </a>
-        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-        </a>
-        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-        </a>
-        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-        </a>
-        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-        </a>
-        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-        </a>
-        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-        </a>
-      </div>
-    </div>
-  </section>
+    <main>
+        <section class="pillar-section">
+            <div class="pillar-head">
+                <span class="pillar-num">01</span>
+                <h2>Purpose</h2>
+            </div>
+            <p>Every inference begins with an intent. Purpose defines the "Why" and the closing principles—Beauty, Truth, and Wisdom. This is not metadata; it is a boundary condition for the kernel.</p>
+            <div class="spec-box">
+                <span class="spec-label">Statutory Anchor</span>
+                <p style="color:#eee; margin:0;">Satisfies the <strong>Business Judgment Rule</strong> by proving the decision was made on an informed, intentional basis.</p>
+            </div>
+        </section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
-    <p class="mb-2">
-      The AgDR Standard is open, royalty-free, and dual-licensed:
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
-    </p>
-    <p>
-      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
-      &nbsp;·&nbsp; © 2026 Accountability.ai
-    </p>
-  </footer>
+        <section class="pillar-section">
+            <div class="pillar-head">
+                <span class="pillar-num">02</span>
+                <h2>Place</h2>
+            </div>
+            <p>Place captures the hardware and regulatory jurisdiction of the compute node. It anchors the digital act to a physical territory.</p>
+            <div class="spec-box">
+                <span class="spec-label">Statutory Anchor</span>
+                <p style="color:#eee; margin:0;">Enforces <strong>CEA s.31.2 (System Integrity)</strong>. It proves the record-keeping system was functioning in a known, authorized environment.</p>
+            </div>
+        </section>
+
+        <section class="pillar-section">
+            <div class="pillar-head">
+                <span class="pillar-num">03</span>
+                <h2>Person</h2>
+            </div>
+            <p>Person identifies the authorized agent or Fiduciary Officer. This is the cryptographic "hand" that signs the record into existence.</p>
+            <div class="spec-box">
+                <span class="spec-label">Statutory Anchor</span>
+                <p style="color:#eee; margin:0;">Maps to <strong>Bills of Exchange Act s.4 (Signature)</strong>. It ensures the inference is an unconditional, non-repudiable order.</p>
+            </div>
+        </section>
+    </main>
+
+    <section class="sitemap">
+        <div class="grid">
+            <div class="col">
+                <h5>The Standard</h5>
+                <a href="/ppp-pillars.html" style="color:#fff; font-weight:bold;">The Pillars</a>
+                <a href="/manifesto.html">The Manifesto</a>
+                <a href="/legal-glossary.html">Legal Glossary</a>
+            </div>
+            <div class="col">
+                <h5>Heritage</h5>
+                <a href="/bills-of-exchange-mapping.html">1890/1893 Mapping</a>
+                <a href="/cbca-fiduciary-mapping.html">CBCA s.122 Shield</a>
+                <a href="/ppp-legal-compliance.html">PPP Compliance</a>
+            </div>
+            <div class="col">
+                <h5>Technical</h5>
+                <a href="/getting-started.html">Initialize v1.8</a>
+                <a href="/aki-formal-definition.html">AKI Protocol</a>
+                <a href="/agi-court-precedents.html">Court of 2076</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        OSHAWA, ONTARIO · CC0 1.0 UNIVERSAL
+    </footer>
 
 </body>
 </html>
