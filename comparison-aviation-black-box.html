@@ -1,241 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="comparison aviation black
-box — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
-  <title>comparison aviation black box | Accountability.ai</title>
-  <link rel="canonical" href="https://accountability.ai/comparison
-aviation black box">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AgDR vs. Aviation Black Boxes | The AI Accountability Gold Standard</title>
+    <meta name="description" content="A comparative analysis of the Aviation Flight Data Recorder (FDR) and AgDR v1.8. Why cryptographic atomic records are the new standard for autonomous safety.">
+    
+    <style>
+        :root { --teal: #2dd4bf; --orange: #fb923c; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { 
+            margin: 0; background-color: var(--bg); color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            line-height: 1.8; -webkit-font-smoothing: antialiased;
+        }
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Accountability.ai">
-  <meta property="og:title" content="comparison aviation black
-box | Accountability.ai">
-  <meta property="og:description" content="comparison aviation black
-box — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+        /* Navigation */
+        nav { 
+            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
+            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #1a1a1a; z-index: 100;
+        }
+        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
+        .badge { border: 1px solid var(--orange); color: var(--orange); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
+        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
+        .nav-links a:hover { color: var(--teal); }
 
-  <style>
-    body { font-family: system-ui, -apple-system, sans-serif; }
+        /* Hero Header */
+        header { 
+            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
+            background: radial-gradient(circle at 50% 100%, #431407 0%, transparent 60%);
+        }
+        .label { color: var(--orange); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
+        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
+        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
 
-    /* Typography */
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
+        /* Content Sections */
+        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
+        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        
+        /* Comparison Table */
+        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #080808; }
+        th { text-align: left; padding: 1.2rem 1rem; color: #666; background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
+        td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+        tr td:first-child { font-weight: 800; color: #fff; background: #0a0a0a; width: 15%; }
+        tr td:nth-child(2) { color: #888; width: 35%; }
+        tr td:nth-child(3) { color: var(--text); border-left: 1px solid var(--border); width: 35%; }
+        tr td:last-child { color: var(--teal); font-weight: 700; width: 15%; }
+        tr:hover td { background: #111; }
 
-    /* Body text */
-    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-    .prose strong { color: #f4f4f5; font-weight: 600; }
-    .prose em { color: #a1a1aa; }
+        /* Highlight Block */
+        .highlight-box { 
+            background: #000; border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; margin: 4rem 0;
+            border-left: 4px solid var(--orange);
+        }
+        .highlight-box h3 { color: var(--orange); margin-top: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+        .highlight-box p { margin-bottom: 0; font-style: italic; color: #aaa; }
 
-    /* Lists */
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-    .prose li strong { color: #f4f4f5; }
+        /* Sitemap Footer */
+        .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
+        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
+        .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .sitemap-col a { display: block; color: #444; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .sitemap-col a:hover { color: #fff; }
 
-    /* Links */
-    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-    .prose a:hover { color: #99f6e4; }
+        footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
 
-    /* Code */
-    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-    /* Blockquotes */
-    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-    /* Tables */
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-    .prose tr:nth-child(even) td { background: #18181b; }
-    .prose tr:hover td { background: #1f2937; }
-
-    /* HR */
-    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-    /* Nav gradient */
-    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-  </style>
+        @media (max-width: 600px) { h1 { font-size: 2.8rem; } }
+    </style>
 </head>
-<body class="bg-zinc-950 text-white">
+<body>
 
-  <!-- NAV -->
-  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex flex-wrap gap-5 text-sm font-medium">
-        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
-      </div>
-    </div>
-  </nav>
+    <nav>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
+            <span class="badge">MISSION-CRITICAL</span>
+        </div>
+        <div class="nav-links">
+            <a href="/getting-started.html">GET STARTED</a>
+            <a href="/ppp-pillars.html">THE STANDARD</a>
+            <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
+        </div>
+    </nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-4xl mx-auto px-6 py-16">
-    <article class="prose">
-      <h1 id="comparison-to-aviation-black-boxes">Comparison to Aviation
-      Black Boxes</h1>
-      <p><strong>AgDR v0.2 vs Aviation Black Box (FDR +
-      CVR)</strong><br />
-      The gold standard everyone already trusts — now updated for the
-      age of autonomous agents.</p>
-      <table>
-      <colgroup>
-      <col style="width: 14%" />
-      <col style="width: 36%" />
-      <col style="width: 37%" />
-      <col style="width: 11%" />
-      </colgroup>
-      <thead>
-      <tr class="header">
-      <th>Dimension</th>
-      <th>Aviation Black Box (FDR + CVR)</th>
-      <th>AgDR v0.2 + Atomic Kernel Inference (AKI)</th>
-      <th>Edge for the Mission</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td><strong>Purpose</strong></td>
-      <td>Record what happened in the final moments so investigators can
-      understand why</td>
-      <td>Record every single decision the moment it is made so boards,
-      regulators, and courts can understand why an agent acted</td>
-      <td>AgDR prevents the “crash” by making every decision traceable
-      in real time</td>
-      </tr>
-      <tr class="even">
-      <td><strong>Capture Trigger</strong></td>
-      <td>Continuous loop (last 2–25 hours) — only recent history
-      survives</td>
-      <td>Every inference, every time — the “i” point is captured
-      instantly and forever</td>
-      <td>AgDR is always complete</td>
-      </tr>
-      <tr class="odd">
-      <td><strong>Atomic / Indivisible</strong></td>
-      <td>Physical memory in a crash-survivable case</td>
-      <td>True kernel transaction (<code>local_irq_save</code> +
-      <code>preempt_disable</code>) — the entire record is written or
-      not at all</td>
-      <td>AgDR is mathematically stronger</td>
-      </tr>
-      <tr class="even">
-      <td><strong>Tamper-Evidence</strong></td>
-      <td>Armoured case + strict chain-of-custody after recovery</td>
-      <td>Cryptographic signature + forward-secret Merkle chain from the
-      exact moment of inference</td>
-      <td>AgDR is tamper-proof from birth</td>
-      </tr>
-      <tr class="odd">
-      <td><strong>What It Records</strong></td>
-      <td>Physical parameters + cockpit audio</td>
-      <td>Full reasoning trace + PPP triplet + binary human delta + FOI
-      escalation</td>
-      <td>AgDR records <em>why</em> the decision was made</td>
-      </tr>
-      <tr class="even">
-      <td><strong>Legal Weight (Canada)</strong></td>
-      <td>High — routinely admitted under Canada Evidence Act</td>
-      <td>Same foundation, but stronger — atomic + cryptographic proof
-      exceeds the “system integrity” test</td>
-      <td>AgDR is easier to admit in court</td>
-      </tr>
-      <tr class="odd">
-      <td><strong>Cost &amp; Overhead</strong></td>
-      <td>$20k–$50k+ per aircraft + physical maintenance</td>
-      <td>Near-zero — runs on any server or edge device</td>
-      <td>AgDR is orders of magnitude cheaper and more scalable</td>
-      </tr>
-      <tr class="even">
-      <td><strong>Scalability</strong></td>
-      <td>One per aircraft</td>
-      <td>Every agent, every model, every jurisdiction</td>
-      <td>AgDR is global infrastructure</td>
-      </tr>
-      </tbody>
-      </table>
-      <p><strong>Bottom line</strong><br />
-      The black box solved aviation’s accountability crisis in the
-      1950s.<br />
-      AgDR solves the same crisis for autonomous intelligence in 2026 —
-      except it does not wait for the crash. It records every decision,
-      every time, with mathematical certainty.</p>
-      <p>This is why we stand at the pinnacle of the standard of care
-      that I wish to one day achieve.</p>
-      <p><em>Part of the AgDR v0.2 foundational standard</em><br />
-      Canonical source:
-      https://github.com/aiccountability-source/AgDR</p>
-    </article>
-  </main>
+    <header>
+        <span class="label">Safety Systems Comparison</span>
+        <h1>Beyond the Black Box.</h1>
+        [attachment_0](attachment)
+        <p class="lead">The aviation black box solved the 20th century’s accountability crisis. <strong>AgDR v1.8</strong> solves the autonomous intelligence crisis of the 21st—not by recording the crash, but by recording the reasoning.</p>
+    </header>
 
-  <!-- DOCUMENT NAVIGATION FOOTER -->
-  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
-    <div class="max-w-5xl mx-auto px-6">
-      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-      <div class="grid md:grid-cols-4 gap-5">
-        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-        </a>
-        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-        </a>
-        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-        </a>
-        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-        </a>
-        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-        </a>
-        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-        </a>
-        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-        </a>
-        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-        </a>
-      </div>
-    </div>
-  </section>
+    <main>
+        <h2>Functional Analysis: FDR/CVR vs. AgDR</h2>
+        <p>While the aviation industry relies on physical recovery and post-incident investigation, AgDR utilizes <strong>Atomic Kernel Inference</strong> to ensure every decision is tamper-proof from the moment of birth.</p>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
-    <p class="mb-2">
-      The AgDR Standard is open, royalty-free, and dual-licensed:
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
-    </p>
-    <p>
-      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
-      &nbsp;·&nbsp; © 2026 Accountability.ai
-    </p>
-  </footer>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dimension</th>
+                        <th>Aviation (FDR + CVR)</th>
+                        <th>AgDR v1.8 (AKI)</th>
+                        <th>The Edge</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Purpose</td>
+                        <td>Post-crash investigation; understanding the final moments.</td>
+                        <td>Real-time decision traceability for every autonomous act.</td>
+                        <td>PREVENTION</td>
+                    </tr>
+                    <tr>
+                        <td>Trigger</td>
+                        <td>Continuous loop (last 2–25 hours); data is overwritten.</td>
+                        <td>Immutable capture of every single inference, stored forever.</td>
+                        <td>TOTALITY</td>
+                    </tr>
+                    <tr>
+                        <td>Integrity</td>
+                        <td>Armoured physical casing and physical recovery.</td>
+                        <td>Cryptographic signatures and forward-secret Merkle chains.</td>
+                        <td>PROVABLE</td>
+                    </tr>
+                    <tr>
+                        <td>Content</td>
+                        <td>Physical flight parameters and cockpit audio logs.</td>
+                        <td>Reasoning trace + PPP Triplet + Human Delta Chain.</td>
+                        <td>INTENT</td>
+                    </tr>
+                    <tr>
+                        <td>Legal Status</td>
+                        <td>Admissible as "Business Records" or specialty evidence.</td>
+                        <td>Hardened for Section 31.1 (CEA) as a system-integrity record.</td>
+                        <td>EVIDENTIARY</td>
+                    </tr>
+                    <tr>
+                        <td>Scalability</td>
+                        <td>Hardware dependent; high cost per unit ($20k+).</td>
+                        <td>Software-defined; zero-marginal-cost per agent.</td>
+                        <td>UBIQUITY</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <h3>The Fundamental Shift</h3>
+            <p>"The black box was built to find blame after a tragedy. AgDR was built to provide accountability for every success, preventing the tragedy from ever losing its context."</p>
+        </div>
+
+        <h2>Why Mathematical Certainty Wins</h2>
+        <p>In a courtroom, a physical black box can be damaged or lost. An AgDR record, protected by <strong>BLAKE3</strong> hashing and <strong>local_irq_save</strong> kernel invariants, is mathematically impossible to repudiate. It moves the conversation from "What do we think happened?" to "Check the record."</p>
+    </main>
+
+    <section class="sitemap">
+        <div class="sitemap-grid">
+            <div class="sitemap-col">
+                <h5>Architecture</h5>
+                <a href="/getting-started.html">Initialize v1.8</a>
+                <a href="/aki-formal-definition.html">AKI Specification</a>
+                <a href="/rust-core.html">Rust Foundation</a>
+            </div>
+            <div class="sitemap-col">
+                <h5>Governance</h5>
+                <a href="/ppp-pillars.html">PPP Pillars</a>
+                <a href="/foi-formal-definition.html">FOI Definition</a>
+                <a href="/human-delta-chain.html">Human Oversight</a>
+            </div>
+            <div class="sitemap-col">
+                <h5>Legal Discovery</h5>
+                <a href="/section-31-1.html">Section 31.1 Mapping</a>
+                <a href="/agi-court-precedents.html">Court Precedents</a>
+                <a href="/cbca-fiduciary.html">CBCA Fiduciary Mapping</a>
+            </div>
+            <div class="sitemap-col">
+                <h5>Resources</h5>
+                <a href="/sandbox.html">Interactive Sandbox</a>
+                <a href="/horizontal-scaling.html">Horizontal Scaling</a>
+                <a href="/beauty-truth-wisdom.html">Beauty & Truth</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="legal">
+        OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · MISSION-CRITICAL INTELLIGENCE
+    </footer>
 
 </body>
 </html>
