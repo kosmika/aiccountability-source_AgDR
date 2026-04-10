@@ -1,64 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/TechArticle">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 2076 Court | The Black Screen Protocol</title>
+    <title>Human Delta Chain & FOI Specification | AgDR Phoenix 1.8</title>
+    <meta name="description" content="Technical specification for the Human Delta Chain and Final Oversight Integrity (FOI) within the AgDR framework. Ensuring fiduciary duty of care in AGI.">
+    
+    <meta name="geo.region" content="CA-ON" />
+    <meta name="geo.placename" content="Oshawa" />
+    
     <style>
-        :root { --teal: #2dd4bf; --bg: #000; --text: #444; --highlight: #fff; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: "Courier New", monospace; line-height: 1.6; overflow-x: hidden; }
+        :root { 
+            --teal: #14b8a6; 
+            --obsidian: #0f172a; 
+            --bone: #f8fafc; 
+            --slate: #64748b; 
+            --border: #e2e8f0; 
+        }
         
-        /* The "Black Screen" Aesthetic */
-        .court-monitor { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; }
-        .glitch-text { color: var(--highlight); font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 2rem; opacity: 0.8; }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { 
+            margin: 0; background-color: var(--bone); color: var(--obsidian); 
+            font-family: "Inter", -apple-system, system-ui, sans-serif; 
+            line-height: 1.6; 
+        }
+
+        /* High-Authority Navigation */
+        nav { 
+            padding: 1rem 2rem; background: #fff; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .brand { font-weight: 800; letter-spacing: -0.02em; color: var(--obsidian); text-decoration: none; font-size: 1.1rem; }
+        .version-badge { border: 1px solid var(--teal); color: var(--teal); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 900; }
+
+        /* Elegant Hero */
+        header { 
+            padding: 10rem 2rem 6rem; max-width: 1000px; margin: 0 auto; 
+            background: radial-gradient(circle at top right, #f1f5f9, transparent);
+        }
+        .label { color: var(--teal); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--obsidian); letter-spacing: -0.04em; line-height: 1; margin: 0; }
+        .lead { font-size: 1.25rem; color: var(--slate); max-width: 650px; margin-top: 1.5rem; font-weight: 400; }
+
+        main { max-width: 1000px; margin: 0 auto; padding: 0 2rem 10rem; }
+
+        /* Content Sections */
+        .spec-section { margin-top: 6rem; border-top: 1px solid var(--border); padding-top: 3rem; }
+        h2 { font-size: 1.75rem; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
         
-        main { max-width: 800px; width: 100%; border-top: 1px solid #111; padding-top: 4rem; }
-        h1 { color: #fff; font-size: 2rem; letter-spacing: -1px; font-weight: 200; margin-bottom: 3rem; }
+        /* The FOI Regulatory Bridge */
+        .regulatory-card { 
+            background: #fff; border: 1px solid var(--border); padding: 3rem; 
+            border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin: 4rem 0;
+        }
+        .foi-title { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .foi-title h3 { margin: 0; font-size: 1.5rem; }
+
+        /* Technical Data Grid */
+        .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
+        .data-table th { text-align: left; padding: 1rem; border-bottom: 2px solid var(--obsidian); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); }
+        .data-table td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
         
-        .forensic-log { background: #050505; border: 1px solid #111; padding: 2rem; color: #666; font-size: 0.85rem; border-radius: 4px; line-height: 2; }
-        .forensic-log b { color: var(--teal); }
-        
-        .verdict-box { margin-top: 6rem; border-left: 1px solid var(--teal); padding-left: 2rem; }
-        .verdict-box h2 { color: #fff; font-size: 1.4rem; margin-bottom: 1rem; }
-        
-        .wisdom-anchor { margin-top: 8rem; text-align: center; color: #222; font-style: italic; font-size: 0.9rem; }
-        
-        footer { position: fixed; bottom: 2rem; width: 100%; text-align: center; font-size: 0.6rem; letter-spacing: 2px; }
+        .code-snippet { background: var(--obsidian); color: #e2e8f0; padding: 2rem; border-radius: 8px; font-family: "JetBrains Mono", monospace; font-size: 0.85rem; overflow-x: auto; margin: 2rem 0; }
+
+        .philosophy-footer { text-align: center; color: var(--slate); font-style: italic; margin-top: 8rem; font-size: 1.1rem; }
+
+        footer { text-align: center; padding: 6rem 2rem; border-top: 1px solid var(--border); font-size: 0.7rem; color: var(--slate); letter-spacing: 0.1em; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div class="court-monitor">
-        <span class="glitch-text">NO HUMAN TESTIMONY DETECTED</span>
-        
-        <main>
-            <h1>The Black Screen Verdict.</h1>
-            <p>In the year 2076, the "Black Box" is no longer a mystery; it is a crime. The court does not ask for your intent. It queries the <strong>T-0 Partition</strong>. If the seal is missing, the liability is absolute.</p>
+    <nav>
+        <a href="/" class="brand">ACCOUNTABILITY.AI</a>
+        <span class="version-badge">AGDR v1.8 PHOENIX</span>
+    </nav>
 
-            <div class="forensic-log">
-                [TIMESTAMP: 2076.04.10.T0]<br>
-                [QUERY: INFERENCE_ID_8829-X]<br>
-                [RESULT: <b>PROVIDENCE_FOUND</b>]<br>
-                [RESULT: <b>PLACE_AUTHORIZED</b>]<br>
-                [RESULT: <b>PURPOSE_MATCHED</b>]<br>
-                [INTERRUPT_STATUS: <b>PASSED_950ns_GATE</b>]<br>
-                <br>
-                <span style="color:#fff;">VERDICT: FIDUCIARY DUTY SATISFIED.</span>
+    <header>
+        <span class="label">Technical Specification</span>
+        <h1>Human Delta Chain <br>& FOI Integration.</h1>
+        <p class="lead">Bridging the 950ns Force Interrupt with meaningful human oversight to satisfy global regulatory duty of care.</p>
+    </header>
+
+    <main>
+        <section class="spec-section">
+            <h2>The Delta Invariant</h2>
+            <p>The <strong>Human Delta Chain</strong> is the forensic record of human variance within the autonomous execution loop. It captures the <strong>"Meaning"</strong> that the Beholder injects into the system, ensuring that the machine's <strong>Truth, Wisdom, and Beauty</strong> remain aligned with human intent.</p>
+            
+            <div class="code-snippet">
+                // Atomic Delta Capture<br>
+                struct HumanDelta {<br>
+                &nbsp;&nbsp;id: UUID,<br>
+                &nbsp;&nbsp;foi_signature: Ed25519,<br>
+                &nbsp;&nbsp;delta_value: i32, // 0 = Passive Consent, 1+ = Active Steer<br>
+                &nbsp;&nbsp;interrupt_sync: "950ns"<br>
+                }
             </div>
+        </section>
 
-            <section class="verdict-box">
-                <h2>The Beholder’s Vindication</h2>
-                <p>Because the Director in 2026 chose to anchor **Beauty, Truth, and Wisdom** into the 1.8 Phoenix kernel, the 2076 court sees a perfect reflection of intent. The "Black Screen" is not an absence of evidence; it is the presence of <strong>Deterministic Finality</strong>.</p>
-            </section>
-
-            <div class="wisdom-anchor">
-                "Beauty was the goal. Truth was the origin. Wisdom was the boundary."
+        <section class="regulatory-card">
+            <div class="foi-title">
+                <h3>Final Oversight Integrity</h3>
+                <span class="version-badge" style="background:var(--teal); color:#fff; border:none;">FOI</span>
             </div>
-        </main>
-    </div>
+            <p>The FOI role is the ultimate regulatory anchor. By auditing the Delta Chain, the FOI provides the <strong>Duty of Care</strong> required by the CBCA s.122 and the SCC T702 standards. It is the human gate that validates the <strong>PPP Triplet</strong> before the Aki Kernel commits the instruction.</p>
+        </section>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Standard of Care</th>
+                    <th>Forensic Admissibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Capture Velocity</b></td>
+                    <td>950ns (Force Interrupt)</td>
+                    <td>Contemporaneous Record (CEA s.31.1)</td>
+                </tr>
+                <tr>
+                    <td><b>Human Input</b></td>
+                    <td>Binary Delta (FOI-Signed)</td>
+                    <td>Fiduciary Non-Delegation</td>
+                </tr>
+                <tr>
+                    <td><b>Outcome</b></td>
+                    <td>Deterministic Finality</td>
+                    <td>Proof of Honest Intent</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="philosophy-footer">
+            "We do not delegate the conscience to the machine; we use the machine to enforce the conscience."
+        </div>
+    </main>
 
     <footer>
-        OSHAWA ARCHIVE · PHOENIX 1.8 SEED · CC0 1.0
+        Oshawa, Ontario, Canada &bull; CC0 1.0 Universal &bull; Beauty Truth Wisdom
     </footer>
 
 </body>
