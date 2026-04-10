@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Future AGI Court | The Final AgDR Audit</title>
-    <meta name="description" content="The 2076 Forensic Audit Chamber for AgDR v1.8. Deterministic finality through the lens of fiduciary duty of care.">
     
     <style>
         :root { 
@@ -29,58 +28,71 @@
         .court-seal { font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; color: var(--slate); }
 
         header { 
-            padding: 12rem 4rem 6rem; max-width: 1100px; margin: 0 auto; 
+            padding: 10rem 4rem 5rem; max-width: 1200px; margin: 0 auto; 
             border-bottom: 1px solid var(--border);
         }
         .date-marker { color: var(--teal); font-family: monospace; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; display: block; }
-        h1 { font-size: clamp(3rem, 6vw, 5.5rem); letter-spacing: -0.05em; line-height: 0.85; margin: 0; font-weight: 800; }
-        .ceremony-sub { font-size: 1.5rem; color: var(--slate); margin-top: 2rem; font-weight: 300; max-width: 700px; }
+        h1 { font-size: clamp(3rem, 6vw, 5rem); letter-spacing: -0.05em; line-height: 0.9; margin: 0; font-weight: 800; }
+        .ceremony-sub { font-size: 1.25rem; color: var(--slate); margin-top: 1.5rem; font-weight: 300; max-width: 800px; }
 
-        main { max-width: 1100px; margin: 0 auto; padding: 6rem 4rem; }
+        main { max-width: 1200px; margin: 0 auto; padding: 4rem; }
 
-        /* The Forensic Black Screen (The "Gate") */
+        /* The Forensic Gate - Optimized for "Fiduciary Shield" Weight */
         .forensic-gate { 
-            background: var(--obsidian); color: #fff; padding: 4rem; 
-            border-radius: 4px; box-shadow: 0 40px 100px rgba(15, 23, 42, 0.2);
-            margin: 4rem 0; position: relative;
+            background: var(--obsidian); color: #fff; padding: 4rem 5rem; 
+            border-radius: 4px; box-shadow: 0 40px 100px rgba(15, 23, 42, 0.15);
+            margin: 5rem 0; position: relative;
+            border-left: 4px solid var(--teal); /* Matches the 'Force' effect in your screenshot */
         }
-        .forensic-gate h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: var(--teal); margin-bottom: 3rem; }
+        .forensic-gate h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 4px; color: var(--teal); margin-bottom: 4rem; font-weight: 800; }
         
-        .audit-line { font-family: "JetBrains Mono", monospace; font-size: 0.9rem; margin-bottom: 1.5rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; display: flex; justify-content: space-between; }
-        .audit-line b { color: var(--teal); }
+        .audit-line { 
+            font-family: "JetBrains Mono", monospace; 
+            font-size: 0.95rem; 
+            margin-bottom: 2.5rem; 
+            border-bottom: 1px solid #1e293b; 
+            padding-bottom: 1rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end;
+        }
+        .audit-line span { color: #94a3b8; max-width: 300px; }
+        .audit-line b { color: var(--teal); letter-spacing: 1px; font-weight: 800; }
 
-        /* The Statutory Link */
+        /* Statutory Ceremony Layout */
         .statutory-ceremony { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-top: 8rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; margin-top: 6rem;
         }
-        .statute-card h3 { font-size: 1.25rem; letter-spacing: -0.02em; border-bottom: 1px solid var(--obsidian); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-        .statute-card p { color: var(--slate); font-size: 1.1rem; }
+        .statute-card h3 { font-size: 1.2rem; letter-spacing: -0.01em; border-bottom: 1px solid var(--obsidian); padding-bottom: 1rem; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .statute-card p { color: var(--slate); font-size: 1.05rem; font-weight: 400; }
 
-        .fiduciary-conclusion { text-align: center; margin-top: 10rem; }
+        .fiduciary-conclusion { text-align: center; margin-top: 8rem; padding-bottom: 4rem; }
         .verdict-stamp { 
-            display: inline-block; border: 3px solid var(--obsidian); padding: 1rem 3rem; 
-            font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 2rem;
+            display: inline-block; border: 4px solid var(--obsidian); padding: 1.5rem 4rem; 
+            font-weight: 900; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 2rem;
         }
 
-        footer { text-align: center; padding: 8rem 4rem; font-size: 0.65rem; color: var(--slate); letter-spacing: 0.2em; text-transform: uppercase; }
+        footer { text-align: center; padding: 6rem 4rem; border-top: 1px solid var(--border); font-size: 0.65rem; color: var(--slate); letter-spacing: 0.2em; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="court-seal">Forensic Archive // Node: Oshawa</div>
-        <div class="court-seal">Standard: AgDR v1.8</div>
+        <div class="court-seal">Standard: AgDR v1.8 Phoenix</div>
     </nav>
 
     <header>
         <span class="date-marker">AUDIT DATE: 2076.04.10</span>
         <h1>The Future <br>AGI Court.</h1>
-        <p class="ceremony-sub">Where the 950ns Force Interrupt of 2026 meets the Deterministic Finality of 2076.</p>
+        <p class="ceremony-sub">The deterministic finality of the Beholder’s Triplet. Beyond narrative, into forensic truth.</p>
     </header>
 
     <main>
         <section>
-            <p style="font-size: 1.4rem; font-weight: 300; margin-bottom: 4rem;">The Court of 2076 does not litigate "why." It validates "what." The ceremony begins by querying the <strong>T-0 Forensic Clock</strong> to verify the <strong>Beholder’s Triplet</strong>. If the seal is unbroken, the duty is discharged.</p>
+            <p style="font-size: 1.4rem; font-weight: 300; color: var(--slate); margin-bottom: 4rem; max-width: 900px;">
+                The Court of 2076 validates "what." By querying the <strong>T-0 Forensic Clock</strong>, the system verifies the intent captured in the 950ns window. If the seal remains unbroken, the fiduciary duty is discharged.
+            </p>
             
             <div class="forensic-gate">
                 <h2>Forensic Integrity Readout</h2>
@@ -94,17 +106,17 @@
         <section class="statutory-ceremony">
             <div class="statute-card">
                 <h3>The 1890 Precedent</h3>
-                <p>The <strong>Bills of Exchange Act</strong> required a physical signature to move value. The 2076 Court views the <strong>Aki Seal</strong> as the functional, modern evolution of that signature—the point where intent becomes irrevocable law.</p>
+                <p>Just as the <strong>Bills of Exchange Act</strong> required an immutable signature to certify value, the 2076 Court views the <strong>Aki Seal</strong> as the modern evolution of irrevocable intent.</p>
             </div>
             <div class="statute-card">
                 <h3>The 2026 Stewardship</h3>
-                <p>Under <strong>CBCA s.122</strong>, the Beholder implemented the AgDR Phoenix release to bridge the "Black Box" gap. Today, that stewardship is the only shield between the Director and absolute algorithmic liability.</p>
+                <p>Under <strong>CBCA s.122</strong>, the Beholder implemented the Phoenix release to bridge the black-box gap. That stewardship now serves as the singular shield against algorithmic liability.</p>
             </div>
         </section>
 
         <div class="fiduciary-conclusion">
             <div class="verdict-stamp">Innocent</div>
-            <p style="color: var(--slate);">The Duty of Care has been successfully verified across the 50-year forensic delta.</p>
+            <p style="color: var(--slate); font-weight: 500; letter-spacing: 1px;">DUTY OF CARE VERIFIED // NO DRIFT DETECTED</p>
         </div>
     </main>
 
