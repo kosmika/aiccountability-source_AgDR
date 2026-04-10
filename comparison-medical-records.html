@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>AgDR vs. Medical Records | The Standard of Care for Intelligence</title>
-    <meta name="description" content="A formal comparison between Electronic Health Records (EHR) and AgDR v1.8. Elevating AI accountability to clinical-grade reliability.">
+    <title>AgDR vs. Medical Records | The AI Clinical Standard</title>
+    <meta name="description" content="A comparative analysis of Electronic Health Records (EHR) and AgDR. Why AI governance requires clinical-grade forensic integrity.">
     
     <style>
-        :root { --teal: #2dd4bf; --emerald: #10b981; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
+        :root { --teal: #2dd4bf; --blue: #3b82f6; --bg: #050505; --card: #111; --text: #a1a1aa; --border: #222; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { 
             margin: 0; background-color: var(--bg); color: var(--text); 
@@ -22,52 +22,35 @@
             border-bottom: 1px solid #1a1a1a; z-index: 100;
         }
         .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--emerald); color: var(--emerald); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
+        .badge { border: 1px solid var(--blue); color: var(--blue); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
         .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
         .nav-links a:hover { color: var(--teal); }
 
         /* Hero Header */
         header { 
             padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 10% 10%, #064e3b 0%, transparent 60%);
+            background: radial-gradient(circle at 100% 100%, #1e3a8a 0%, transparent 60%);
         }
-        .label { color: var(--emerald); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
+        .label { color: var(--blue); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
         h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
         .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
 
-        /* Content Sections */
+        /* Tables & Content */
         main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        
-        /* Table Design */
-        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 0 50px rgba(16,185,129,0.05); }
+        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
         table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #080808; }
         th { text-align: left; padding: 1.2rem 1rem; color: #666; background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
-        td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
-        tr td:first-child { font-weight: 800; color: #fff; background: #0a0a0a; width: 15%; }
-        tr td:nth-child(2) { color: #888; width: 35%; }
-        tr td:nth-child(3) { color: var(--text); border-left: 1px solid var(--border); width: 35%; }
-        tr td:last-child { color: var(--emerald); font-weight: 700; width: 15%; }
-        tr:hover td { background: #111; }
+        td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .dim-cell { font-weight: 800; color: #fff; width: 25%; }
 
-        /* Forensic Quote */
-        .quote-box { 
-            background: #000; border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; margin: 4rem 0;
-            border-left: 4px solid var(--emerald);
-        }
-        .quote-box h3 { color: var(--emerald); margin-top: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
-        .quote-box p { margin-bottom: 0; font-size: 1.1rem; color: #eee; line-height: 1.4; }
-
-        /* Sitemap Footer */
+        /* Footer Sitemap - Corrected Links */
         .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
         .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
         .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #444; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
+        .sitemap-col a { display: block; color: #555; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; transition: 0.2s; }
         .sitemap-col a:hover { color: #fff; }
-
+        
         footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-
-        @media (max-width: 600px) { h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
@@ -75,7 +58,7 @@
     <nav>
         <div style="display: flex; align-items: center; gap: 1rem;">
             <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-            <span class="badge">ETHICAL-CARE</span>
+            <span class="badge">CLINICAL-LOGS</span>
         </div>
         <div class="nav-links">
             <a href="/getting-started.html">GET STARTED</a>
@@ -85,107 +68,44 @@
     </nav>
 
     <header>
-        <span class="label">Duty of Care Benchmarking</span>
-        <h1>The Clinical Standard.</h1>
-        <p class="lead">Medical records represent the highest historical standard for documenting human life-critical decisions. <strong>AgDR v1.8</strong> brings that same standard—mathematically hardened—to the world of autonomous agents.</p>
+        <span class="label">Forensic Comparison</span>
+        <h1>The AI Patient Chart.</h1>
+        <p class="lead">Applying the rigorous non-repudiation and lifecycle standards of Electronic Health Records (EHR) to autonomous inference.</p>
     </header>
 
     <main>
-        <h2>Functional Analysis: EHR vs. AgDR</h2>
-        <p>In healthcare, the Electronic Health Record (EHR) protects the patient and the physician through longitudinal audibility. AgDR applies these same principles to the digital "i" point of agentic thought.</p>
-
+        <h2>Comparative Standards</h2>
         <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
-                        <th>Dimension</th>
-                        <th>Medical Records (EHR)</th>
+                        <th>Metric</th>
+                        <th>Medical Record (PHIPA)</th>
                         <th>AgDR v1.8 (AKI)</th>
-                        <th>The Edge</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Purpose</td>
-                        <td>Clinical auditability and continuity of care.</td>
-                        <td>Instantaneous, indivisible record of autonomous intent.</td>
-                        <td>REAL-TIME</td>
+                        <td class="dim-cell">Audit Trail</td>
+                        <td>Who accessed/changed the record and when.</td>
+                        <td>Cryptographic proof of every inference and human delta.</td>
                     </tr>
                     <tr>
-                        <td>Capture</td>
-                        <td>Manual or system-logged post-interaction.</td>
-                        <td>Automatic at the nanosecond of CPU inference.</td>
-                        <td>NATIVE</td>
+                        <td class="dim-cell">Non-Repudiation</td>
+                        <td>Electronic or physical signature by provider.</td>
+                        <td>Hardware-bound BLAKE3 hash and Ed25519 signature.</td>
                     </tr>
                     <tr>
-                        <td>Atomicity</td>
-                        <td>Subject to amendments and delayed entry.</td>
-                        <td>True Kernel Block: If the record fails, the decision is purged.</td>
-                        <td>INDIVISIBLE</td>
-                    </tr>
-                    <tr>
-                        <td>Evidence</td>
-                        <td>Presumed reliable under PHIPA / Evidence Acts.</td>
-                        <td>Cryptographically provable via Section 31.1 (CEA).</td>
-                        <td>FORENSIC</td>
-                    </tr>
-                    <tr>
-                        <td>Escalation</td>
-                        <td>Direct accountability to the treating professional.</td>
-                        <td>Forced escalation to a Fiduciary Office Intervener (FOI).</td>
-                        <td>TERMINAL</td>
-                    </tr>
-                    <tr>
-                        <td>Scalability</td>
-                        <td>Siloed by institution and jurisdiction.</td>
-                        <td>Universal protocol for any model or edge device.</td>
-                        <td>GLOBAL</td>
+                        <td class="dim-cell">Retention</td>
+                        <td>Typically 10 years or 10 years past majority.</td>
+                        <td>Immutable Merkle chain; indefinitely verifiable.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <div class="quote-box">
-            <h3>Standard of Care</h3>
-            <p>"If we hold a human doctor to the standard of a perfect record, why would we hold an autonomous system to anything less?"</p>
-        </div>
-
-        <h2>Closing the Fiduciary Gap</h2>
-        <p>The transition from human to autonomous decision-making often results in a "responsibility vacuum." AgDR closes this gap by ensuring that an AI's decision is never isolated. By recording the <strong>Reasoning Trace</strong> and the <strong>PPP Triplet</strong> at the moment of inference, the system establishes a record that carries the same weight—and the same duty—as a clinical entry in a patient's chart.</p>
     </main>
 
     <section class="sitemap">
         <div class="sitemap-grid">
             <div class="sitemap-col">
-                <h5>Architecture</h5>
-                <a href="/getting-started.html">Initialize v1.8</a>
-                <a href="/aki-formal-definition.html">AKI Specification</a>
-                <a href="/rust-core.html">Rust Foundation</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Governance</h5>
-                <a href="/ppp-pillars.html">PPP Pillars</a>
-                <a href="/foi-formal-definition.html">FOI Definition</a>
-                <a href="/human-delta-chain.html">Human Oversight</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Legal Discovery</h5>
-                <a href="/section-31-1.html">Section 31.1 Mapping</a>
-                <a href="/agi-court-precedents.html">Court Precedents</a>
-                <a href="/cbca-fiduciary.html">CBCA Fiduciary Mapping</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Resources</h5>
-                <a href="/sandbox.html">Interactive Sandbox</a>
-                <a href="/comparison-aviation.html">Aviation Comparison</a>
-                <a href="/beauty-truth-wisdom.html">Beauty & Truth</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="legal">
-        OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · FIDUCIARY EXCELLENCE
-    </footer>
-
-</body>
-</html>
+                <h5>
