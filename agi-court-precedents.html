@@ -1,64 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>AGI Court Precedents | Forensic Accountability Standards</title>
-    <meta name="description" content="The evidentiary future of AI governance. How AgDR transforms black-box hallucinations into court-admissible electronic records under Section 31.1.">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "AGI Court Precedents: The Transition to Cryptographic Memory",
-      "author": {
-        "@type": "Person",
-        "name": "Robert Muncaster",
-        "sameAs": ["https://www.linkedin.com/in/robertmuncaster/"]
-      },
-      "datePublished": "2026-03-15",
-      "publisher": {
-        "@type": "Organization",
-        "name": "accountability.ai"
-      }
-    }
-    </script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGI Court Precedents | The Admissibility Standard</title>
     <style>
-        :root { --teal: #2dd4bf; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.8; -webkit-font-smoothing: antialiased;
-        }
+        :root { --teal: #2dd4bf; --bg: #050505; --text: #a1a1aa; --border: #1a1a1a; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: sans-serif; line-height: 1.8; }
+        nav { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; }
+        header { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+        h1 { color: #fff; font-size: 3rem; letter-spacing: -2px; line-height: 1.1; }
+        .case-label { color: var(--teal); font-family: monospace; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
 
-        /* Navigation */
-        nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #1a1a1a; z-index: 100;
-        }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--teal); color: var(--teal); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--teal); }
+        main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        .legal-precedent { margin-bottom: 5rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+        h2 { color: #fff; font-size: 1.8rem; letter-spacing: -0.5px; margin-bottom: 1rem; }
+        .citation { display: block; margin-bottom: 1.5rem; font-style: italic; color: #666; font-size: 0.9rem; }
+        
+        .impact-box { background: #0a0a0a; border: 1px solid #222; padding: 2rem; border-radius: 8px; margin-top: 1.5rem; }
+        .impact-box strong { color: var(--teal); display: block; margin-bottom: 0.5rem; font-size: 0.75rem; text-transform: uppercase; }
 
-        /* Hero Header */
-        header { 
-            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 0% 0%, #0d7377 0%, transparent 50%);
-        }
-        .label { color: var(--teal); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
-        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
+        footer { text-align: center; padding: 4rem; font-size: 0.7rem; color: #333; }
+    </style>
+</head>
+<body>
 
-        /* Content Sections */
-        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        h3 { font-size: 1.2rem; color: var(--teal); margin: 2.5rem 0 1rem; }
-        p { margin-bottom: 1.5rem; }
-        strong { color: #fff; }
+    <nav>
+        <a href="/" style="color:#fff; text-decoration:none; font-weight:bold;">ACCOUNTABILITY.AI</a>
+        <a href="/legal-glossary.html" style="color:var(--teal); text-decoration:none; font-size:0.75rem;">GLOSSARY</a>
+    </nav>
 
-        /* Industrial Table */
-        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border);
+    <header>
+        <span class="case-label">Admissibility v1.8</span>
+        <h1>AGI Court Precedents <br>& System Integrity.</h1>
+    </header>
+
+    <main>
+        <section class="legal-precedent">
+            <h2>The "Black Box" Hearsay Problem</h2>
+            <span class="citation">The Queen v. [Autonomous Entity], Ref: CEA s.31.2 Evolution</span>
+            <p>Traditional computer records are often challenged as hearsay. For AGI output to be admissible, the proponent must prove <strong>System Integrity</strong> at the time the record was made. Without a Force Interrupt, an AI record is merely an observation of a process, not a forensic proof of intent.</p>
+            <div class="impact-box">
+                <strong>The Phoenix Solution:</strong>
+                AgDR 1.8 establishes integrity via the 950ns interrupt. By sealing the intent (T-1) before execution, we provide a contemporaneous record that meets the highest statutory threshold of the Canada Evidence Act.
+            </div>
+        </section>
+
+        <section class="legal-precedent">
+            <h2>Directorial Non-Delegation</h2>
+            <span class="citation">BCE Inc. v. 1976 Debentureholders (Modern Context)</span>
+            <p>Canadian courts have established that Directors owe a fiduciary duty to the corporation that cannot be delegated to third parties—or algorithms. The precedent suggests that a Board is liable for "Algorithmic Drift" if they fail to implement a <strong>Standard of Care</strong> proportional to the risk.</p>
+            <div class="impact-box">
+                <strong>The Phoenix Solution:</strong>
+                The T-0 Forensic Partition provides Directors with a "Fiduciary Shield." It proves the Board implemented a system where the AI was physically incapable of acting without a verified, unalterable seal of purpose.
+            </div>
+        </section>
+
+        <section class="legal-precedent">
+            <h2>The "Signature" Invariant</h2>
+            <span class="citation">Statutory Mapping: Bills of Exchange Act s.4</span>
+            <p>Modern precedents are increasingly viewing cryptographic seals as the functional equivalent of a physical signature. For a high-velocity AI inference to carry the "Force of Law," it must be signed with a finality that matches the human hand.</p>
+            <div class="impact-box">
+                <strong>The Phoenix Solution:</strong>
+                The 600ns–950ns Aki seal is the digital signature of the AGI age. It provides the "Finality Invariant" required for autonomous contracts and corporate actions to hold up under forensic scrutiny.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        OSHAWA, ONTARIO · CC0 1.0 UNIVERSAL · FORENSIC ADMISSIBILITY
+    </footer>
+
+</body>
+</html>
