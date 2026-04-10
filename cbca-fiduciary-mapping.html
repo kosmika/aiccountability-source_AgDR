@@ -1,159 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>CBCA Fiduciary Mapping | Corporate AI Accountability</title>
-    <meta name="description" content="Aligning AI autonomy with Canada Business Corporations Act s.122. How the AgDR Standard satisfies the fiduciary Duty of Care.">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBCA Fiduciary Mapping | The Director's Shield</title>
     <style>
-        :root { --teal: #2dd4bf; --indigo: #312e81; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.8; -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navigation */
-        nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #1a1a1a; z-index: 100;
-        }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--teal); color: var(--teal); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--teal); }
-
-        /* Hero Header */
-        header { 
-            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%);
-        }
-        .label { color: var(--teal); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
-        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
-
-        /* Content Sections */
-        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+        :root { --teal: #2dd4bf; --bg: #050505; --text: #a1a1aa; --border: #1a1a1a; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: sans-serif; line-height: 1.6; }
+        nav { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; }
+        header { padding: 10rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
+        h1 { color: #fff; font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -2px; line-height: 1; }
+        main { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        .logic-card { border: 1px solid var(--border); padding: 2.5rem; margin-bottom: 3rem; border-left: 4px solid var(--teal); background: #0a0a0a; }
+        h2 { color: #fff; margin-top: 0; font-size: 1.5rem; }
+        .statute-link { display: inline-block; font-size: 0.75rem; color: #555; text-transform: uppercase; margin-bottom: 1rem; text-decoration: none; border-bottom: 1px solid #333; }
+        .statute-link:hover { color: #fff; }
         
-        /* Table Design */
-        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #0a0a0a; }
-        th { text-align: left; padding: 1.5rem 1rem; color: var(--teal); background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
-        td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
-        tr:hover td { background: #161616; color: #fff; }
-        .duty-cell { font-weight: 700; color: #fff; width: 30%; }
-
-        /* Summary Box */
-        .legal-box { 
-            background: linear-gradient(to right, #111, #080808); padding: 2.5rem; border-radius: 12px; 
-            border-left: 4px solid var(--teal); margin: 3rem 0; 
-        }
-        .legal-box h3 { margin-top: 0; color: #fff; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Sitemap Footer */
-        .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
-        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
-        .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #444; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
-        .sitemap-col a:hover { color: #fff; }
-
-        footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
+        .sitemap { background: #080808; padding: 4rem 2rem; border-top: 1px solid var(--border); margin-top: 6rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto; }
+        .col a { display: block; color: #444; text-decoration: none; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        footer { text-align: center; padding: 2rem; font-size: 0.7rem; color: #333; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-            <span class="badge">CORPORATE-FIDUCIARY</span>
-        </div>
-        <div class="nav-links">
-            <a href="/getting-started.html">GET STARTED</a>
-            <a href="/ppp-pillars.html">THE STANDARD</a>
-            <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
-        </div>
+        <a href="/" style="color:#fff; text-decoration:none; font-weight:bold;">ACCOUNTABILITY.AI</a>
+        <span style="color:var(--teal); font-size:0.7rem; font-weight:bold; border:1px solid; padding:2px 8px;">FIDUCIARY PROTECTION</span>
     </nav>
 
     <header>
-        <span class="label">Section 122 Alignment</span>
-        <h1>Fiduciary Mapping.</h1>
-        <p class="lead">Autonomous agents do not absolve directors of their duties. AgDR v1.8 provides the evidentiary foundation for proving "Good Faith" and "Duty of Care" in the age of algorithmic decision-making.</p>
+        <h1>Fiduciary Duty & <br>Autonomous Risk.</h1>
+        <p>How AgDR v1.8 satisfies the Duty of Care under federal corporate law.</p>
     </header>
 
     <main>
-        <h2>CBCA s.122 Compliance</h2>
-        <p>The <strong>Canada Business Corporations Act (CBCA)</strong> mandates that every director and officer must act honestly and in good faith with a view to the best interests of the corporation. When decisions are delegated to AI, that duty does not vanish—it intensifies. AgDR v1.8 maps these legal requirements to technical invariants.</p>
-
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>CBCA s.122 Requirement</th>
-                        <th>AgDR v1.8 Technical Implementation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="duty-cell">Honesty and Good Faith (s.122(1)(a))</td>
-                        <td>The <strong>Purpose Pillar</strong> captures the explicit intent of every inference, proving the decision was made "with a view to the best interests of the corporation."</td>
-                    </tr>
-                    <tr>
-                        <td class="duty-cell">Duty of Care (s.122(1)(b))</td>
-                        <td>The <strong>Human Delta Chain</strong> provides evidence of reasonable oversight, demonstrating that directors exercised the care, diligence, and skill of a reasonably prudent person.</td>
-                    </tr>
-                    <tr>
-                        <td class="duty-cell">Compliance with Regulations (s.122(2))</td>
-                        <td>Automatic mapping to <strong>EU AI Act</strong> and <strong>AIDA</strong> within the record itself ensures the corporation is operating within the law.</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="logic-card">
+            <a href="https://laws-lois.justice.gc.ca/eng/acts/c-44/page-14.html#h-137532" class="statute-link">CBCA Section 122(1)(b) ↗</a>
+            <h2>The Duty of Care</h2>
+            <p>Directors must exercise the care, diligence, and skill that a reasonably prudent person would exercise in comparable circumstances. In an AI context, "prudence" requires more than hope. It requires a forensic record.</p>
+            <p><strong>The Shield:</strong> By implementing AgDR, the board ensures that every autonomous decision is logged with a <em>Human Delta</em>. This proves the board did not abdicate oversight to a black box.</p>
         </div>
 
-        <div class="legal-box">
-            <h3>The Fiduciary Shield</h3>
-            <p>An AgDR record is more than a log; it is a <strong>Business Judgment Rule</strong> artifact. By proving that a system was operating within defined parameters (Place) and was overseen by a named human (FOI), directors can demonstrate they satisfied their fiduciary obligations even if a specific AI outcome was undesirable.</p>
+        <div class="logic-card">
+            <h2>The Business Judgment Rule</h2>
+            <p>Courts generally defer to business decisions if they were made on an informed basis. If an AI causes harm, AgDR provides the evidence that the decision process was structured, authorized, and transparently governed.</p>
+            <p>Without the <strong>Atomic Kernel Inference</strong>, a director has no evidence to support a Business Judgment defense. They are left with hearsay.</p>
         </div>
-
-        <h2>Closing the Accountability Gap</h2>
-        <p>Without AgDR, an AI decision is a "black box" that creates existential liability for a board. With AgDR, it becomes a documented corporate action. The standard ensures that the <strong>Fiduciary Office Intervener (FOI)</strong> is the terminal point of every high-risk escalation, keeping humans in the loop where the law requires them to be.</p>
     </main>
 
     <section class="sitemap">
-        <div class="sitemap-grid">
-            <div class="sitemap-col">
-                <h5>Architecture</h5>
-                <a href="/getting-started.html">Initialize v1.8</a>
-                <a href="/aki-formal-definition.html">AKI Specification</a>
-                <a href="/rust-core.html">Rust Foundation</a>
+        <div class="grid">
+            <div class="col">
+                <h5>Heritage</h5>
+                <a href="/manifesto.html">The Manifesto</a>
+                <a href="/bills-of-exchange-mapping.html">1890/1893 Mapping</a>
+                <a href="/legal-glossary.html">Legal Glossary</a>
             </div>
-            <div class="sitemap-col">
-                <h5>Governance</h5>
-                <a href="/ppp-pillars.html">PPP Pillars</a>
-                <a href="/human-delta-chain.html">Human Oversight</a>
-                <a href="/foi-formal-definition.html">FOI Definition</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Legal Discovery</h5>
-                <a href="/section-31-1.html">Section 31.1 Mapping</a>
-                <a href="/comparison-medical.html">Medical Standard</a>
-                <a href="/cbca-fiduciary.html" style="color:white; font-weight:bold;">CBCA Fiduciary Mapping</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Resources</h5>
-                <a href="/sandbox.html">Interactive Sandbox</a>
-                <a href="/comparison-aviation.html">Aviation Comparison</a>
-                <a href="/beauty-truth-wisdom.html">Beauty & Truth</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="legal">
-        OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · FIDUCIARY EXCELLENCE
-    </footer>
-
-</body>
-</html>
+            <div class="col">
+                <h5>Compliance</h5>
+                <a href="/legal-mapping.html">Section 3
