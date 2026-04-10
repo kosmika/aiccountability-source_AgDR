@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Accountability.ai | The AgDR Standard for AI Decision Records</title>
-    <meta name="description" content="AgDR: The industrial standard for 0.62µs tamper-evident AI governance. Court-ready under Canada Evidence Act Section 31.1. Proven at Blackwell-scale.">
+    <meta name="description" content="AgDR-Phoenix v1.8: The industrial standard for 0.62µs tamper-evident AI governance. Rust-core implementation. Sub-microsecond performance floor.">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareSourceCode",
-      "name": "AgDR (Atomic Governance Decision Record)",
+      "name": "AgDR-Phoenix",
       "alternateName": "Accountability AI Standard",
       "author": {
         "@type": "Person",
         "name": "Robert Muncaster",
         "sameAs": ["https://www.linkedin.com/in/robertmuncaster/"]
       },
-      "description": "Industrial standard for tamper-evident AI decision records.",
+      "description": "Rust-optimized standard for sub-microsecond AI decision records.",
       "codeRepository": "https://github.com/aiccountability-source/AgDR",
       "programmingLanguage": "Rust",
       "version": "1.8.0-Phoenix",
@@ -49,7 +49,7 @@
             line-height: 1.6; -webkit-font-smoothing: antialiased;
         }
         nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.9); backdrop-filter: blur(12px);
+            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(12px);
             padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid #1a1a1a; z-index: 100;
         }
@@ -63,129 +63,3 @@
         .label { color: var(--teal); font-size: 0.7rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; }
         h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 1.5rem 0; color: #fff; letter-spacing: -3px; line-height: 0.95; }
         .hero-p { max-width: 650px; margin: 0 auto 3rem; color: #888; font-size: 1.2rem; font-weight: 300; }
-        
-        .btn { display: inline-block; padding: 1rem 2.5rem; border-radius: 6px; font-weight: 700; text-decoration: none; transition: 0.2s; }
-        .primary { background: var(--teal); color: #000; }
-
-        .grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-            gap: 1.5rem; max-width: 1200px; margin: -5rem auto 5rem; padding: 0 1.5rem; 
-        }
-        .card { background: var(--card); padding: 2.5rem; border-radius: 12px; border: 1px solid #222; }
-        .card h2 { font-size: 0.65rem; color: var(--teal); margin-bottom: 0.5rem; letter-spacing: 2px; text-transform: uppercase; }
-        .val { font-size: 2.5rem; font-weight: 800; color: #fff; display: block; letter-spacing: -1px; }
-
-        section { max-width: 1200px; margin: 6rem auto; padding: 0 1.5rem; }
-        h3 { font-size: 2.5rem; color: #fff; margin-bottom: 2rem; letter-spacing: -1.5px; }
-
-        .faq-item { border-bottom: 1px solid #111; padding: 1.5rem 0; }
-        .faq-q { font-weight: 700; color: #fff; margin-bottom: 0.5rem; display: block; }
-        .faq-a { color: #777; font-size: 1rem; }
-
-        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-top: 4rem; text-align: left; }
-        .sitemap-col h4 { font-size: 0.7rem; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #555; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.75rem; }
-        .sitemap-col a:hover { color: #fff; }
-
-        .code-wrap { 
-            background: #000; padding: 2rem; border-radius: 12px; 
-            border: 1px solid rgba(45, 212, 191, 0.2); font-family: monospace;
-        }
-
-        footer.main { text-align: center; padding: 8rem 1.5rem 4rem; border-top: 1px solid #111; color: #333; font-size: 0.75rem; }
-        
-        @media (max-width: 850px) { h1 { font-size: 3.2rem; } .sitemap-grid { grid-template-columns: 1fr 1fr; } }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-        <div class="nav-links">
-            <a href="/sandbox.html">SANDBOX</a>
-            <a href="https://github.com/aiccountability-source/AgDR">GITHUB</a>
-            <a href="mailto:founding@accountability.ai">CONTACT</a>
-        </div>
-    </nav>
-
-    <header>
-        <span class="label">AgDR-Phoenix v1.8 · Industrial</span>
-        <h1>The Zero-Latency Floor.</h1>
-        <p class="hero-p">Governance engineered into the kernel. No tax. No friction. Only the record.</p>
-        <a href="https://github.com/aiccountability-source/AgDR" class="btn primary">Deploy v1.8</a>
-    </header>
-
-    <main class="grid">
-        <div class="card"><h2>LATENCY</h2><span class="val">0.62µs</span></div>
-        <div class="card"><h2>THROUGHPUT</h2><span class="val">1.1M/s</span></div>
-        <div class="card"><h2>INTEGRITY</h2><span class="val">BLAKE3</span></div>
-        <div class="card"><h2>WITNESS</h2><span class="val">3.0</span></div>
-    </main>
-
-    <section id="faq">
-        <h3>Industrial Accountability</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
-            <div>
-                <div class="faq-item">
-                    <span class="faq-q">Does AgDR impact model performance?</span>
-                    <p class="faq-a">No. With a kernel latency of 620ns, AgDR operates faster than the network stack. The tax has been engineered out.</p>
-                </div>
-                <div class="faq-item">
-                    <span class="faq-q">Is it compliant with the Canada Evidence Act?</span>
-                    <p class="faq-a">Yes. AgDR is engineered to satisfy Section 31.1 by providing immutable provenance, place, and purpose.</p>
-                </div>
-            </div>
-            <div class="code-wrap">
-                <code style="color:var(--teal);">
-                    // Kernel Integrity Seal<br>
-                    {<br>
-                    &nbsp;&nbsp;"ver": "1.8.0-rust",<br>
-                    &nbsp;&nbsp;"witness": "3.0-python",<br>
-                    &nbsp;&nbsp;"aki_latency": 620,<br>
-                    &nbsp;&nbsp;"status": "immutable"<br>
-                    }
-                </code>
-            </div>
-        </div>
-    </section>
-
-    <section id="sitemap">
-        <div class="sitemap-grid">
-            <div class="sitemap-col">
-                <h4>Architecture</h4>
-                <a href="/aki-formal-definition.html">AKI Protocol</a>
-                <a href="/human-delta-chain-spec.html">Delta-Chain</a>
-                <a href="/technical-details.html">Rust Core Stack</a>
-                <a href="/horizontal-scaling.html">Scaling Specs</a>
-            </div>
-            <div class="sitemap-col">
-                <h4>Legal & PPP</h4>
-                <a href="/ppp-pillars.html">Provenance · Place · Purpose</a>
-                <a href="/ppp-legal-compliance.html">Section 31.1 Mapping</a>
-                <a href="/cbca-fiduciary-mapping.html">CBCA Fiduciary</a>
-                <a href="/eu-ai-act-mapping.html">EU AI Act</a>
-            </div>
-            <div class="sitemap-col">
-                <h4>Justice</h4>
-                <a href="/future-agi-court.html">Future AGI Court</a>
-                <a href="/agi-court-precedents.html">Legal Precedents</a>
-                <a href="/comparison-aviation-black-box.html">Aviation Black Box</a>
-                <a href="/comparison-medical-records.html">Medical Integrity</a>
-            </div>
-            <div class="sitemap-col">
-                <h4>Verification</h4>
-                <a href="/verification-audit-procedure.html">Audit Procedure</a>
-                <a href="/tsx-stress-test.html">TSX Stress Test</a>
-                <a href="/CHANGELOG.html">Changelog</a>
-                <a href="/README.html">Documentation</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="main">
-        <p style="font-style:italic; margin-bottom:2rem;">"If a decision happens in a vacuum, it carries no legal weight."</p>
-        <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL</p>
-    </footer>
-
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-</body>
-</html>
