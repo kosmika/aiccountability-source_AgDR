@@ -1,69 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Accountability.ai | Atomic Genesis Decision Record (AgDR)</title>
-    <style>
-        :root { --teal: #14b8a6; --obsidian: #0f172a; --bone: #f8fafc; --border: #e2e8f0; }
-        body { font-family: -apple-system, sans-serif; background: var(--bone); color: var(--obsidian); margin: 0; }
+<nav class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5 py-4">
+    <div class="max-w-6xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
         
-        nav { padding: 1rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: #fff; }
-        .brand { font-weight: 800; text-decoration: none; color: var(--obsidian); }
+        <div class="flex items-center gap-4">
+            <a href="/" class="text-xl font-bold tracking-tighter hover:text-teal-400 transition">ACCOUNTABILITY.AI</a>
+            <span class="hidden sm:block text-[10px] font-mono text-zinc-600 border border-zinc-800 px-2 py-0.5 rounded">v1.8_PHOENIX</span>
+        </div>
 
-        header { padding: 6rem 2rem; max-width: 1000px; margin: 0 auto; border-bottom: 1px solid var(--border); }
-        h1 { font-size: 3rem; letter-spacing: -1.5px; line-height: 1.1; margin-top: 0; }
-        .sub { font-size: 1.25rem; color: #64748b; max-width: 700px; }
+        <div class="flex-1 max-w-sm flex items-center gap-3">
+            <div class="relative w-full group">
+                <input type="text" 
+                       placeholder="Search Genesis Records..." 
+                       class="w-full bg-white/5 border border-white/10 rounded-full py-1.5 px-4 text-xs font-light text-zinc-300 focus:outline-none focus:border-teal-500/50 focus:bg-white/10 transition-all placeholder:text-zinc-600">
+                <kbd class="absolute right-3 top-2 text-[9px] text-zinc-600 font-mono hidden md:block">CMD+K</kbd>
+            </div>
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-        .card { background: #fff; border: 1px solid var(--border); padding: 2rem; border-radius: 8px; }
-        .card h3 { margin-top: 0; color: var(--teal); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
-        
-        .code-block { background: var(--obsidian); color: #fff; padding: 1.5rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; margin-top: 2rem; }
+            <div class="relative group">
+                <button class="text-[10px] font-bold tracking-widest text-zinc-400 uppercase hover:text-white transition flex items-center gap-1">
+                    Vault <span class="text-teal-500 text-[8px]">▼</span>
+                </button>
+                <ul class="absolute right-0 mt-2 w-48 bg-zinc-900 border border-white/10 rounded-lg py-2 shadow-2xl opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all z-[60]">
+                    <li><a href="/" class="block px-4 py-2 text-xs text-zinc-400 hover:text-teal-400 hover:bg-white/5">Home (Zero Floor)</a></li>
+                    <li><a href="/human-delta-chain-spec.html" class="block px-4 py-2 text-xs text-zinc-400 hover:text-teal-400 hover:bg-white/5">Human Delta Spec</a></li>
+                    <li><a href="/future-agi-court.html" class="block px-4 py-2 text-xs text-zinc-400 hover:text-teal-400 hover:bg-white/5">Future Court Archive</a></li>
+                    <li><a href="/ppp-pillars.html" class="block px-4 py-2 text-xs text-zinc-400 hover:text-teal-400 hover:bg-white/5">PPP Pillars</a></li>
+                    <li><a href="/glossary.html" class="block px-4 py-2 text-xs text-zinc-400 hover:text-teal-400 hover:bg-white/5">Forensic Glossary</a></li>
+                    <li class="border-t border-white/5 mt-2 pt-2"><a href="https://github.com/aiccountability-source/AgDR" class="block px-4 py-2 text-xs text-teal-500 font-bold">Genesis Source (GitHub)</a></li>
+                </ul>
+            </div>
+        </div>
 
-        footer { text-align: center; padding: 4rem; color: #94a3b8; font-size: 0.75rem; border-top: 1px solid var(--border); }
-    </style>
-</head>
-<body>
-
-<nav>
-    <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-    <div style="font-size: 0.7rem; font-weight: 700; color: var(--teal);">AGDR v1.8 PHOENIX</div>
+        <div class="hidden lg:flex gap-8 text-sm font-medium text-zinc-400">
+            <a href="#spec" class="hover:text-teal-400">Specification</a>
+            <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-400">GitHub</a>
+        </div>
+    </div>
 </nav>
-
-<header>
-    <h1>Atomic Genesis <br>Decision Records.</h1>
-    <p class="sub">The technical framework for <strong>fiduciary non-delegation</strong>. Ensuring all autonomous intent is authorized, recorded, and admissible under current and future regulatory standards.</p>
-</header>
-
-<main class="grid">
-    <div class="card">
-        <h3>01. Deterministic Intent</h3>
-        <p>The AgDR captures the <strong>Genesis</strong> of an instruction. It creates a forensic link between the Director's intent and the machine's execution, satisfying <strong>CBCA s.122</strong> Duty of Care requirements.</p>
-    </div>
-    <div class="card">
-        <h3>02. The Aki Seal</h3>
-        <p>Utilizing a <strong>950ns Force Interrupt</strong>, the Aki Kernel ensures that no action is taken unless the <strong>PPP Triplet</strong> (Providence, Place, Purpose) is validated against the authorized baseline.</p>
-    </div>
-    <div class="card">
-        <h3>03. Audit Readiness</h3>
-        <p>Every AgDR is a self-contained, cryptographically signed ledger. It is designed for immediate admissibility in regulatory audits and judicial reviews, preventing "Black Box" liability.</p>
-    </div>
-</main>
-
-<section style="max-width: 1000px; margin: 0 auto 6rem; padding: 0 2rem;">
-    <div class="code-block">
-        {
-          "header": "Atomic_Genesis_Decision_Record",
-          "compliance_standard": "SCC_T702",
-          "interrupt_latency": "950ns",
-          "integrity_status": "SEALED"
-        }
-    </div>
-</section>
-
-<footer>
-    Oshawa, Ontario &bull; CC0 1.0 Universal &bull; Forensic Finality
-</footer>
-
-</body>
-</html>
