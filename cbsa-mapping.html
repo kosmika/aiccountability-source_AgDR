@@ -1,174 +1,63 @@
-<!DOCTYPE html>
-<html lang="en" itemscope itemtype="https://schema.org/WebPage">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>CBCA Fiduciary Mapping | Corporate AI Accountability</title>
-    <meta name="description" content="Aligning AI autonomy with Canada Business Corporations Act s.122. How the AgDR Standard satisfies the fiduciary Duty of Care.">
-    
-    <style>
-        :root { --teal: #2dd4bf; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.8; -webkit-font-smoothing: antialiased;
-        }
+<style>
+    ​/* Functional styles for the 950ns Force Interrupt visualization */
+    .force-header { border-left: 4px solid var(--teal); padding-left: 2rem; margin: 4rem 0; }
+    .interrupt-stat { font-family: monospace; color: var(--teal); font-weight: 800; }
+    .table-wrap { border: 1px solid #333; }
+    tr.critical { background: rgba(45, 212, 191, 0.05); }
+</style>
 
-        /* Navigation */
-        nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #1a1a1a; z-index: 100;
-        }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--teal); color: var(--teal); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--teal); }
-
-        /* Hero Header */
-        header { 
-            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 0% 100%, #1e1b4b 0%, transparent 50%);
-        }
-        .label { color: var(--teal); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
-        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
-
-        /* Content Sections */
-        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        
-        /* Corporate Mapping Table */
-        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #0a0a0a; }
-        th { text-align: left; padding: 1.5rem 1rem; color: var(--teal); background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
-        td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
-        tr:hover td { background: #161616; color: #fff; }
-        .duty-cell { font-weight: 700; color: #fff; width: 30%; }
-        .comp-cell { color: var(--teal); font-family: monospace; font-size: 0.75rem; text-transform: uppercase; }
-
-        /* Summary Box */
-        .legal-box { 
-            background: linear-gradient(to right, #111, #080808); padding: 2.5rem; 
-            border-radius: 12px; border: 1px solid var(--border); margin: 4rem 0;
-            position: relative; overflow: hidden;
-        }
-        .legal-box::after { content: "CBCA s.122"; position: absolute; right: -20px; bottom: -10px; font-size: 5rem; font-weight: 900; color: rgba(255,255,255,0.02); pointer-events: none; }
-        .legal-box h3 { color: #fff; margin-top: 0; font-size: 1.2rem; }
-        .legal-box p { color: #888; margin-bottom: 0; font-size: 0.95rem; }
-
-        /* Sitemap Footer */
-        .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
-        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
-        .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #444; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
-        .sitemap-col a:hover { color: #fff; }
-
-        footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-
-        @media (max-width: 600px) { h1 { font-size: 2.8rem; } }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-            <span class="badge">COMPLIANCE</span>
-        </div>
-        <div class="nav-links">
-            <a href="/getting-started.html">GET STARTED</a>
-            <a href="/ppp-pillars.html">THE STANDARD</a>
-            <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
-        </div>
-    </nav>
-
-    <header>
-        <span class="label">Director Fiduciary Shield</span>
-        <h1>CBCA Fiduciary Mapping.</h1>
-        <p class="lead">Under the <strong>Canada Business Corporations Act</strong>, directors must act honestly and in good faith. AgDR v1.8 Phoenix provides the cryptographic proof that these duties were met at the point of every AI inference.</p>
+<header>
+        <span class="label">v1.8 Phoenix Hardening</span>
+        <h1>The Director’s <br>Fiduciary Shield.</h1>
+        <p class="lead">Under the <strong>Canada Business Corporations Act s.122</strong>, "Care, Diligence, and Skill" are no longer subjective. AgDR v1.8 Phoenix moves fiduciary duty from <em>policy</em> to <em>silicon</em> via the 950ns Force Interrupt.</p>
     </header>
 
     <main>
-        <h2>The s.122 Accountability Matrix</h2>
-        <p>Directors cannot delegate their fiduciary responsibilities to an algorithm. However, they can implement a <strong>Standard of Care</strong> that ensures every algorithmic decision is caught within an immutable audit trail.</p>
+        <div class="force-header">
+            <h2>The "Standard of Care" has changed.</h2>
+            <p>In a high-velocity AGI environment, manual oversight is a fiduciary failure. The 1.8 Phoenix standard ensures that <strong>Intent is Sealed</strong> before <strong>Action is Taken</strong>. This 600ns–950ns window is the legal proof of a Board's proactive diligence.</p>
+        </div>
 
         <div class="table-wrap">
             <table>
                 <thead>
                     <tr>
                         <th>CBCA s.122 Duty</th>
-                        <th>Standardized Satisfaction via AgDR</th>
-                        <th>Component Anchor</th>
+                        <th>1.8 Phoenix Mechanical Satisfaction</th>
+                        <th>Aki Component</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="duty-cell">Act Honestly and in Good Faith</td>
-                        <td>Captures the <strong>Purpose</strong> pillar verbatim at the instant of inference, preventing retrospective justification.</td>
-                        <td class="comp-cell">PURPOSE PILLAR</td>
+                    <tr class="critical">
+                        <td class="duty-cell">Duty of Care & Diligence</td>
+                        <td><strong>Force Interrupt:</strong> The system stops execution until a 950ns Aki seal is verified. No record, no action.</td>
+                        <td class="comp-cell">AKI 0.95 GATE</td>
                     </tr>
                     <tr>
-                        <td class="duty-cell">Exercise Care, Diligence, and Skill</td>
-                        <td>The <strong>Binary Human Delta Chain</strong> ensures that critical agent decisions were verified by a human authority.</td>
-                        <td class="comp-cell">HUMAN DELTA + FOI</td>
+                        <td class="duty-cell">Act Honestly (Good Faith)</td>
+                        <td><strong>Hermetic Purpose:</strong> Captures the intent-triplet in a T-0 partition, making post-hoc justification impossible.</td>
+                        <td class="comp-cell">T-0 SECOND CLOCK</td>
                     </tr>
                     <tr>
-                        <td class="duty-cell">Best Interests of the Corporation</td>
-                        <td>The <strong>Place</strong> pillar defines the intended success boundary and lawful outcome for each decision.</td>
+                        <td class="duty-cell">Skill & Prudence</td>
+                        <td><strong>Deterministic Finality:</strong> Uses Rust-on-Bare-Metal to eliminate the 3.94μs jitter that causes "Ghost Decisions."</td>
+                        <td class="comp-cell">RUST KERNEL</td>
+                    </tr>
+                    <tr>
+                        <td class="duty-cell">Best Interests of Corp</td>
+                        <td><strong>Invariant Boundaries:</strong> The 'Place' pillar acts as a hard-coded success constraint for autonomous agents.</td>
                         <td class="comp-cell">PLACE PILLAR</td>
-                    </tr>
-                    <tr>
-                        <td class="duty-cell">Stakeholder Consideration</td>
-                        <td>The <strong>Provenance</strong> pillar records the context of the interaction and the specific data sources utilized.</td>
-                        <td class="comp-cell">PROVENANCE PILLAR</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
         <div class="legal-box">
-            <h3>The Legal Benefit for Boards</h3>
-            <p>By implementing the AgDR standard, a Board of Directors establishes a contemporaneous record admissible under <strong>Section 31.1 of the Canada Evidence Act</strong>. This allows the corporation to prove, mathematically, that it exercised due diligence even if the AI's output is later challenged.</p>
+            <h3>The Fiduciary Partition</h3>
+            <p>By separating the <strong>Execution Clock (T-1)</strong> from the <strong>Forensic Clock (T-0)</strong>, the Board ensures that the audit trail is physically immune to interference from the AI's primary logic. This satisfies the "System Integrity" requirement of <strong>CEA s.31.2</strong> with mathematical certainty.</p>
         </div>
 
-        <h2>Operational Fiduciary Duty</h2>
-        <p>AgDR moves corporate governance from "Reactive Policy" to "Proactive Record-Keeping." Instead of reviewing logs months after a crisis, the <strong>Final Oversight Integrity (FOI)</strong> role provides real-time, terminal accountability for high-risk autonomous inferences.</p>
+        <h2>Operational Finality</h2>
+        <p>Directors are shielded not because they reviewed a log, but because they authorized a <strong>Hard Partition</strong>. If the AI deviates, the Aki 0.95 gate terminates the process in under a microsecond. This is the definition of "Prudence" in the AGI age.</p>
     </main>
 
-    <section class="sitemap">
-        <div class="sitemap-grid">
-            <div class="sitemap-col">
-                <h5>Architecture</h5>
-                <a href="/getting-started.html">Initialize v1.8</a>
-                <a href="/aki-formal-definition.html">AKI Specification</a>
-                <a href="/rust-core.html">Rust Foundation</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Governance</h5>
-                <a href="/ppp-pillars.html">PPP Pillars</a>
-                <a href="/foi-formal-definition.html">FOI Definition</a>
-                <a href="/human-delta-chain.html">Human Oversight</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Legal Discovery</h5>
-                <a href="/section-31-1.html">Section 31.1 Mapping</a>
-                <a href="/agi-court-precedents.html">Court Precedents</a>
-                <a href="/eu-ai-act.html">EU AI Act Readiness</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Resources</h5>
-                <a href="/sandbox.html">Interactive Sandbox</a>
-                <a href="/horizontal-scaling.html">Horizontal Scaling</a>
-                <a href="/beauty-truth-wisdom.html">Beauty & Truth</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="legal">
-        OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · FIDUCIARY ACCOUNTABILITY
-    </footer>
-
-</body>
-</html>
