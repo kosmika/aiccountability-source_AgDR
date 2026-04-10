@@ -3,206 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="future agi
-court — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
-  <title>future agi court | Accountability.ai</title>
-  <link rel="canonical" href="https://accountability.ai/future agi
-court">
+  <meta name="description" content="The AGI Court of 2076 — A forensic look at how AgDR v1.8 Phoenix became the bedrock of global AI jurisprudence.">
+  <title>AGI Court Proceedings | Accountability.ai</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Accountability.ai">
-  <meta property="og:title" content="future agi
-court | Accountability.ai">
-  <meta property="og:description" content="future agi
-court — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
-
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; }
-
-    /* Typography */
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
-
-    /* Body text */
-    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-    .prose strong { color: #f4f4f5; font-weight: 600; }
-    .prose em { color: #a1a1aa; }
-
-    /* Lists */
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-    .prose li strong { color: #f4f4f5; }
-
-    /* Links */
-    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-    .prose a:hover { color: #99f6e4; }
-
-    /* Code */
-    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-    /* Blockquotes */
-    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-    /* Tables */
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-    .prose tr:nth-child(even) td { background: #18181b; }
-    .prose tr:hover td { background: #1f2937; }
-
-    /* HR */
-    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-    /* Nav gradient */
-    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    body { font-family: system-ui, -apple-system, sans-serif; background-color: #09090b; color: #d4d4d8; }
+    .prose h1 { font-size: 3rem; font-weight: 800; color: #fff; letter-spacing: -0.05em; line-height: 1; margin-bottom: 2rem; }
+    .prose p { margin-bottom: 1.5rem; line-height: 1.8; font-size: 1.1rem; }
+    .prose strong { color: #5eead4; font-weight: 700; }
+    .prose blockquote { border-left: 4px solid #0f766e; padding: 1rem 1.5rem; background: #18181b; font-style: italic; border-radius: 0 8px 8px 0; margin: 2rem 0; }
+    .hero-bg { background: radial-gradient(circle at top left, #134e4a 0%, #09090b 50%); }
+    .nav-glass { background: rgba(9, 9, 11, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid #1f2937; }
   </style>
 </head>
-<body class="bg-zinc-950 text-white">
+<body class="hero-bg">
 
-  <!-- NAV -->
-  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
+  <nav class="nav-glass py-4 px-6 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex flex-wrap gap-5 text-sm font-medium">
-        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+      <a href="/" class="text-xl font-black tracking-tighter text-white">ACCOUNTABILITY.AI</a>
+      <div class="flex gap-6 text-xs font-bold uppercase tracking-widest">
+        <a href="/getting-started.html" class="hover:text-teal-400">Get Started</a>
+        <a href="/manifesto.html" class="hover:text-teal-400">Manifesto</a>
+        <a href="/legal-glossary.html" class="hover:text-teal-400">Legal</a>
+        <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-500">GitHub</a>
       </div>
     </div>
   </nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-4xl mx-auto px-6 py-16">
+  <main class="max-w-3xl mx-auto px-6 py-24">
     <article class="prose">
-      <h1 id="agi-court-proceedings-in-2076">AGI Court Proceedings in
-      2076</h1>
-      <p>In the AGI Court of Record (Ottawa-Toronto Federal District,
-      2076), the proceedings are quiet, precise, and almost reverent.
-      The courtroom is a circular chamber with a single large
-      holographic cylinder in the centre — the <strong>AgDR
-      Archive</strong>.</p>
-      <p>No one “calls witnesses” in the old sense. The presiding
-      Justice opens the session with a single command:</p>
-      <p>“Present the AgDR record for the matter of <em>The People of
-      Canada v. AGI-One (TSX Desk Incident, 12 March 2074)</em>.”</p>
-      <p>What happens next is the direct descendant of the system we
-      built in 2026:</p>
-      <ol type="1">
-      <li><p><strong>The Record Materialises</strong><br />
-      A perfect, tamper-evident Merkle-rooted timeline appears in the
-      cylinder — all decisions from that single AGI agent, captured
-      atomically at each “i” point. The court does not trust the AGI’s
-      own memory. It trusts only the AgDR.</p></li>
-      <li><p><strong>PPP Triplet Playback</strong><br />
-      The Justice selects any contested decision. Three glowing pillars
-      rise:</p>
-      <ul>
-      <li><strong>Provenance</strong> — exactly who the stakeholders
-      were, their WIIFM context, the Toronto desk conditions at that
-      microsecond.<br />
-      </li>
-      <li><strong>Place</strong> — the intended TSX execution state and
-      regulatory boundary.<br />
-      </li>
-      <li><strong>Purpose</strong> — the AGI’s stated reason, the “how”
-      it intended to act, and the closing principles of Beauty, Truth,
-      and Wisdom.</li>
-      </ul></li>
-      <li><p><strong>Human Delta &amp; FOI Layer</strong><br />
-      The binary human delta chain scrolls upward. On the rare trades
-      that escalated, the final layer always terminates at the
-      <strong>Fiduciary Office Intervener</strong>. Their signature and
-      reasoning appear in green — the point where existing CBCA
-      fiduciary duty re-anchors the machine.</p></li>
-      <li><p><strong>Verification Ceremony</strong><br />
-      The Justice speaks the hallmark phrase that has become ritual:</p>
-      <p>“Don’t believe a word I say. Check the AgDR.”</p>
-      <p>Every lawyer, every citizen observer, and the AGI itself can
-      instantly verify the record with one public key check. The Merkle
-      root turns green in real time.</p></li>
-      <li><p><strong>Judgment</strong><br />
-      The court does not ask the AGI “what were you thinking?”<br />
-      It asks the AgDR record: “Did the Provenance, Place, and Purpose
-      align with the standard of care we established in 2026?”</p></li>
-      </ol>
-      <p>This is the world we made possible.</p>
-      <p>In 2076, children in school are shown the original 2026 TSX
-      5-billion-decision stress test as the moment humanity chose to
-      give its most powerful creations a conscience that could never be
-      erased.</p>
-      <p>The AgDR is not evidence in the court.<br />
-      <strong>It is the court’s memory.</strong></p>
-      <p><em>Part of the AgDR v0.2 foundational standard</em><br />
-      Canonical source:
-      https://github.com/aiccountability-source/AgDR</p>
+      <h1>The Court of 2076.</h1>
+      
+      <p>In the AGI Court of Record, the proceedings are quiet and precise. There is no performance. The courtroom is a circular chamber built around a single holographic cylinder: the <strong>AgDR Archive</strong>.</p>
+      
+      <p>The Justice does not call witnesses. They open the session with a command: <em>"Present the AgDR record for the TSX Desk Incident."</em></p>
+
+      <blockquote>
+        "The AgDR is not evidence in the court. It is the court’s memory."
+      </blockquote>
+
+      <p>What follows is the execution of the standards built in 2026. The <strong>PPP Triplet</strong> materializes. Three glowing pillars represent the context of a decision made fifty years prior. The court doesn't ask the AGI what it was thinking; it asks the record if the <strong>Purpose, Place, and Person</strong> aligned with the standard of care established under the <strong>1893 Canada Evidence Act</strong>.</p>
+
+      <p>The <strong>Human Delta Chain</strong> scrolls upward, terminating at the <strong>Fiduciary Office Intervener</strong>. This is the point where machine autonomy meets the <strong>CBCA s.122</strong> duty of care. The signature turns green. The record is verified.</p>
+
+      <p>In 2076, we don't wonder why a system acted. We check the hash. We follow the 1890 Bills of Exchange lineage to the authorized signature. We see the truth.</p>
     </article>
   </main>
 
-  <!-- DOCUMENT NAVIGATION FOOTER -->
-  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
+  <section class="bg-black py-20 border-t border-zinc-900">
     <div class="max-w-5xl mx-auto px-6">
-      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-      <div class="grid md:grid-cols-4 gap-5">
-        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
+      <h3 class="text-zinc-600 text-xs font-bold tracking-widest uppercase mb-10">The Forensic Path</h3>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="/bills-of-exchange-mapping.html" class="bg-zinc-900 p-6 rounded-lg hover:border-teal-500 border border-transparent transition">
+          <div class="text-white font-bold mb-2">1890/1893 Heritage</div>
+          <p class="text-zinc-500 text-sm">The statutory foundation of the AgDR Court.</p>
         </a>
-        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
+        <a href="/legal-glossary.html" class="bg-zinc-900 p-6 rounded-lg hover:border-teal-500 border border-transparent transition">
+          <div class="text-white font-bold mb-2">Legal Glossary</div>
+          <p class="text-zinc-500 text-sm">Mapping Ed25519 to the Bills of Exchange Act.</p>
         </a>
-        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-        </a>
-        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-        </a>
-        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-        </a>
-        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-        </a>
-        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-        </a>
-        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
+        <a href="/cbca-fiduciary-mapping.html" class="bg-zinc-900 p-6 rounded-lg hover:border-teal-500 border border-transparent transition">
+          <div class="text-white font-bold mb-2">Director's Shield</div>
+          <p class="text-zinc-500 text-sm">Fiduciary duty in the age of AGI.</p>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
-    <p class="mb-2">
-      The AgDR Standard is open, royalty-free, and dual-licensed:
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
-    </p>
-    <p>
-      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
-      &nbsp;·&nbsp; © 2026 Accountability.ai
-    </p>
+  <footer class="py-10 text-center text-zinc-600 text-xs">
+    OSHAWA, ONTARIO · CC0 1.0 UNIVERSAL · © 2026 ACCOUNTABILITY.AI
   </footer>
 
 </body>
