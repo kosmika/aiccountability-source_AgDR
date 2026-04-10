@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Accountability.ai | The AgDR Standard for AI Decision Records</title>
-    <meta name="description" content="AgDR-Phoenix v1.8: The industrial standard for 0.62µs tamper-evident AI governance. Rust-core implementation. Sub-microsecond performance floor.">
+    <meta name="description" content="AgDR-Phoenix v1.8: The industrial standard for 620ns tamper-evident AI governance. Admissible under Canada Evidence Act Section 31.1. No latency tax.">
+    <meta name="keywords" content="Accountability AI, AI Governance, AgDR, AKI, Canada Evidence Act Section 31.1, EU AI Act Compliance, Algorithmic Liability, SCC T702, Industrial AI">
 
     <script type="application/ld+json">
     {
@@ -17,7 +18,7 @@
         "name": "Robert Muncaster",
         "sameAs": ["https://www.linkedin.com/in/robertmuncaster/"]
       },
-      "description": "Rust-optimized standard for sub-microsecond AI decision records.",
+      "description": "Rust-optimized standard for 620ns sub-microsecond AI decision records. Satisfies Canada Evidence Act Section 31.1 and EU AI Act transparency mandates.",
       "codeRepository": "https://github.com/aiccountability-source/AgDR",
       "programmingLanguage": "Rust",
       "version": "1.8.0-Phoenix",
@@ -44,17 +45,21 @@
         :root { --teal: #2dd4bf; --bg: #050505; --card: #111; --text: #e5e7eb; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
         body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
+            margin: 0; background-color: #050505; color: #e5e7eb; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             line-height: 1.6; -webkit-font-smoothing: antialiased;
         }
+        
         nav { 
             position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(12px);
             padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid #1a1a1a; z-index: 100;
         }
+        .brand-wrap { display: flex; align-items: center; gap: 1rem; }
         .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; }
+        .badge { border: 1px solid var(--teal); color: var(--teal); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
+        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
+        .nav-links a:hover { color: var(--teal); }
         
         header { 
             padding: 10rem 1.5rem 8rem; text-align: center; 
@@ -62,4 +67,160 @@
         }
         .label { color: var(--teal); font-size: 0.7rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; }
         h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin: 1.5rem 0; color: #fff; letter-spacing: -3px; line-height: 0.95; }
-        .hero-p { max-width: 650px; margin: 0 auto 3rem; color: #888; font-size: 1.2rem; font-weight: 300; }
+        .hero-p { max-width: 650px; margin: 0 auto 3rem; color: #888; font-size: 1.25rem; font-weight: 300; }
+        .btn { display: inline-block; padding: 1.1rem 2.8rem; border-radius: 6px; font-weight: 700; text-decoration: none; transition: 0.2s; }
+        .primary { background: var(--teal); color: #000; }
+        .primary:hover { background: #fff; transform: translateY(-1px); }
+
+        .grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+            gap: 1.5rem; max-width: 1200px; margin: -5rem auto 5rem; padding: 0 1.5rem; 
+        }
+        .card { background: var(--card); padding: 2.5rem; border-radius: 12px; border: 1px solid #222; }
+        .card h2 { font-size: 0.65rem; color: var(--teal); margin-bottom: 0.5rem; letter-spacing: 2px; text-transform: uppercase; }
+        .val { font-size: 2.5rem; font-weight: 800; color: #fff; display: block; letter-spacing: -1px; }
+
+        section { max-width: 1200px; margin: 6rem auto; padding: 0 1.5rem; }
+        h3 { font-size: 2.5rem; color: #fff; margin-bottom: 2rem; letter-spacing: -1.5px; }
+
+        .faq-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: start; }
+        .faq-item { border-bottom: 1px solid #111; padding: 1.5rem 0; }
+        .faq-q { font-weight: 700; color: #fff; margin-bottom: 0.5rem; display: block; }
+        .faq-a { color: #888; font-size: 1rem; }
+
+        .code-wrap { 
+            background: #000; padding: 2.5rem; border-radius: 12px; 
+            border: 1px solid rgba(45, 212, 191, 0.2); font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-top: 4rem; text-align: left; }
+        .sitemap-col h4 { font-size: 0.7rem; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .sitemap-col a { display: block; color: #555; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.75rem; transition: 0.2s; }
+        .sitemap-col a:hover { color: #fff; }
+
+        footer.main { text-align: center; padding: 8rem 1.5rem 4rem; border-top: 1px solid #111; color: #333; font-size: 0.75rem; }
+        
+        @media (max-width: 850px) { 
+            h1 { font-size: 3.2rem; } 
+            .faq-grid { grid-template-columns: 1fr; } 
+            .badge { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="brand-wrap">
+            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
+            <span class="badge">STATUS: IMMUTABLE</span>
+        </div>
+        <div class="nav-links">
+            <a href="/sandbox.html">SANDBOX</a>
+            <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener">SOURCE</a>
+            <a href="mailto:founding@accountability.ai">FOUNDRY</a>
+        </div>
+    </nav>
+
+    <header>
+        <span class="label">AgDR-Phoenix v1.8 · Stable Industrial</span>
+        <h1>The Zero-Latency Floor.</h1>
+        <p class="hero-p">Governance engineered into the kernel. No regulatory tax. No friction. Only the immutable record.</p>
+        <a href="https://github.com/aiccountability-source/AgDR" class="btn primary" target="_blank" rel="noopener">Initialize v1.8</a>
+    </header>
+
+    <main class="grid">
+        <article class="card">
+            <h2>LATENCY (PHOENIX)</h2>
+            <span class="val">620ns</span>
+            <p style="font-size:0.75rem; color:#444; margin-top:1rem; font-weight: 700;">Rust-core performance floor.</p>
+        </article>
+        <article class="card">
+            <h2>THROUGHPUT</h2>
+            <span class="val">1.1M/s</span>
+            <p style="font-size:0.75rem; color:#444; margin-top:1rem; font-weight: 700;">Engineered for Blackwell clusters.</p>
+        </article>
+        <article class="card">
+            <h2>INTEGRITY</h2>
+            <span class="val">BLAKE3</span>
+            <p style="font-size:0.75rem; color:#444; margin-top:1rem; font-weight: 700;">Cryptographic finality at birth.</p>
+        </article>
+        <article class="card">
+            <h2>LINEAGE</h2>
+            <span class="val">3.0</span>
+            <p style="font-size:0.75rem; color:#444; margin-top:1rem; font-weight: 700;">Structural Python Witness.</p>
+        </article>
+    </main>
+
+    <section id="faq">
+        <h3>Industrial Governance</h3>
+        <div class="faq-grid">
+            <div>
+                <div class="faq-item">
+                    <span class="faq-q">Is this compliant with current Canadian law?</span>
+                    <p class="faq-a">Yes. AgDR satisfies the requirements of the <strong>Canada Evidence Act (Section 31.1)</strong> for the admissibility of electronic records, providing the necessary provenance for automated decision-making.</p>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">Why pivot from AIDA?</span>
+                    <p class="faq-a">While specific AI legislation stalls in parliament, corporate liability under <strong>Common Law</strong> and existing fiduciary duties (CBCA) are active today. We solve the liability problem that already exists.</p>
+                </div>
+                <div class="faq-item">
+                    <span class="faq-q">How does Phoenix 1.8 achieve sub-microsecond latency?</span>
+                    <p class="faq-a">By offloading decision records to a Rust-native kernel implementation, we bypass the overhead of high-level runtimes, ensuring accountability is faster than the model itself.</p>
+                </div>
+            </div>
+            <div class="code-wrap">
+                <code style="color:var(--teal); font-size: 0.95rem; line-height: 1.8;">
+                    // AgDR Integrity Seal v1.8.0<br>
+                    {<br>
+                    &nbsp;&nbsp;"kernel": "phoenix-rust",<br>
+                    &nbsp;&nbsp;"aki_latency_ns": 620,<br>
+                    &nbsp;&nbsp;"admissible": "CEA_31.1",<br>
+                    &nbsp;&nbsp;"witness_ref": "3.0.0-py",<br>
+                    &nbsp;&nbsp;"status": "immutable"<br>
+                    }
+                </code>
+            </div>
+        </div>
+    </section>
+
+    <section id="sitemap">
+        <div class="sitemap-grid">
+            <div class="sitemap-col">
+                <h4>Infrastructure</h4>
+                <a href="/aki-formal-definition.html">AKI Protocol Spec</a>
+                <a href="/human-delta-chain-spec.html">Delta-Chain Authority</a>
+                <a href="/technical-details.html">Rust Core Stack</a>
+                <a href="/horizontal-scaling.html">Scaling Protocol</a>
+            </div>
+            <div class="sitemap-col">
+                <h4>Legal Pillars</h4>
+                <a href="/ppp-pillars.html">Provenance · Place · Purpose</a>
+                <a href="/ppp-legal-compliance.html">Section 31.1 Mapping</a>
+                <a href="/cbca-fiduciary-mapping.html">CBCA Fiduciary Duty</a>
+                <a href="/eu-ai-act-mapping.html">EU AI Act Readiness</a>
+            </div>
+            <div class="sitemap-col">
+                <h4>Justice Context</h4>
+                <a href="/future-agi-court.html">Future AGI Court</a>
+                <a href="/agi-court-precedents.html">Legal Precedents</a>
+                <a href="/comparison-aviation-black-box.html">Aviation Analogy</a>
+                <a href="/comparison-medical-records.html">Medical Integrity</a>
+            </div>
+            <div class="sitemap-col">
+                <h4>Lifecycle</h4>
+                <a href="/verification-audit-procedure.html">Audit Procedure</a>
+                <a href="/tsx-stress-test.html">TSX Stress Test</a>
+                <a href="/CHANGELOG.html">Release History</a>
+                <a href="/README.html">System Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main">
+        <p style="font-style:italic; margin-bottom:2rem; color: #555;">"Liability is the only true incentive for safety."</p>
+        <p style="letter-spacing: 1px; font-weight: 700; color: #333;">OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL</p>
+    </footer>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</body>
+</html>
