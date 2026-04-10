@@ -66,8 +66,6 @@
         .sitemap-col a:hover { color: #fff; }
 
         footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-
-        @media (max-width: 600px) { h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
@@ -87,13 +85,14 @@
     <header>
         <span class="label">Safety Systems Comparison</span>
         <h1>Beyond the Black Box.</h1>
-        [attachment_0](attachment)
         <p class="lead">The aviation black box solved the 20th century’s accountability crisis. <strong>AgDR v1.8</strong> solves the autonomous intelligence crisis of the 21st—not by recording the crash, but by recording the reasoning.</p>
     </header>
 
     <main>
         <h2>Functional Analysis: FDR/CVR vs. AgDR</h2>
         <p>While the aviation industry relies on physical recovery and post-incident investigation, AgDR utilizes <strong>Atomic Kernel Inference</strong> to ensure every decision is tamper-proof from the moment of birth.</p>
+
+        
 
         <div class="table-wrap">
             <table>
@@ -136,12 +135,6 @@
                         <td>Hardened for Section 31.1 (CEA) as a system-integrity record.</td>
                         <td>EVIDENTIARY</td>
                     </tr>
-                    <tr>
-                        <td>Scalability</td>
-                        <td>Hardware dependent; high cost per unit ($20k+).</td>
-                        <td>Software-defined; zero-marginal-cost per agent.</td>
-                        <td>UBIQUITY</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -152,7 +145,7 @@
         </div>
 
         <h2>Why Mathematical Certainty Wins</h2>
-        <p>In a courtroom, a physical black box can be damaged or lost. An AgDR record, protected by <strong>BLAKE3</strong> hashing and <strong>local_irq_save</strong> kernel invariants, is mathematically impossible to repudiate. It moves the conversation from "What do we think happened?" to "Check the record."</p>
+        <p>In a courtroom, a physical black box can be damaged or lost. An AgDR record, protected by <strong>BLAKE3</strong> hashing and kernel-level invariants, is mathematically impossible to repudiate. It moves the conversation from "What do we think happened?" to "Check the record."</p>
     </main>
 
     <section class="sitemap">
@@ -172,7 +165,6 @@
             <div class="sitemap-col">
                 <h5>Legal Discovery</h5>
                 <a href="/section-31-1.html">Section 31.1 Mapping</a>
-                <a href="/agi-court-precedents.html">Court Precedents</a>
                 <a href="/cbca-fiduciary.html">CBCA Fiduciary Mapping</a>
             </div>
             <div class="sitemap-col">
