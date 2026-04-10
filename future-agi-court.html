@@ -3,139 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Human Delta Chain & FOI Specification | AgDR Phoenix 1.8</title>
-    <meta name="description" content="Technical specification for the Human Delta Chain and Final Oversight Integrity (FOI) within the AgDR framework. Ensuring fiduciary duty of care in AGI.">
-    
-    <meta name="geo.region" content="CA-ON" />
-    <meta name="geo.placename" content="Oshawa" />
+    <title>Future AGI Court | The Final AgDR Audit</title>
+    <meta name="description" content="The 2076 Forensic Audit Chamber for AgDR v1.8. Deterministic finality through the lens of fiduciary duty of care.">
     
     <style>
         :root { 
             --teal: #14b8a6; 
             --obsidian: #0f172a; 
             --bone: #f8fafc; 
-            --slate: #64748b; 
-            --border: #e2e8f0; 
+            --slate: #475569; 
+            --border: #cbd5e1; 
         }
         
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { 
             margin: 0; background-color: var(--bone); color: var(--obsidian); 
-            font-family: "Inter", -apple-system, system-ui, sans-serif; 
-            line-height: 1.6; 
+            font-family: "Inter", -apple-system, sans-serif; 
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
         }
 
-        /* High-Authority Navigation */
+        /* Ceremonial Header */
         nav { 
-            padding: 1rem 2rem; background: #fff; border-bottom: 1px solid var(--border);
+            padding: 1.5rem 4rem; background: #fff; border-bottom: 2px solid var(--obsidian);
             display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
         }
-        .brand { font-weight: 800; letter-spacing: -0.02em; color: var(--obsidian); text-decoration: none; font-size: 1.1rem; }
-        .version-badge { border: 1px solid var(--teal); color: var(--teal); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 900; }
+        .court-seal { font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; color: var(--slate); }
 
-        /* Elegant Hero */
         header { 
-            padding: 10rem 2rem 6rem; max-width: 1000px; margin: 0 auto; 
-            background: radial-gradient(circle at top right, #f1f5f9, transparent);
+            padding: 12rem 4rem 6rem; max-width: 1100px; margin: 0 auto; 
+            border-bottom: 1px solid var(--border);
         }
-        .label { color: var(--teal); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1rem; display: block; }
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--obsidian); letter-spacing: -0.04em; line-height: 1; margin: 0; }
-        .lead { font-size: 1.25rem; color: var(--slate); max-width: 650px; margin-top: 1.5rem; font-weight: 400; }
+        .date-marker { color: var(--teal); font-family: monospace; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; display: block; }
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); letter-spacing: -0.05em; line-height: 0.85; margin: 0; font-weight: 800; }
+        .ceremony-sub { font-size: 1.5rem; color: var(--slate); margin-top: 2rem; font-weight: 300; max-width: 700px; }
 
-        main { max-width: 1000px; margin: 0 auto; padding: 0 2rem 10rem; }
+        main { max-width: 1100px; margin: 0 auto; padding: 6rem 4rem; }
 
-        /* Content Sections */
-        .spec-section { margin-top: 6rem; border-top: 1px solid var(--border); padding-top: 3rem; }
-        h2 { font-size: 1.75rem; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-        
-        /* The FOI Regulatory Bridge */
-        .regulatory-card { 
-            background: #fff; border: 1px solid var(--border); padding: 3rem; 
-            border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            margin: 4rem 0;
+        /* The Forensic Black Screen (The "Gate") */
+        .forensic-gate { 
+            background: var(--obsidian); color: #fff; padding: 4rem; 
+            border-radius: 4px; box-shadow: 0 40px 100px rgba(15, 23, 42, 0.2);
+            margin: 4rem 0; position: relative;
         }
-        .foi-title { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-        .foi-title h3 { margin: 0; font-size: 1.5rem; }
-
-        /* Technical Data Grid */
-        .data-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
-        .data-table th { text-align: left; padding: 1rem; border-bottom: 2px solid var(--obsidian); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); }
-        .data-table td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .forensic-gate h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px; color: var(--teal); margin-bottom: 3rem; }
         
-        .code-snippet { background: var(--obsidian); color: #e2e8f0; padding: 2rem; border-radius: 8px; font-family: "JetBrains Mono", monospace; font-size: 0.85rem; overflow-x: auto; margin: 2rem 0; }
+        .audit-line { font-family: "JetBrains Mono", monospace; font-size: 0.9rem; margin-bottom: 1.5rem; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; display: flex; justify-content: space-between; }
+        .audit-line b { color: var(--teal); }
 
-        .philosophy-footer { text-align: center; color: var(--slate); font-style: italic; margin-top: 8rem; font-size: 1.1rem; }
+        /* The Statutory Link */
+        .statutory-ceremony { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-top: 8rem;
+        }
+        .statute-card h3 { font-size: 1.25rem; letter-spacing: -0.02em; border-bottom: 1px solid var(--obsidian); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .statute-card p { color: var(--slate); font-size: 1.1rem; }
 
-        footer { text-align: center; padding: 6rem 2rem; border-top: 1px solid var(--border); font-size: 0.7rem; color: var(--slate); letter-spacing: 0.1em; text-transform: uppercase; }
+        .fiduciary-conclusion { text-align: center; margin-top: 10rem; }
+        .verdict-stamp { 
+            display: inline-block; border: 3px solid var(--obsidian); padding: 1rem 3rem; 
+            font-weight: 900; font-size: 2rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 2rem;
+        }
+
+        footer { text-align: center; padding: 8rem 4rem; font-size: 0.65rem; color: var(--slate); letter-spacing: 0.2em; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-        <span class="version-badge">AGDR v1.8 PHOENIX</span>
+        <div class="court-seal">Forensic Archive // Node: Oshawa</div>
+        <div class="court-seal">Standard: AgDR v1.8</div>
     </nav>
 
     <header>
-        <span class="label">Technical Specification</span>
-        <h1>Human Delta Chain <br>& FOI Integration.</h1>
-        <p class="lead">Bridging the 950ns Force Interrupt with meaningful human oversight to satisfy global regulatory duty of care.</p>
+        <span class="date-marker">AUDIT DATE: 2076.04.10</span>
+        <h1>The Future <br>AGI Court.</h1>
+        <p class="ceremony-sub">Where the 950ns Force Interrupt of 2026 meets the Deterministic Finality of 2076.</p>
     </header>
 
     <main>
-        <section class="spec-section">
-            <h2>The Delta Invariant</h2>
-            <p>The <strong>Human Delta Chain</strong> is the forensic record of human variance within the autonomous execution loop. It captures the <strong>"Meaning"</strong> that the Beholder injects into the system, ensuring that the machine's <strong>Truth, Wisdom, and Beauty</strong> remain aligned with human intent.</p>
+        <section>
+            <p style="font-size: 1.4rem; font-weight: 300; margin-bottom: 4rem;">The Court of 2076 does not litigate "why." It validates "what." The ceremony begins by querying the <strong>T-0 Forensic Clock</strong> to verify the <strong>Beholder’s Triplet</strong>. If the seal is unbroken, the duty is discharged.</p>
             
-            <div class="code-snippet">
-                // Atomic Delta Capture<br>
-                struct HumanDelta {<br>
-                &nbsp;&nbsp;id: UUID,<br>
-                &nbsp;&nbsp;foi_signature: Ed25519,<br>
-                &nbsp;&nbsp;delta_value: i32, // 0 = Passive Consent, 1+ = Active Steer<br>
-                &nbsp;&nbsp;interrupt_sync: "950ns"<br>
-                }
+            <div class="forensic-gate">
+                <h2>Forensic Integrity Readout</h2>
+                <div class="audit-line"><span>Origin Verification [Truth]</span> <b>PROVIDENCE_SEALED</b></div>
+                <div class="audit-line"><span>Jurisdictional Boundary [Wisdom]</span> <b>PLACE_AUTHORIZED</b></div>
+                <div class="audit-line"><span>Intent Alignment [Beauty]</span> <b>PURPOSE_LOCKED</b></div>
+                <div class="audit-line"><span>Mechanical Enforcement</span> <b>950ns_FORCE_INTERRUPT_PASS</b></div>
             </div>
         </section>
 
-        <section class="regulatory-card">
-            <div class="foi-title">
-                <h3>Final Oversight Integrity</h3>
-                <span class="version-badge" style="background:var(--teal); color:#fff; border:none;">FOI</span>
+        <section class="statutory-ceremony">
+            <div class="statute-card">
+                <h3>The 1890 Precedent</h3>
+                <p>The <strong>Bills of Exchange Act</strong> required a physical signature to move value. The 2076 Court views the <strong>Aki Seal</strong> as the functional, modern evolution of that signature—the point where intent becomes irrevocable law.</p>
             </div>
-            <p>The FOI role is the ultimate regulatory anchor. By auditing the Delta Chain, the FOI provides the <strong>Duty of Care</strong> required by the CBCA s.122 and the SCC T702 standards. It is the human gate that validates the <strong>PPP Triplet</strong> before the Aki Kernel commits the instruction.</p>
+            <div class="statute-card">
+                <h3>The 2026 Stewardship</h3>
+                <p>Under <strong>CBCA s.122</strong>, the Beholder implemented the AgDR Phoenix release to bridge the "Black Box" gap. Today, that stewardship is the only shield between the Director and absolute algorithmic liability.</p>
+            </div>
         </section>
 
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Metric</th>
-                    <th>Standard of Care</th>
-                    <th>Forensic Admissibility</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>Capture Velocity</b></td>
-                    <td>950ns (Force Interrupt)</td>
-                    <td>Contemporaneous Record (CEA s.31.1)</td>
-                </tr>
-                <tr>
-                    <td><b>Human Input</b></td>
-                    <td>Binary Delta (FOI-Signed)</td>
-                    <td>Fiduciary Non-Delegation</td>
-                </tr>
-                <tr>
-                    <td><b>Outcome</b></td>
-                    <td>Deterministic Finality</td>
-                    <td>Proof of Honest Intent</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="philosophy-footer">
-            "We do not delegate the conscience to the machine; we use the machine to enforce the conscience."
+        <div class="fiduciary-conclusion">
+            <div class="verdict-stamp">Innocent</div>
+            <p style="color: var(--slate);">The Duty of Care has been successfully verified across the 50-year forensic delta.</p>
         </div>
     </main>
 
