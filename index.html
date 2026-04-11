@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accountability.ai | AgDR Phoenix 1.8 Protocol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Accountability.ai | The AgDR Standard for AI Decision Records</title>
     
     <meta name="description" content="Official repository for AgDR Phoenix 1.8. Implementing Atomic Kernel Inference (AKI) for sub-microsecond AI accountability and CEA s.31.1 admissibility.">
     <script type="application/ld+json">
@@ -12,126 +18,174 @@
       "@type": "WebSite",
       "name": "Accountability.ai",
       "url": "https://accountability.ai",
-      "about": "AI Accountability and Atomic Kernel Inference",
       "author": { "@type": "Person", "name": "Robert Muncaster" },
-      "license": "CC0 1.0 Universal"
+      "license": "https://creativecommons.org/publicdomain/zero/1.0/"
     }
     </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ID"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-YOUR_ID');
+      gtag('config', 'G-QPHCT8T1KC', { anonymize_ip: true });
     </script>
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --teal: #2dd4bf; --abyss: #050505; --slate: #475569; --text: #f1f5f9; }
-        body { background-color: var(--abyss); color: var(--text); font-family: ui-sans-serif, system-ui, sans-serif; margin: 0; line-height: 1.5; }
-        
-        /* The Abyss Hero */
-        .hero { background: radial-gradient(circle at 70% 20%, #0d73771a 0%, var(--abyss) 80%); padding: 12rem 2rem 6rem; border-bottom: 1px solid #ffffff05; }
-        .wrapper { max-width: 1500px; margin: 0 auto; }
-        .ppp-tag { color: var(--teal); font-family: monospace; font-size: 11px; letter-spacing: 0.7em; text-transform: uppercase; margin-bottom: 2rem; display: block; }
-        h1 { font-size: clamp(3rem, 12vw, 9rem); font-weight: 900; letter-spacing: -0.07em; margin: 0; line-height: 0.8; }
-        .abstract { font-size: 1.6rem; color: #94a3b8; margin-top: 3.5rem; max-width: 950px; font-weight: 300; line-height: 1.5; }
-
-        /* The Forensic Matrix (W3C Flat Grid) */
-        .matrix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6rem; margin-top: 10rem; padding-bottom: 12rem; }
-        .col-header { font-size: 0.75rem; color: var(--slate); text-transform: uppercase; letter-spacing: 0.5em; border-bottom: 1px solid #111; padding-bottom: 1.5rem; margin-bottom: 3.5rem; }
-        
-        .entry { margin-bottom: 3.5rem; }
-        .entry-link { color: #fff; text-decoration: none; font-size: 1.4rem; font-weight: 700; display: block; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
-        .entry-link:hover { color: var(--teal); transform: translateX(12px); }
-        .entry-meta { display: block; font-family: monospace; font-size: 0.85rem; color: var(--slate); margin-top: 0.6rem; border-left: 1px solid #1a1a1a; padding-left: 1rem; }
-        
-        footer { border-top: 1px solid #111; padding: 6rem 2rem; color: #1e293b; font-family: monospace; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; }
-        @media (max-width: 1100px) { .matrix { grid-template-columns: 1fr; gap: 4rem; } }
+        body { background-color: #050505; color: #e5e7eb; font-family: ui-sans-serif, system-ui, sans-serif; }
+        .hero-gradient { background: radial-gradient(circle at top, #0d7377 0%, #050505 70%); }
+        .stat-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(45, 212, 191, 0.1); border-radius: 1rem; padding: 1.5rem; }
+        .matrix-link { transition: all 0.2s ease; border-left: 1px solid rgba(255,255,255,0.05); padding-left: 1rem; }
+        .matrix-link:hover { border-left: 1px solid #2dd4bf; transform: translateX(4px); }
     </style>
 </head>
+
 <body>
+    <nav class="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/5 py-4">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <a href="/" class="text-xl font-bold tracking-tighter text-white">ACCOUNTABILITY.AI</a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
+                <a href="#ledger" class="hover:text-teal-400">Forensic Ledger</a>
+                <a href="#spec" class="hover:text-teal-400">Specification</a>
+                <a href="https://github.com/aiccountability-source/AgDR" class="text-teal-400">GitHub</a>
+            </div>
+        </div>
+    </nav>
 
-    <header class="hero">
-        <div class="wrapper">
-            <span class="ppp-tag">Provenance // Place // Purpose</span>
-            <h1>ACCOUNTABILITY.AI</h1>
-            <p class="abstract">
-                Anchoring agentic reasoning within a deterministic, 950ns Atomic Kernel. 
-                Providing permanent digital evidence for the era of autonomous systems.
+    <section class="hero-gradient pt-24 pb-32 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-xs font-bold tracking-widest text-teal-400 uppercase">AgDR-Phoenix v1.8 · April 2026</span>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mt-6 mb-8 text-white">The Zero-Latency Floor.</h1>
+            <p class="text-xl text-zinc-300 leading-relaxed mb-12 max-w-2xl mx-auto">
+                The argument that accountability slows the machine is dead. The "Governance Tax" has been engineered out. We moved the seal to the center of the kernel.
             </p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="https://github.com/aiccountability-source/AgDR" class="bg-teal-500 hover:bg-teal-400 text-black font-bold px-10 py-4 rounded-lg transition">Deploy v1.8</a>
+                <a href="#performance" class="bg-white/5 hover:bg-white/10 border border-white/10 px-10 py-4 rounded-lg transition">View Benchmarks</a>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="wrapper">
-        <div class="matrix">
-            
-            <nav>
-                <h2 class="col-header">Mechanical Floor</h2>
-                <div class="entry">
-                    <a href="aki-95.html" class="entry-link">AKI 0.95 Spec</a>
-                    <span class="entry-meta">950ns Atomic Kernel Force Gating Logic</span>
+    <section id="performance" class="py-24 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="stat-card">
+                    <div class="text-teal-400 font-mono text-sm mb-2">LATENCY</div>
+                    <div class="text-3xl font-bold text-white">0.62 µs</div>
+                    <p class="text-zinc-500 text-xs mt-4">Faster than the network stack.</p>
                 </div>
-                <div class="entry">
-                    <a href="agdr-spec.html" class="entry-link">AgDR Protocol</a>
-                    <span class="entry-meta">v1.8.0 Atomic Genesis Decision Record</span>
+                <div class="stat-card">
+                    <div class="text-teal-400 font-mono text-sm mb-2">THROUGHPUT</div>
+                    <div class="text-3xl font-bold text-white">1.1M/s</div>
+                    <p class="text-zinc-500 text-xs mt-4">Built for Blackwell-scale factories.</p>
                 </div>
-                <div class="entry">
-                    <a href="https://github.com/aiccountability-source/AgDR" class="entry-link" target="_blank">AgDR Repository ↗</a>
-                    <span class="entry-meta">Public domain source code (CC0 1.0)</span>
+                <div class="stat-card">
+                    <div class="text-teal-400 font-mono text-sm mb-2">INTEGRITY</div>
+                    <div class="text-3xl font-bold text-white">BLAKE3</div>
+                    <p class="text-zinc-500 text-xs mt-4">Tamper-proof at birth.</p>
                 </div>
-                <div class="entry">
-                    <a href="aki-formal-definition.html" class="entry-link">Formal Definition</a>
-                    <span class="entry-meta">Epistemology of Kernel-Level Finality</span>
+                <div class="stat-card">
+                    <div class="text-teal-400 font-mono text-sm mb-2">RELIABILITY</div>
+                    <div class="text-3xl font-bold text-white">100%</div>
+                    <p class="text-zinc-500 text-xs mt-4">Zero dropped records.</p>
                 </div>
-            </nav>
-
-            <nav>
-                <h2 class="col-header">Statutory Mapping</h2>
-                <div class="entry">
-                    <a href="cea-compliance.html" class="entry-link">CEA s.31.1 Standard</a>
-                    <span class="entry-meta">Canada Evidence Act Digital Original Compliance</span>
-                </div>
-                <div class="entry">
-                    <a href="cbca-fiduciary-mapping.html" class="entry-link">CBCA s.122 Mapping</a>
-                    <span class="entry-meta">Director Fiduciary Duty Accountability</span>
-                </div>
-                <div class="entry">
-                    <a href="bills-of-exchange-mapping.html" class="entry-link">Bills of Exchange</a>
-                    <span class="entry-meta">Commercial Finality for Autonomous Agents</span>
-                </div>
-                <div class="entry">
-                    <a href="eu-ai-act-mapping.html" class="entry-link">EU AI Act Registry</a>
-                    <span class="entry-meta">Global Regulatory Interoperability Alignment</span>
-                </div>
-            </nav>
-
-            <nav>
-                <h2 class="col-header">Forensic Archive</h2>
-                <div class="entry">
-                    <a href="legal-glossary.html" class="entry-link">Forensic Glossary</a>
-                    <span class="entry-meta">Unified Taxonomy of Atomic Reasoning</span>
-                </div>
-                <div class="entry">
-                    <a href="future-agi-court.html" class="entry-link">The Judicial Future</a>
-                    <span class="entry-meta">15-Year Stewardship of Discovery Records</span>
-                </div>
-                <div class="entry">
-                    <a href="getting-started.html" class="entry-link">System Onboarding</a>
-                    <span class="entry-meta">Operational Manual for Auditors & Devs</span>
-                </div>
-                <div class="entry">
-                    <a href="beauty-truth-wisdom.html" class="entry-link">The Phoenix Ethics</a>
-                    <span class="entry-meta">Philosophical Foundation of Accountability</span>
-                </div>
-            </nav>
-
+            </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
-        Accountability.ai // AgDR Phoenix // CC0 1.0 Universal // Permanent Forensic Ledger
+    <section id="ledger" class="py-32 bg-zinc-950">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                
+                <div>
+                    <h2 class="text-xs font-bold text-zinc-500 tracking-widest uppercase mb-8 border-b border-white/5 pb-4">Mechanical Floor</h2>
+                    <div class="space-y-8">
+                        <div class="matrix-link">
+                            <a href="aki-95.html" class="block text-lg font-bold text-white hover:text-teal-400">AKI 0.95 Spec</a>
+                            <span class="text-xs text-zinc-500 font-mono">950ns Atomic Kernel Force Gating</span>
+                        </div>
+                        <div class="matrix-link">
+                            <a href="agdr-spec.html" class="block text-lg font-bold text-white hover:text-teal-400">AgDR Protocol</a>
+                            <span class="text-xs text-zinc-500 font-mono">Atomic Genesis Decision Record v1.8</span>
+                        </div>
+                        <div class="matrix-link">
+                            <a href="aki-formal-definition.html" class="block text-lg font-bold text-white hover:text-teal-400">Formal Definition</a>
+                            <span class="text-xs text-zinc-500 font-mono">Epistemology of Kernel Finality</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-xs font-bold text-zinc-500 tracking-widest uppercase mb-8 border-b border-white/5 pb-4">Statutory Teeth</h2>
+                    <div class="space-y-8">
+                        <div class="matrix-link">
+                            <a href="cea-compliance.html" class="block text-lg font-bold text-white hover:text-teal-400">CEA s.31.1 Admissibility</a>
+                            <span class="text-xs text-zinc-500 font-mono">Canada Evidence Act Compliance</span>
+                        </div>
+                        <div class="matrix-link">
+                            <a href="cbca-fiduciary-mapping.html" class="block text-lg font-bold text-white hover:text-teal-400">CBCA s.122 Mapping</a>
+                            <span class="text-xs text-zinc-500 font-mono">Director Fiduciary Duty Accountability</span>
+                        </div>
+                        <div class="matrix-link">
+                            <a href="bills-of-exchange-mapping.html" class="block text-lg font-bold text-white hover:text-teal-400">Bills of Exchange</a>
+                            <span class="text-xs text-zinc-500 font-mono">Commercial Finality for Agents</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-xs font-bold text-zinc-500 tracking-widest uppercase mb-8 border-b border-white/5 pb-4">Forensic Archive</h2>
+                    <div class="space-y-8">
+                        <div class="matrix-link">
+                            <a href="legal-glossary.html" class="block text-lg font-bold text-white hover:text-teal-400">Forensic Glossary</a>
+                            <span class="text-xs text-zinc-500 font-mono">Chain of Definition Taxonomy</span>
+                        </div>
+                        <div class="matrix-link">
+                            <a href="future-agi-court.html" class="block text-lg font-bold text-white hover:text-teal-400">Judicial Future</a>
+                            <span class="text-xs text-zinc-500 font-mono">15-Year Discovery Stewardship</span>
+                        </div>
+                        <div class="matrix-link">
+                            <a href="beauty-truth-wisdom.html" class="block text-lg font-bold text-white hover:text-teal-400">Phoenix Ethics</a>
+                            <span class="text-xs text-zinc-500 font-mono">Philosophical Foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="spec" class="py-24 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h3 class="text-4xl font-bold mb-6 text-white">Trust the Record.</h3>
+                <p class="text-zinc-400 text-lg mb-8">The industry is no longer asking if forensic tracking is possible. They are cloning the standard to survive the shift.</p>
+                <div class="space-y-4">
+                    <div class="p-4 border-l-2 border-teal-500 bg-white/5">
+                        <span class="block font-bold text-white">Provenance. Place. Purpose.</span>
+                        <span class="text-sm text-zinc-500">The triplet that satisfies the Canada Evidence Act s.31.1.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-zinc-900 rounded-2xl p-8 border border-white/10 font-mono text-sm text-teal-300">
+                <p class="text-zinc-600">// Atomic Kernel Payload</p>
+                <p class="mt-4">{</p>
+                <p class="ml-4">"version": "1.8.0",</p>
+                <p class="ml-4 text-white">"aki_latency_ns": 620,</p>
+                <p class="ml-4">"sig": "ed25519_...",</p>
+                <p class="ml-4">"root": "blake3_..."</p>
+                <p>}</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-20 border-t border-white/5 text-center">
+        <p class="text-zinc-500 text-sm mb-4 italic">Don’t trust the machine. Don’t even trust us. Trust the record.</p>
+        <div class="flex justify-center gap-6 text-xs font-bold text-zinc-600 tracking-widest uppercase">
+            <a href="mailto:founding@accountability.ai" class="hover:text-teal-400">founding@accountability.ai</a>
+            <span>Permanent Ledger // CC0 1.0</span>
+        </div>
     </footer>
-
 </body>
 </html>
