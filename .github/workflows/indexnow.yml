@@ -1,0 +1,63 @@
+name: IndexNow
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'sitemap.xml'
+      - 'robots.txt'
+      - '**.html'
+      - '**.md'
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Submit to IndexNow
+        run: |
+          curl -s -w "\nHTTP Status: %{http_code}" \
+          -X POST "https://api.indexnow.org/indexnow" \
+          -H "Content-Type: application/json; charset=utf-8" \
+          -d '{
+            "host": "accountability.ai",
+            "key": "${{ secrets.INDEXNOW_KEY }}",
+            "keyLocation": "https://accountability.ai/${{ secrets.INDEXNOW_KEY }}.txt",
+            "urlList": [
+              "https://accountability.ai/",
+              "https://accountability.ai/sandbox.html",
+              "https://accountability.ai/getting-started.html",
+              "https://accountability.ai/technical-details.html",
+              "https://accountability.ai/aki-formal-definition.html",
+              "https://accountability.ai/aki-95.html",
+              "https://accountability.ai/technical-note-coherence.html",
+              "https://accountability.ai/human-delta-chain-spec.html",
+              "https://accountability.ai/horizontal-scaling.html",
+              "https://accountability.ai/ppp-pillars.html",
+              "https://accountability.ai/ppp-legal-compliance.html",
+              "https://accountability.ai/ppp-export-control.html",
+              "https://accountability.ai/ppp-industry-templates.html",
+              "https://accountability.ai/cbca-fiduciary-mapping.html",
+              "https://accountability.ai/cbsa-mapping.html",
+              "https://accountability.ai/eu-ai-act-mapping.html",
+              "https://accountability.ai/foi-formal-definition.html",
+              "https://accountability.ai/future-agi-court.html",
+              "https://accountability.ai/agi-court-precedents.html",
+              "https://accountability.ai/agdr-spec.html",
+              "https://accountability.ai/comparison-aviation-black-box.html",
+              "https://accountability.ai/comparison-medical-records.html",
+              "https://accountability.ai/beauty-truth-wisdom.html",
+              "https://accountability.ai/bills-of-exchange-mapping.html",
+              "https://accountability.ai/cea-compliance.html",
+              "https://accountability.ai/fiduciary-duty-of-care.html",
+              "https://accountability.ai/geo-optimization.html",
+              "https://accountability.ai/legal-glossary.html",
+              "https://accountability.ai/legal-mapping.html",
+              "https://accountability.ai/manifesto.html",
+              "https://accountability.ai/verification-audit-procedure.html",
+              "https://accountability.ai/tsx-stress-test.html",
+              "https://accountability.ai/terms.html",
+              "https://accountability.ai/CHANGELOG.html",
+              "https://accountability.ai/CONTRIBUTING.html",
+              "https://accountability.ai/LICENSE-UPDATE.html",
+              "https://accountability.ai/README.html"
+            ]
+          }'
