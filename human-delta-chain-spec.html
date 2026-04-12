@@ -1,93 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Human Delta Chain & FOI Spec | Accountability.ai</title>
-    <style>
-        :root { --teal: #2dd4bf; --bg: #050505; --card: #0a0a0a; --text: #a1a1aa; --border: #1a1a1a; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; line-height: 1.7; }
-        
-        nav { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.8); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -1px; }
+  <!-- Meta & Theme -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  
+  <!-- Performance Hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- SEO & GEO -->
+  <title>Human Delta Chain Specification | AgDR v1.8 | Accountability.ai</title>
+  <meta name="description" content="AgDR v1.8 Human Delta Chain: capturing human intervention through the Wisdom lens of the PPP Triplet for compliance evidence, model training, and CBCA s.122 fiduciary controls.">
+  <meta name="description" lang="fr" content="Spécification de la chaîne de variation humaine d'AgDR v1.8 : capture de l'intervention humaine par le prisme de la Sagesse du triplet PPP pour la preuve de conformité, l'entraînement des modèles et les contrôles fiduciaires conformes à l'art. 122 de la LCSA.">
+  
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://accountability.ai/human-delta-chain-spec.html">
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/human-delta-chain-spec.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://accountability.ai/fr/human-delta-chain-spec.html">
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/human-delta-chain-spec.html">
+  
+  <!-- Open Graph & Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:url" content="https://accountability.ai/human-delta-chain-spec.html">
+  <meta property="og:title" content="Human Delta Chain Specification | AgDR v1.8 | Accountability.ai">
+  <meta property="og:description" content="AgDR v1.8 Human Delta Chain: capturing human intervention through the Wisdom lens of the PPP Triplet for compliance, training, and fiduciary controls.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Human Delta Chain Specification | AgDR v1.8 | Accountability.ai">
+  <meta name="twitter:description" content="AgDR v1.8 Human Delta Chain: capturing human intervention through the Wisdom lens of the PPP Triplet for compliance, training, and fiduciary controls.">
+  
+  <!-- Schema.org: TechArticle -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"Human Delta Chain Specification | AgDR v1.8 | Accountability.ai","description":"AgDR v1.8 Human Delta Chain: capturing human intervention through the Wisdom lens of the PPP Triplet for compliance evidence, model training, and CBCA s.122 fiduciary controls.","author":{"@type":"Person","name":"Robert Muncaster"},"publisher":{"@type":"Organization","name":"GENESIS GLASS FOUNDATION","alternateName":"FONDATION GENÈSE CRISTAL","url":"https://accountability.ai","sameAs":["https://github.com/aiccountability-source"],"address":{"@type":"PostalAddress","addressLocality":"Oshawa","addressRegion":"ON","addressCountry":"CA"}},"datePublished":"2026-04-12","dateModified":"2026-04-12","license":"https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0","mainEntityOfPage":{"@type":"WebPage","@id":"https://accountability.ai/human-delta-chain-spec.html"},"articleSection":"Governance","inLanguage":"en-CA","keywords":["AgDR","Human Delta Chain","PPP Triplet","Wisdom component","Beauty Truth Wisdom","Fiduciary Office Intervenor","FOI","CBCA s.122","fiduciary duty","human intervention","compliance evidence","model training","Phoenix v1.8"]}
+  </script>
+  
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://accountability.ai/"},{"@type":"ListItem","position":2,"name":"Human Delta Chain Specification","item":"https://accountability.ai/human-delta-chain-spec.html"}]}
+  </script>
+  
+  <!-- GTM + GA4 + Consent Mode v2 -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+    gtag('js',new Date());gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+  </script>
 
-        header { padding: 10rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
-        .spec-label { color: var(--teal); font-family: monospace; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; }
-        h1 { color: #fff; font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: -2px; line-height: 1.1; margin: 1rem 0; }
-        
-        main { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .lead { font-size: 1.25rem; color: #eee; margin-bottom: 4rem; font-weight: 300; }
-
-        /* FOI Logic Box */
-        .foi-section { background: linear-gradient(145deg, #0a0a0a, #050505); border: 1px solid var(--border); padding: 3rem; border-radius: 12px; margin-bottom: 4rem; border-left: 4px solid var(--teal); }
-        .foi-section h2 { color: #fff; margin-top: 0; font-size: 1.6rem; letter-spacing: -0.5px; }
-        .foi-badge { background: var(--teal); color: #000; padding: 2px 8px; font-size: 0.7rem; font-weight: 900; border-radius: 3px; margin-bottom: 1rem; display: inline-block; }
-
-        .delta-table { width: 100%; border-collapse: collapse; margin: 3rem 0; font-size: 0.9rem; }
-        .delta-table th { text-align: left; color: var(--teal); padding: 1rem; border-bottom: 1px solid var(--border); font-family: monospace; font-size: 0.7rem; text-transform: uppercase; }
-        .delta-table td { padding: 1.5rem 1rem; border-bottom: 1px solid #111; }
-        
-        .wisdom-note { font-style: italic; color: #64748b; font-size: 0.95rem; margin-top: 5rem; text-align: center; }
-
-        footer { text-align: center; padding: 4rem; font-size: 0.7rem; color: #333; border-top: 1px solid var(--border); }
-    </style>
+  <!-- Native CSS (Zero External Dependencies) -->
+  <style>
+    :root{
+      --teal:#2dd4bf;--bg:#050505;--text:#a1a1aa;--text-muted:#71717a;--header:#fff;
+      --border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.02);
+      --gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%);
+      --container-max:1200px;--content-max:900px;--spacing:1.5rem;
+      --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--spacing);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .nav-badge{border:1px solid var(--teal);color:var(--teal);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--teal)}
+    .lang-switcher{display:flex;gap:.25rem;align-items:center;padding:.25rem .5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:.375rem;font-size:.75rem;font-weight:600}
+    .lang-link{color:var(--text-muted);padding:.125rem .375rem;border-radius:.25rem;transition:all .15s ease;text-decoration:none}
+    .lang-link:hover,.lang-link[aria-current="true"]{color:var(--teal);background:rgba(45,212,191,0.15)}
+    .lang-link:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:768px){.lang-switcher{order:3;margin-left:auto}}
+    .breadcrumb{max-width:var(--container-max);margin:0 auto;padding:.5rem var(--spacing);font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none;flex-wrap:wrap}
+    .hero-gradient{background:var(--gradient);padding:10rem var(--spacing) 4rem}
+    .hero-content{max-width:var(--content-max);margin:0 auto}
+    .spec-label{color:var(--teal);font-family:var(--font-mono);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:1rem}
+    h1{color:#fff;font-size:clamp(2.5rem,6vw,4rem);letter-spacing:-2px;line-height:1.1;margin:1rem 0}
+    .hero-lead{font-size:1.25rem;color:#eee;margin-bottom:4rem;font-weight:300;line-height:1.6}
+    main{max-width:var(--content-max);margin:0 auto;padding:0 var(--spacing) 4rem}
+    .prose{font-size:1.05rem;line-height:1.8;color:var(--text)}
+    .prose p{margin-bottom:1.25rem}
+    .prose strong{color:var(--header)}
+    .foi-section{background:linear-gradient(145deg,#0a0a0a,#050505);border:1px solid var(--border);padding:3rem;border-radius:12px;margin:3rem 0;border-left:4px solid var(--teal)}
+    .foi-section h2{color:#fff;margin-top:0;font-size:1.6rem;letter-spacing:-0.5px}
+    .foi-badge{background:var(--teal);color:#000;padding:2px 8px;font-size:.7rem;font-weight:900;border-radius:3px;margin-bottom:1rem;display:inline-block}
+    .delta-table{width:100%;border-collapse:collapse;margin:3rem 0;font-size:.9rem}
+    .delta-table th{text-align:left;color:var(--teal);padding:1rem;border-bottom:1px solid var(--border);font-family:var(--font-mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}
+    .delta-table td{padding:1.5rem 1rem;border-bottom:1px solid #111;vertical-align:top}
+    .delta-table tr:hover td{background:#111}
+    .wisdom-framework{background:rgba(45,212,191,0.05);border:1px dashed var(--teal);border-radius:.5rem;padding:1.5rem;margin:2rem 0}
+    .wisdom-framework h3{color:var(--teal);font-size:1.1rem;margin:0 0 .75rem 0}
+    .wisdom-framework p{margin:0;color:var(--text-muted);font-size:.95rem}
+    .wisdom-note{font-style:italic;color:#64748b;font-size:.95rem;margin-top:4rem;text-align:center}
+    .cta-section{margin-top:4rem;text-align:center;padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:1rem}
+    .cta-section p{margin-bottom:1rem;color:var(--text-muted)}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{display:inline-block;padding:.875rem 2rem;border-radius:.5rem;font-weight:600;text-align:center;transition:all .2s;cursor:pointer;border:none;font-size:1rem}
+    .btn-primary{background:var(--teal);color:#000}
+    .btn-primary:hover{background:#14b8a6}
+    .btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+    .site-footer{background:#080808;border-top:1px solid var(--border);padding:4rem var(--spacing) 3rem}
+    .footer-grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-muted);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{max-width:var(--container-max);margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    @media(max-width:600px){h1{font-size:2.5rem}.nav-links{display:none}.footer-grid{grid-template-columns:repeat(2,1fr)}.footer-bottom{flex-direction:column;align-items:center;text-align:center}.delta-table{font-size:.85rem}.delta-table th,.delta-table td{padding:.75rem .5rem}}
+    [lang="fr"]{font-feature-settings:"kern" 1,"liga" 1,"calt" 1;hyphens:auto}
+  </style>
 </head>
+
 <body>
+  <!-- GTM noscript fallback -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <!-- SEO keywords (screen-reader only) -->
+  <p class="sr-only">AgDR Human Delta Chain, PPP Triplet Wisdom component, Beauty Truth Wisdom framework, Fiduciary Office Intervenor FOI, CBCA s.122 fiduciary duty, human intervention capture, compliance evidence, model training feedback, Phoenix v1.8, Genesis Glass Foundation</p>
+  
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav>
-        <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-        <div style="font-size: 0.7rem; font-family: monospace; color: var(--teal);">SPEC_V_1.8_PHOENIX</div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <span class="nav-badge">GOVERNANCE SPEC</span>
+      
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/getting-started.html">Get Started</a>
+        <a href="/ppp-pillars.html">PPP Pillars</a>
+        <a href="/sandbox.html">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">GitHub</a>
+      </div>
+      
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="navigation" aria-label="Language selection">
+        <a href="/human-delta-chain-spec.html" 
+           hreflang="en" 
+           lang="en"
+           class="lang-link"
+           aria-current="true"
+           data-lang="en"
+           title="English">EN</a>
+        <span class="sr-only">|</span>
+        <a href="/fr/human-delta-chain-spec.html" 
+           hreflang="fr-CA" 
+           lang="fr"
+           class="lang-link"
+           data-lang="fr"
+           title="Français (Canada)">FR</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">Human Delta Chain Specification</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
 
-    <header>
-        <span class="spec-label">Human-Machine Interface</span>
-        <h1>The Human Delta <br>& FOI Connection.</h1>
-    </header>
+  <!-- Hero -->
+  <section class="hero-gradient">
+    <div class="hero-content">
+      <span class="spec-label">Human-Machine Interface</span>
+      <h1>The Human Delta Chain.</h1>
+      <p class="hero-lead">Not merely human-in-the-loop. The Human Delta Chain captures the variance between machine output and human judgment through the Wisdom lens of the PPP Triplet, creating an auditable record for compliance, training, and fiduciary control.</p>
+    </div>
+  </section>
 
-    <main>
-        <p class="lead">Accountability is not found in the machine's output, but in the human's response. The Human Delta Chain records the variance, while the FOI provides the regulatory seal.</p>
+  <!-- Main Content -->
+  <main id="main-content" class="prose">
+    <section class="foi-section">
+      <span class="foi-badge">CBCA s.122 COMPLIANCE</span>
+      <h2>Fiduciary Office Intervenor (FOI)</h2>
+      <p>The FOI is a specific, designated role in the AgDR ecosystem. As the terminal node of the Human Delta Chain, the FOI exercises fiduciary duty under CBCA s.122 by reviewing the <strong>Human Delta Chain</strong> to verify that the <strong>PPP Triplet</strong> (Provenance, Place, Purpose) was not just present, but appropriate for the context. This satisfies the non-delegable fiduciary duty of care for high-risk AI systems under Canadian corporate law.</p>
+      <p><strong>Clarification:</strong> FOI stands for Fiduciary Office Intervenor. This is a defined role, not a generic concept. The FOI is the human authority who intervenes at the terminal point of the decision record chain to affirm, modify, or halt autonomous actions in accordance with fiduciary obligations.</p>
+    </section>
 
-        <section class="foi-section">
-            <span class="foi-badge">REGULATORY PILLAR</span>
-            <h2>Final Oversight Integrity (FOI)</h2>
-            <p>The FOI is the terminal authority in the AgDR ecosystem. By reviewing the <strong>Human Delta Chain</strong>, the FOI verifies that the <strong>PPP Triplet</strong> (Providence, Place, Purpose) was not just present, but appropriate for the context. This satisfies the "High-Risk AI" requirements for human-centric monitoring.</p>
-        </section>
+    <h2>The Human Delta Chain: Beyond "Human-in-the-Loop"</h2>
+    <p>Industry has preached "human-in-the-loop" for eons. The Human Delta Chain is different. It is not a checkpoint. It is a <strong>captured component of human intervention</strong>, cryptographically sealed at the moment of variance, intended for three distinct purposes:</p>
+    
+    <ul>
+      <li><strong>Compliance Evidence:</strong> A court-admissible record proving that human oversight occurred, when it occurred, and why, satisfying statutory requirements like CBCA s.122 and EU AI Act Article 14.</li>
+      <li><strong>Model Training Feedback:</strong> Structured variance data that enables supervised refinement of autonomous systems, turning oversight into improvement without compromising audit integrity.</li>
+      <li><strong>Fiduciary Control Enforcement:</strong> A mechanism for the FOI to exercise duty of care in real time, with every intervention recorded, signed, and chained to the original decision record.</li>
+    </ul>
 
-        <table class="delta-table">
-            <thead>
-                <tr>
-                    <th>The Delta State</th>
-                    <th>The FOI Interpretation</th>
-                    <th>Regulatory Alignment</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>Delta Zero</b> (Pass)</td>
-                    <td>The Beholder affirms the machine's Truth/Wisdom/Beauty.</td>
-                    <td>Active Fiduciary Consent</td>
-                </tr>
-                <tr>
-                    <td><b>Positive Delta</b> (Mod)</td>
-                    <td>The Beholder steers the machine to align with Purpose.</td>
-                    <td>Corrective Duty of Care</td>
-                </tr>
-                <tr>
-                    <td><b>Interrupt</b> (Halt)</td>
-                    <td>The Beholder triggers the Aki Gate to prevent drift.</td>
-                    <td>Emergency Mitigation</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="wisdom-framework">
+      <h3>Wisdom as the Evaluative Lens</h3>
+      <p>Within the PPP Triplet, Purpose is operationalized through the Beauty-Truth-Wisdom framework. <strong>Wisdom</strong> is the component that evaluates whether a machine's output, however technically correct (Truth) or elegantly designed (Beauty), aligns with human-defined purpose in context. The Human Delta Chain captures the moment Wisdom intervenes.</p>
+    </div>
 
-        <div class="wisdom-note">
-            "The FOI does not just look at logs; they audit the soul of the machine's intent."
-        </div>
-    </main>
+    <table class="delta-table">
+      <thead>
+        <tr>
+          <th>Delta State</th>
+          <th>Wisdom Evaluation</th>
+          <th>FOI Action</th>
+          <th>CBCA s.122 Alignment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Delta Zero</strong> (Pass)</td>
+          <td>Wisdom affirms: machine output aligns with Purpose in context.</td>
+          <td>FOI cryptographically signs affirmation; record sealed with zero variance.</td>
+          <td>Active fiduciary consent: duty of care satisfied through documented affirmation of alignment.</td>
+        </tr>
+        <tr>
+          <td><strong>Positive Delta</strong> (Mod)</td>
+          <td>Wisdom detects misalignment: output is technically sound but contextually inappropriate.</td>
+          <td>FOI steers the system via a documented, cryptographically sealed intervention; delta recorded as structured feedback.</td>
+          <td>Corrective duty of care: fiduciary obligation to adjust course when machine output deviates from corporate best interests.</td>
+        </tr>
+        <tr>
+          <td><strong>Interrupt</strong> (Halt)</td>
+          <td>Wisdom identifies risk: continued autonomy threatens purpose or public interest.</td>
+          <td>FOI triggers the AKI Gate to halt escalation; intervention recorded as emergency mitigation with full context.</td>
+          <td>Emergency mitigation: fiduciary duty to prevent harm when autonomous systems threaten corporate or public interest.</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <footer>
-        OSHAWA, ONTARIO · CC0 1.0 UNIVERSAL · FOI COMPLIANCE
-    </footer>
+    <h2>Three-Purpose Architecture</h2>
+    <p>The Human Delta Chain is designed to serve three masters without compromise:</p>
+    
+    <ol>
+      <li><strong>Compliance:</strong> Every delta is a forensic record. The chain provides immutable proof that human oversight occurred, satisfying evidentiary standards under CEA s.31.1 and enabling efficient regulatory audit.</li>
+      <li><strong>Training:</strong> Structured delta data (not raw logs) feeds model refinement pipelines. Because each intervention is Wisdom-evaluated and FOI-signed, training data carries provenance and purpose context, reducing drift and improving alignment.</li>
+      <li><strong>Fiduciary Control:</strong> The FOI exercises duty of care through the chain. Every affirmation, modification, or halt is a fiduciary act, recorded with timestamp, context, and cryptographic proof, satisfying the non-delegable nature of CBCA s.122.</li>
+    </ol>
 
+    <div class="wisdom-note">
+      The Human Delta Chain does not ask whether a human was present. It records what the human judged, why they judged it, and how that judgment aligns with Wisdom-defined Purpose. That is the difference between theater and accountability.
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+      <p>Ready to implement Wisdom-integrated human accountability?</p>
+      <div class="cta-buttons">
+        <a href="/getting-started.html" class="btn btn-primary">Initialize AgDR SDK</a>
+        <a href="/ppp-pillars.html" class="btn btn-secondary">PPP Triplet Reference</a>
+        <a href="/cbca-fiduciary-mapping.html" class="btn btn-secondary">CBCA s.122 Mapping</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer with Full Sitemap -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Core Standard</h5>
+        <ul>
+          <li><a href="/getting-started.html">Get Started</a></li>
+          <li><a href="/sandbox.html">Phoenix Demo</a></li>
+          <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+          <li><a href="/aki-formal-definition.html">AKI Definition</a></li>
+          <li><a href="/agdr-spec.html">AgDR Protocol</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal and Compliance</h5>
+        <ul>
+          <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+          <li><a href="/foi-formal-definition.html">FOI Role</a></li>
+          <li><a href="/verification-audit-procedure.html">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engineering</h5>
+        <ul>
+          <li><a href="/tsx-stress-test.html">TSX Stress Test</a></li>
+          <li><a href="/horizontal-scaling.html">Horizontal Scaling</a></li>
+          <li><a href="/aki-95.html">AKI 0.95 Spec</a></li>
+          <li><a href="/human-delta-chain-spec.html" style="color:var(--teal);font-weight:600">Human Delta Chain</a></li>
+          <li><a href="/CHANGELOG.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Evidence and Vision</h5>
+        <ul>
+          <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
+          <li><a href="/comparison-medical-records.html">Medical Records</a></li>
+          <li><a href="/agi-court-precedents.html">AGI Court Precedents</a></li>
+          <li><a href="/future-agi-court.html">Court in 2076</a></li>
+          <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · WISDOM-INTEGRATED ACCOUNTABILITY</p>
+      <p>
+        <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> · 
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · 
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
+
