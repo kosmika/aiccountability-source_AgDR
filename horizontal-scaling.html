@@ -1,113 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
+  <!-- Meta & Theme -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="horizontal
-scaling — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
-  <title>horizontal scaling | Accountability.ai</title>
-  <link rel="canonical" href="https://accountability.ai/horizontal
-scaling">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <!-- Open Graph -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  
+  <!-- Performance Hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- SEO & GEO -->
+  <title>Horizontal Scaling | AgDR v1.8 | Accountability.ai</title>
+  <meta name="description" content="AgDR v1.8 horizontal scaling architecture: Root Merkle coordination, shard assignment, and court-provable distributed decision records at trillion-scale throughput.">
+  <meta name="description" lang="fr" content="Architecture de mise à l'échelle horizontale d'AgDR v1.8 : coordination Merkle racine, affectation des shards, et enregistrements décisionnels distribués vérifiables en cour à débit de billions.">
+  
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://accountability.ai/horizontal-scaling.html">
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/horizontal-scaling.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://accountability.ai/fr/horizontal-scaling.html">
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/horizontal-scaling.html">
+  
+  <!-- Open Graph & Twitter -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Accountability.ai">
-  <meta property="og:title" content="horizontal
-scaling | Accountability.ai">
-  <meta property="og:description" content="horizontal
-scaling — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+  <meta property="og:url" content="https://accountability.ai/horizontal-scaling.html">
+  <meta property="og:title" content="Horizontal Scaling | AgDR v1.8 | Accountability.ai">
+  <meta property="og:description" content="AgDR v1.8 horizontal scaling: Root Merkle coordination, shard assignment, court-provable distributed records at trillion-scale throughput.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Horizontal Scaling | AgDR v1.8 | Accountability.ai">
+  <meta name="twitter:description" content="AgDR v1.8 horizontal scaling: Root Merkle coordination, shard assignment, court-provable distributed records at trillion-scale throughput.">
+  
+  <!-- Schema.org: TechArticle -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"Horizontal Scaling | AgDR v1.8 | Accountability.ai","description":"AgDR v1.8 horizontal scaling architecture: Root Merkle coordination, shard assignment, and court-provable distributed decision records at trillion-scale throughput.","author":{"@type":"Person","name":"Robert Muncaster"},"publisher":{"@type":"Organization","name":"GENESIS GLASS FOUNDATION","alternateName":"FONDATION GENÈSE CRISTAL","url":"https://accountability.ai","sameAs":["https://github.com/aiccountability-source"],"address":{"@type":"PostalAddress","addressLocality":"Oshawa","addressRegion":"ON","addressCountry":"CA"}},"datePublished":"2026-04-12","dateModified":"2026-04-12","license":"https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0","mainEntityOfPage":{"@type":"WebPage","@id":"https://accountability.ai/horizontal-scaling.html"},"articleSection":"Engineering","inLanguage":"en-CA","keywords":["AgDR","horizontal scaling","Merkle tree","sharding","distributed systems","AKI","cryptographic sealing","court-admissible","Phoenix v1.8","throughput"]}
+  </script>
+  
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://accountability.ai/"},{"@type":"ListItem","position":2,"name":"Horizontal Scaling","item":"https://accountability.ai/horizontal-scaling.html"}]}
+  </script>
+  
+  <!-- GTM + GA4 + Consent Mode v2 -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+    gtag('js',new Date());gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+  </script>
 
+  <!-- Native CSS (Zero External Dependencies) -->
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; }
-
-    /* Typography */
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
-
-    /* Body text */
-    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-    .prose strong { color: #f4f4f5; font-weight: 600; }
-    .prose em { color: #a1a1aa; }
-
+    :root{
+      /* Brand Tokens */
+      --teal:#2dd4bf;--bg:#050505;--text:#d4d4d8;--text-muted:#9ca3af;--header:#fff;
+      --border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.02);--code-bg:#18181b;
+      --gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%);
+      
+      /* Layout */
+      --container-max:1200px;--content-max:900px;--spacing:1.5rem;
+      
+      /* Typography */
+      --font-sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
+    }
+    
+    /* Universal Resets + Accessibility */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+    
+    /* Reduced Motion Support */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    }
+    
+    /* Skip Link */
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    
+    /* Navigation */
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--spacing);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .nav-badge{border:1px solid var(--teal);color:var(--teal);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--teal)}
+    
+    /* Language Switcher */
+    .lang-switcher{display:flex;gap:.25rem;align-items:center;padding:.25rem .5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:.375rem;font-size:.75rem;font-weight:600}
+    .lang-link{color:var(--text-muted);padding:.125rem .375rem;border-radius:.25rem;transition:all .15s ease;text-decoration:none}
+    .lang-link:hover,.lang-link[aria-current="true"]{color:var(--teal);background:rgba(45,212,191,0.15)}
+    .lang-link:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+    
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:768px){.lang-switcher{order:3;margin-left:auto}}
+    
+    /* Breadcrumb */
+    .breadcrumb{max-width:var(--container-max);margin:0 auto;padding:.5rem var(--spacing);font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none;flex-wrap:wrap}
+    
+    /* Hero */
+    .hero-gradient{background:var(--gradient);padding:6rem var(--spacing) 4rem}
+    .hero-content{max-width:var(--content-max);margin:0 auto}
+    .teal-tag{color:var(--teal);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:block;margin-bottom:1rem}
+    h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:1rem;color:#fff}
+    .hero-meta{color:#888;font-size:1rem}
+    
+    /* Main Content */
+    main{max-width:var(--content-max);margin:0 auto;padding:0 var(--spacing) 4rem}
+    
+    /* Prose Typography */
+    .prose{font-size:1.05rem;line-height:1.8;color:var(--text)}
+    .prose h2{font-size:1.75rem;color:var(--header);margin:3rem 0 1rem;letter-spacing:-.5px;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+    .prose h3{font-size:1.3rem;color:var(--header);margin:2rem 0 .75rem}
+    .prose h4{font-size:1.1rem;color:var(--header);margin:1.5rem 0 .5rem}
+    .prose p{margin-bottom:1.25rem}
+    .prose strong{color:var(--header)}
+    .prose em{color:var(--text-muted)}
+    .prose a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+    .prose a:hover{color:#14b8a6}
+    
     /* Lists */
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-    .prose li strong { color: #f4f4f5; }
-
-    /* Links */
-    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-    .prose a:hover { color: #99f6e4; }
-
-    /* Code */
-    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-    /* Blockquotes */
-    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
+    .prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1.25rem}
+    .prose li{margin-bottom:.5rem}
+    
+    /* Code Blocks */
+    .prose pre{background:var(--code-bg);border:1px solid var(--border);border-radius:.5rem;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;font-family:var(--font-mono);font-size:.875rem;line-height:1.6}
+    .prose code{background:rgba(255,255,255,0.05);padding:.15rem .4rem;border-radius:.25rem;font-family:var(--font-mono);font-size:.9em;color:var(--teal)}
+    .prose pre code{background:none;padding:0;border:none;color:var(--text)}
+    
     /* Tables */
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-    .prose tr:nth-child(even) td { background: #18181b; }
-    .prose tr:hover td { background: #1f2937; }
-
-    /* HR */
-    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-    /* Nav gradient */
-    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .table-wrap{overflow-x:auto;margin:2rem 0}
+    .prose table{width:100%;border-collapse:collapse;font-size:.95rem}
+    .prose th{background:#111;color:var(--text-muted);text-align:left;padding:.75rem 1rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.7rem;border-bottom:2px solid var(--border)}
+    .prose td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+    .prose tr:hover td{background:#111}
+    
+    /* Diagram Container */
+    .diagram{background:var(--card);border:1px solid var(--border);border-radius:.5rem;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;font-family:var(--font-mono);font-size:.85rem;line-height:1.5;color:var(--text)}
+    
+    /* Callout */
+    .callout{background:rgba(13,115,119,0.1);border-left:4px solid #0d7377;padding:1.5rem;margin:2rem 0;border-radius:0 .5rem .5rem 0}
+    .callout p{margin:0;color:var(--text-muted);font-style:italic}
+    
+    /* Document Navigation Footer */
+    .doc-nav{background:#080808;border-top:1px solid var(--border);padding:3rem var(--spacing);margin-top:4rem}
+    .doc-nav-title{color:var(--teal);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+    .doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:var(--container-max);margin:0 auto}
+    .doc-card{background:var(--card);border:1px solid var(--border);padding:1rem;border-radius:.5rem;transition:transform .2s,border-color .2s}
+    .doc-card:hover{transform:translateY(-2px);border-color:var(--teal)}
+    .doc-card-title{color:var(--header);font-size:.9rem;font-weight:600;margin-bottom:.25rem;display:block}
+    .doc-card-desc{color:var(--text-muted);font-size:.8rem}
+    
+    /* Main Footer */
+    .site-footer{background:#080808;border-top:1px solid var(--border);padding:4rem var(--spacing) 3rem}
+    .footer-grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-muted);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{max-width:var(--container-max);margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    
+    /* Responsive */
+    @media(max-width:600px){
+      h1{font-size:2.5rem}
+      .nav-links{display:none}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-bottom{flex-direction:column;align-items:center;text-align:center}
+      .prose h2{font-size:1.5rem}
+      .prose table{font-size:.85rem}
+      .prose th,.prose td{padding:.5rem}
+    }
+    
+    /* French Typography */
+    [lang="fr"]{font-feature-settings:"kern" 1,"liga" 1,"calt" 1;hyphens:auto}
   </style>
 </head>
-<body class="bg-zinc-950 text-white">
 
-  <!-- NAV -->
-  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex flex-wrap gap-5 text-sm font-medium">
-        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+<body>
+  <!-- GTM noscript fallback -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <!-- SEO keywords (screen-reader only) -->
+  <p class="sr-only">AgDR horizontal scaling, Merkle tree coordination, shard assignment, distributed AI accountability, cryptographic sealing, Phoenix v1.8, court-admissible records, throughput scaling, Genesis Glass Foundation</p>
+  
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <span class="nav-badge">ENGINEERING</span>
+      
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/getting-started.html">Get Started</a>
+        <a href="/ppp-pillars.html">PPP Pillars</a>
+        <a href="/sandbox.html">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">GitHub</a>
+      </div>
+      
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="navigation" aria-label="Language selection">
+        <a href="/horizontal-scaling.html" 
+           hreflang="en" 
+           lang="en"
+           class="lang-link"
+           aria-current="true"
+           data-lang="en"
+           title="English">EN</a>
+        <span class="sr-only">|</span>
+        <a href="/fr/horizontal-scaling.html" 
+           hreflang="fr-CA" 
+           lang="fr"
+           class="lang-link"
+           data-lang="fr"
+           title="Français (Canada)">FR</a>
       </div>
     </div>
   </nav>
+  
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">Horizontal Scaling</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-4xl mx-auto px-6 py-16">
-    <article class="prose">
-      <h1 id="horizontal-scaling">Horizontal Scaling</h1>
-      <p><strong>AgDR v0.2 — Scaling Beyond the Single-Process
-      Ceiling</strong> Published March 2026</p>
-      <hr />
-      <h2 id="the-single-process-ceiling">The Single-Process
-      Ceiling</h2>
-      <p>The TSX stress test proved AgDR at 100 million decisions,
-      reaching a ceiling of approximately <strong>2.85 billion
-      decisions</strong> in a single process (memory-bound). At 253,807
-      decisions per second, that ceiling is reached in roughly 3.1 hours
-      of sustained operation.</p>
-      <p>For high-velocity environments — trading desks, clinical
-      systems, government adjudication at scale, autonomous vehicle
-      fleets — the answer is horizontal scaling: multiple AgDR
-      processes, each maintaining its own atomic kernel chain,
-      coordinated through a <strong>Root Merkle Tree</strong> that
-      provides a single, unified, court-provable record of the entire
-      distributed operation.</p>
-      <hr />
-      <h2 id="architecture">Architecture</h2>
-      <pre><code>                    ┌─────────────────────────────────────┐
+  <!-- Hero -->
+  <section class="hero-gradient">
+    <div class="hero-content">
+      <span class="teal-tag">AgDR v1.8 · Engineering</span>
+      <h1>Horizontal Scaling</h1>
+      <p class="hero-meta">Scaling beyond the single-process ceiling — Root Merkle coordination for trillion-scale, court-provable decision records.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="prose">
+    <p><strong>Published March 2026</strong></p>
+    
+    <h2 id="the-single-process-ceiling">The Single-Process Ceiling</h2>
+    <p>The TSX stress test proved AgDR at 100 million decisions, reaching a ceiling of approximately <strong>2.85 billion decisions</strong> in a single process (memory-bound). At 253,807 decisions per second, that ceiling is reached in roughly 3.1 hours of sustained operation.</p>
+    
+    <p>For high-velocity environments — trading desks, clinical systems, government adjudication at scale, autonomous vehicle fleets — the answer is horizontal scaling: multiple AgDR processes, each maintaining its own atomic kernel chain, coordinated through a <strong>Root Merkle Tree</strong> that provides a single, unified, court-provable record of the entire distributed operation.</p>
+    
+    <hr>
+    
+    <h2 id="architecture">Architecture</h2>
+    <div class="diagram">
+<pre>                    ┌─────────────────────────────────────┐
                     │        Root Merkle Coordinator       │
                     │   (aggregates shard roots hourly)    │
                     │   Produces: Global Merkle Root        │
@@ -121,278 +283,324 @@ scaling — part of the AgDR v0.2 open standard for tamper-evident AI decision r
         │  Process │   │  Process │   │  Process │
         └──────────┘   └──────────┘   └──────────┘
         0–2.85B        0–2.85B        0–2.85B
-        decisions      decisions      decisions</code></pre>
-      <p>Each shard is an independent AgDR process with its own: -
-      Kernel atomic section - Merkle chain (forward-secret) - Ed25519
-      signing key</p>
-      <p>The Root Merkle Coordinator aggregates shard roots on a defined
-      interval and produces a <strong>Global Merkle Root</strong> — the
-      single hash that commits to every decision across all shards.</p>
-      <hr />
-      <h2 id="shard-assignment">Shard Assignment</h2>
-      <p>Decisions are assigned to shards by a deterministic routing
-      function. The routing function must be:</p>
-      <ol type="1">
-      <li><strong>Deterministic</strong> — the same decision always
-      routes to the same shard</li>
-      <li><strong>Auditable</strong> — the routing decision is itself
-      logged</li>
-      <li><strong>Collision-free for related decisions</strong> —
-      decisions that must appear in the same evidentiary chain (e.g.,
-      all decisions for a single trade) must route to the same
-      shard</li>
-      </ol>
-      <p><strong>Routing strategies:</strong></p>
+        decisions      decisions      decisions</pre>
+    </div>
+    
+    <p>Each shard is an independent AgDR process with its own:</p>
+    <ul>
+      <li>Kernel atomic section</li>
+      <li>Merkle chain (forward-secret)</li>
+      <li>Ed25519 signing key</li>
+    </ul>
+    
+    <p>The Root Merkle Coordinator aggregates shard roots on a defined interval and produces a <strong>Global Merkle Root</strong> — the single hash that commits to every decision across all shards.</p>
+    
+    <hr>
+    
+    <h2 id="shard-assignment">Shard Assignment</h2>
+    <p>Decisions are assigned to shards by a deterministic routing function. The routing function must be:</p>
+    <ol>
+      <li><strong>Deterministic</strong> — the same decision always routes to the same shard</li>
+      <li><strong>Auditable</strong> — the routing decision is itself logged</li>
+      <li><strong>Collision-free for related decisions</strong> — decisions that must appear in the same evidentiary chain (e.g., all decisions for a single trade) must route to the same shard</li>
+    </ol>
+    
+    <p><strong>Routing strategies:</strong></p>
+    
+    <div class="table-wrap">
       <table>
-      <colgroup>
-      <col style="width: 33%" />
-      <col style="width: 33%" />
-      <col style="width: 33%" />
-      </colgroup>
-      <thead>
-      <tr class="header">
-      <th>Strategy</th>
-      <th>Use Case</th>
-      <th>How</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td>Hash-by-entity</td>
-      <td>All decisions for entity X on same shard</td>
-      <td><code>shard = hash(entity_id) % num_shards</code></td>
-      </tr>
-      <tr class="even">
-      <td>Hash-by-session</td>
-      <td>All decisions in a session on same shard</td>
-      <td><code>shard = hash(session_id) % num_shards</code></td>
-      </tr>
-      <tr class="odd">
-      <td>Time-partitioned</td>
-      <td>Different shards own different time windows</td>
-      <td><code>shard = floor(timestamp_ns / window_ns) % num_shards</code></td>
-      </tr>
-      <tr class="even">
-      <td>Domain-partitioned</td>
-      <td>Different shard per business domain</td>
-      <td>Static mapping: trading → shard 0, risk → shard 1, etc.</td>
-      </tr>
-      </tbody>
+        <thead>
+          <tr>
+            <th>Strategy</th>
+            <th>Use Case</th>
+            <th>How</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hash-by-entity</td>
+            <td>All decisions for entity X on same shard</td>
+            <td><code>shard = hash(entity_id) % num_shards</code></td>
+          </tr>
+          <tr>
+            <td>Hash-by-session</td>
+            <td>All decisions in a session on same shard</td>
+            <td><code>shard = hash(session_id) % num_shards</code></td>
+          </tr>
+          <tr>
+            <td>Time-partitioned</td>
+            <td>Different shards own different time windows</td>
+            <td><code>shard = floor(timestamp_ns / window_ns) % num_shards</code></td>
+          </tr>
+          <tr>
+            <td>Domain-partitioned</td>
+            <td>Different shard per business domain</td>
+            <td>Static mapping: trading → shard 0, risk → shard 1, etc.</td>
+          </tr>
+        </tbody>
       </table>
-      <hr />
-      <h2 id="root-merkle-coordinator">Root Merkle Coordinator</h2>
-      <p>The coordinator runs on a configurable interval (default: every
-      60 seconds) and:</p>
-      <ol type="1">
+    </div>
+    
+    <hr>
+    
+    <h2 id="root-merkle-coordinator">Root Merkle Coordinator</h2>
+    <p>The coordinator runs on a configurable interval (default: every 60 seconds) and:</p>
+    <ol>
       <li>Requests the current Merkle root from each live shard</li>
       <li>Assembles the shard roots into a Root Merkle Tree</li>
-      <li>Signs the Global Merkle Root with the coordinator’s Ed25519
-      key</li>
+      <li>Signs the Global Merkle Root with the coordinator's Ed25519 key</li>
       <li>Appends the Global Root to the permanent audit log</li>
-      <li>Publishes the Global Root (optionally: to a public
-      transparency log)</li>
-      </ol>
-      <div class="sourceCode" id="cb2"><pre
-      class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> agdr_aki.coordinator <span class="im">import</span> RootMerkleCoordinator</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>coordinator <span class="op">=</span> RootMerkleCoordinator(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    shards<span class="op">=</span>[<span class="st">&quot;shard-0:50051&quot;</span>, <span class="st">&quot;shard-1:50052&quot;</span>, <span class="st">&quot;shard-2:50053&quot;</span>],</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    aggregation_interval_s<span class="op">=</span><span class="dv">60</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    signing_key_path<span class="op">=</span><span class="st">&quot;coordinator_key.pem&quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    output_log<span class="op">=</span><span class="st">&quot;global_merkle_roots.log&quot;</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>coordinator.start()</span></code></pre></div>
-      <p><strong>Global Root record structure:</strong></p>
-      <div class="sourceCode" id="cb3"><pre
-      class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;global_root_id&quot;</span><span class="fu">:</span> <span class="st">&quot;gr_20260315_094200&quot;</span><span class="fu">,</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;timestamp_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000000</span><span class="fu">,</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;interval_start_ns&quot;</span><span class="fu">:</span> <span class="dv">1741999940000000000</span><span class="fu">,</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;interval_end_ns&quot;</span><span class="fu">:</span> <span class="dv">1742000000000000000</span><span class="fu">,</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;shard_roots&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;shard_id&quot;</span><span class="fu">:</span> <span class="st">&quot;shard-0&quot;</span><span class="fu">,</span> <span class="dt">&quot;root&quot;</span><span class="fu">:</span> <span class="st">&quot;a8f3c1...&quot;</span><span class="fu">,</span> <span class="dt">&quot;record_count&quot;</span><span class="fu">:</span> <span class="dv">15228441</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;shard_id&quot;</span><span class="fu">:</span> <span class="st">&quot;shard-1&quot;</span><span class="fu">,</span> <span class="dt">&quot;root&quot;</span><span class="fu">:</span> <span class="st">&quot;b2e9d4...&quot;</span><span class="fu">,</span> <span class="dt">&quot;record_count&quot;</span><span class="fu">:</span> <span class="dv">15191033</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span> <span class="dt">&quot;shard_id&quot;</span><span class="fu">:</span> <span class="st">&quot;shard-2&quot;</span><span class="fu">,</span> <span class="dt">&quot;root&quot;</span><span class="fu">:</span> <span class="st">&quot;c7f1a8...&quot;</span><span class="fu">,</span> <span class="dt">&quot;record_count&quot;</span><span class="fu">:</span> <span class="dv">15384526</span> <span class="fu">}</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;global_merkle_root&quot;</span><span class="fu">:</span> <span class="st">&quot;9e2b7f...&quot;</span><span class="fu">,</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;total_records_in_interval&quot;</span><span class="fu">:</span> <span class="dv">45803000</span><span class="fu">,</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;signature&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;Ed25519 signature of global_merkle_root&gt;&quot;</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-      <hr />
-      <h2 id="throughput-at-scale">Throughput at Scale</h2>
-      <p>Each shard runs at the single-process rate. With N shards:</p>
+      <li>Publishes the Global Root (optionally: to a public transparency log)</li>
+    </ol>
+    
+    <pre><code>from agdr_aki.coordinator import RootMerkleCoordinator
+
+coordinator = RootMerkleCoordinator(
+    shards=["shard-0:50051", "shard-1:50052", "shard-2:50053"],
+    aggregation_interval_s=60,
+    signing_key_path="coordinator_key.pem",
+    output_log="global_merkle_roots.log",
+)
+coordinator.start()</code></pre>
+    
+    <p><strong>Global Root record structure:</strong></p>
+    
+    <pre><code>{
+  "global_root_id": "gr_20260315_094200",
+  "timestamp_ns": 1742000000000000000,
+  "interval_start_ns": 1741999940000000000,
+  "interval_end_ns": 1742000000000000000,
+  "shard_roots": [
+    { "shard_id": "shard-0", "root": "a8f3c1...", "record_count": 15228441 },
+    { "shard_id": "shard-1", "root": "b2e9d4...", "record_count": 15191033 },
+    { "shard_id": "shard-2", "root": "c7f1a8...", "record_count": 15384526 }
+  ],
+  "global_merkle_root": "9e2b7f...",
+  "total_records_in_interval": 45803000,
+  "signature": "&lt;Ed25519 signature of global_merkle_root&gt;"
+}</code></pre>
+    
+    <hr>
+    
+    <h2 id="throughput-at-scale">Throughput at Scale</h2>
+    <p>Each shard runs at the single-process rate. With N shards:</p>
+    
+    <div class="table-wrap">
       <table>
-      <thead>
-      <tr class="header">
-      <th>Shards</th>
-      <th>Throughput</th>
-      <th>Daily capacity</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td>1</td>
-      <td>253,807 decisions/sec</td>
-      <td>~21.9 billion</td>
-      </tr>
-      <tr class="even">
-      <td>4</td>
-      <td>~1,000,000 decisions/sec</td>
-      <td>~86.4 billion</td>
-      </tr>
-      <tr class="odd">
-      <td>10</td>
-      <td>~2,500,000 decisions/sec</td>
-      <td>~216 billion</td>
-      </tr>
-      <tr class="even">
-      <td>100</td>
-      <td>~25,000,000 decisions/sec</td>
-      <td>~2.16 trillion</td>
-      </tr>
-      </tbody>
+        <thead>
+          <tr>
+            <th>Shards</th>
+            <th>Throughput</th>
+            <th>Daily capacity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>253,807 decisions/sec</td>
+            <td>~21.9 billion</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>~1,000,000 decisions/sec</td>
+            <td>~86.4 billion</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>~2,500,000 decisions/sec</td>
+            <td>~216 billion</td>
+          </tr>
+          <tr>
+            <td>100</td>
+            <td>~25,000,000 decisions/sec</td>
+            <td>~2.16 trillion</td>
+          </tr>
+        </tbody>
       </table>
-      <p>Horizontal scaling is bounded only by network and storage — not
-      by the AKI algorithm itself.</p>
-      <hr />
-      <h2 id="evidentiary-properties-at-scale">Evidentiary Properties at
-      Scale</h2>
-      <p>The horizontal architecture preserves all evidentiary
-      guarantees of the single-process model:</p>
+    </div>
+    
+    <p>Horizontal scaling is bounded only by network and storage — not by the AKI algorithm itself.</p>
+    
+    <hr>
+    
+    <h2 id="evidentiary-properties-at-scale">Evidentiary Properties at Scale</h2>
+    <p>The horizontal architecture preserves all evidentiary guarantees of the single-process model:</p>
+    
+    <div class="table-wrap">
       <table>
-      <colgroup>
-      <col style="width: 33%" />
-      <col style="width: 33%" />
-      <col style="width: 33%" />
-      </colgroup>
-      <thead>
-      <tr class="header">
-      <th>Property</th>
-      <th>Single-process</th>
-      <th>Horizontal</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td>Per-record integrity</td>
-      <td>BLAKE3 hash + Ed25519</td>
-      <td>Same — per shard</td>
-      </tr>
-      <tr class="even">
-      <td>Chain completeness</td>
-      <td>Merkle chain per process</td>
-      <td>Merkle chain per shard</td>
-      </tr>
-      <tr class="odd">
-      <td>Global integrity</td>
-      <td>Single root</td>
-      <td>Global Merkle Root across all shards</td>
-      </tr>
-      <tr class="even">
-      <td>Court production</td>
-      <td>Single chain</td>
-      <td>Shard + global root + routing log</td>
-      </tr>
-      <tr class="odd">
-      <td>Tamper evidence</td>
-      <td>Breaking any hash breaks chain</td>
-      <td>Breaking any shard hash breaks that shard’s chain AND the
-      global root</td>
-      </tr>
-      </tbody>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Single-process</th>
+            <th>Horizontal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Per-record integrity</td>
+            <td>BLAKE3 hash + Ed25519</td>
+            <td>Same — per shard</td>
+          </tr>
+          <tr>
+            <td>Chain completeness</td>
+            <td>Merkle chain per process</td>
+            <td>Merkle chain per shard</td>
+          </tr>
+          <tr>
+            <td>Global integrity</td>
+            <td>Single root</td>
+            <td>Global Merkle Root across all shards</td>
+          </tr>
+          <tr>
+            <td>Court production</td>
+            <td>Single chain</td>
+            <td>Shard + global root + routing log</td>
+          </tr>
+          <tr>
+            <td>Tamper evidence</td>
+            <td>Breaking any hash breaks chain</td>
+            <td>Breaking any shard hash breaks that shard's chain AND the global root</td>
+          </tr>
+        </tbody>
       </table>
-      <p><strong>For court production in a horizontal
-      deployment</strong>, produce: 1. The specific record(s) from the
-      relevant shard 2. The shard’s Merkle chain proof 3. The Global
-      Merkle Root log entry covering the record’s time interval 4. The
-      routing log proving this entity/session was assigned to this
-      shard</p>
-      <hr />
-      <h2 id="deployment-considerations">Deployment Considerations</h2>
-      <h3 id="shard-key-management">Shard key management</h3>
-      <p>Each shard has its own Ed25519 signing key. The coordinator has
-      its own key. All keys must be: - Generated securely at deployment
-      - Backed up in a key management system (e.g., HashiCorp Vault, AWS
-      KMS) - Rotated on a defined schedule - Never shared between
-      shards</p>
-      <h3 id="foi-assignment-in-horizontal-deployments">FOI assignment
-      in horizontal deployments</h3>
-      <p>FOI designation is per decision class, not per shard. A single
-      FOI may cover decisions across all shards in their designated
-      scope. The routing function ensures escalated decisions from any
-      shard reach the correct FOI through the same escalation path.</p>
-      <h3 id="network-failure-handling">Network failure handling</h3>
-      <p>If a shard is unreachable during root aggregation: - The
-      coordinator logs the missing shard - The global root is computed
-      from available shards - The missing interval is flagged for
-      reconstruction when the shard comes back online - <strong>No
-      decisions are dropped</strong> — the shard’s local chain remains
-      intact</p>
-      <h3 id="storage">Storage</h3>
-      <p>At 253,807 decisions/second per shard, with a typical record
-      size of ~2KB: - Single shard: ~500 MB/sec — plan for ~43 TB/day -
-      Use tiered storage: hot (NVMe) for recent records, cold (object
-      storage) for archive - The Merkle chain structure allows cold
-      records to be verified without loading into memory</p>
-      <hr />
-      <p><em>Part of the AgDR v0.2 foundational standard</em> Canonical
-      source: https://github.com/aiccountability-source/AgDR</p>
-    </article>
+    </div>
+    
+    <div class="callout">
+      <p><strong>For court production in a horizontal deployment</strong>, produce: (1) The specific record(s) from the relevant shard, (2) The shard's Merkle chain proof, (3) The Global Merkle Root log entry covering the record's time interval, (4) The routing log proving this entity/session was assigned to this shard.</p>
+    </div>
+    
+    <hr>
+    
+    <h2 id="deployment-considerations">Deployment Considerations</h2>
+    
+    <h3 id="shard-key-management">Shard key management</h3>
+    <p>Each shard has its own Ed25519 signing key. The coordinator has its own key. All keys must be:</p>
+    <ul>
+      <li>Generated securely at deployment</li>
+      <li>Backed up in a key management system (e.g., HashiCorp Vault, AWS KMS)</li>
+      <li>Rotated on a defined schedule</li>
+      <li>Never shared between shards</li>
+    </ul>
+    
+    <h3 id="foi-assignment-in-horizontal-deployments">FOI assignment in horizontal deployments</h3>
+    <p>FOI designation is per decision class, not per shard. A single FOI may cover decisions across all shards in their designated scope. The routing function ensures escalated decisions from any shard reach the correct FOI through the same escalation path.</p>
+    
+    <h3 id="network-failure-handling">Network failure handling</h3>
+    <p>If a shard is unreachable during root aggregation:</p>
+    <ul>
+      <li>The coordinator logs the missing shard</li>
+      <li>The global root is computed from available shards</li>
+      <li>The missing interval is flagged for reconstruction when the shard comes back online</li>
+      <li><strong>No decisions are dropped</strong> — the shard's local chain remains intact</li>
+    </ul>
+    
+    <h3 id="storage">Storage</h3>
+    <p>At 253,807 decisions/second per shard, with a typical record size of ~2KB:</p>
+    <ul>
+      <li>Single shard: ~500 MB/sec — plan for ~43 TB/day</li>
+      <li>Use tiered storage: hot (NVMe) for recent records, cold (object storage) for archive</li>
+      <li>The Merkle chain structure allows cold records to be verified without loading into memory</li>
+    </ul>
+    
+    <hr>
+    
+    <p><em>Part of the AgDR v1.8 foundational standard</em><br>
+    Canonical source: <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener">github.com/aiccountability-source/AgDR</a></p>
   </main>
 
-  <!-- DOCUMENT NAVIGATION FOOTER -->
-  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
-    <div class="max-w-5xl mx-auto px-6">
-      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-      <div class="grid md:grid-cols-4 gap-5">
-        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-        </a>
-        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-        </a>
-        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-        </a>
-        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-        </a>
-        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-        </a>
-        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-        </a>
-        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-        </a>
-        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-        </a>
-      </div>
+  <!-- Document Navigation Footer -->
+  <section class="doc-nav">
+    <h3 class="doc-nav-title">Continue Reading</h3>
+    <div class="doc-grid">
+      <a href="/getting-started.html" class="doc-card">
+        <span class="doc-card-title">Get Started</span>
+        <span class="doc-card-desc">SDK install, PPP definition, first capture</span>
+      </a>
+      <a href="/foi-formal-definition.html" class="doc-card">
+        <span class="doc-card-title">FOI Definition</span>
+        <span class="doc-card-desc">The terminal accountability role</span>
+      </a>
+      <a href="/human-delta-chain-spec.html" class="doc-card">
+        <span class="doc-card-title">Delta Chain Spec</span>
+        <span class="doc-card-desc">Human oversight data structure</span>
+      </a>
+      <a href="/verification-audit-procedure.html" class="doc-card">
+        <span class="doc-card-title">Verification</span>
+        <span class="doc-card-desc">Court-ready evidence packaging</span>
+      </a>
+      <a href="/ppp-industry-templates.html" class="doc-card">
+        <span class="doc-card-title">Industry Templates</span>
+        <span class="doc-card-desc">PPP definitions by sector</span>
+      </a>
+      <a href="/eu-ai-act-mapping.html" class="doc-card">
+        <span class="doc-card-title">EU AI Act Mapping</span>
+        <span class="doc-card-desc">Article-by-article compliance analysis</span>
+      </a>
+      <a href="/beauty-truth-wisdom.html" class="doc-card">
+        <span class="doc-card-title">Beauty, Truth &amp; Wisdom</span>
+        <span class="doc-card-desc">The Purpose pillar's closing principles</span>
+      </a>
+      <a href="/horizontal-scaling.html" class="doc-card" style="border-color:var(--teal)">
+        <span class="doc-card-title">Horizontal Scaling</span>
+        <span class="doc-card-desc">Beyond 2.85B decisions per process</span>
+      </a>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
-    <p class="mb-2">
-      The AgDR Standard is open, royalty-free, and dual-licensed:
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
-    </p>
-    <p>
-      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
-      &nbsp;·&nbsp; © 2026 Accountability.ai
-    </p>
+  <!-- Footer with Full Sitemap -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Core Standard</h5>
+        <ul>
+          <li><a href="/getting-started.html">Get Started</a></li>
+          <li><a href="/sandbox.html">Phoenix Demo</a></li>
+          <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+          <li><a href="/aki-formal-definition.html">AKI Definition</a></li>
+          <li><a href="/agdr-spec.html">AgDR Protocol</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal & Compliance</h5>
+        <ul>
+          <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+          <li><a href="/foi-formal-definition.html">FOI Role</a></li>
+          <li><a href="/verification-audit-procedure.html">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engineering</h5>
+        <ul>
+          <li><a href="/tsx-stress-test.html">TSX Stress Test</a></li>
+          <li><a href="/horizontal-scaling.html" style="color:var(--teal);font-weight:600">Horizontal Scaling</a></li>
+          <li><a href="/aki-95.html">AKI 0.95 Spec</a></li>
+          <li><a href="/human-delta-chain-spec.html">Human Delta Chain</a></li>
+          <li><a href="/CHANGELOG.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Evidence & Vision</h5>
+        <ul>
+          <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
+          <li><a href="/comparison-medical-records.html">Medical Records</a></li>
+          <li><a href="/agi-court-precedents.html">AGI Court Precedents</a></li>
+          <li><a href="/future-agi-court.html">Court in 2076</a></li>
+          <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · ENGINEERING INTEGRITY</p>
+      <p>
+        <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> · 
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · 
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+      </p>
+    </div>
   </footer>
-
 </body>
 </html>
+
