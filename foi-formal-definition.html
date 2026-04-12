@@ -1,104 +1,255 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>FOI Formal Definition | The Terminal Accountability Node</title>
-    <meta name="description" content="Formal specification of the Fiduciary Office Intervener (FOI) role within AgDR v1.8. The named human node of autonomous accountability.">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  
+  <!-- Optimized Title (keyword-first, page-specific) -->
+  <title>FOI Formal Definition | AgDR Terminal Accountability | accountability.ai</title>
+  
+  <!-- English meta description -->
+  <meta name="description" content="Formal specification of the Fiduciary Office Intervener (FOI) role within AgDR v1.8. The named human node of autonomous accountability.">
+  
+  <!-- Hreflang for SEO (English only, no /fr/ folder) -->
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/foi-formal-definition.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/foi-formal-definition.html"/>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://accountability.ai/foi-formal-definition.html"/>
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:url" content="https://accountability.ai/foi-formal-definition.html">
+  <meta property="og:title" content="FOI Formal Definition | AgDR Terminal Accountability">
+  <meta property="og:description" content="The Fiduciary Office Intervener: mandatory terminal human node in the AgDR delta chain.">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FOI Formal Definition | AgDR Terminal Accountability">
+  <meta name="twitter:description" content="The Fiduciary Office Intervener: mandatory terminal human node in the AgDR delta chain.">
+  
+  <!-- Schema.org: WebPage + BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "FOI Formal Definition",
+    "url": "https://accountability.ai/foi-formal-definition.html",
+    "author": { "@type": "Person", "name": "Robert Muncaster" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GENESIS GLASS FOUNDATION",
+      "url": "https://accountability.ai",
+      "sameAs": ["https://github.com/aiccountability-source"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oshawa",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      }
+    },
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0",
+    "mainEntity": {
+      "@type": "DefinedTerm",
+      "name": "Fiduciary Office Intervener",
+      "description": "The mandatory terminal human node in the AgDR delta chain. No decision is legally sovereign without a named human fiduciary as its final anchor.",
+      "inDefinedTermSet": "AgDR v1.8 Specification"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://accountability.ai/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "FOI Formal Definition",
+      "item": "https://accountability.ai/foi-formal-definition.html"
+    }]
+  }
+  </script>
+  
+  <!-- GA4 + Consent Mode v2 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+    gtag('js',new Date());gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+  </script>
+
+  <!-- Native CSS (zero external dependencies) -->
+  <style>
+    :root{--bg:#050505;--text:#e5e7eb;--text-dim:#a1a1aa;--text-muted:#71717a;--teal:#2dd4bf;--crimson:#ef4444;--border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.03);--gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
     
-    <style>
-        :root { --teal: #2dd4bf; --crimson: #ef4444; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.8; -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navigation */
-        nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #1a1a1a; z-index: 100;
-        }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--crimson); color: var(--crimson); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--teal); }
-
-        /* Hero Header */
-        header { 
-            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 10% 90%, #450a0a 0%, transparent 60%);
-        }
-        .label { color: var(--crimson); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
-        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
-
-        /* Content Sections */
-        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        h3 { font-size: 1.25rem; color: #fff; margin-top: 2.5rem; font-weight: 700; }
-
-        /* Code & Schema */
-        pre { background: #0a0a0a; border: 1px solid var(--border); padding: 2rem; border-radius: 12px; overflow-x: auto; margin: 2rem 0; }
-        code { font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.85rem; color: var(--teal); }
-        .schema-label { display: block; margin-bottom: -1.5rem; margin-left: 1rem; position: relative; z-index: 10; font-size: 0.6rem; font-weight: 900; color: #444; text-transform: uppercase; letter-spacing: 2px; }
-
-        /* FOI Flow Diagram Simulation */
-        .flow-box { 
-            background: #111; border: 1px solid var(--border); padding: 3rem; border-radius: 12px; margin: 4rem 0; text-align: center;
-        }
-        .node { display: inline-block; padding: 1rem 2rem; border: 1px solid #333; border-radius: 4px; font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; }
-        .node.active { border-color: var(--crimson); color: var(--crimson); box-shadow: 0 0 20px rgba(239, 68, 68, 0.1); }
-        .arrow { margin: 0 1rem; color: #333; }
-
-        /* Table Design */
-        .table-wrap { overflow-x: auto; margin: 2rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #080808; }
-        th { text-align: left; padding: 1.2rem 1rem; color: #666; background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
-        td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
-        tr td:first-child { font-weight: 800; color: #fff; background: #0a0a0a; width: 30%; }
-
-        /* Sitemap Footer */
-        .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
-        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
-        .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #444; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
-        .sitemap-col a:hover { color: #fff; }
-
-        footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-    </style>
+    /* Skip link */
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    
+    /* Navigation */
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .badge{border:1px solid var(--crimson);color:var(--crimson);padding:2px 8px;border-radius:4px;font-size:.65rem;letter-spacing:1.5px;font-weight:900}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-dim)}
+    .nav-links a:hover{color:var(--teal)}
+    .nav-search{position:relative;flex-shrink:0}
+    .nav-search input{background:#18181b;border:1px solid #27272a;border-radius:.5rem;padding:.5rem .75rem .5rem 2rem;color:#fff;font-size:.875rem;width:180px;transition:width .2s}
+    .nav-search input:focus{width:220px;border-color:var(--teal);outline:none}
+    .nav-search svg{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:1rem;height:1rem;color:#6b7280;pointer-events:none}
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:640px){.nav-search input{width:40px;padding:.5rem;transition:width .2s}.nav-search input:focus{width:180px;padding:.5rem .75rem .5rem 2rem}}
+    
+    /* Breadcrumb */
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:.5rem 1.5rem;font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none}
+    
+    /* Hero Header */
+    .page-hero{background:var(--gradient);padding:6rem 1.5rem 4rem;text-align:left}
+    .page-hero-content{max-width:900px;margin:0 auto}
+    .page-label{color:var(--crimson);font-size:.7rem;font-weight:900;letter-spacing:5px;text-transform:uppercase;margin-bottom:1rem;display:block}
+    .page-title{font-size:clamp(2.5rem,6vw,3.5rem);font-weight:700;letter-spacing:-.025em;line-height:1;margin:0 0 1.5rem;color:#fff}
+    .page-lead{font-size:1.125rem;color:#d4d4d8;line-height:1.75;max-width:750px}
+    
+    /* Content Sections */
+    .page-main{max-width:900px;margin:0 auto;padding:0 1.5rem 6rem}
+    .page-main h2{font-size:1.75rem;color:#fff;margin:4rem 0 1.5rem;letter-spacing:-.5px;border-bottom:1px solid var(--border);padding-bottom:1rem}
+    .page-main h3{font-size:1.25rem;color:#fff;margin-top:2.5rem;font-weight:700}
+    .page-main p{margin:1rem 0;color:var(--text-dim);line-height:1.7}
+    .page-main strong{color:#fff}
+    
+    /* Code & Schema */
+    pre{background:#0a0a0a;border:1px solid var(--border);padding:2rem;border-radius:12px;overflow-x:auto;margin:2rem 0}
+    code{font-family:"SFMono-Regular",Consolas,monospace;font-size:.85rem;color:var(--teal)}
+    .schema-label{display:block;margin-bottom:-1.5rem;margin-left:1rem;position:relative;z-index:10;font-size:.6rem;font-weight:900;color:#444;text-transform:uppercase;letter-spacing:2px}
+    
+    /* FOI Flow Diagram */
+    .flow-box{background:#111;border:1px solid var(--border);padding:3rem;border-radius:12px;margin:4rem 0;text-align:center}
+    .node{display:inline-block;padding:1rem 2rem;border:1px solid #333;border-radius:4px;font-size:.75rem;font-weight:800;letter-spacing:1px}
+    .node.active{border-color:var(--crimson);color:var(--crimson);box-shadow:0 0 20px rgba(239,68,68,0.1)}
+    .arrow{margin:0 1rem;color:#333}
+    
+    /* Table Design */
+    .table-wrap{overflow-x:auto;margin:2rem 0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    table{width:100%;border-collapse:collapse;font-size:.85rem;background:#080808}
+    th{text-align:left;padding:1.2rem 1rem;color:#666;background:#111;border-bottom:2px solid var(--border);text-transform:uppercase;letter-spacing:1px;font-size:.65rem}
+    td{padding:1.2rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+    tr td:first-child{font-weight:800;color:#fff;background:#0a0a0a;width:30%}
+    
+    /* Footer Sitemap */
+    .site-footer{background:#000;border-top:1px solid var(--border);padding:4rem 1.5rem 3rem}
+    .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-dim);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-col a.active{color:#fff;font-weight:700}
+    .footer-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    
+    /* Search Results */
+    #search-results{position:absolute;top:100%;right:0;left:0;background:#18181b;border:1px solid #27272a;border-radius:.5rem;margin-top:.25rem;max-height:300px;overflow-y:auto;z-index:60;display:none}
+    #search-results.show{display:block}
+    #search-results a{display:block;padding:.75rem 1rem;color:var(--text);font-size:.875rem;border-bottom:1px solid var(--border)}
+    #search-results a:hover{background:rgba(45,212,191,0.1);color:#fff}
+    #search-results .no-results{padding:1rem;color:var(--text-muted);font-size:.875rem}
+    
+    @media(max-width:600px){
+      .page-title{font-size:2.5rem}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-bottom{flex-direction:column;align-items:center;text-align:center}
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <!-- Semantic keywords for SEO (screen-reader only) -->
+  <p class="sr-only">FOI, Fiduciary Office Intervener, AgDR v1.8, terminal accountability, human-in-the-loop, CBCA s.122, fiduciary duty, escalation protocol, governance breach, cryptographic seal, Ed25519 signature</p>
+  
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-            <span class="badge">TERMINAL-AUTHORITY</span>
-        </div>
-        <div class="nav-links">
-            <a href="/getting-started.html">GET STARTED</a>
-            <a href="/ppp-pillars.html">THE STANDARD</a>
-            <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
-        </div>
-    </nav>
+  <!-- Navigation with Search -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <span class="badge">TERMINAL-AUTHORITY</span>
+      
+      <div class="nav-links">
+        <a href="/getting-started.html">Get Started</a>
+        <a href="/ppp-pillars.html">The Standard</a>
+        <a href="/sandbox.html">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" style="color:var(--teal)">GitHub</a>
+      </div>
+      
+      <!-- Search Bar -->
+      <div class="nav-search" role="search">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="search" id="site-search" placeholder="Search docs..." aria-label="Search documentation" autocomplete="off">
+        <div id="search-results" role="listbox" aria-label="Search results"></div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">FOI Formal Definition</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
 
-    <header>
-        <span class="label">AgDR Core Spec v1.8</span>
-        <h1>The FOI Definition.</h1>
-        <p class="lead">The Fiduciary Office Intervener (FOI) is the mandatory terminal human node in the AgDR delta chain. No decision is legally sovereign without a named human fiduciary as its final anchor.</p>
-    </header>
+  <!-- Hero Header -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <span class="page-label">AgDR Core Spec v1.8</span>
+      <h1 class="page-title">The FOI Definition.</h1>
+      <p class="page-lead">The Fiduciary Office Intervener (FOI) is the mandatory terminal human node in the AgDR delta chain. No decision is legally sovereign without a named human fiduciary as its final anchor.</p>
+    </div>
+  </section>
 
-    <main>
-        <h2>The Terminal Node Concept</h2>
-        <p>In autonomous systems, accountability often diffuses into a "responsibility vacuum." The FOI role is designed to collapse this diffusion into a single, named, legally-authorized individual. Under <strong>CBCA s.122</strong>, the FOI holds the ultimate duty of care for the agent's actions within their designated scope.</p>
+  <!-- Main Content -->
+  <main id="main-content" class="page-main">
+    
+    <h2>The Terminal Node Concept</h2>
+    <p>In autonomous systems, accountability often diffuses into a "responsibility vacuum." The FOI role is designed to collapse this diffusion into a single, named, legally-authorized individual. Under <strong>CBCA s.122</strong>, the FOI holds the ultimate duty of care for the agent's actions within their designated scope.</p>
 
-        
-
-        <h3>FOI Identification Schema</h3>
-        <span class="schema-label">Machine-Readable Signature Registry</span>
-        <pre><code>FOI_IDENTITY := {
+    <h3>FOI Identification Schema</h3>
+    <span class="schema-label">Machine-Readable Signature Registry</span>
+    <pre><code>FOI_IDENTITY := {
   "actor": "Full Legal Name",
   "title": "Fiduciary Role (e.g., CCO, CEO, CMO)",
   "scope": "Namespace (e.g., fin.trading.equity)",
@@ -106,81 +257,166 @@
   "pubkey": "Ed25519-Fiduciary-Key-Identifier"
 }</code></pre>
 
-        <h3>Escalation Triggers</h3>
-        <p>An FOI is not a day-to-day reviewer; they are a <strong>governance intervener</strong>. Escalation occurs when an agent reaches a predefined risk or logic threshold.</p>
+    <h3>Escalation Triggers</h3>
+    <p>An FOI is not a day-to-day reviewer; they are a <strong>governance intervener</strong>. Escalation occurs when an agent reaches a predefined risk or logic threshold.</p>
 
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Domain</th>
-                        <th>Terminal Trigger (FOI Required)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Capital Markets</td>
-                        <td>Transaction exceeds Aggregate Risk Limit (ARL) or VaR threshold.</td>
-                    </tr>
-                    <tr>
-                        <td>Healthcare</td>
-                        <td>Critical intervention recommendation with < 92% logic confidence.</td>
-                    </tr>
-                    <tr>
-                        <td>Legal / Gov</td>
-                        <td>Decisions affecting constitutionally protected rights or large-scale data sets.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Domain</th>
+                    <th>Terminal Trigger (FOI Required)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Capital Markets</td>
+                    <td>Transaction exceeds Aggregate Risk Limit (ARL) or VaR threshold.</td>
+                </tr>
+                <tr>
+                    <td>Healthcare</td>
+                    <td>Critical intervention recommendation with &lt; 92% logic confidence.</td>
+                </tr>
+                <tr>
+                    <td>Legal / Gov</td>
+                    <td>Decisions affecting constitutionally protected rights or large-scale data sets.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <h3>The Fiduciary Signature</h3>
-        <p>The FOI is the only node in the delta chain that provides a <strong>Fiduciary Signature</strong>. This is not just a digital sign-off; it is a cryptographic seal that confirms a human fiduciary has assumed the legal liability for the specific "i" point (inference point) of the agent's decision.</p>
+    <h3>The Fiduciary Signature</h3>
+    <p>The FOI is the only node in the delta chain that provides a <strong>Fiduciary Signature</strong>. This is not just a digital sign-off; it is a cryptographic seal that confirms a human fiduciary has assumed the legal liability for the specific "i" point (inference point) of the agent's decision.</p>
 
-        <div class="flow-box">
-            <div class="node">AGENT</div>
-            <span class="arrow">→</span>
-            <div class="node">REVIEWER</div>
-            <span class="arrow">→</span>
-            <div class="node active">FOI (TERMINAL)</div>
-        </div>
+    <div class="flow-box">
+        <div class="node">AGENT</div>
+        <span class="arrow">→</span>
+        <div class="node">REVIEWER</div>
+        <span class="arrow">→</span>
+        <div class="node active">FOI (TERMINAL)</div>
+    </div>
 
-        <h2>Operational Halt Protocol</h2>
-        <p>If an FOI is unreachable within the defined Service Level Agreement (SLA), the AgDR protocol dictates a mandatory <strong>Terminal Halt</strong>. The system is designed to fail-safe: an agent operating without a reachable FOI is operating without authorization. In the v1.8 standard, "Unreachable FOI" is logged as a <strong>High-Severity Governance Breach</strong>.</p>
-    </main>
+    <h2>Operational Halt Protocol</h2>
+    <p>If an FOI is unreachable within the defined Service Level Agreement (SLA), the AgDR protocol dictates a mandatory <strong>Terminal Halt</strong>. The system is designed to fail-safe: an agent operating without a reachable FOI is operating without authorization. In the v1.8 standard, "Unreachable FOI" is logged as a <strong>High-Severity Governance Breach</strong>.</p>
+    
+  </main>
 
-    <section class="sitemap">
-        <div class="sitemap-grid">
-            <div class="sitemap-col">
-                <h5>Architecture</h5>
-                <a href="/getting-started.html">Initialize v1.8</a>
-                <a href="/aki-formal-definition.html">AKI Specification</a>
-                <a href="/rust-core.html">Rust Foundation</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Governance</h5>
-                <a href="/ppp-pillars.html">PPP Pillars</a>
-                <a href="/human-delta-chain.html">Human Oversight</a>
-                <a href="/foi-formal-definition.html" style="color:white; font-weight:bold;">FOI Definition</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Legal Discovery</h5>
-                <a href="/section-31-1.html">Section 31.1 Mapping</a>
-                <a href="/comparison-medical.html">Medical Standard</a>
-                <a href="/cbca-fiduciary.html">CBCA Fiduciary Mapping</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Resources</h5>
-                <a href="/sandbox.html">Interactive Sandbox</a>
-                <a href="/comparison-aviation.html">Aviation Comparison</a>
-                <a href="/beauty-truth-wisdom.html">Beauty & Truth</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="legal">
-        OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · ABSOLUTE ACCOUNTABILITY
-    </footer>
-
+  <!-- Footer with Full Sitemap (CORRECTED LINKS) -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Core Standard</h5>
+        <ul>
+          <li><a href="/getting-started.html">Get Started</a></li>
+          <li><a href="/sandbox.html">Phoenix Demo</a></li>
+          <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+          <li><a href="/aki-formal-definition.html">AKI Definition</a></li>
+          <li><a href="/agdr-spec.html">AgDR Protocol</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal & Compliance</h5>
+        <ul>
+          <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+          <li><a href="/foi-formal-definition.html" class="active">FOI Role</a></li>
+          <li><a href="/verification-audit-procedure.html">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engineering</h5>
+        <ul>
+          <li><a href="/tsx-stress-test.html">TSX Stress Test</a></li>
+          <li><a href="/horizontal-scaling.html">Horizontal Scaling</a></li>
+          <li><a href="/aki-95.html">AKI 0.95 Spec</a></li>
+          <li><a href="/human-delta-chain-spec.html">Human Delta Chain</a></li>
+          <li><a href="/CHANGELOG.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Evidence & Vision</h5>
+        <ul>
+          <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
+          <li><a href="/comparison-medical-records.html">Medical Records</a></li>
+          <li><a href="/agi-court-precedents.html">AGI Court Precedents</a></li>
+          <li><a href="/future-agi-court.html">Court in 2076</a></li>
+          <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Don't trust the machine. Don't even trust us. <strong>Trust the record.</strong></p>
+      <p>
+        <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> · 
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION</a> · 
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+      </p>
+    </div>
+  </footer>
+  
+  <!-- Client-side Search Script -->
+  <script>
+    const searchIndex = [
+      {title:"Get Started",url:"/getting-started.html",desc:"SDK install, PPP definition, first capture"},
+      {title:"Phoenix Demo",url:"/sandbox.html",desc:"Interactive atomic accountability demo"},
+      {title:"PPP Pillars",url:"/ppp-pillars.html",desc:"Provenance, Place, Purpose framework"},
+      {title:"AKI Definition",url:"/aki-formal-definition.html",desc:"Mathematical definition of Atomic Kernel Inference"},
+      {title:"AgDR Protocol",url:"/agdr-spec.html",desc:"Atomic Genesis Decision Record specification"},
+      {title:"CEA Compliance",url:"/cea-compliance.html",desc:"Canada Evidence Act s.31.1 mapping"},
+      {title:"CBCA Fiduciary",url:"/cbca-fiduciary-mapping.html",desc:"Director fiduciary duty accountability"},
+      {title:"EU AI Act",url:"/eu-ai-act-mapping.html",desc:"High-risk AI system compliance"},
+      {title:"FOI Role",url:"/foi-formal-definition.html",desc:"Fiduciary Office Intervener definition"},
+      {title:"Verification",url:"/verification-audit-procedure.html",desc:"Audit and verification procedures"},
+      {title:"TSX Stress Test",url:"/tsx-stress-test.html",desc:"100M decisions, 620ns latency proof"},
+      {title:"Horizontal Scaling",url:"/horizontal-scaling.html",desc:"Distributed AgDR deployment"},
+      {title:"Human Delta Chain",url:"/human-delta-chain-spec.html",desc:"Human-in-the-loop escalation protocol"},
+      {title:"Purpose Framework",url:"/beauty-truth-wisdom.html",desc:"Beauty, Truth, Wisdom as ethical filters"},
+      {title:"Aviation Black Box",url:"/comparison-aviation-black-box.html",desc:"Comparison to flight data recorders"},
+      {title:"Medical Records",url:"/comparison-medical-records.html",desc:"Comparison to healthcare documentation"},
+      {title:"AGI Court Precedents",url:"/agi-court-precedents.html",desc:"Legal precedents for AI accountability"},
+      {title:"Court in 2076",url:"/future-agi-court.html",desc:"Long-term judicial stewardship vision"}
+    ];
+    
+    const searchInput = document.getElementById('site-search');
+    const searchResults = document.getElementById('search-results');
+    
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if(query.length < 2) {
+        searchResults.classList.remove('show');
+        searchResults.innerHTML = '';
+        return;
+      }
+      const results = searchIndex.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.desc.toLowerCase().includes(query) ||
+        item.url.toLowerCase().includes(query)
+      ).slice(0, 8);
+      if(results.length === 0) {
+        searchResults.innerHTML = '<div class="no-results">No results found</div>';
+      } else {
+        searchResults.innerHTML = results.map(r => 
+          `<a href="${r.url}" role="option"><strong>${r.title}</strong><br><small style="color:#6b7280">${r.desc}</small></a>`
+        ).join('');
+      }
+      searchResults.classList.add('show');
+    });
+    
+    document.addEventListener('click', (e) => {
+      if(!e.target.closest('.nav-search')) {
+        searchResults.classList.remove('show');
+      }
+    });
+    
+    searchInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape') {
+        searchResults.classList.remove('show');
+        searchInput.blur();
+      }
+    });
+  </script>
 </body>
 </html>
+
