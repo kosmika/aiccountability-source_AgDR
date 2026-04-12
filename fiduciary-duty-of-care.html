@@ -1,61 +1,329 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiduciary Stewardship & CBCA s.122 | Accountability.ai</title>
-    <style>
-        body { background-color: #050505; color: #e5e7eb; font-family: ui-sans-serif, system-ui, sans-serif; margin: 0; }
-        .hero-gradient { background: radial-gradient(circle at top, #0d7377 0%, #050505 70%); padding: 8rem 2rem; }
-        .wrapper { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
-        .teal-tag { color: #2dd4bf; font-family: monospace; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; display: block; }
-        h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; letter-spacing: -0.05em; margin: 1rem 0; color: #fff; line-height: 0.9; }
-        .callout { background: rgba(13, 115, 119, 0.1); border-left: 4px solid #0d7377; padding: 3rem; margin: 4rem 0; border-radius: 0 1rem 1rem 0; }
-        
-        .pillar-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .pillar-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 2rem; border-radius: 1rem; }
-        .pillar-box strong { color: #2dd4bf; font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
-        @media (max-width: 900px) { .pillar-row { grid-template-columns: 1fr; } }
-        
-        footer { padding: 6rem 2rem; text-align: center; color: #4b5563; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; }
-    </style>
+  <!-- Meta & Theme -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  
+  <!-- Performance Hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- SEO & GEO -->
+  <title>CBCA s.122 Fiduciary Duty | Director Accountability | AgDR v1.8</title>
+  <meta name="description" content="How AgDR v1.8 satisfies Canada Business Corporations Act s.122: fiduciary duty of care, good faith, and unalterable machine oversight for autonomous systems.">
+  <meta name="description" lang="fr" content="Comment AgDR v1.8 satisfait à la Loi canadienne sur les sociétés par actions art.122 : obligation fiduciaire de diligence, bonne foi, et supervision machine inaltérable pour systèmes autonomes.">
+  
+  <!-- Canonical & Hreflang (Canadian bilingual compliance) -->
+  <link rel="canonical" href="https://accountability.ai/cbca-fiduciary-mapping.html">
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/cbca-fiduciary-mapping.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://accountability.ai/fr/cbca-fiduciary-mapping.html">
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/cbca-fiduciary-mapping.html">
+  
+  <!-- Open Graph & Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:url" content="https://accountability.ai/cbca-fiduciary-mapping.html">
+  <meta property="og:title" content="CBCA s.122 Fiduciary Duty | Director Accountability | AgDR v1.8">
+  <meta property="og:description" content="How AgDR v1.8 satisfies CBCA s.122: fiduciary duty of care, good faith, unalterable machine oversight.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CBCA s.122 Fiduciary Duty | Director Accountability | AgDR v1.8">
+  <meta name="twitter:description" content="How AgDR v1.8 satisfies CBCA s.122: fiduciary duty of care, good faith, unalterable machine oversight.">
+  
+  <!-- Schema.org: TechArticle -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"CBCA s.122 Fiduciary Duty | Director Accountability | AgDR v1.8","description":"How AgDR v1.8 satisfies Canada Business Corporations Act s.122: fiduciary duty of care, good faith, and unalterable machine oversight for autonomous systems.","author":{"@type":"Person","name":"Robert Muncaster"},"publisher":{"@type":"Organization","name":"GENESIS GLASS FOUNDATION","alternateName":"FONDATION GENÈSE CRISTAL","url":"https://accountability.ai","sameAs":["https://github.com/aiccountability-source"],"address":{"@type":"PostalAddress","addressLocality":"Oshawa","addressRegion":"ON","addressCountry":"CA"}},"datePublished":"2026-04-12","dateModified":"2026-04-12","license":"https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0","mainEntityOfPage":{"@type":"WebPage","@id":"https://accountability.ai/cbca-fiduciary-mapping.html"},"articleSection":"Legal Compliance","inLanguage":"en-CA","keywords":["AgDR","CBCA s.122","fiduciary duty","director accountability","Canada Business Corporations Act","AI governance","Phoenix v1.8","PPP pillars","Provenance Place Purpose"]}
+  </script>
+  
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://accountability.ai/"},{"@type":"ListItem","position":2,"name":"CBCA s.122 Fiduciary Mapping","item":"https://accountability.ai/cbca-fiduciary-mapping.html"}]}
+  </script>
+  
+  <!-- GTM + GA4 + Consent Mode v2 (privacy-first default) -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+    gtag('js',new Date());gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+  </script>
+
+  <!-- Native CSS (Zero External Dependencies) -->
+  <style>
+    :root{
+      /* Brand Tokens */
+      --teal:#2dd4bf;--bg:#050505;--text:#e5e7eb;--text-muted:#9ca3af;--header:#fff;
+      --border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.02);
+      --gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%);
+      
+      /* Layout */
+      --container-max:1200px;--content-max:1000px;--spacing:1.5rem;
+    }
+    
+    /* Universal Resets + Accessibility */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+    
+    /* Reduced Motion Support */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    }
+    
+    /* Skip Link */
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    
+    /* Navigation */
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--spacing);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .nav-badge{border:1px solid var(--teal);color:var(--teal);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--teal)}
+    
+    /* Language Switcher */
+    .lang-switcher{display:flex;gap:.25rem;align-items:center;padding:.25rem .5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:.375rem;font-size:.75rem;font-weight:600}
+    .lang-link{color:var(--text-muted);padding:.125rem .375rem;border-radius:.25rem;transition:all .15s ease;text-decoration:none}
+    .lang-link:hover,.lang-link[aria-current="true"]{color:var(--teal);background:rgba(45,212,191,0.15)}
+    .lang-link:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+    
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:768px){.lang-switcher{order:3;margin-left:auto}}
+    
+    /* Breadcrumb */
+    .breadcrumb{max-width:var(--container-max);margin:0 auto;padding:.5rem var(--spacing);font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none;flex-wrap:wrap}
+    
+    /* Hero */
+    .hero-gradient{background:var(--gradient);padding:8rem var(--spacing) 5rem}
+    .hero-content{max-width:var(--content-max);margin:0 auto}
+    .teal-tag{color:var(--teal);font-family:monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:block;margin-bottom:1rem}
+    h1{font-size:clamp(3rem,8vw,5rem);font-weight:900;letter-spacing:-0.05em;margin:1rem 0;color:#fff;line-height:0.9}
+    .hero-lead{color:#9ca3af;font-size:1.4rem;max-width:700px;font-weight:300;line-height:1.5}
+    
+    /* Main Content */
+    main{max-width:var(--content-max);margin:0 auto;padding:0 var(--spacing) 6rem}
+    .intro{font-size:1.3rem;line-height:1.6;margin-bottom:3rem}
+    .intro strong{color:var(--header)}
+    
+    /* Callout */
+    .callout{background:rgba(13,115,119,0.1);border-left:4px solid #0d7377;padding:3rem;margin:4rem 0;border-radius:0 1rem 1rem 0}
+    .callout h2{color:#fff;margin:0 0 1rem 0;font-size:2rem}
+    .callout p{color:#2dd4bf;margin:0;font-style:italic}
+    
+    /* Pillars Section */
+    .section-title{color:var(--teal);font-family:monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:block;margin:4rem 0 1.5rem}
+    .pillar-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+    .pillar-box{background:var(--card);border:1px solid var(--border);padding:2rem;border-radius:1rem;transition:transform .2s,border-color .2s}
+    .pillar-box:hover{transform:translateY(-2px);border-color:var(--teal)}
+    .pillar-box strong{color:var(--teal);font-size:1.2rem;display:block;margin-bottom:0.5rem}
+    .pillar-box p{margin:0;color:var(--text-muted);line-height:1.6}
+    
+    /* CTA Section */
+    .cta-section{margin-top:4rem;text-align:center;padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:1rem}
+    .cta-section p{margin-bottom:1rem;color:var(--text-muted)}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{display:inline-block;padding:.875rem 2rem;border-radius:.5rem;font-weight:600;text-align:center;transition:all .2s;cursor:pointer;border:none;font-size:1rem}
+    .btn-primary{background:var(--teal);color:#000}
+    .btn-primary:hover{background:#14b8a6}
+    .btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+    
+    /* Footer */
+    .site-footer{background:#080808;border-top:1px solid var(--border);padding:4rem var(--spacing) 3rem}
+    .footer-grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-muted);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{max-width:var(--container-max);margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    
+    /* Responsive */
+    @media(max-width:900px){.pillar-row{grid-template-columns:1fr}}
+    @media(max-width:600px){
+      h1{font-size:2.5rem}
+      .nav-links{display:none}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-bottom{flex-direction:column;align-items:center;text-align:center}
+      .hero-lead{font-size:1.1rem}
+    }
+    
+    /* French Typography Enhancements */
+    [lang="fr"]{font-feature-settings:"kern" 1,"liga" 1,"calt" 1;hyphens:auto}
+  </style>
 </head>
+
 <body>
-    <section class="hero-gradient">
-        <div class="wrapper">
-            <span class="teal-tag">Director Governance // CBCA Compliance</span>
-            <h1>The Non-Delegable Fiduciary.</h1>
-            <p style="color: #9ca3af; font-size: 1.4rem; max-width: 700px; font-weight: 300;">Fiduciary Duty of Care under CBCA s.122 requires unalterable machine oversight.</p>
-        </div>
-    </section>
+  <!-- GTM noscript fallback -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <!-- SEO keywords (screen-reader only) -->
+  <p class="sr-only">AgDR CBCA compliance, Canada Business Corporations Act s.122, fiduciary duty, director accountability, AI governance, PPP pillars, Provenance Place Purpose, Phoenix v1.8, Genesis Glass Foundation</p>
+  
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div class="wrapper">
-        <p style="font-size: 1.3rem; line-height: 1.6;">Under <strong>CBCA s.122(1)</strong>, directors must act honestly and in good faith. This duty cannot be delegated to an autonomous system without a forensic anchor.</p>
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <span class="nav-badge">FIDUCIARY STANDARD</span>
+      
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/getting-started.html">Get Started</a>
+        <a href="/ppp-pillars.html">PPP Pillars</a>
+        <a href="/sandbox.html">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">GitHub</a>
+      </div>
+      
+      <!-- Language Switcher (ARIA + Keyboard Accessible) -->
+      <div class="lang-switcher" role="navigation" aria-label="Language selection">
+        <a href="/cbca-fiduciary-mapping.html" 
+           hreflang="en" 
+           lang="en"
+           class="lang-link"
+           aria-current="true"
+           data-lang="en"
+           title="English">EN</a>
+        <span class="sr-only">|</span>
+        <a href="/fr/cbca-fiduciary-mapping.html" 
+           hreflang="fr-CA" 
+           lang="fr"
+           class="lang-link"
+           data-lang="fr"
+           title="Français (Canada)">FR</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">CBCA s.122 Fiduciary Mapping</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
 
-        <div class="callout">
-            <h2 style="color: #fff; margin: 0 0 1rem 0; font-size: 2rem;">"If you cannot explain the Genesis, you cannot defend the Wisdom."</h2>
-            <p style="color: #2dd4bf; margin: 0;">— The Stewardship Paradox of Autonomous Systems</p>
-        </div>
+  <!-- Hero -->
+  <section class="hero-gradient">
+    <div class="hero-content">
+      <span class="teal-tag">Director Governance // CBCA Compliance</span>
+      <h1>The Non-Delegable Fiduciary.</h1>
+      <p class="hero-lead">Fiduciary Duty of Care under CBCA s.122 requires unalterable machine oversight.</p>
+    </div>
+  </section>
 
-        <h3 class="teal-tag">The Three Pillars of Fiduciary Compliance</h3>
-        <div class="pillar-row">
-            <div class="pillar-box">
-                <strong>Providence</strong>
-                <p>Authenticating source origin and data lineage at the sub-microsecond level.</p>
-            </div>
-            <div class="pillar-box">
-                <strong>Place</strong>
-                <p>Establishing the jurisdictional legal boundary of the execution event.</p>
-            </div>
-            <div class="pillar-box">
-                <strong>Purpose</strong>
-                <p>Direct alignment with human beholders (Beauty, Truth, or Wisdom).</p>
-            </div>
-        </div>
+  <!-- Main Content -->
+  <main id="main-content">
+    <p class="intro">Under <strong>CBCA s.122(1)</strong>, directors must act honestly and in good faith with a view to the best interests of the corporation. This duty cannot be delegated to an autonomous system without a forensic anchor that preserves human accountability at the point of inference.</p>
+
+    <div class="callout">
+      <h2>"If you cannot explain the Genesis, you cannot defend the Wisdom."</h2>
+      <p>— The Stewardship Paradox of Autonomous Systems</p>
     </div>
 
-    <footer>
-        Oshawa Node // Directed by Human Beholders // Accountability.ai
-    </footer>
+    <span class="section-title">The Three Pillars of Fiduciary Compliance</span>
+    <div class="pillar-row">
+      <article class="pillar-box">
+        <strong>Provenance</strong>
+        <p>Authenticating source origin and data lineage at the sub-microsecond level via Atomic Kernel Inference (AKI), ensuring every decision trace is cryptographically sealed at birth.</p>
+      </article>
+      <article class="pillar-box">
+        <strong>Place</strong>
+        <p>Establishing the jurisdictional legal boundary of the execution event, satisfying CBCA requirements for corporate records to be maintained within Canadian legal territory.</p>
+      </article>
+      <article class="pillar-box">
+        <strong>Purpose</strong>
+        <p>Direct alignment with human beholders (Beauty, Truth, or Wisdom) through the PPP Triplet framework, ensuring autonomous actions remain tethered to fiduciary intent.</p>
+      </article>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+      <p>Ready to implement CBCA-compliant AI governance?</p>
+      <div class="cta-buttons">
+        <a href="/getting-started.html" class="btn btn-primary">Initialize AgDR SDK</a>
+        <a href="/cea-compliance.html" class="btn btn-secondary">CEA s.31.1 Mapping</a>
+        <a href="/verification-audit-procedure.html" class="btn btn-secondary">Audit Procedure</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer with Full Sitemap -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Core Standard</h5>
+        <ul>
+          <li><a href="/getting-started.html">Get Started</a></li>
+          <li><a href="/sandbox.html">Phoenix Demo</a></li>
+          <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+          <li><a href="/aki-formal-definition.html">AKI Definition</a></li>
+          <li><a href="/agdr-spec.html">AgDR Protocol</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal & Compliance</h5>
+        <ul>
+          <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping.html" style="color:var(--teal);font-weight:600">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+          <li><a href="/foi-formal-definition.html">FOI Role</a></li>
+          <li><a href="/verification-audit-procedure.html">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engineering</h5>
+        <ul>
+          <li><a href="/tsx-stress-test.html">TSX Stress Test</a></li>
+          <li><a href="/horizontal-scaling.html">Horizontal Scaling</a></li>
+          <li><a href="/aki-95.html">AKI 0.95 Spec</a></li>
+          <li><a href="/human-delta-chain-spec.html">Human Delta Chain</a></li>
+          <li><a href="/CHANGELOG.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Evidence & Vision</h5>
+        <ul>
+          <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
+          <li><a href="/comparison-medical-records.html">Medical Records</a></li>
+          <li><a href="/agi-court-precedents.html">AGI Court Precedents</a></li>
+          <li><a href="/future-agi-court.html">Court in 2076</a></li>
+          <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · FIDUCIARY INTEGRITY</p>
+      <p>
+        <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> · 
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · 
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
+
+6
