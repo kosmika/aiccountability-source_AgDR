@@ -14,7 +14,7 @@
   <!-- SEO & GEO -->
   <title>Horizontal Scaling | AgDR v1.8 | Accountability.ai</title>
   <meta name="description" content="AgDR v1.8 horizontal scaling architecture: Root Merkle coordination, shard assignment, and court-provable distributed decision records at trillion-scale throughput.">
-  <meta name="description" lang="fr" content="Architecture de mise à l'échelle horizontale d'AgDR v1.8 : coordination Merkle racine, affectation des shards, et enregistrements décisionnels distribués vérifiables en cour à débit de billions.">
+  <meta name="description" lang="fr" content="Architecture de mise à l'échelle horizontale d'AgDR v1.8 : coordination Merkle racine, affectation des fragments et enregistrements décisionnels distribués vérifiables en cour à débit de billions.">
   
   <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://accountability.ai/horizontal-scaling.html">
@@ -56,20 +56,13 @@
   <!-- Native CSS (Zero External Dependencies) -->
   <style>
     :root{
-      /* Brand Tokens */
       --teal:#2dd4bf;--bg:#050505;--text:#d4d4d8;--text-muted:#9ca3af;--header:#fff;
       --border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.02);--code-bg:#18181b;
       --gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%);
-      
-      /* Layout */
       --container-max:1200px;--content-max:900px;--spacing:1.5rem;
-      
-      /* Typography */
       --font-sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
       --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
     }
-    
-    /* Universal Resets + Accessibility */
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.7;-webkit-font-smoothing:antialiased}
@@ -77,49 +70,30 @@
     a:hover{color:var(--teal)}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
-    
-    /* Reduced Motion Support */
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-    }
-    
-    /* Skip Link */
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
     .skip-link:focus{top:0}
-    
-    /* Navigation */
     .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
     .nav-inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--spacing);display:flex;justify-content:space-between;align-items:center;gap:1rem}
     .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
     .nav-badge{border:1px solid var(--teal);color:var(--teal);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px}
     .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-muted)}
     .nav-links a:hover{color:var(--teal)}
-    
-    /* Language Switcher */
     .lang-switcher{display:flex;gap:.25rem;align-items:center;padding:.25rem .5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:.375rem;font-size:.75rem;font-weight:600}
     .lang-link{color:var(--text-muted);padding:.125rem .375rem;border-radius:.25rem;transition:all .15s ease;text-decoration:none}
     .lang-link:hover,.lang-link[aria-current="true"]{color:var(--teal);background:rgba(45,212,191,0.15)}
     .lang-link:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
-    
     @media(min-width:768px){.nav-links{display:flex}}
     @media(max-width:768px){.lang-switcher{order:3;margin-left:auto}}
-    
-    /* Breadcrumb */
     .breadcrumb{max-width:var(--container-max);margin:0 auto;padding:.5rem var(--spacing);font-size:.75rem;color:var(--text-muted)}
     .breadcrumb a:hover{color:var(--teal)}
     .breadcrumb ol{display:flex;gap:.25rem;list-style:none;flex-wrap:wrap}
-    
-    /* Hero */
     .hero-gradient{background:var(--gradient);padding:6rem var(--spacing) 4rem}
     .hero-content{max-width:var(--content-max);margin:0 auto}
     .teal-tag{color:var(--teal);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:block;margin-bottom:1rem}
     h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:1rem;color:#fff}
     .hero-meta{color:#888;font-size:1rem}
-    
-    /* Main Content */
     main{max-width:var(--content-max);margin:0 auto;padding:0 var(--spacing) 4rem}
-    
-    /* Prose Typography */
     .prose{font-size:1.05rem;line-height:1.8;color:var(--text)}
     .prose h2{font-size:1.75rem;color:var(--header);margin:3rem 0 1rem;letter-spacing:-.5px;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
     .prose h3{font-size:1.3rem;color:var(--header);margin:2rem 0 .75rem}
@@ -129,31 +103,19 @@
     .prose em{color:var(--text-muted)}
     .prose a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
     .prose a:hover{color:#14b8a6}
-    
-    /* Lists */
     .prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1.25rem}
     .prose li{margin-bottom:.5rem}
-    
-    /* Code Blocks */
     .prose pre{background:var(--code-bg);border:1px solid var(--border);border-radius:.5rem;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;font-family:var(--font-mono);font-size:.875rem;line-height:1.6}
     .prose code{background:rgba(255,255,255,0.05);padding:.15rem .4rem;border-radius:.25rem;font-family:var(--font-mono);font-size:.9em;color:var(--teal)}
     .prose pre code{background:none;padding:0;border:none;color:var(--text)}
-    
-    /* Tables */
     .table-wrap{overflow-x:auto;margin:2rem 0}
     .prose table{width:100%;border-collapse:collapse;font-size:.95rem}
     .prose th{background:#111;color:var(--text-muted);text-align:left;padding:.75rem 1rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.7rem;border-bottom:2px solid var(--border)}
     .prose td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
     .prose tr:hover td{background:#111}
-    
-    /* Diagram Container */
     .diagram{background:var(--card);border:1px solid var(--border);border-radius:.5rem;padding:1.5rem;margin:1.5rem 0;overflow-x:auto;font-family:var(--font-mono);font-size:.85rem;line-height:1.5;color:var(--text)}
-    
-    /* Callout */
     .callout{background:rgba(13,115,119,0.1);border-left:4px solid #0d7377;padding:1.5rem;margin:2rem 0;border-radius:0 .5rem .5rem 0}
     .callout p{margin:0;color:var(--text-muted);font-style:italic}
-    
-    /* Document Navigation Footer */
     .doc-nav{background:#080808;border-top:1px solid var(--border);padding:3rem var(--spacing);margin-top:4rem}
     .doc-nav-title{color:var(--teal);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
     .doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:var(--container-max);margin:0 auto}
@@ -161,8 +123,6 @@
     .doc-card:hover{transform:translateY(-2px);border-color:var(--teal)}
     .doc-card-title{color:var(--header);font-size:.9rem;font-weight:600;margin-bottom:.25rem;display:block}
     .doc-card-desc{color:var(--text-muted);font-size:.8rem}
-    
-    /* Main Footer */
     .site-footer{background:#080808;border-top:1px solid var(--border);padding:4rem var(--spacing) 3rem}
     .footer-grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
     .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
@@ -172,39 +132,20 @@
     .footer-col a:hover{color:var(--teal)}
     .footer-bottom{max-width:var(--container-max);margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
     .footer-bottom a{color:var(--teal)}
-    
-    /* Responsive */
-    @media(max-width:600px){
-      h1{font-size:2.5rem}
-      .nav-links{display:none}
-      .footer-grid{grid-template-columns:repeat(2,1fr)}
-      .footer-bottom{flex-direction:column;align-items:center;text-align:center}
-      .prose h2{font-size:1.5rem}
-      .prose table{font-size:.85rem}
-      .prose th,.prose td{padding:.5rem}
-    }
-    
-    /* French Typography */
+    @media(max-width:600px){h1{font-size:2.5rem}.nav-links{display:none}.footer-grid{grid-template-columns:repeat(2,1fr)}.footer-bottom{flex-direction:column;align-items:center;text-align:center}.prose h2{font-size:1.5rem}.prose table{font-size:.85rem}.prose th,.prose td{padding:.5rem}}
     [lang="fr"]{font-feature-settings:"kern" 1,"liga" 1,"calt" 1;hyphens:auto}
   </style>
 </head>
 
 <body>
-  <!-- GTM noscript fallback -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
-  <!-- SEO keywords (screen-reader only) -->
   <p class="sr-only">AgDR horizontal scaling, Merkle tree coordination, shard assignment, distributed AI accountability, cryptographic sealing, Phoenix v1.8, court-admissible records, throughput scaling, Genesis Glass Foundation</p>
-  
-  <!-- Skip link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Navigation -->
   <nav class="site-nav" aria-label="Primary">
     <div class="nav-inner">
       <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
       <span class="nav-badge">ENGINEERING</span>
-      
       <div class="nav-links">
         <a href="/">Home</a>
         <a href="/getting-started.html">Get Started</a>
@@ -212,28 +153,14 @@
         <a href="/sandbox.html">Phoenix Demo</a>
         <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">GitHub</a>
       </div>
-      
-      <!-- Language Switcher -->
       <div class="lang-switcher" role="navigation" aria-label="Language selection">
-        <a href="/horizontal-scaling.html" 
-           hreflang="en" 
-           lang="en"
-           class="lang-link"
-           aria-current="true"
-           data-lang="en"
-           title="English">EN</a>
+        <a href="/horizontal-scaling.html" hreflang="en" lang="en" class="lang-link" aria-current="true" data-lang="en" title="English">EN</a>
         <span class="sr-only">|</span>
-        <a href="/fr/horizontal-scaling.html" 
-           hreflang="fr-CA" 
-           lang="fr"
-           class="lang-link"
-           data-lang="fr"
-           title="Français (Canada)">FR</a>
+        <a href="/fr/horizontal-scaling.html" hreflang="fr-CA" lang="fr" class="lang-link" data-lang="fr" title="Français (Canada)">FR</a>
       </div>
     </div>
   </nav>
   
-  <!-- Breadcrumb -->
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <ol itemscope itemtype="https://schema.org/BreadcrumbList">
       <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -247,23 +174,21 @@
     </ol>
   </nav>
 
-  <!-- Hero -->
   <section class="hero-gradient">
     <div class="hero-content">
       <span class="teal-tag">AgDR v1.8 · Engineering</span>
       <h1>Horizontal Scaling</h1>
-      <p class="hero-meta">Scaling beyond the single-process ceiling — Root Merkle coordination for trillion-scale, court-provable decision records.</p>
+      <p class="hero-meta">Scaling beyond the single-process ceiling. Root Merkle coordination for trillion-scale, court-provable decision records.</p>
     </div>
   </section>
 
-  <!-- Main Content -->
   <main id="main-content" class="prose">
     <p><strong>Published March 2026</strong></p>
     
     <h2 id="the-single-process-ceiling">The Single-Process Ceiling</h2>
     <p>The TSX stress test proved AgDR at 100 million decisions, reaching a ceiling of approximately <strong>2.85 billion decisions</strong> in a single process (memory-bound). At 253,807 decisions per second, that ceiling is reached in roughly 3.1 hours of sustained operation.</p>
     
-    <p>For high-velocity environments — trading desks, clinical systems, government adjudication at scale, autonomous vehicle fleets — the answer is horizontal scaling: multiple AgDR processes, each maintaining its own atomic kernel chain, coordinated through a <strong>Root Merkle Tree</strong> that provides a single, unified, court-provable record of the entire distributed operation.</p>
+    <p>For high-velocity environments such as trading desks, clinical systems, government adjudication at scale, and autonomous vehicle fleets, the answer is horizontal scaling: multiple AgDR processes, each maintaining its own atomic kernel chain, coordinated through a <strong>Root Merkle Tree</strong> that provides a single, unified, court-provable record of the entire distributed operation.</p>
     
     <hr>
     
@@ -293,16 +218,16 @@
       <li>Ed25519 signing key</li>
     </ul>
     
-    <p>The Root Merkle Coordinator aggregates shard roots on a defined interval and produces a <strong>Global Merkle Root</strong> — the single hash that commits to every decision across all shards.</p>
+    <p>The Root Merkle Coordinator aggregates shard roots on a defined interval and produces a <strong>Global Merkle Root</strong>. This single hash commits to every decision across all shards.</p>
     
     <hr>
     
     <h2 id="shard-assignment">Shard Assignment</h2>
     <p>Decisions are assigned to shards by a deterministic routing function. The routing function must be:</p>
     <ol>
-      <li><strong>Deterministic</strong> — the same decision always routes to the same shard</li>
-      <li><strong>Auditable</strong> — the routing decision is itself logged</li>
-      <li><strong>Collision-free for related decisions</strong> — decisions that must appear in the same evidentiary chain (e.g., all decisions for a single trade) must route to the same shard</li>
+      <li><strong>Deterministic</strong>: the same decision always routes to the same shard</li>
+      <li><strong>Auditable</strong>: the routing decision is itself logged</li>
+      <li><strong>Collision-free for related decisions</strong>: decisions that must appear in the same evidentiary chain, for example all decisions for a single trade, must route to the same shard</li>
     </ol>
     
     <p><strong>Routing strategies:</strong></p>
@@ -335,7 +260,7 @@
           <tr>
             <td>Domain-partitioned</td>
             <td>Different shard per business domain</td>
-            <td>Static mapping: trading → shard 0, risk → shard 1, etc.</td>
+            <td>Static mapping: trading to shard 0, risk to shard 1, and so on</td>
           </tr>
         </tbody>
       </table>
@@ -350,7 +275,7 @@
       <li>Assembles the shard roots into a Root Merkle Tree</li>
       <li>Signs the Global Merkle Root with the coordinator's Ed25519 key</li>
       <li>Appends the Global Root to the permanent audit log</li>
-      <li>Publishes the Global Root (optionally: to a public transparency log)</li>
+      <li>Publishes the Global Root (optionally to a public transparency log)</li>
     </ol>
     
     <pre><code>from agdr_aki.coordinator import RootMerkleCoordinator
@@ -419,7 +344,7 @@ coordinator.start()</code></pre>
       </table>
     </div>
     
-    <p>Horizontal scaling is bounded only by network and storage — not by the AKI algorithm itself.</p>
+    <p>Horizontal scaling is bounded only by network and storage, not by the AKI algorithm itself.</p>
     
     <hr>
     
@@ -439,7 +364,7 @@ coordinator.start()</code></pre>
           <tr>
             <td>Per-record integrity</td>
             <td>BLAKE3 hash + Ed25519</td>
-            <td>Same — per shard</td>
+            <td>Same, per shard</td>
           </tr>
           <tr>
             <td>Chain completeness</td>
@@ -459,14 +384,14 @@ coordinator.start()</code></pre>
           <tr>
             <td>Tamper evidence</td>
             <td>Breaking any hash breaks chain</td>
-            <td>Breaking any shard hash breaks that shard's chain AND the global root</td>
+            <td>Breaking any shard hash breaks that shard's chain and the global root</td>
           </tr>
         </tbody>
       </table>
     </div>
     
     <div class="callout">
-      <p><strong>For court production in a horizontal deployment</strong>, produce: (1) The specific record(s) from the relevant shard, (2) The shard's Merkle chain proof, (3) The Global Merkle Root log entry covering the record's time interval, (4) The routing log proving this entity/session was assigned to this shard.</p>
+      <p><strong>For court production in a horizontal deployment</strong>, produce: (1) The specific record(s) from the relevant shard, (2) The shard's Merkle chain proof, (3) The Global Merkle Root log entry covering the record's time interval, (4) The routing log proving this entity or session was assigned to this shard.</p>
     </div>
     
     <hr>
@@ -477,7 +402,7 @@ coordinator.start()</code></pre>
     <p>Each shard has its own Ed25519 signing key. The coordinator has its own key. All keys must be:</p>
     <ul>
       <li>Generated securely at deployment</li>
-      <li>Backed up in a key management system (e.g., HashiCorp Vault, AWS KMS)</li>
+      <li>Backed up in a key management system, for example HashiCorp Vault or AWS KMS</li>
       <li>Rotated on a defined schedule</li>
       <li>Never shared between shards</li>
     </ul>
@@ -491,13 +416,13 @@ coordinator.start()</code></pre>
       <li>The coordinator logs the missing shard</li>
       <li>The global root is computed from available shards</li>
       <li>The missing interval is flagged for reconstruction when the shard comes back online</li>
-      <li><strong>No decisions are dropped</strong> — the shard's local chain remains intact</li>
+      <li><strong>No decisions are dropped</strong>. The shard's local chain remains intact.</li>
     </ul>
     
     <h3 id="storage">Storage</h3>
-    <p>At 253,807 decisions/second per shard, with a typical record size of ~2KB:</p>
+    <p>At 253,807 decisions per second per shard, with a typical record size of approximately 2 KB:</p>
     <ul>
-      <li>Single shard: ~500 MB/sec — plan for ~43 TB/day</li>
+      <li>Single shard: approximately 500 MB per second. Plan for approximately 43 TB per day.</li>
       <li>Use tiered storage: hot (NVMe) for recent records, cold (object storage) for archive</li>
       <li>The Merkle chain structure allows cold records to be verified without loading into memory</li>
     </ul>
@@ -508,7 +433,6 @@ coordinator.start()</code></pre>
     Canonical source: <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener">github.com/aiccountability-source/AgDR</a></p>
   </main>
 
-  <!-- Document Navigation Footer -->
   <section class="doc-nav">
     <h3 class="doc-nav-title">Continue Reading</h3>
     <div class="doc-grid">
@@ -537,7 +461,7 @@ coordinator.start()</code></pre>
         <span class="doc-card-desc">Article-by-article compliance analysis</span>
       </a>
       <a href="/beauty-truth-wisdom.html" class="doc-card">
-        <span class="doc-card-title">Beauty, Truth &amp; Wisdom</span>
+        <span class="doc-card-title">Beauty, Truth and Wisdom</span>
         <span class="doc-card-desc">The Purpose pillar's closing principles</span>
       </a>
       <a href="/horizontal-scaling.html" class="doc-card" style="border-color:var(--teal)">
@@ -547,7 +471,6 @@ coordinator.start()</code></pre>
     </div>
   </section>
 
-  <!-- Footer with Full Sitemap -->
   <footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-col">
@@ -561,7 +484,7 @@ coordinator.start()</code></pre>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Legal & Compliance</h5>
+        <h5>Legal and Compliance</h5>
         <ul>
           <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
           <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
@@ -581,7 +504,7 @@ coordinator.start()</code></pre>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Evidence & Vision</h5>
+        <h5>Evidence and Vision</h5>
         <ul>
           <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
           <li><a href="/comparison-medical-records.html">Medical Records</a></li>
