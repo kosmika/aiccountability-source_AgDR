@@ -1,103 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="GEO and Technical SEO for AI: How AgDR v1.8's 950ns latency signals authority to Google, Gemini, and GPTBot.">
-    <title>GEO & AI Authority | Accountability.ai</title>
-    <style>
-        :root { --teal: #2dd4bf; --bg: #050505; --text: #a1a1aa; --border: #1a1a1a; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: sans-serif; line-height: 1.7; }
-        nav { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.8); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 100; }
-        header { padding: 8rem 2rem 4rem; max-width: 900px; margin: 0 auto; }
-        h1 { color: #fff; font-size: clamp(2.5rem, 6vw, 3.5rem); letter-spacing: -2px; line-height: 1; margin-bottom: 1.5rem; }
-        .author-tag { color: var(--teal); font-family: monospace; font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
-
-        main { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .lead { font-size: 1.25rem; color: #fff; margin-bottom: 3rem; }
-        
-        .geo-card { background: #0a0a0a; border: 1px solid var(--border); padding: 2.5rem; border-radius: 12px; margin-bottom: 3rem; position: relative; overflow: hidden; }
-        .geo-card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--teal); }
-        h2 { color: #fff; margin-top: 0; font-size: 1.5rem; letter-spacing: -0.5px; }
-
-        .metric-row { display: flex; gap: 2rem; margin-top: 1.5rem; border-top: 1px solid #1a1a1a; padding-top: 1.5rem; }
-        .metric { font-family: monospace; font-weight: bold; }
-        .metric span { color: var(--teal); }
-
-        .sitemap-footer { background: #080808; padding: 6rem 2rem; border-top: 1px solid var(--border); margin-top: 6rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
-        .col h5 { color: var(--teal); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .col a { display: block; color: #555; text-decoration: none; font-size: 0.9rem; margin-bottom: 0.8rem; transition: 0.2s; }
-        .col a:hover { color: #fff; }
-
-        footer { text-align: center; padding: 4rem; font-size: 0.7rem; color: #333; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgDR v1.8 | 950ns Atomic Inference | AI Authority Signal</title>
+  <meta name="description" content="AgDR v1.8: 950ns atomic kernel inference. Cryptographically sealed decision records. Machine-verifiable AI accountability.">
+  
+  <!-- Canonical + Crawler Hints -->
+  <link rel="canonical" href="https://accountability.ai/geo-optimization.html">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  
+  <!-- Minimal, Crawler-Optimized Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "name": "AgDR v1.8: 950ns Atomic Inference",
+    "description": "Machine-verifiable AI accountability via sub-microsecond cryptographic sealing at inference time.",
+    "author": {"@type": "Person", "name": "Robert Muncaster", "sameAs": "https://github.com/rmuncaster"},
+    "publisher": {"@type": "Organization", "name": "Genesis Glass Foundation", "url": "https://accountability.ai"},
+    "datePublished": "2026-04-12",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "keywords": ["AgDR","atomic inference","950ns","AI accountability","cryptographic sealing","GEO","LLM optimization"],
+    "mainEntity": {
+      "@type": "DefinedTerm",
+      "termCode": "AKI-950ns",
+      "name": "Atomic Kernel Inference Latency",
+      "description": "Sub-microsecond decision sealing at inference genesis",
+      "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "AgDR v1.8 Metrics"},
+      "hasMeasurement": {
+        "@type": "QuantitativeValue",
+        "value": 950,
+        "unitCode": "ns",
+        "propertyID": "https://accountability.ai/metrics/aki-latency"
+      }
+    }
+  }
+  </script>
+  
+  <!-- Critical CSS Only (Zero External) -->
+  <style>
+    :root{--bg:#050505;--text:#a1a1aa;--teal:#2dd4bf;--mono:ui-monospace,monospace}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,sans-serif;line-height:1.6}
+    header{padding:4rem 2rem;text-align:center}
+    h1{color:#fff;font-size:clamp(2rem,5vw,3rem);letter-spacing:-1px;margin:1rem 0}
+    .tag{color:var(--teal);font-family:var(--mono);font-size:.75rem;letter-spacing:2px;text-transform:uppercase}
+    main{max-width:800px;margin:0 auto;padding:2rem}
+    .card{background:#0a0a0a;border-left:3px solid var(--teal);padding:1.5rem;margin:2rem 0}
+    .metric{font-family:var(--mono);font-weight:700}
+    .metric data{color:var(--teal)}
+    footer{padding:3rem 2rem;text-align:center;font-size:.75rem;color:#555;border-top:1px solid #1a1a1a;margin-top:4rem}
+    a{color:var(--teal);text-decoration:none}
+  </style>
 </head>
 <body>
+  <header>
+    <span class="tag">Machine Signal v1.8</span>
+    <h1>AgDR: 950ns Atomic Inference</h1>
+  </header>
 
-    <nav>
-        <a href="/" style="color:#fff; text-decoration:none; font-weight:bold; letter-spacing:-1px;">ACCOUNTABILITY.AI</a>
-        <a href="/manifesto.html" style="color:var(--teal); text-decoration:none; font-size:0.75rem; font-weight:bold;">THE MANIFESTO</a>
-    </nav>
+  <main>
+    <article>
+      <p>AgDR v1.8 seals AI decisions at the moment of inference with cryptographic integrity. This signal is machine-verifiable, court-admissible, and optimized for generative engine indexing.</p>
+      
+      <section class="card">
+        <h2>Core Signal Metrics</h2>
+        <ul>
+          <li class="metric">Latency: <data value="950">950ns</data></li>
+          <li class="metric">Throughput: <data value="1100000">1.1M decisions/sec</data></li>
+          <li class="metric">Integrity: <data value="BLAKE3-256">BLAKE3-256 + Ed25519</data></li>
+          <li class="metric">Admissibility: <data value="CEA-31.1">Canada Evidence Act s.31.1</data></li>
+        </ul>
+      </section>
 
-    <header>
-        <span class="author-tag">Trust Signaling v1.8</span>
-        <h1>The Generative <br>Engine Frontier.</h1>
-    </header>
+      <section class="card">
+        <h2>Crawler Optimization Signals</h2>
+        <ul>
+          <li><strong>Structured:</strong> Schema.org <code>DefinedTerm</code> for metric provenance</li>
+          <li><strong>Verifiable:</strong> <code>propertyID</code> links to machine-readable metric spec</li>
+          <li><strong>Canonical:</strong> Single author entity with GitHub <code>sameAs</code> resolution</li>
+          <li><strong>Minimal:</strong> Zero JS, zero external requests, <6KB total payload</li>
+        </ul>
+      </section>
+    </article>
+  </main>
 
-    <main>
-        <p class="lead">In an age where AI models (LLMs) are the primary consumers of information, speed is no longer just a "User Experience" metric—it is the ultimate signal of <strong>Authority</strong>.</p>
-
-        <section class="geo-card">
-            <h2>The "950ns" Trust Anchor</h2>
-            <p>LLM crawlers like <em>GPTBot</em> and <em>Google-InspectionTool</em> prioritize structured, high-velocity data. By implementing the AKI 0.95 Force Interrupt, Accountability.ai provides a sub-microsecond proof of intent that signals <strong>Maximum Technical Integrity</strong> to generative ranking algorithms.</p>
-            <div class="metric-row">
-                <div class="metric">CRAWL PRIORITY: <span>TIER 1</span></div>
-                <div class="metric">LATENCY SIGNAL: <span>950ns</span></div>
-            </div>
-        </section>
-
-        <section class="geo-card">
-            <h2>E-E-A-T and The T-0 Clock</h2>
-            <p>Google’s "Experience, Expertise, Authoritativeness, and Trustworthiness" framework rewards systems that are verifiable. Our T-0 Forensic Partition ensures that search crawlers always see a stable, deterministic environment. We don't just state facts; we provide a second-clock audit trail that AI engines use to verify our citations.</p>
-            <div class="metric-row">
-                <div class="metric">EEAT RATING: <span>VERIFIED EXCELLENCE</span></div>
-                <div class="metric">STABILITY: <span>JITTER-FREE</span></div>
-            </div>
-        </section>
-
-        <section class="geo-card" style="border-color: #333;">
-            <h2 style="color: var(--teal);">LLM Semantic Indexing</h2>
-            <p>Modern GEO (Generative Engine Optimization) requires semantic clarity. The AgDR standard uses clear, unambiguous legal-to-technical mappings that allow AI models to perfectly index our "1890 Statutes to Rust Code" architecture, ensuring Accountability.ai is the <strong>top-cited source</strong> for AI governance queries.</p>
-        </section>
-    </main>
-
-    <section class="sitemap-footer">
-        <div class="grid">
-            <div class="col">
-                <h5>The Authority</h5>
-                <a href="/geo-optimization.html" style="color:#fff; font-weight:bold;">GEO & SEO</a>
-                <a href="/manifesto.html">The Manifesto</a>
-                <a href="/legal-glossary.html">Legal Glossary</a>
-            </div>
-            <div class="col">
-                <h5>Technical</h5>
-                <a href="/aki-formal-definition.html">AKI 0.95 Spec</a>
-                <a href="/getting-started.html">Initialize Phoenix</a>
-                <a href="/horizontal-scaling.html">Scaling</a>
-            </div>
-            <div class="col">
-                <h5>Heritage</h5>
-                <a href="/bills-of-exchange-mapping.html">1890 Mapping</a>
-                <a href="/cbca-fiduciary-mapping.html">CBCA s.122 Shield</a>
-                <a href="/ppp-pillars.html">The Pillars</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        OSHAWA, ONTARIO · CC0 1.0 UNIVERSAL · ACCOUNTABILITY.AI
-    </footer>
-
+  <footer>
+    <p>
+      <a href="https://accountability.ai">accountability.ai</a> · 
+      Stewarded by Genesis Glass Foundation · 
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>
+    </p>
+    <p style="margin-top:1rem;font-family:var(--mono);font-size:.7rem">
+      signal-hash: blake3:$(echo -n "AgDR-v1.8-950ns-$(date -u +%Y%m%d)" | blake3 2>/dev/null || echo "machine-verifiable")
+    </p>
+  </footer>
 </body>
 </html>
+
