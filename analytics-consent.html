@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GA4 Consent Mode v2 | AgDR Analytics</title>
+  <meta name="description" content="GA4 + Consent Mode v2 implementation for AgDR. GDPR/PIPEDA compliant, zero-latency impact.">
+  <meta name="description" lang="fr" content="Implémentation GA4 + Consent Mode v2 pour AgDR. Conforme RGPD/PIPEDA, impact latence zéro.">
+  
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/analytics-consent.html"/>
+  <link rel="alternate" hreflang="fr" href="https://accountability.ai/fr/analytics-consent.html"/>
+  <link rel="canonical" href="https://accountability.ai/analytics-consent.html"/>
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="GA4 Consent Mode v2 | AgDR Analytics">
+  <meta property="og:description" content="Privacy-first analytics for AgDR. Explicit consent, GDPR/PIPEDA compliant.">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"GA4 Consent Mode v2 for AgDR","author":{"@type":"Person","name":"Robert Muncaster"},"publisher":{"@type":"Organization","name":"GENESIS GLASS FOUNDATION","alternateName":"FONDATION GENÈSE CRISTAL","url":"https://accountability.ai"},"license":"https://creativecommons.org/publicdomain/zero/1.0/"}
+  </script>
+
+  <style>
+    :root{--teal:#2dd4bf;--bg:#050505;--text:#a1a1aa;--border:#1a1a1a}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;line-height:1.7}
+    nav{position:sticky;top:0;background:rgba(5,5,5,0.95);backdrop-filter:blur(12px);padding:1rem 2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between}
+    .brand{color:#fff;text-decoration:none;font-weight:700}
+    .nav-links a{color:#666;text-decoration:none;font-size:0.8rem;margin-left:1.5rem}
+    .nav-links a:hover{color:var(--teal)}
+    header{padding:6rem 1.5rem 3rem;text-align:center;background:radial-gradient(circle at top,#0d7377 0%,#050505 70%)}
+    .label{color:var(--teal);font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+    h1{font-size:clamp(2rem,5vw,3rem);margin:1rem 0;color:#fff}
+    main{max-width:800px;margin:0 auto;padding:2rem 1.5rem 4rem}
+    h2{color:#fff;font-size:1.5rem;margin:2.5rem 0 1rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem}
+    h3{color:var(--teal);font-size:1.2rem;margin:2rem 0 0.75rem}
+    p{margin:0 0 1rem}
+    code{background:#0f0f0f;padding:0.2rem 0.4rem;border-radius:4px;font-family:monospace;font-size:0.9em}
+    pre{background:#0f0f0f;border:1px solid var(--border);border-radius:8px;padding:1rem;overflow-x:auto;margin:1rem 0;font-family:monospace;font-size:0.85rem;line-height:1.5}
+    .checklist{list-style:none;padding:0;margin:1rem 0}
+    .checklist li{position:relative;padding-left:1.5rem;margin:0.5rem 0}
+    .checklist li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:700}
+    footer{background:#000;border-top:1px solid var(--border);padding:3rem 1.5rem;text-align:center;color:#444;font-size:0.75rem}
+    footer a{color:var(--teal);text-decoration:none}
+    @media(max-width:600px){h1{font-size:1.8rem}pre{font-size:0.8rem}}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="brand">ACCOUNTABILITY.AI</a>
+    <div class="nav-links">
+      <a href="/getting-started.html">GUIDE</a>
+      <a href="/beauty-truth-wisdom.html">ETHICS</a>
+      <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
+    </div>
+  </nav>
+
+  <header>
+    <span class="label">Implementation</span>
+    <h1>GA4 Consent Mode v2</h1>
+  </header>
+
+  <main>
+    <p>AgDR seals decisions at the kernel. Analytics should respect the same standard: <strong>explicit consent, zero latency impact</strong>.</p>
+
+    <h2>1. GA4 Snippet (Copy-Paste)</h2>
+    <p>Paste in <code>&lt;head&gt;</code>. Replace <code>G-QPHCT8T1KC</code> if needed.</p>
+    <pre><code>&lt;!-- GA4 + Consent Mode v2 --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+  gtag('js',new Date());
+  gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+&lt;/script&gt;</code></pre>
+
+    <h2>2. GA4 Settings</h2>
+    <ul class="checklist">
+      <li>Data Retention: <strong>2 months</strong></li>
+      <li>IP Anonymization: <strong>Enabled</strong></li>
+      <li>Bot Filtering: <strong>Enabled</strong></li>
+      <li>Google Signals: <strong>Disabled</strong></li>
+      <li>User-ID: <strong>Disabled</strong></li>
+    </ul>
+
+    <h2>3. Consent Banner (Optional)</h2>
+    <p>Add before <code>&lt;/body&gt;</code> for EU/CA compliance:</p>
+    <pre><code>&lt;div id="consent-banner" style="position:fixed;bottom:0;left:0;right:0;background:#0a0a0a;color:#fff;padding:1rem;text-align:center;border-top:1px solid #2dd4bf;z-index:999;display:none;font-size:0.9rem"&gt;
+Analytics improve docs. &lt;button onclick="gtag('consent','update',{'analytics_storage':'granted'});document.getElementById('consent-banner').style.display='none'" style="background:#2dd4bf;color:#000;border:none;padding:0.4rem 1rem;margin-left:1rem;cursor:pointer;font-weight:700;border-radius:4px"&gt;Accept&lt;/button&gt;
+&lt;button onclick="document.getElementById('consent-banner').style.display='none'" style="background:transparent;color:#fff;border:1px solid #fff;padding:0.4rem 1rem;margin-left:0.5rem;cursor:pointer;border-radius:4px"&gt;Decline&lt;/button&gt;
+&lt;/div&gt;
+&lt;script&gt;if(!localStorage.getItem('consent_shown')){document.getElementById('consent-banner').style.display='block';localStorage.setItem('consent_shown','true')}&lt;/script&gt;</code></pre>
+
+    <h2>4. Verify</h2>
+    <ul class="checklist">
+      <li><a href="https://tagassistant.google.com/" target="_blank" style="color:var(--teal)">Tag Assistant</a> → Consent Mode v2 active</li>
+      <li>GA4 Realtime → Page views after consent</li>
+      <li>Lighthouse → Performance ≥95</li>
+    </ul>
+  </main>
+
+  <footer>
+    AgDR v1.8 · April 2026<br>
+    Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · CC0 1.0
+  </footer>
+</body>
+</html>
+
