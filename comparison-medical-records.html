@@ -1,111 +1,280 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>AgDR vs. Medical Records | The AI Clinical Standard</title>
-    <meta name="description" content="A comparative analysis of Electronic Health Records (EHR) and AgDR. Why AI governance requires clinical-grade forensic integrity.">
+  <!-- Meta & Theme -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  
+  <!-- Performance Hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- SEO & GEO -->
+  <title>AgDR vs. Medical Records | AI Clinical Standard</title>
+  <meta name="description" content="A comparative analysis of Electronic Health Records (EHR) and AgDR. Why AI governance requires clinical-grade forensic integrity.">
+  <meta name="description" lang="fr" content="Une analyse comparative des dossiers de santé électroniques (DSE) et d'AgDR. Pourquoi la gouvernance IA exige une intégrité forensique de niveau clinique.">
+  
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://accountability.ai/comparison-medical-records.html">
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/comparison-medical-records.html">
+  <link rel="alternate" hreflang="fr" href="https://accountability.ai/fr/comparison-medical-records.html">
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/comparison-medical-records.html">
+  
+  <!-- Open Graph & Twitter -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:url" content="https://accountability.ai/comparison-medical-records.html">
+  <meta property="og:title" content="AgDR vs. Medical Records | AI Clinical Standard">
+  <meta property="og:description" content="A comparative analysis of Electronic Health Records (EHR) and AgDR. Why AI governance requires clinical-grade forensic integrity.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AgDR vs. Medical Records | AI Clinical Standard">
+  <meta name="twitter:description" content="A comparative analysis of Electronic Health Records (EHR) and AgDR. Why AI governance requires clinical-grade forensic integrity.">
+  
+  <!-- Schema.org (Compact & Valid) -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"AgDR vs. Medical Records | AI Clinical Standard","description":"A comparative analysis of Electronic Health Records (EHR) and AgDR. Why AI governance requires clinical-grade forensic integrity.","author":{"@type":"Person","name":"Robert Muncaster"},"publisher":{"@type":"Organization","name":"GENESIS GLASS FOUNDATION","alternateName":"FONDATION GENÈSE CRISTAL","url":"https://accountability.ai","sameAs":["https://github.com/aiccountability-source"],"address":{"@type":"PostalAddress","addressLocality":"Oshawa","addressRegion":"ON","addressCountry":"CA"}},"datePublished":"2026-04-12","dateModified":"2026-04-12","license":"https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0","mainEntityOfPage":{"@type":"WebPage","@id":"https://accountability.ai/comparison-medical-records.html"},"articleSection":"Comparative Analysis","keywords":["AgDR","medical records","EHR","PHIPA","AI accountability","cryptographic sealing","Phoenix v1.8","clinical governance","comparative analysis"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://accountability.ai/"},{"@type":"ListItem","position":2,"name":"Medical Records Comparison","item":"https://accountability.ai/comparison-medical-records.html"}]}
+  </script>
+  
+  <!-- GTM + GA4 + Consent Mode v2 -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+    gtag('js',new Date());gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+  </script>
+
+  <!-- Native CSS (Zero External Dependencies) -->
+  <style>
+    :root{--teal:#2dd4bf;--blue:#3b82f6;--bg:#050505;--text:#a1a1aa;--text-muted:#9ca3af;--header:#fff;--border:#1a1a1a;--card:#0a0a0a;--gradient:radial-gradient(circle at 100% 100%,#1e3a8a 0%,transparent 60%)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
     
-    <style>
-        :root { --teal: #2dd4bf; --blue: #3b82f6; --bg: #050505; --card: #111; --text: #a1a1aa; --border: #222; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.8; -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navigation */
-        nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #1a1a1a; z-index: 100;
-        }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--blue); color: var(--blue); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--teal); }
-
-        /* Hero Header */
-        header { 
-            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 100% 100%, #1e3a8a 0%, transparent 60%);
-        }
-        .label { color: var(--blue); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
-        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
-
-        /* Tables & Content */
-        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        .table-wrap { overflow-x: auto; margin: 3rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #080808; }
-        th { text-align: left; padding: 1.2rem 1rem; color: #666; background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
-        td { padding: 1.5rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-        .dim-cell { font-weight: 800; color: #fff; width: 25%; }
-
-        /* Footer Sitemap - Corrected Links */
-        .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
-        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
-        .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #555; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; transition: 0.2s; }
-        .sitemap-col a:hover { color: #fff; }
-        
-        footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-    </style>
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .nav-badge{border:1px solid var(--blue);color:var(--blue);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--teal)}
+    @media(min-width:768px){.nav-links{display:flex}}
+    
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:.5rem 1.5rem;font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none}
+    
+    header{padding:10rem 1.5rem 5rem;max-width:1000px;margin:0 auto;background:var(--gradient)}
+    .label{color:var(--blue);font-family:monospace;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;display:block;margin-bottom:1rem}
+    h1{color:var(--header);font-size:clamp(2.5rem,7vw,4rem);letter-spacing:-2px;line-height:1;margin-bottom:1rem}
+    .lead{font-size:1.25rem;color:#888;max-width:750px;font-weight:300}
+    
+    main{max-width:1000px;margin:0 auto;padding:0 1.5rem 6rem}
+    h2{font-size:1.75rem;color:var(--header);margin:4rem 0 1.5rem;letter-spacing:-.5px;border-bottom:1px solid var(--border);padding-bottom:1rem}
+    p{margin-bottom:1.25rem}
+    strong{color:var(--header)}
+    
+    /* Comparison Table */
+    .table-wrap{overflow-x:auto;margin:3rem 0;border:1px solid var(--border);border-radius:.5rem}
+    table{width:100%;border-collapse:collapse;font-size:.875rem;background:#080808}
+    th{text-align:left;padding:1rem;color:var(--text-muted);background:#111;border-bottom:2px solid var(--border);text-transform:uppercase;letter-spacing:1px;font-size:.65rem}
+    td{padding:1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6}
+    .dim-cell{font-weight:700;color:var(--header);width:25%}
+    
+    /* CTA Section */
+    .cta-section{margin-top:4rem;text-align:center;padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:1rem}
+    .cta-section p{margin-bottom:1rem;color:var(--text-muted)}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{display:inline-block;padding:.875rem 2rem;border-radius:.5rem;font-weight:600;text-align:center;transition:all .2s;cursor:pointer;border:none;font-size:1rem}
+    .btn-primary{background:var(--teal);color:#000}
+    .btn-primary:hover{background:#14b8a6}
+    .btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+    
+    /* Footer Sitemap */
+    .site-footer{background:#080808;border-top:1px solid var(--border);padding:4rem 1.5rem 3rem}
+    .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-muted);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    
+    @media(max-width:600px){
+      h1{font-size:2.5rem}
+      .nav-links{display:none}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-bottom{flex-direction:column;align-items:center;text-align:center}
+    }
+  </style>
 </head>
+
 <body>
+  <!-- GTM noscript -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <!-- SEO keywords (screen-reader only) -->
+  <p class="sr-only">AgDR medical records comparison, EHR, PHIPA, AI accountability, cryptographic sealing, Phoenix v1.8, clinical governance, comparative analysis, Genesis Glass Foundation</p>
+  
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-            <span class="badge">CLINICAL-LOGS</span>
-        </div>
-        <div class="nav-links">
-            <a href="/getting-started.html">GET STARTED</a>
-            <a href="/ppp-pillars.html">THE STANDARD</a>
-            <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <span class="nav-badge">CLINICAL-LOGS</span>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/getting-started.html">Get Started</a>
+        <a href="/ppp-pillars.html">PPP Pillars</a>
+        <a href="/sandbox.html">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">GitHub</a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">Medical Records Comparison</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
 
-    <header>
-        <span class="label">Forensic Comparison</span>
-        <h1>The AI Patient Chart.</h1>
-        <p class="lead">Applying the rigorous non-repudiation and lifecycle standards of Electronic Health Records (EHR) to autonomous inference.</p>
-    </header>
+  <!-- Header -->
+  <header>
+    <span class="label">Forensic Comparison</span>
+    <h1>The AI Patient Chart.</h1>
+    <p class="lead">Applying the rigorous non-repudiation and lifecycle standards of Electronic Health Records (EHR) to autonomous inference.</p>
+  </header>
 
-    <main>
-        <h2>Comparative Standards</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Medical Record (PHIPA)</th>
-                        <th>AgDR v1.8 (AKI)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="dim-cell">Audit Trail</td>
-                        <td>Who accessed/changed the record and when.</td>
-                        <td>Cryptographic proof of every inference and human delta.</td>
-                    </tr>
-                    <tr>
-                        <td class="dim-cell">Non-Repudiation</td>
-                        <td>Electronic or physical signature by provider.</td>
-                        <td>Hardware-bound BLAKE3 hash and Ed25519 signature.</td>
-                    </tr>
-                    <tr>
-                        <td class="dim-cell">Retention</td>
-                        <td>Typically 10 years or 10 years past majority.</td>
-                        <td>Immutable Merkle chain; indefinitely verifiable.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+  <!-- Main Content -->
+  <main id="main-content">
+    <h2>Comparative Standards</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Medical Record (PHIPA)</th>
+            <th>AgDR v1.8 (AKI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim-cell">Audit Trail</td>
+            <td>Who accessed/changed the record and when.</td>
+            <td>Cryptographic proof of every inference and human delta.</td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Non-Repudiation</td>
+            <td>Electronic or physical signature by provider.</td>
+            <td>Hardware-bound BLAKE3 hash and Ed25519 signature.</td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Retention</td>
+            <td>Typically 10 years or 10 years past majority.</td>
+            <td>Immutable Merkle chain; indefinitely verifiable.</td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Integrity</td>
+            <td>Access logs and version history.</td>
+            <td>Forward-secret Merkle chaining; tamper-evident by design.</td>
+          </tr>
+          <tr>
+            <td class="dim-cell">Legal Admissibility</td>
+            <td>Admissible under health privacy statutes.</td>
+            <td>Hardened for CEA s.31.1 as a system-integrity record.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-    <section class="sitemap">
-        <div class="sitemap-grid">
-            <div class="sitemap-col">
-                <h5>
+    <p>AgDR brings clinical-grade forensic integrity to AI governance. Just as a patient chart must be complete, contemporaneous, and tamper-evident, every autonomous decision requires the same standard of care.</p>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+      <p>Ready to implement clinical-grade AI accountability?</p>
+      <div class="cta-buttons">
+        <a href="/getting-started.html" class="btn btn-primary">Get Started with SDK</a>
+        <a href="/sandbox.html" class="btn btn-secondary">Try Phoenix Demo</a>
+        <a href="/comparison-aviation-black-box.html" class="btn btn-secondary">Aviation Comparison</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer with Full Sitemap -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Architecture</h5>
+        <ul>
+          <li><a href="/getting-started.html">Initialize v1.8</a></li>
+          <li><a href="/aki-formal-definition.html">AKI Specification</a></li>
+          <li><a href="/agdr-spec.html">AgDR Specification</a></li>
+          <li><a href="/horizontal-scaling.html">Horizontal Scaling</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Governance</h5>
+        <ul>
+          <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+          <li><a href="/human-delta-chain-spec.html">Human Delta Chain</a></li>
+          <li><a href="/foi-formal-definition.html">FOI Role</a></li>
+          <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal Discovery</h5>
+        <ul>
+          <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+          <li><a href="/verification-audit-procedure.html">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="/sandbox.html">Interactive Sandbox</a></li>
+          <li><a href="/tsx-stress-test.html">TSX Stress Test</a></li>
+          <li><a href="/comparison-aviation-black-box.html">Aviation Comparison</a></li>
+          <li><a href="/CHANGELOG.html">Changelog</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · CLINICAL-GRADE INTEGRITY</p>
+      <p>
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · 
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+
