@@ -1,169 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
+  <!-- Meta & Theme -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="technical
-details — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
-  <title>technical details | Accountability.ai</title>
-  <link rel="canonical" href="https://accountability.ai/technical
-details">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-  <!-- Open Graph -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+  
+  <!-- Performance Hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  
+  <!-- SEO & GEO -->
+  <title>Technical Details | AgDR v1.8 Specification | Accountability.ai</title>
+  <meta name="description" content="AgDR v1.8 technical specification: Atomic Kernel Inference (AKI) architecture, cryptographic sealing with BLAKE3 and Ed25519, and forward-secret Merkle chaining for court-admissible AI decision records.">
+  <meta name="description" lang="fr" content="Spécification technique d'AgDR v1.8 : architecture d'inférence atomique du noyau (IAN), scellement cryptographique avec BLAKE3 et Ed25519, et chaînage Merkle à secret prospectif pour des enregistrements décisionnels d'IA admissibles en cour.">
+  
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href="https://accountability.ai/technical-details.html">
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/technical-details.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://accountability.ai/fr/technical-details.html">
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/technical-details.html">
+  
+  <!-- Open Graph & Twitter -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Accountability.ai">
-  <meta property="og:title" content="technical
-details | Accountability.ai">
-  <meta property="og:description" content="technical
-details — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+  <meta property="og:url" content="https://accountability.ai/technical-details.html">
+  <meta property="og:title" content="Technical Details | AgDR v1.8 Specification | Accountability.ai">
+  <meta property="og:description" content="AgDR v1.8 technical specification: Atomic Kernel Inference architecture, cryptographic sealing, forward-secret Merkle chaining for court-admissible AI records.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Technical Details | AgDR v1.8 Specification | Accountability.ai">
+  <meta name="twitter:description" content="AgDR v1.8 technical specification: Atomic Kernel Inference architecture, cryptographic sealing, forward-secret Merkle chaining for court-admissible AI records.">
+  
+  <!-- Schema.org: TechArticle -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"Technical Details | AgDR v1.8 Specification | Accountability.ai","description":"AgDR v1.8 technical specification: Atomic Kernel Inference (AKI) architecture, cryptographic sealing with BLAKE3 and Ed25519, and forward-secret Merkle chaining for court-admissible AI decision records.","author":{"@type":"Person","name":"Robert Muncaster"},"publisher":{"@type":"Organization","name":"GENESIS GLASS FOUNDATION","alternateName":"FONDATION GENÈSE CRISTAL","url":"https://accountability.ai","sameAs":["https://github.com/aiccountability-source"],"address":{"@type":"PostalAddress","addressLocality":"Oshawa","addressRegion":"ON","addressCountry":"CA"}},"datePublished":"2026-04-12","dateModified":"2026-04-12","license":"https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0","mainEntityOfPage":{"@type":"WebPage","@id":"https://accountability.ai/technical-details.html"},"articleSection":"Technical Specification","inLanguage":"en-CA","keywords":["AgDR","Atomic Kernel Inference","AKI","BLAKE3","Ed25519","Merkle chain","cryptographic sealing","court-admissible","AI accountability","Phoenix v1.8","technical specification"]}
+  </script>
+  
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://accountability.ai/"},{"@type":"ListItem","position":2,"name":"Technical Details","item":"https://accountability.ai/technical-details.html"}]}
+  </script>
+  
+  <!-- GTM + GA4 + Consent Mode v2 -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','wait_for_update':500});
+    gtag('js',new Date());gtag('config','G-QPHCT8T1KC',{'anonymize_ip':true,'send_page_view':true});
+  </script>
 
+  <!-- Native CSS (Zero External Dependencies) -->
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; }
-
-    /* Typography */
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
-
-    /* Body text */
-    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-    .prose strong { color: #f4f4f5; font-weight: 600; }
-    .prose em { color: #a1a1aa; }
-
-    /* Lists */
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-    .prose li strong { color: #f4f4f5; }
-
-    /* Links */
-    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-    .prose a:hover { color: #99f6e4; }
-
-    /* Code */
-    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-    /* Blockquotes */
-    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-    /* Tables */
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-    .prose tr:nth-child(even) td { background: #18181b; }
-    .prose tr:hover td { background: #1f2937; }
-
-    /* HR */
-    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-    /* Nav gradient */
-    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    :root{
+      --teal:#2dd4bf;--bg:#050505;--text:#d4d4d8;--text-muted:#9ca3af;--header:#fff;
+      --border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.02);--code-bg:#18181b;
+      --gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%);
+      --container-max:1200px;--content-max:900px;--spacing:1.5rem;
+      --font-sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+      --font-mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Liberation Mono','Courier New',monospace;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:var(--container-max);margin:0 auto;padding:0 var(--spacing);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .nav-badge{border:1px solid var(--teal);color:var(--teal);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-muted)}
+    .nav-links a:hover{color:var(--teal)}
+    .lang-switcher{display:flex;gap:.25rem;align-items:center;padding:.25rem .5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:.375rem;font-size:.75rem;font-weight:600}
+    .lang-link{color:var(--text-muted);padding:.125rem .375rem;border-radius:.25rem;transition:all .15s ease;text-decoration:none}
+    .lang-link:hover,.lang-link[aria-current="true"]{color:var(--teal);background:rgba(45,212,191,0.15)}
+    .lang-link:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:768px){.lang-switcher{order:3;margin-left:auto}}
+    .breadcrumb{max-width:var(--container-max);margin:0 auto;padding:.5rem var(--spacing);font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none;flex-wrap:wrap}
+    .hero-gradient{background:var(--gradient);padding:6rem var(--spacing) 4rem}
+    .hero-content{max-width:var(--content-max);margin:0 auto}
+    .teal-tag{color:var(--teal);font-family:var(--font-mono);font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:block;margin-bottom:1rem}
+    h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:1rem;color:#fff}
+    .hero-meta{color:#888;font-size:1rem}
+    main{max-width:var(--content-max);margin:0 auto;padding:0 var(--spacing) 4rem}
+    .prose{font-size:1.05rem;line-height:1.8;color:var(--text)}
+    .prose h2{font-size:1.75rem;color:var(--header);margin:3rem 0 1rem;letter-spacing:-.5px;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+    .prose h3{font-size:1.3rem;color:var(--header);margin:2rem 0 .75rem}
+    .prose p{margin-bottom:1.25rem}
+    .prose strong{color:var(--header)}
+    .prose em{color:var(--text-muted)}
+    .prose a{color:var(--teal);text-decoration:underline;text-underline-offset:2px}
+    .prose a:hover{color:#14b8a6}
+    .prose ul,.prose ol{padding-left:1.5rem;margin-bottom:1.25rem}
+    .prose li{margin-bottom:.5rem}
+    .prose pre{background:var(--code-bg);border:1px solid var(--border);border-radius:.5rem;padding:1.25rem;overflow-x:auto;margin:1.5rem 0;font-family:var(--font-mono);font-size:.875rem;line-height:1.6}
+    .prose code{background:rgba(255,255,255,0.05);padding:.15rem .4rem;border-radius:.25rem;font-family:var(--font-mono);font-size:.9em;color:var(--teal)}
+    .prose pre code{background:none;padding:0;border:none;color:var(--text)}
+    .table-wrap{overflow-x:auto;margin:2rem 0}
+    .prose table{width:100%;border-collapse:collapse;font-size:.95rem}
+    .prose th{background:#111;color:var(--text-muted);text-align:left;padding:.75rem 1rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;font-size:.7rem;border-bottom:2px solid var(--border)}
+    .prose td{padding:.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top}
+    .prose tr:hover td{background:#111}
+    .spec-card{background:var(--card);border:1px solid var(--border);border-radius:.5rem;padding:1.5rem;margin:2rem 0}
+    .spec-card h3{color:var(--teal);margin-top:0}
+    .callout{background:rgba(13,115,119,0.1);border-left:4px solid #0d7377;padding:1.5rem;margin:2rem 0;border-radius:0 .5rem .5rem 0}
+    .callout p{margin:0;color:var(--text-muted);font-style:italic}
+    .cta-section{margin-top:4rem;text-align:center;padding:2rem;background:var(--card);border:1px solid var(--border);border-radius:1rem}
+    .cta-section p{margin-bottom:1rem;color:var(--text-muted)}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{display:inline-block;padding:.875rem 2rem;border-radius:.5rem;font-weight:600;text-align:center;transition:all .2s;cursor:pointer;border:none;font-size:1rem}
+    .btn-primary{background:var(--teal);color:#000}
+    .btn-primary:hover{background:#14b8a6}
+    .btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+    .doc-nav{background:#080808;border-top:1px solid var(--border);padding:3rem var(--spacing);margin-top:4rem}
+    .doc-nav-title{color:var(--teal);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+    .doc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;max-width:var(--container-max);margin:0 auto}
+    .doc-card{background:var(--card);border:1px solid var(--border);padding:1rem;border-radius:.5rem;transition:transform .2s,border-color .2s}
+    .doc-card:hover{transform:translateY(-2px);border-color:var(--teal)}
+    .doc-card-title{color:var(--header);font-size:.9rem;font-weight:600;margin-bottom:.25rem;display:block}
+    .doc-card-desc{color:var(--text-muted);font-size:.8rem}
+    .site-footer{background:#080808;border-top:1px solid var(--border);padding:4rem var(--spacing) 3rem}
+    .footer-grid{max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-muted);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{max-width:var(--container-max);margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    @media(max-width:600px){h1{font-size:2.5rem}.nav-links{display:none}.footer-grid{grid-template-columns:repeat(2,1fr)}.footer-bottom{flex-direction:column;align-items:center;text-align:center}.prose h2{font-size:1.5rem}.prose table{font-size:.85rem}.prose th,.prose td{padding:.5rem}}
+    [lang="fr"]{font-feature-settings:"kern" 1,"liga" 1,"calt" 1;hyphens:auto}
   </style>
 </head>
-<body class="bg-zinc-950 text-white">
 
-  <!-- NAV -->
-  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex flex-wrap gap-5 text-sm font-medium">
-        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+<body>
+  <!-- GTM noscript fallback -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <!-- SEO keywords (screen-reader only) -->
+  <p class="sr-only">AgDR technical specification, Atomic Kernel Inference AKI, BLAKE3 hashing, Ed25519 signatures, Merkle chaining, cryptographic sealing, court-admissible AI records, Phoenix v1.8, accountability.ai</p>
+  
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <span class="nav-badge">TECHNICAL SPEC</span>
+      
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/getting-started.html">Get Started</a>
+        <a href="/ppp-pillars.html">PPP Pillars</a>
+        <a href="/sandbox.html">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--teal)">GitHub</a>
+      </div>
+      
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="navigation" aria-label="Language selection">
+        <a href="/technical-details.html" 
+           hreflang="en" 
+           lang="en"
+           class="lang-link"
+           aria-current="true"
+           data-lang="en"
+           title="English">EN</a>
+        <span class="sr-only">|</span>
+        <a href="/fr/technical-details.html" 
+           hreflang="fr-CA" 
+           lang="fr"
+           class="lang-link"
+           data-lang="fr"
+           title="Français (Canada)">FR</a>
       </div>
     </div>
   </nav>
+  
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+        <span itemprop="name">Technical Details</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-4xl mx-auto px-6 py-16">
-    <article class="prose">
-      <h1 id="agdr-v0.2-technical-details">AgDR v0.2 Technical
-      Details</h1>
-      <p><strong>Current State – March 2026</strong></p>
-      <p>The original name <strong>ADR</strong> (Agent Decision Record)
-      v0.1 is now deprecated and obsolete.<br />
-      The current standard is <strong>AgDR v0.2</strong> with the
-      enforcement layer called <strong>Atomic Kernel Inference
-      (AKI)</strong>.</p>
-      <h3 id="core-architecture">1. Core Architecture</h3>
-      <ul>
-      <li>Full Name: AgDR v0.2 with Atomic Kernel Inference (AKI)</li>
-      <li>Capture Point: Exact inference instant (the “i” point)</li>
-      <li>Guarantee: One mathematically indivisible kernel transaction —
-      the entire record is either fully committed or never exists</li>
-      </ul>
-      <h3 id="formal-definition-of-aki">2. Formal Definition of AKI</h3>
-      <p>```math AtomicInferenceCapture(ctx, reasoning_trace, output,
-      ppp_triplet, human_delta_chain) ≡ { sign(BLAKE3(ctx ∥
-      reasoning_trace ∥ ppp_triplet ∥ human_delta_chain)),
-      persist(Merkle-append to forward-secret chain), return committed
-      }</p>
-    </article>
-  </main>
-
-  <!-- DOCUMENT NAVIGATION FOOTER -->
-  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
-    <div class="max-w-5xl mx-auto px-6">
-      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-      <div class="grid md:grid-cols-4 gap-5">
-        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-        </a>
-        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-        </a>
-        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-        </a>
-        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-        </a>
-        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-        </a>
-        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-        </a>
-        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-        </a>
-        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-        </a>
-      </div>
+  <!-- Hero -->
+  <section class="hero-gradient">
+    <div class="hero-content">
+      <span class="teal-tag">AgDR v1.8 · Technical Specification</span>
+      <h1>Technical Details</h1>
+      <p class="hero-meta">Atomic Kernel Inference architecture, cryptographic sealing, and forward-secret Merkle chaining for court-admissible AI decision records. Reference: accountability.ai AgDR specification.</p>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
-    <p class="mb-2">
-      The AgDR Standard is open, royalty-free, and dual-licensed:
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
-    </p>
-    <p>
-      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
-      &nbsp;·&nbsp; © 2026 Accountability.ai
-    </p>
-  </footer>
+  <!-- Main Content -->
+  <main id="main-content" class="prose">
+    <p><strong>Current State — April 2026</strong></p>
+    
+    <p>The legacy designation <strong>ADR</strong> (Agent Decision Record) v0.1 is deprecated. The current standard is <strong>AgDR v1.8</strong> (Atomic Genesis Decision Record) with the enforcement layer <strong>Atomic Kernel Inference (AKI)</strong>. Full specification: <a href="https://accountability.ai/agdr-spec.html">accountability.ai AgDR Protocol</a>.</p>
+    
+    <h2 id="core-architecture">Core Architecture</h2>
+    
+    <div class="spec-card">
+      <h3>Atomic Kernel Inference (AKI)</h3>
+      <ul>
+        <li><strong>Capture Point:</strong> Exact inference instant (the "i" point), before any external I/O</li>
+        <li><strong>Guarantee:</strong> One mathematically indivisible kernel transaction — the entire record is either fully committed or never exists</li>
+        <li><strong>Latency:</strong> 0.62–0.95 µs end-to-end sealing time (Phoenix v1.8 benchmark)</li>
+        <li><strong>Output:</strong> Cryptographically sealed AgDR record with BLAKE3 hash and Ed25519 signature</li>
+      </ul>
+    </div>
+    
+    <h2 id="formal-definition">Formal Definition of AKI</h2>
+    
+    <p>The AtomicInferenceCapture operation is defined as:</p>
+    
+    <pre><code>AtomicInferenceCapture(
+  ctx: InferenceContext,
+  reasoning_trace: ReasoningTrace,
+  output: ModelOutput,
+  ppp_triplet: PPPTriplet,
+  human_delta_chain: HumanDeltaChain
+) → CommittedAgDR {
+  
+  // 1. Concatenate all components in canonical order
+  payload = canonical_encode(ctx, reasoning_trace, ppp_triplet, human_delta_chain, output);
+  
+  // 2. Compute BLAKE3 hash of payload
+  record_hash = BLAKE3_256(payload);
+  
+  // 3. Sign hash with Ed25519 private key (secure enclave)
+  signature = Ed25519_sign(record_hash, private_key);
+  
+  // 4. Append to forward-secret Merkle chain
+  merkle_root = Merkle_append(record_hash, previous_root);
+  
+  // 5. Return committed record with cryptographic proofs
+  return AgDR {
+    payload_hash: record_hash,
+    signature: signature,
+    merkle_root: merkle_root,
+    timestamp_ns: monotonic_clock_ns(),
+    kernel_version: "Phoenix v1.8"
+  };
+}</code></pre>
+    
+    <div class="callout">
+      <p>Every AgDR record is cryptographically bound to its inference context, PPP Triplet, and Human Delta Chain. Tampering with any component invalidates the BLAKE3 hash and Ed25519 signature, providing mathematical proof of integrity. Reference: <a href="https://accountability.ai/aki-formal-definition.html">accountability.ai AKI Formal Definition</a>.</p>
+    </div>
+    
+    <h2 id="cryptographic-components">Cryptographic Components</h2>
+    
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Algorithm</th>
+            <th>Purpose</th>
+            <th>Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Record Hash</td>
+            <td>BLAKE3-256</td>
+            <td>Content integrity verification; collision-resistant fingerprint</td>
+            <td><a href="https://accountability.ai/agdr-spec.html#blake3">accountability.ai spec</a></td>
+          </tr>
+          <tr>
+            <td>Signature</td>
+            <td>Ed25519</td>
+            <td>Authenticity and non-repudiation; public-key verification</td>
+            <td><a href="https://accountability.ai/agdr-spec.html#ed25519">accountability.ai spec</a></td>
+          </tr>
+          <tr>
+            <td>Chain Integrity</td>
+            <td>Forward-secret Merkle</td>
+            <td>Temporal ordering and tamper-evidence across records</td>
+            <td><a href="https://accountability.ai/agdr-spec.html#merkle">accountability.ai spec</a></td>
+          </tr>
+          <tr>
+            <td>Key Management</td>
+            <td>Hardware enclave (SGX/SEV)</td>
+            <td>Secure private key storage; isolation from host OS</td>
+            <td><a href="https://accountability.ai/getting-started.html#security">accountability.ai guide</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h2 id="evidentiary-properties">Evidentiary Properties</h2>
+    
+    <p>AgDR v1.8 records satisfy statutory authentication requirements through:</p>
+    
+    <ol>
+      <li><strong>Contemporaneous Capture:</strong> Sealing occurs at inference instant, satisfying CEA s.31.1 "system integrity" presumption</li>
+      <li><strong>Cryptographic Proof:</strong> BLAKE3 + Ed25519 provide independently verifiable integrity without trusted third parties</li>
+      <li><strong>Forward-Secret Chaining:</strong> Merkle structure prevents retroactive tampering; each record's validity depends on all prior records</li>
+      <li><strong>Human Delta Integration:</strong> Interventions are cryptographically bound to the original decision, preserving audit trail completeness</li>
+    </ol>
+    
+    <p>Full statutory mapping: <a href="https://accountability.ai/cea-compliance.html">accountability.ai CEA s.31.1 Compliance</a>.</p>
+    
+    <!-- Call to Action -->
+    <div class="cta-section">
+      <p>Ready to implement AgDR v1.8 in your system?</p>
+      <div class="cta-buttons">
+        <a href="/getting-started.html" class="btn btn-primary">Initialize AgDR SDK</a>
+        <a href="/agdr-spec.html" class="btn btn-secondary">Full Specification</a>
+        <a href="/verification-audit-procedure.html" class="btn btn-secondary">Verification Guide</a>
+      </div>
+    </div>
+  </main>
 
+  <!-- Document Navigation Footer -->
+  <section class="doc-nav">
+    <h3 class="doc-nav-title">Continue Reading</h3>
+    <div class="doc-grid">
+      <a href="/getting-started.html" class="doc-card">
+        <span class="doc-card-title">Get Started</span>
+        <span class="doc-card-desc">SDK install, PPP definition, first capture</span>
+      </a>
+      <a href="/foi-formal-definition.html" class="doc-card">
+        <span class="doc-card-title">FOI Definition</span>
+        <span class="doc-card-desc">The terminal accountability role</span>
+      </a>
+      <a href="/human-delta-chain-spec.html" class="doc-card">
+        <span class="doc-card-title">Delta Chain Spec</span>
+        <span class="doc-card-desc">Human oversight data structure</span>
+      </a>
+      <a href="/verification-audit-procedure.html" class="doc-card">
+        <span class="doc-card-title">Verification</span>
+        <span class="doc-card-desc">Court-ready evidence packaging</span>
+      </a>
+      <a href="/ppp-industry-templates.html" class="doc-card">
+        <span class="doc-card-title">Industry Templates</span>
+        <span class="doc-card-desc">PPP definitions by sector</span>
+      </a>
+      <a href="/eu-ai-act-mapping.html" class="doc-card">
+        <span class="doc-card-title">EU AI Act Mapping</span>
+        <span class="doc-card-desc">Article-by-article compliance analysis</span>
+      </a>
+      <a href="/beauty-truth-wisdom.html" class="doc-card">
+        <span class="doc-card-title">Beauty, Truth and Wisdom</span>
+        <span class="doc-card-desc">The Purpose pillar's closing principles</span>
+      </a>
+      <a href="/horizontal-scaling.html" class="doc-card">
+        <span class="doc-card-title">Horizontal Scaling</span>
+        <span class="doc-card-desc">Beyond 2.85B decisions per process</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer with Full Sitemap -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Core Standard</h5>
+        <ul>
+          <li><a href="/getting-started.html">Get Started</a></li>
+          <li><a href="/sandbox.html">Phoenix Demo</a></li>
+          <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+          <li><a href="/aki-formal-definition.html">AKI Definition</a></li>
+          <li><a href="/agdr-spec.html">AgDR Protocol</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal and Compliance</h5>
+        <ul>
+          <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+          <li><a href="/foi-formal-definition.html">FOI Role</a></li>
+          <li><a href="/verification-audit-procedure.html">Verification</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engineering</h5>
+        <ul>
+          <li><a href="/tsx-stress-test.html">TSX Stress Test</a></li>
+          <li><a href="/horizontal-scaling.html">Horizontal Scaling</a></li>
+          <li><a href="/aki-95.html">AKI 0.95 Spec</a></li>
+          <li><a href="/human-delta-chain-spec.html">Human Delta Chain</a></li>
+          <li><a href="/CHANGELOG.html">Changelog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Evidence and Vision</h5>
+        <ul>
+          <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
+          <li><a href="/comparison-medical-records.html">Medical Records</a></li>
+          <li><a href="/agi-court-precedents.html">AGI Court Precedents</a></li>
+          <li><a href="/future-agi-court.html">Court in 2076</a></li>
+          <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · TECHNICAL INTEGRITY</p>
+      <p>
+        <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> · 
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · 
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
+
