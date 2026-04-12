@@ -1,274 +1,418 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57M9SFB4');</script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="verification audit
-procedure — AgDR v0.2 specification and AI accountability infrastructure. Accountability.ai — the open standard for autonomous AI decision records.">
-  <title>verification audit procedure | Accountability.ai</title>
-  <link rel="canonical" href="https://accountability.ai/verification
-audit procedure">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#0d7377">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="description" content="AgDR v1.8 verification and audit procedure: CLI, Python, and manual cryptographic verification methods for court-admissible AI decision records.">
+  <meta name="description" lang="fr" content="Procédure de vérification et d'audit d'AgDR v1.8 : méthodes CLI, Python et vérification cryptographique manuelle pour des enregistrements décisionnels d'IA admissibles en cour.">
+  <meta name="keywords" content="AgDR, verification procedure, audit trail, cryptographic verification, BLAKE3, Ed25519, Merkle chain, court evidence, Phoenix v1.8, accountability.ai">
+
+  <title>Verification and Audit Procedure | Accountability.ai</title>
+  <link rel="canonical" href="https://accountability.ai/verification-audit-procedure.html">
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/verification-audit-procedure.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://accountability.ai/fr/verification-audit-procedure.html">
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/verification-audit-procedure.html">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Accountability.ai">
-  <meta property="og:title" content="verification audit
-procedure | Accountability.ai">
-  <meta property="og:description" content="verification audit
-procedure — part of the AgDR v0.2 open standard for tamper-evident AI decision records.">
+  <meta property="og:url" content="https://accountability.ai/verification-audit-procedure.html">
+  <meta property="og:title" content="Verification and Audit Procedure | Accountability.ai">
+  <meta property="og:description" content="AgDR v1.8 verification and audit procedure: CLI, Python, and manual cryptographic verification methods for court-admissible AI decision records.">
+  <meta property="og:image" content="https://accountability.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@accountability_ai">
+  <meta name="twitter:title" content="Verification and Audit Procedure | Accountability.ai">
+  <meta name="twitter:description" content="AgDR v1.8 verification and audit procedure: CLI, Python, and manual cryptographic verification methods for court-admissible AI decision records.">
+  <meta name="twitter:image" content="https://accountability.ai/og-image.png">
+
+  <!-- Structured Data: TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Verification and Audit Procedure | AgDR v1.8 | Accountability.ai",
+    "description": "AgDR v1.8 verification and audit procedure: CLI, Python, and manual cryptographic verification methods for court-admissible AI decision records.",
+    "author": {"@type": "Person", "name": "Robert Muncaster"},
+    "publisher": {
+      "@type": "Organization",
+      "name": "GENESIS GLASS FOUNDATION",
+      "alternateName": "FONDATION GENÈSE CRISTAL",
+      "url": "https://accountability.ai",
+      "sameAs": ["https://github.com/aiccountability-source"],
+      "address": {"@type": "PostalAddress", "addressLocality": "Oshawa", "addressRegion": "ON", "addressCountry": "CA"}
+    },
+    "isPartOf": {"@type": "WebSite", "name": "Accountability.ai", "url": "https://accountability.ai"},
+    "inLanguage": "en-CA",
+    "datePublished": "2026-04-12",
+    "dateModified": "2026-04-12",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://accountability.ai/verification-audit-procedure.html"},
+    "articleSection": "Verification Procedure",
+    "keywords": ["AgDR","verification procedure","audit trail","cryptographic verification","BLAKE3","Ed25519","Merkle chain","court evidence","Phoenix v1.8","accountability.ai"]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://accountability.ai/"},
+      {"@type": "ListItem", "position": 2, "name": "Verification and Audit Procedure", "item": "https://accountability.ai/verification-audit-procedure.html"}
+    ]
+  }
+  </script>
 
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; }
-
-    /* Typography */
-    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
-
-    /* Body text */
-    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-    .prose strong { color: #f4f4f5; font-weight: 600; }
-    .prose em { color: #a1a1aa; }
-
-    /* Lists */
-    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-    .prose li strong { color: #f4f4f5; }
-
-    /* Links */
-    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-    .prose a:hover { color: #99f6e4; }
-
-    /* Code */
-    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-    /* Blockquotes */
-    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-    /* Tables */
-    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-    .prose tr:nth-child(even) td { background: #18181b; }
-    .prose tr:hover td { background: #1f2937; }
-
-    /* HR */
-    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-    /* Nav gradient */
-    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+    :root {
+      --color-bg:#050505; --color-surface:#0a0a0a; --color-surface-2:#111;
+      --color-border:rgba(255,255,255,0.05); --color-border-subtle:#1a1a1a;
+      --color-text:#d4d4d8; --color-text-strong:#f4f4f5;
+      --color-text-muted:#9ca3af; --color-text-faint:#71717a;
+      --color-primary:#0d7377; --color-primary-mid:#0f766e;
+      --color-teal-300:#5eead4; --color-teal-200:#99f6e4; --color-teal-100:#ccfbf1;
+      --color-accent:#2dd4bf; --color-nav-a:#0F766E; --color-nav-b:#164E63;
+      --max-w-content:56rem; --max-w-wide:72rem;
+      --r-sm:.25rem; --r-md:.5rem; --r-lg:.75rem; --r-xl:1rem;
+      --sp-sm:.75rem; --sp-md:1rem; --sp-lg:1.5rem; --sp-xl:2.5rem;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{background-color:var(--color-bg);color:var(--color-text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+    img,svg,video{display:block;max-width:100%}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--color-accent);color:#000;padding:var(--sp-sm) var(--sp-lg);z-index:200;font-weight:600;border-radius:0 0 var(--r-md) 0;text-decoration:none;font-size:.95rem}
+    .skip-link:focus{top:0}
+    :focus-visible{outline:3px solid var(--color-accent);outline-offset:2px;border-radius:var(--r-sm)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    .container{width:100%;max-width:var(--max-w-wide);margin-inline:auto;padding-inline:var(--sp-lg)}
+    .container--narrow{max-width:var(--max-w-content)}
+    .site-nav{background:linear-gradient(135deg,var(--color-nav-a) 0%,var(--color-nav-b) 100%);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);position:sticky;top:0;z-index:50;padding-block:1rem}
+    .site-nav__inner{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-lg)}
+    .site-nav__logo{font-size:1.2rem;font-weight:700;letter-spacing:-.02em;color:#fff;text-decoration:none;white-space:nowrap}
+    .site-nav__logo:hover{color:var(--color-teal-100)}
+    .site-nav__links{display:flex;flex-wrap:wrap;gap:1.25rem;list-style:none}
+    .site-nav__links a{color:rgba(255,255,255,.9);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .15s ease}
+    .site-nav__links a:hover{color:var(--color-teal-200)}
+    .lang-switcher{display:flex;gap:.25rem;align-items:center;padding:.25rem .5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:.375rem;font-size:.75rem;font-weight:600}
+    .lang-link{color:var(--color-text-muted);padding:.125rem .375rem;border-radius:.25rem;transition:all .15s ease;text-decoration:none}
+    .lang-link:hover,.lang-link[aria-current="true"]{color:var(--color-accent);background:rgba(45,212,191,0.15)}
+    .lang-link:focus-visible{outline:2px solid var(--color-accent);outline-offset:1px}
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:768px){.lang-switcher{order:3;margin-left:auto}}
+    .breadcrumb{padding-block:.6rem}
+    .breadcrumb__list{display:flex;align-items:center;gap:.25rem;list-style:none;font-size:.8rem;color:var(--color-text-faint)}
+    .breadcrumb__list a{color:var(--color-text-faint);text-decoration:none;transition:color .15s}
+    .breadcrumb__list a:hover{color:var(--color-teal-300)}
+    .breadcrumb__sep{margin-inline:.25rem;color:var(--color-border);user-select:none}
+    .breadcrumb__current{color:var(--color-text-muted)}
+    .main-content{padding-block:3rem 4rem}
+    .prose{color:var(--color-text)}
+    .prose h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;line-height:1.2;color:var(--color-teal-300);margin-bottom:.5rem}
+    .prose h2{font-size:clamp(1.3rem,3vw,1.75rem);font-weight:600;line-height:1.3;color:var(--color-teal-200);margin-top:var(--sp-xl);margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:1px solid var(--color-surface-2)}
+    .prose h3{font-size:1.2rem;font-weight:600;color:var(--color-teal-100);margin-top:1.75rem;margin-bottom:.5rem}
+    .prose h4{font-size:1rem;font-weight:600;color:var(--color-text-strong);margin-top:1.25rem;margin-bottom:.4rem}
+    .prose p{margin-bottom:1.1rem;line-height:1.8}
+    .prose>p:first-of-type{font-size:1.1rem;color:var(--color-text-strong)}
+    .prose strong{color:var(--color-text-strong);font-weight:600}
+    .prose em{color:var(--color-text-muted)}
+    .prose ul{list-style:disc;padding-left:var(--sp-lg);margin-bottom:1.1rem}
+    .prose ol{list-style:decimal;padding-left:var(--sp-lg);margin-bottom:1.1rem}
+    .prose li{margin-bottom:.5rem;line-height:1.75}
+    .prose li strong{color:var(--color-text-strong)}
+    .prose a{color:var(--color-teal-300);text-decoration:underline;text-underline-offset:2px;transition:color .15s}
+    .prose a:hover{color:var(--color-teal-200)}
+    .prose code{background:var(--color-surface-2);padding:.15em .4em;border-radius:var(--r-sm);font-size:.88em;color:var(--color-teal-300);border:1px solid var(--color-border);font-family:ui-monospace,"Cascadia Code",Menlo,Consolas,monospace}
+    .prose pre{background:var(--color-surface);border:1px solid var(--color-surface-2);padding:1.25rem;border-radius:var(--r-lg);overflow-x:auto;margin-bottom:1.25rem}
+    .prose pre code{background:none;padding:0;border:none;font-size:.875rem;line-height:1.6;color:var(--color-text-strong)}
+    .prose blockquote{border-left:4px solid var(--color-primary-mid);padding:.75rem 1rem .75rem 1.25rem;color:var(--color-text-muted);font-style:italic;margin-bottom:1.25rem;background:var(--color-surface);border-radius:0 var(--r-md) var(--r-md) 0}
+    .prose blockquote p{color:var(--color-text-muted);margin-bottom:0}
+    .prose table{width:100%;border-collapse:collapse;margin-bottom:1.75rem;font-size:.925rem}
+    .prose th{background:var(--color-surface);padding:.7rem 1rem;text-align:left;color:var(--color-teal-300);border:1px solid var(--color-border);font-weight:600;white-space:nowrap}
+    .prose td{padding:.65rem 1rem;border:1px solid var(--color-surface-2);color:var(--color-text);vertical-align:top;line-height:1.6}
+    .prose tr:nth-child(even) td{background:var(--color-surface)}
+    .prose tr:hover td{background:#1f2937}
+    .prose hr{border:none;border-top:1px solid var(--color-border-subtle);margin:var(--sp-xl) 0}
+    .callout{background:rgba(13,115,119,0.1);border-left:4px solid #0d7377;padding:1.5rem;margin:2rem 0;border-radius:0 .5rem .5rem 0}
+    .callout p{margin:0;color:var(--color-text-muted);font-style:italic}
+    .cta-section{margin-top:4rem;text-align:center;padding:2rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:1rem}
+    .cta-section p{margin-bottom:1rem;color:var(--color-text-muted)}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{display:inline-block;padding:.875rem 2rem;border-radius:.5rem;font-weight:600;text-align:center;transition:all .2s;cursor:pointer;border:none;font-size:1rem}
+    .btn-primary{background:var(--color-accent);color:#000}
+    .btn-primary:hover{background:#14b8a6}
+    .btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+    .related-docs{background:var(--color-surface);border-top:1px solid var(--color-surface-2);padding-block:3.5rem}
+    .related-docs__label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-faint);margin-bottom:2rem}
+    .related-docs__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem}
+    .doc-card{display:block;background:var(--color-surface-2);border-radius:var(--r-xl);padding:1.25rem;text-decoration:none;transition:background .15s ease,transform .1s ease;border:1px solid transparent}
+    .doc-card:hover{background:#333338;transform:translateY(-1px);border-color:var(--color-border)}
+    .doc-card:focus-visible{outline:2px solid var(--color-teal-300);outline-offset:2px}
+    .doc-card__title{font-size:.9rem;font-weight:600;margin-bottom:.35rem}
+    .doc-card__title--featured{color:var(--color-teal-300)}
+    .doc-card__title--default{color:var(--color-text-strong)}
+    .doc-card__desc{font-size:.78rem;color:var(--color-text-faint);line-height:1.5}
+    .site-footer{background:#000;color:var(--color-text-faint);font-size:.875rem;padding-block:3.5rem}
+    .site-footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;margin-bottom:2.5rem}
+    .site-footer__brand-name{font-size:1rem;font-weight:600;color:#fff;margin-bottom:.5rem}
+    .site-footer__brand-desc{color:var(--color-text-faint);line-height:1.6;font-size:.825rem}
+    .site-footer__col-heading{font-size:.875rem;font-weight:600;color:var(--color-text-strong);margin-bottom:.75rem}
+    .site-footer__links{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+    .site-footer__links a{color:var(--color-text-faint);text-decoration:none;font-size:.85rem;transition:color .15s}
+    .site-footer__links a:hover{color:var(--color-teal-300)}
+    .site-footer__bottom{border-top:1px solid #111;padding-top:2rem;margin-top:2rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+    .site-footer__bottom p{color:#52525b;font-size:.8rem}
+    .site-footer__bottom a{color:var(--color-accent);text-decoration:none;transition:color .15s;font-weight:500}
+    .site-footer__bottom a:hover{color:var(--color-teal-200)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
+    @media(max-width:640px){.site-nav__links{gap:.75rem}.site-nav__links a{font-size:.82rem}.related-docs__grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:400px){.related-docs__grid{grid-template-columns:1fr}}
+    [lang="fr"]{font-feature-settings:"kern" 1,"liga" 1,"calt" 1;hyphens:auto}
   </style>
 </head>
-<body class="bg-zinc-950 text-white">
 
-  <!-- NAV -->
-  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg">
-    <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="text-xl font-bold tracking-tight">Accountability.ai</a>
-      <div class="flex flex-wrap gap-5 text-sm font-medium">
-        <a href="/getting-started.html" class="hover:text-teal-200 transition">Get Started</a>
-        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition">The Standard</a>
-        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition">Legal</a>
-        <a href="/sandbox.html" class="hover:text-teal-200 transition">Sandbox</a>
-        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition">GitHub</a>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57M9SFB4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container site-nav__inner">
+      <a href="/" class="site-nav__logo" aria-label="Accountability.ai home">ACCOUNTABILITY.AI</a>
+      <span class="nav-badge" style="border:1px solid var(--color-accent);color:var(--color-accent);padding:.125rem .5rem;border-radius:.25rem;font-size:.65rem;font-weight:900;letter-spacing:1.5px">VERIFICATION PROCEDURE</span>
+      <ul class="site-nav__links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/getting-started.html">Get Started</a></li>
+        <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+        <li><a href="/sandbox.html">Phoenix Demo</a></li>
+        <li><a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener noreferrer" style="color:var(--color-accent)">GitHub<span class="sr-only"> (opens in new tab)</span></a></li>
+      </ul>
+      <!-- Language Switcher -->
+      <div class="lang-switcher" role="navigation" aria-label="Language selection">
+        <a href="/verification-audit-procedure.html" hreflang="en" lang="en" class="lang-link" aria-current="true" data-lang="en" title="English">EN</a>
+        <span class="sr-only">|</span>
+        <a href="/fr/verification-audit-procedure.html" hreflang="fr-CA" lang="fr" class="lang-link" data-lang="fr" title="Français (Canada)">FR</a>
       </div>
     </div>
   </nav>
 
-  <!-- CONTENT -->
-  <main class="max-w-4xl mx-auto px-6 py-16">
-    <article class="prose">
-      <h1 id="verification-audit-procedure">Verification &amp; Audit
-      Procedure</h1>
-      <p><strong>AgDR v0.2 — How to Verify a Record and Package Evidence
-      for Courts and Regulators</strong> Published March 2026</p>
-      <hr />
-      <h2 id="what-verification-proves">What Verification Proves</h2>
-      <p>An AgDR verification answers four questions simultaneously:</p>
-      <ol type="1">
-      <li><strong>Integrity</strong> — Has this record been modified
-      since it was created?</li>
-      <li><strong>Authenticity</strong> — Was this record created by the
-      claimed system at the claimed time?</li>
-      <li><strong>Completeness</strong> — Is this record part of an
-      unbroken chain — no records deleted or inserted?</li>
-      <li><strong>Accountability</strong> — Who was the named human
-      accountable for this decision?</li>
+  <div class="container breadcrumb">
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1">
+          <span class="breadcrumb__sep" aria-hidden="true">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+          <span itemprop="name" class="breadcrumb__current">Verification and Audit Procedure</span>
+          <meta itemprop="position" content="2">
+        </li>
       </ol>
-      <p>A passed verification proves all four, cryptographically,
-      without requiring access to the original system.</p>
-      <hr />
-      <h2 id="verification-methods">Verification Methods</h2>
-      <h3 id="method-1-cli-fastest-for-internal-audit">Method 1 — CLI
-      (fastest, for internal audit)</h3>
-      <div class="sourceCode" id="cb1"><pre
-      class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the AgDR CLI</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install agdr-aki</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify a single record</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">agdr</span> verify <span class="at">--record</span> record_20260315_001.agdr</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify with expected Merkle root</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">agdr</span> verify <span class="at">--record</span> record_20260315_001.agdr <span class="at">--merkle-root</span> <span class="op">&lt;</span>root_hash<span class="op">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify a range of records in a chain</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">agdr</span> verify-chain <span class="dt">\</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">--chain-dir</span> ./agdr-records/ <span class="dt">\</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">--from-position</span> 1 <span class="dt">\</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">--to-position</span> 1000000 <span class="dt">\</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">--merkle-root</span> <span class="op">&lt;</span>root_hash<span class="op">&gt;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ✅ Record integrity: PASS</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ✅ Signature valid: PASS</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ✅ Chain position verified: PASS (position 442,817 of 1,000,000)</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ✅ PPP triplet present: PASS</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ✅ Human delta chain: PASS (1 delta, 0 FOI escalations)</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># ✅ Tamper-free: CONFIRMED</span></span></code></pre></div>
-      <h3 id="method-2-python-for-integration-into-audit-systems">Method
-      2 — Python (for integration into audit systems)</h3>
-      <div class="sourceCode" id="cb2"><pre
-      class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> agdr_aki <span class="im">import</span> verify_record, verify_chain, package_evidence</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Single record verification</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> verify_record(<span class="st">&quot;record_20260315_001.agdr&quot;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> result.integrity_valid       <span class="co"># BLAKE3 hash matches</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> result.signature_valid       <span class="co"># Ed25519 signature valid</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> result.chain_intact          <span class="co"># Merkle position consistent</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> result.ppp_triplet_present   <span class="co"># All three P fields populated</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> result.tamper_free           <span class="co"># No post-facto modification</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.actor_name)            <span class="co"># &quot;J. Smith&quot;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.actor_role)            <span class="co"># &quot;Senior Trader&quot;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.timestamp_ns)          <span class="co"># 1742000000000000000</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.foi_involved)          <span class="co"># False</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Chain verification</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>chain_result <span class="op">=</span> verify_chain(</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    chain_dir<span class="op">=</span><span class="st">&quot;./agdr-records/&quot;</span>,</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    from_position<span class="op">=</span><span class="dv">1</span>,</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    to_position<span class="op">=</span><span class="dv">100_000_000</span>,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    expected_merkle_root<span class="op">=</span>root_hash</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> chain_result.all_records_present</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> chain_result.no_gaps</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> chain_result.no_insertions</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Verified </span><span class="sc">{</span>chain_result<span class="sc">.</span>record_count<span class="sc">:,}</span><span class="ss"> records&quot;</span>)</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Chain integrity: </span><span class="sc">{</span>chain_result<span class="sc">.</span>integrity_score<span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># 1.0 = perfect</span></span></code></pre></div>
-      <h3
-      id="method-3-manual-cryptographic-verification-court-standard-no-tools-required">Method
-      3 — Manual cryptographic verification (court standard, no tools
-      required)</h3>
-      <p>Any party with basic cryptographic tooling can verify an AgDR
-      record independently:</p>
-      <div class="sourceCode" id="cb3"><pre
-      class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Extract the payload from the record</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> record_20260315_001.agdr <span class="kw">|</span> <span class="ex">jq</span> <span class="st">&#39;.payload&#39;</span> <span class="op">&gt;</span> payload.json</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Recompute the BLAKE3 hash</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">b3sum</span> payload.json</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Compare to the stored hash</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> record_20260315_001.agdr <span class="kw">|</span> <span class="ex">jq</span> <span class="st">&#39;.merkle_hash&#39;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># If they match: record has not been modified</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Verify the Ed25519 signature</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the public key from the organization&#39;s AgDR keyring:</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">openssl</span> dgst <span class="at">-verify</span> pubkey.pem <span class="at">-signature</span> sig.bin payload.json</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: Verified OK</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Verify Merkle chain position</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Each record contains prev_merkle_hash</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Hash chain: record[n].merkle_hash must equal record[n+1].prev_merkle_hash</span></span></code></pre></div>
-      <p>This method requires no proprietary tools. It uses standard
-      cryptographic primitives available in any jurisdiction. It is the
-      method designed for court use.</p>
-      <hr />
-      <h2 id="packaging-evidence-for-courts-and-regulators">Packaging
-      Evidence for Courts and Regulators</h2>
-      <h3 id="what-to-produce">What to Produce</h3>
-      <p>When responding to a legal demand, regulatory inquiry, or court
-      order, produce:</p>
-      <table>
-      <colgroup>
-      <col style="width: 33%" />
-      <col style="width: 33%" />
-      <col style="width: 33%" />
-      </colgroup>
-      <thead>
-      <tr class="header">
-      <th>Package Component</th>
-      <th>File</th>
-      <th>Purpose</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td>Specific record(s)</td>
-      <td><code>record_{id}.agdr</code></td>
-      <td>The decision under review</td>
-      </tr>
-      <tr class="even">
-      <td>Verification report</td>
-      <td><code>verification_report_{id}.pdf</code></td>
-      <td>Signed attestation that records are authentic</td>
-      </tr>
-      <tr class="odd">
-      <td>Chain integrity proof</td>
-      <td><code>chain_integrity_{range}.proof</code></td>
-      <td>Proof that no records were deleted from the chain</td>
-      </tr>
-      <tr class="even">
-      <td>PPP summary</td>
-      <td><code>ppp_summary_{id}.json</code></td>
-      <td>Human-readable PPP triplet for the specific decision(s)</td>
-      </tr>
-      <tr class="odd">
-      <td>Human delta summary</td>
-      <td><code>delta_summary_{id}.json</code></td>
-      <td>Who reviewed, what they did, when</td>
-      </tr>
-      <tr class="even">
-      <td>FOI record (if applicable)</td>
-      <td><code>foi_{id}.agdr</code></td>
-      <td>FOI escalation record</td>
-      </tr>
-      <tr class="odd">
-      <td>Public key certificate</td>
-      <td><code>agdr_pubkey_{org}.pem</code></td>
-      <td>For independent verification of signatures</td>
-      </tr>
-      </tbody>
-      </table>
-      <h3 id="generating-the-evidence-package">Generating the Evidence
-      Package</h3>
-      <div class="sourceCode" id="cb4"><pre
-      class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">agdr</span> package-evidence <span class="dt">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--record</span> record_20260315_001.agdr <span class="dt">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--include-chain-proof</span> <span class="dt">\</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--include-ppp-summary</span> <span class="dt">\</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--include-delta-summary</span> <span class="dt">\</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--output-dir</span> ./evidence_package_20260315/ <span class="dt">\</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--sign-with</span> org_signing_key.pem</span></code></pre></div>
-      <h3 id="the-verification-report">The Verification Report</h3>
-      <p>The verification report is a signed attestation produced by the
-      organization’s AgDR system:</p>
-      <pre><code>AGDR VERIFICATION REPORT
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero-gradient" style="background:radial-gradient(circle at top,#0d7377 0%,#050505 70%);padding:6rem var(--sp-lg) 4rem">
+    <div class="container container--narrow">
+      <span class="teal-tag" style="color:var(--color-accent);font-family:ui-monospace,monospace;font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;display:block;margin-bottom:1rem">AgDR v1.8 · Verification Procedure</span>
+      <h1 style="font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:1rem;color:#fff">Verification and Audit Procedure</h1>
+      <p class="hero-meta" style="color:#888;font-size:1rem">How to verify AgDR records and package evidence for courts and regulators using CLI, Python, or manual cryptographic methods. Reference: accountability.ai specification.</p>
+    </div>
+  </section>
+
+  <main id="main-content" class="main-content">
+    <div class="container container--narrow">
+      <article class="prose" itemscope itemtype="https://schema.org/TechArticle">
+        <meta itemprop="author" content="Robert Muncaster">
+        <meta itemprop="inLanguage" content="en-CA">
+        
+        <p><strong>Published April 2026</strong></p>
+        
+        <h2 id="what-verification-proves">What Verification Proves</h2>
+        <p>An AgDR verification answers four questions simultaneously:</p>
+        <ol>
+          <li><strong>Integrity</strong>: Has this record been modified since it was created?</li>
+          <li><strong>Authenticity</strong>: Was this record created by the claimed system at the claimed time?</li>
+          <li><strong>Completeness</strong>: Is this record part of an unbroken chain, with no records deleted or inserted?</li>
+          <li><strong>Accountability</strong>: Who was the named human accountable for this decision?</li>
+        </ol>
+        <p>A passed verification proves all four, cryptographically, without requiring access to the original system.</p>
+        
+        <hr>
+        
+        <h2 id="verification-methods">Verification Methods</h2>
+        
+        <h3 id="method-1-cli-fastest-for-internal-audit">Method 1: CLI (fastest, for internal audit)</h3>
+        <pre><code># Install the AgDR CLI
+pip install agdr-aki
+
+# Verify a single record
+agdr verify --record record_20260315_001.agdr
+
+# Verify with expected Merkle root
+agdr verify --record record_20260315_001.agdr --merkle-root &lt;root_hash&gt;
+
+# Verify a range of records in a chain
+agdr verify-chain \
+  --chain-dir ./agdr-records/ \
+  --from-position 1 \
+  --to-position 1000000 \
+  --merkle-root &lt;root_hash&gt;
+
+# Output
+# ✓ Record integrity: PASS
+# ✓ Signature valid: PASS
+# ✓ Chain position verified: PASS (position 442,817 of 1,000,000)
+# ✓ PPP triplet present: PASS
+# ✓ Human delta chain: PASS (1 delta, 0 FOI escalations)
+# ✓ Tamper-free: CONFIRMED</code></pre>
+        
+        <h3 id="method-2-python-for-integration-into-audit-systems">Method 2: Python (for integration into audit systems)</h3>
+        <pre><code>from agdr_aki import verify_record, verify_chain, package_evidence
+
+# Single record verification
+result = verify_record("record_20260315_001.agdr")
+
+assert result.integrity_valid       # BLAKE3 hash matches
+assert result.signature_valid       # Ed25519 signature valid
+assert result.chain_intact          # Merkle position consistent
+assert result.ppp_triplet_present   # All three P fields populated
+assert result.tamper_free           # No post-facto modification
+
+print(result.actor_name)            # "J. Smith"
+print(result.actor_role)            # "Senior Trader"
+print(result.timestamp_ns)          # 1742000000000000000
+print(result.foi_involved)          # False
+
+# Chain verification
+chain_result = verify_chain(
+    chain_dir="./agdr-records/",
+    from_position=1,
+    to_position=100_000_000,
+    expected_merkle_root=root_hash
+)
+
+assert chain_result.all_records_present
+assert chain_result.no_gaps
+assert chain_result.no_insertions
+print(f"Verified {chain_result.record_count:,} records")
+print(f"Chain integrity: {chain_result.integrity_score}")  # 1.0 = perfect</code></pre>
+        
+        <h3 id="method-3-manual-cryptographic-verification-court-standard-no-tools-required">Method 3: Manual cryptographic verification (court standard, no tools required)</h3>
+        <p>Any party with basic cryptographic tooling can verify an AgDR record independently:</p>
+        <pre><code># Step 1: Extract the payload from the record
+cat record_20260315_001.agdr | jq '.payload' &gt; payload.json
+
+# Step 2: Recompute the BLAKE3 hash
+b3sum payload.json
+
+# Step 3: Compare to the stored hash
+cat record_20260315_001.agdr | jq '.merkle_hash'
+# If they match: record has not been modified
+
+# Step 4: Verify the Ed25519 signature
+# Using the public key from the organization's AgDR keyring:
+openssl dgst -verify pubkey.pem -signature sig.bin payload.json
+# Output: Verified OK
+
+# Step 5: Verify Merkle chain position
+# Each record contains prev_merkle_hash
+# Hash chain: record[n].merkle_hash must equal record[n+1].prev_merkle_hash</code></pre>
+        <p>This method requires no proprietary tools. It uses standard cryptographic primitives available in any jurisdiction. It is the method designed for court use.</p>
+        
+        <hr>
+        
+        <h2 id="packaging-evidence-for-courts-and-regulators">Packaging Evidence for Courts and Regulators</h2>
+        
+        <h3 id="what-to-produce">What to Produce</h3>
+        <p>When responding to a legal demand, regulatory inquiry, or court order, produce:</p>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Package Component</th>
+                <th>File</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Specific record(s)</td>
+                <td><code>record_{id}.agdr</code></td>
+                <td>The decision under review</td>
+              </tr>
+              <tr>
+                <td>Verification report</td>
+                <td><code>verification_report_{id}.pdf</code></td>
+                <td>Signed attestation that records are authentic</td>
+              </tr>
+              <tr>
+                <td>Chain integrity proof</td>
+                <td><code>chain_integrity_{range}.proof</code></td>
+                <td>Proof that no records were deleted from the chain</td>
+              </tr>
+              <tr>
+                <td>PPP summary</td>
+                <td><code>ppp_summary_{id}.json</code></td>
+                <td>Human-readable PPP triplet for the specific decision(s)</td>
+              </tr>
+              <tr>
+                <td>Human delta summary</td>
+                <td><code>delta_summary_{id}.json</code></td>
+                <td>Who reviewed, what they did, when</td>
+              </tr>
+              <tr>
+                <td>FOI record (if applicable)</td>
+                <td><code>foi_{id}.agdr</code></td>
+                <td>FOI escalation record</td>
+              </tr>
+              <tr>
+                <td>Public key certificate</td>
+                <td><code>agdr_pubkey_{org}.pem</code></td>
+                <td>For independent verification of signatures</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3 id="generating-the-evidence-package">Generating the Evidence Package</h3>
+        <pre><code>agdr package-evidence \
+  --record record_20260315_001.agdr \
+  --include-chain-proof \
+  --include-ppp-summary \
+  --include-delta-summary \
+  --output-dir ./evidence_package_20260315/ \
+  --sign-with org_signing_key.pem</code></pre>
+        
+        <h3 id="the-verification-report">The Verification Report</h3>
+        <p>The verification report is a signed attestation produced by the organization's AgDR system:</p>
+        <pre><code>AGDR VERIFICATION REPORT
 ========================
 Record ID:        agdr_20260315_001
 Generated:        2026-03-19T14:30:00Z
-Generated by:     AgDR CLI v0.2.1
+Generated by:     AgDR CLI v1.8.0
 
 INTEGRITY CHECK
   BLAKE3 hash:    PASS — 7f4a2c...b9e1 (matches stored hash)
@@ -278,9 +422,9 @@ INTEGRITY CHECK
 CONTENT SUMMARY
   Inference time:   2026-03-15T09:42:17.000000000Z
   Model:            trading-agent-v3
-  PPP Provenance:   &quot;TSX equity desk — RY.TO buy — J.Smith EMP-04421&quot;
-  PPP Place:        &quot;Fill at market open, ±0.5% VWAP, IIROC boundary&quot;
-  PPP Purpose:      &quot;Rebalance to target allocation per mandate 2026-Q1&quot;
+  PPP Provenance:   "TSX equity desk — RY.TO buy — J.Smith EMP-04421"
+  PPP Place:        "Fill at market open, ±0.5% VWAP, IIROC boundary"
+  PPP Purpose:      "Rebalance to target allocation per mandate 2026-Q1"
 
 HUMAN OVERSIGHT
   Delta chain:      1 delta recorded
@@ -299,162 +443,169 @@ CHAIN INTEGRITY
 VERDICT: AUTHENTIC — TAMPER-FREE — CHAIN INTACT
 
 This report was generated by the AgDR verification system and signed with
-the organization&#39;s AgDR verification key (cert-2026-001).</code></pre>
-      <hr />
-      <h2 id="responding-to-a-court-order">Responding to a Court
-      Order</h2>
-      <h3 id="step-1-identify-the-scope">Step 1 — Identify the
-      scope</h3>
-      <p>Determine the record IDs, time range, or decision class covered
-      by the order.</p>
-      <h3 id="step-2-freeze-the-chain-segment">Step 2 — Freeze the chain
-      segment</h3>
-      <p>Do not append new records to the segment under production while
-      the order is active. Preserve a snapshot.</p>
-      <h3 id="step-3-generate-the-evidence-package">Step 3 — Generate
-      the evidence package</h3>
-      <p>Use <code>agdr package-evidence</code> with the identified
-      scope.</p>
-      <h3 id="step-4-produce-the-public-key-certificate">Step 4 —
-      Produce the public key certificate</h3>
-      <p>Include the organization’s AgDR public key and its chain of
-      custody (who generated it, when, under what governance).</p>
-      <h3
-      id="step-5-provide-the-independent-verification-instructions">Step
-      5 — Provide the independent verification instructions</h3>
-      <p>Include the Manual Verification instructions (Method 3 above)
-      so the receiving party’s experts can independently verify without
-      any AgDR tooling.</p>
-      <h3 id="step-6-produce-the-foi-designation-record">Step 6 —
-      Produce the FOI designation record</h3>
-      <p>If a FOI was involved, produce the AgDR record of the FOI’s
-      designation (the appointment was itself captured as an AgDR
-      record).</p>
-      <hr />
-      <h2 id="what-courts-and-regulators-need-to-know">What Courts and
-      Regulators Need to Know</h2>
-      <p><strong>The Canada Evidence Act question:</strong> Are these
-      records reliable?</p>
-      <p>AgDR records satisfy the business records exception (s.30
-      Canada Evidence Act) because: - They were created in the ordinary
-      course of business - They were created at or near the time of the
-      event (at the inference instant — nanosecond precision) - The
-      method of creation ensures the accuracy of the record (AKI atomic
-      capture — no partial states) - Tampering is cryptographically
-      detectable</p>
-      <p><strong>The “best evidence” question:</strong> Is this the
-      original?</p>
-      <p>Every AgDR record is the original. There is no prior record
-      from which it was copied. The Merkle chain position and the
-      timestamp prove that this record was created at that moment and
-      has not been modified since.</p>
-      <p><strong>The authentication question:</strong> How do we know
-      this came from the claimed system?</p>
-      <p>The Ed25519 signature was made with the organization’s private
-      key at the inference instant. The corresponding public key, with
-      its certificate of custody, is produced alongside the record. Any
-      cryptographer can verify the signature independently.</p>
-      <hr />
-      <h2 id="audit-use-cases">Audit Use Cases</h2>
-      <table>
-      <colgroup>
-      <col style="width: 50%" />
-      <col style="width: 50%" />
-      </colgroup>
-      <thead>
-      <tr class="header">
-      <th>Use Case</th>
-      <th>What to Run</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="odd">
-      <td>Internal audit — specific decision</td>
-      <td>Single record verification + PPP summary</td>
-      </tr>
-      <tr class="even">
-      <td>Regulatory examination</td>
-      <td>Full chain verification for examination period + evidence
-      package</td>
-      </tr>
-      <tr class="odd">
-      <td>Court production</td>
-      <td>Evidence package + independent verification instructions</td>
-      </tr>
-      <tr class="even">
-      <td>Post-incident review</td>
-      <td>Chain segment verification + delta chain analysis</td>
-      </tr>
-      <tr class="odd">
-      <td>Annual compliance attestation</td>
-      <td>Full chain verification + integrity report</td>
-      </tr>
-      <tr class="even">
-      <td>FOI review</td>
-      <td>FOI records only — filtered by
-      <code>foi_escalation != null</code></td>
-      </tr>
-      </tbody>
-      </table>
-      <hr />
-      <p><em>Part of the AgDR v0.2 foundational standard</em> Canonical
-      source: https://github.com/aiccountability-source/AgDR</p>
-    </article>
+the organization's AgDR verification key (cert-2026-001).</code></pre>
+        
+        <hr>
+        
+        <h2 id="responding-to-a-court-order">Responding to a Court Order</h2>
+        
+        <h3 id="step-1-identify-the-scope">Step 1: Identify the scope</h3>
+        <p>Determine the record IDs, time range, or decision class covered by the order.</p>
+        
+        <h3 id="step-2-freeze-the-chain-segment">Step 2: Freeze the chain segment</h3>
+        <p>Do not append new records to the segment under production while the order is active. Preserve a snapshot.</p>
+        
+        <h3 id="step-3-generate-the-evidence-package">Step 3: Generate the evidence package</h3>
+        <p>Use <code>agdr package-evidence</code> with the identified scope.</p>
+        
+        <h3 id="step-4-produce-the-public-key-certificate">Step 4: Produce the public key certificate</h3>
+        <p>Include the organization's AgDR public key and its chain of custody (who generated it, when, under what governance).</p>
+        
+        <h3 id="step-5-provide-the-independent-verification-instructions">Step 5: Provide the independent verification instructions</h3>
+        <p>Include the Manual Verification instructions (Method 3 above) so the receiving party's experts can independently verify without any AgDR tooling.</p>
+        
+        <h3 id="step-6-produce-the-foi-designation-record">Step 6: Produce the FOI designation record</h3>
+        <p>If a FOI was involved, produce the AgDR record of the FOI's designation (the appointment was itself captured as an AgDR record).</p>
+        
+        <hr>
+        
+        <h2 id="what-courts-and-regulators-need-to-know">What Courts and Regulators Need to Know</h2>
+        
+        <p><strong>The Canada Evidence Act question:</strong> Are these records reliable?</p>
+        <p>AgDR records satisfy the business records exception (s.30 Canada Evidence Act) because:</p>
+        <ul>
+          <li>They were created in the ordinary course of business</li>
+          <li>They were created at or near the time of the event (at the inference instant, nanosecond precision)</li>
+          <li>The method of creation ensures the accuracy of the record (AKI atomic capture, no partial states)</li>
+          <li>Tampering is cryptographically detectable</li>
+        </ul>
+        
+        <p><strong>The "best evidence" question:</strong> Is this the original?</p>
+        <p>Every AgDR record is the original. There is no prior record from which it was copied. The Merkle chain position and the timestamp prove that this record was created at that moment and has not been modified since.</p>
+        
+        <p><strong>The authentication question:</strong> How do we know this came from the claimed system?</p>
+        <p>The Ed25519 signature was made with the organization's private key at the inference instant. The corresponding public key, with its certificate of custody, is produced alongside the record. Any cryptographer can verify the signature independently.</p>
+        
+        <hr>
+        
+        <h2 id="audit-use-cases">Audit Use Cases</h2>
+        
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Use Case</th>
+                <th>What to Run</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Internal audit, specific decision</td>
+                <td>Single record verification + PPP summary</td>
+              </tr>
+              <tr>
+                <td>Regulatory examination</td>
+                <td>Full chain verification for examination period + evidence package</td>
+              </tr>
+              <tr>
+                <td>Court production</td>
+                <td>Evidence package + independent verification instructions</td>
+              </tr>
+              <tr>
+                <td>Post-incident review</td>
+                <td>Chain segment verification + delta chain analysis</td>
+              </tr>
+              <tr>
+                <td>Annual compliance attestation</td>
+                <td>Full chain verification + integrity report</td>
+              </tr>
+              <tr>
+                <td>FOI review</td>
+                <td>FOI records only, filtered by <code>foi_escalation != null</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p>Full technical specification: <a href="https://accountability.ai/agdr-spec.html">accountability.ai AgDR Protocol</a>.</p>
+        
+        <!-- Call to Action -->
+        <div class="cta-section">
+          <p>Ready to implement court-admissible verification in your system?</p>
+          <div class="cta-buttons">
+            <a href="/getting-started.html" class="btn btn-primary">Initialize AgDR SDK</a>
+            <a href="/agdr-spec.html" class="btn btn-secondary">Full Specification</a>
+            <a href="/cea-compliance.html" class="btn btn-secondary">CEA s.31.1 Mapping</a>
+          </div>
+        </div>
+      </article>
+    </div>
   </main>
 
-  <!-- DOCUMENT NAVIGATION FOOTER -->
-  <section class="bg-zinc-900 border-t border-zinc-800 py-14">
-    <div class="max-w-5xl mx-auto px-6">
-      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-      <div class="grid md:grid-cols-4 gap-5">
-        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-        </a>
-        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-        </a>
-        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-        </a>
-        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-        </a>
-        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-        </a>
-        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-        </a>
-        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-        </a>
-        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block">
-          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-        </a>
-      </div>
+  <section class="related-docs" aria-label="Related documentation">
+    <div class="container">
+      <p class="related-docs__label">Continue Reading</p>
+      <nav class="related-docs__grid" aria-label="Related pages">
+        <a href="/getting-started.html" class="doc-card"><p class="doc-card__title doc-card__title--featured">Get Started</p><p class="doc-card__desc">SDK install, PPP definition, first capture</p></a>
+        <a href="/foi-formal-definition.html" class="doc-card"><p class="doc-card__title doc-card__title--default">FOI Definition</p><p class="doc-card__desc">The terminal accountability role</p></a>
+        <a href="/human-delta-chain-spec.html" class="doc-card"><p class="doc-card__title doc-card__title--default">Delta Chain Spec</p><p class="doc-card__desc">Human oversight data structure</p></a>
+        <a href="/verification-audit-procedure.html" class="doc-card" style="border-color:var(--color-accent)"><p class="doc-card__title doc-card__title--featured">Verification</p><p class="doc-card__desc">Court-ready evidence packaging</p></a>
+        <a href="/ppp-industry-templates.html" class="doc-card"><p class="doc-card__title doc-card__title--default">Industry Templates</p><p class="doc-card__desc">PPP definitions by sector</p></a>
+        <a href="/eu-ai-act-mapping.html" class="doc-card"><p class="doc-card__title doc-card__title--default">EU AI Act Mapping</p><p class="doc-card__desc">Article-by-article compliance analysis</p></a>
+        <a href="/beauty-truth-wisdom.html" class="doc-card"><p class="doc-card__title doc-card__title--default">Beauty, Truth and Wisdom</p><p class="doc-card__desc">The Purpose pillar's closing principles</p></a>
+        <a href="/horizontal-scaling.html" class="doc-card"><p class="doc-card__title doc-card__title--default">Horizontal Scaling</p><p class="doc-card__desc">Beyond 2.85B decisions per process</p></a>
+      </nav>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="py-10 bg-black text-center text-zinc-500 text-sm">
-    <p class="mb-2">
-      The AgDR Standard is open, royalty-free, and dual-licensed:
-      <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-500 hover:text-teal-400">CC0 1.0 Universal</a> OR
-      <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-500 hover:text-teal-400">Apache License 2.0</a> — your choice.
-    </p>
-    <p>
-      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-500 hover:text-teal-400">GitHub</a>
-      &nbsp;·&nbsp; © 2026 Accountability.ai
-    </p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <p class="site-footer__brand-name">Accountability.ai</p>
+          <p class="site-footer__brand-desc">The open standard for AI governance and tamper-evident AI decision records. Built in Canada. For every institution that deploys autonomous intelligence.</p>
+        </div>
+        <div>
+          <p class="site-footer__col-heading">Core Standard</p>
+          <ul class="site-footer__links">
+            <li><a href="/getting-started.html">Get Started</a></li>
+            <li><a href="/sandbox.html">Phoenix Demo</a></li>
+            <li><a href="/ppp-pillars.html">PPP Pillars</a></li>
+            <li><a href="/aki-formal-definition.html">AKI Definition</a></li>
+            <li><a href="/agdr-spec.html">AgDR Protocol</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__col-heading">Legal and Compliance</p>
+          <ul class="site-footer__links">
+            <li><a href="/cea-compliance.html">CEA s.31.1</a></li>
+            <li><a href="/cbca-fiduciary-mapping.html">CBCA s.122</a></li>
+            <li><a href="/eu-ai-act-mapping.html">EU AI Act</a></li>
+            <li><a href="/foi-formal-definition.html">FOI Role</a></li>
+            <li><a href="/verification-audit-procedure.html" style="color:var(--color-accent);font-weight:600">Verification</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="site-footer__col-heading">Evidence and Vision</p>
+          <ul class="site-footer__links">
+            <li><a href="/comparison-aviation-black-box.html">Aviation Black Box</a></li>
+            <li><a href="/comparison-medical-records.html">Medical Records</a></li>
+            <li><a href="/agi-court-precedents.html">AGI Court Precedents</a></li>
+            <li><a href="/future-agi-court.html">Court in 2076</a></li>
+            <li><a href="/beauty-truth-wisdom.html">Purpose Framework</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · VERIFICATION INTEGRITY</p>
+        <p>
+          <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> · 
+          Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENÈSE CRISTAL</a> · 
+          Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0</a>
+        </p>
+      </div>
+    </div>
   </footer>
-
 </body>
 </html>
+
