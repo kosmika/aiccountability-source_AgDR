@@ -1,276 +1,261 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebPage">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="theme-color" content="#0d7377">
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-      <meta name="description" content="CHANGELOG | Accountability.ai">
-      <meta name="keywords" content="AI governance, AI accountability, AI audit trail, AgDR">
-      <title>CHANGELOG | Accountability.ai</title>
-    <link rel="canonical" href="https://accountability.ai/">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
-  
-    <!-- Open Graph -->
-    <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Accountability.ai">
-    <meta property="og:url" content="https://accountability.ai/">
-    <meta property="og:title" content="CHANGELOG | Accountability.ai">
-    <meta property="og:description" content="CHANGELOG | Accountability.ai">
-  
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="CHANGELOG | Accountability.ai">
-    <meta name="twitter:description" content="CHANGELOG | Accountability.ai">
-  
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": "CHANGELOG",
-        "author": {"@type": "Organization", "name": "Accountability.ai", "url": "https://accountability.ai"},
-        "publisher": {"@type": "Organization", "name": "Accountability.ai"},
-        "isPartOf": {"@type": "WebSite", "name": "Accountability.ai", "url": "https://accountability.ai"},
-        "inLanguage": "en",
-        "license": "https://creativecommons.org/publicdomain/zero/1.0/"
-      }
-    </script>
-  
-    <style>
-          body { font-family: system-ui, -apple-system, sans-serif; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0d7377">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="description" content="CHANGELOG | Accountability.ai — Version history for AgDR specification and Phoenix SDK">
+  <meta name="keywords" content="AI governance, AI accountability, AI audit trail, AgDR, Phoenix SDK, changelog">
+  <title>CHANGELOG | Accountability.ai</title>
+  <link rel="canonical" href="https://accountability.ai/CHANGELOG.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 
-          /* Skip link */
-          .skip-link { position: absolute; top: -100%; left: 0; background: #0d7377; color: #fff; padding: 0.75rem 1.5rem; z-index: 100; font-weight: 600; border-radius: 0 0 0.5rem 0; }
-          .skip-link:focus { top: 0; }
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:url" content="https://accountability.ai/CHANGELOG.html">
+  <meta property="og:title" content="CHANGELOG | Accountability.ai">
+  <meta property="og:description" content="Version history for AgDR specification and Phoenix SDK">
 
-          /* Focus styles — WCAG 2.1 AA */
-          *:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 2px; border-radius: 4px; }
-          a:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 2px; }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CHANGELOG | Accountability.ai">
+  <meta name="twitter:description" content="Version history for AgDR specification and Phoenix SDK">
 
-          /* Typography */
-          .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
-          .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
-          .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
-          .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "CHANGELOG",
+    "author": {"@type": "Organization", "name": "Genesis Glass Foundation", "url": "https://accountability.ai"},
+    "publisher": {"@type": "Organization", "name": "Genesis Glass Foundation"},
+    "isPartOf": {"@type": "WebSite", "name": "Accountability.ai", "url": "https://accountability.ai"},
+    "inLanguage": "en",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "datePublished": "2026-02-15",
+    "dateModified": "2026-04-14"
+  }
+  </script>
 
-          /* Body text */
-          .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
-          .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
-          .prose strong { color: #f4f4f5; font-weight: 600; }
-          .prose em { color: #a1a1aa; }
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; }
+    .skip-link { position: absolute; top: -100%; left: 0; background: #0d7377; color: #fff; padding: 0.75rem 1.5rem; z-index: 100; font-weight: 600; border-radius: 0 0 0.5rem 0; }
+    .skip-link:focus { top: 0; }
+    *:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 2px; border-radius: 4px; }
+    a:focus-visible { outline: 3px solid #2dd4bf; outline-offset: 2px; }
+    .prose h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #5eead4; line-height: 1.2; }
+    .prose h2 { font-size: 1.75rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #99f6e4; border-bottom: 1px solid #1f2937; padding-bottom: 0.4rem; }
+    .prose h3 { font-size: 1.2rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; color: #ccfbf1; }
+    .prose h4 { font-size: 1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.4rem; color: #e4e4e7; }
+    .prose p { margin-bottom: 1.1rem; line-height: 1.8; color: #d4d4d8; }
+    .prose > p:first-of-type { font-size: 1.1rem; color: #e4e4e7; }
+    .prose strong { color: #f4f4f5; font-weight: 600; }
+    .prose em { color: #a1a1aa; }
+    .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
+    .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
+    .prose li strong { color: #f4f4f5; }
+    .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: #99f6e4; }
+    .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
+    .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
+    .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
+    .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
+    .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
+    .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
+    .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
+    .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
+    .prose tr:nth-child(even) td { background: #18181b; }
+    .prose tr:hover td { background: #1f2937; }
+    .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
+    .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
+    nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  </style>
+</head>
 
-          /* Lists */
-          .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-          .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.1rem; }
-          .prose li { margin-bottom: 0.5rem; line-height: 1.75; color: #d4d4d8; }
-          .prose li strong { color: #f4f4f5; }
+<body class="bg-zinc-950 text-white">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-          /* Links */
-          .prose a { color: #5eead4; text-decoration: underline; text-underline-offset: 2px; }
-          .prose a:hover { color: #99f6e4; }
-
-          /* Code */
-          .prose code { background: #27272a; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.88em; color: #5eead4; border: 1px solid #3f3f46; }
-          .prose pre { background: #18181b; border: 1px solid #27272a; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin-bottom: 1.25rem; }
-          .prose pre code { background: none; padding: 0; border: none; font-size: 0.875rem; line-height: 1.6; color: #e4e4e7; }
-
-          /* Blockquotes */
-          .prose blockquote { border-left: 4px solid #0f766e; padding: 0.75rem 1rem 0.75rem 1.25rem; color: #a1a1aa; font-style: italic; margin-bottom: 1.25rem; background: #18181b; border-radius: 0 0.5rem 0.5rem 0; }
-          .prose blockquote p { color: #a1a1aa; margin-bottom: 0; }
-
-          /* Tables */
-          .prose table { width: 100%; border-collapse: collapse; margin-bottom: 1.75rem; font-size: 0.925rem; }
-          .prose th { background: #18181b; padding: 0.7rem 1rem; text-align: left; color: #5eead4; border: 1px solid #3f3f46; font-weight: 600; white-space: nowrap; }
-          .prose td { padding: 0.65rem 1rem; border: 1px solid #27272a; color: #d4d4d8; vertical-align: top; line-height: 1.6; }
-          .prose tr:nth-child(even) td { background: #18181b; }
-          .prose tr:hover td { background: #1f2937; }
-
-          /* HR */
-          .prose hr { border: none; border-top: 1px solid #27272a; margin: 2.5rem 0; }
-
-          /* Nav gradient */
-          .hero-bg { background: linear-gradient(150deg, #0d7377 0%, #14213d 60%, #0a0a0a 100%); }
-                nav.hero-bg { background: rgba(13,115,119,0.85) !important; backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.08); }
-                               </style>
-  </head>
-
-  <body class="bg-zinc-950 text-white">
-
-    <!-- Skip to content link — WCAG 2.4.1 -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- NAV -->
-    <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg" aria-label="Primary navigation">
-        <div class="max-w-5xl mx-auto flex items-center justify-between">
-              <a href="/" class="text-xl font-bold tracking-tight" aria-label="Accountability.ai home">Accountability.ai</a>
-              <div class="flex flex-wrap gap-5 text-sm font-medium" role="list">
-                      <a href="/getting-started.html" class="hover:text-teal-200 transition" role="listitem">Get Started</a>
-                      <a href="/ppp-pillars.html" class="hover:text-teal-200 transition" role="listitem">The Standard</a>
-                      <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition" role="listitem">Legal</a>
-                      <a href="/sandbox.html" class="hover:text-teal-200 transition" role="listitem">Sandbox</a>
-                      <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition" role="listitem">GitHub<span class="sr-only"> (opens in new tab)</span></a>
-              </div>
-        </div>
-    </nav>
-
-    <!-- Breadcrumb — WCAG 2.4.8, Schema.org BreadcrumbList -->
-    <div class="max-w-5xl mx-auto px-6 py-3">
-        <nav aria-label="Breadcrumb">
-              <ol class="flex gap-2 text-xs text-zinc-500" itemscope itemtype="https://schema.org/BreadcrumbList">
-                      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-                                <a href="/" itemprop="item" class="hover:text-teal-400 transition"><span itemprop="name">Home</span></a>
-                                <meta itemprop="position" content="1">
-                                <span class="mx-1" aria-hidden="true">/</span>
-                      </li>
-                      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
-                                <span itemprop="name" class="text-zinc-300">CHANGELOG</span>
-                                <meta itemprop="position" content="2">
-                      </li>
-              </ol>
-        </nav>
+  <nav class="hero-bg py-4 px-6 sticky top-0 z-50 shadow-lg" aria-label="Primary navigation">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="text-xl font-bold tracking-tight" aria-label="Accountability.ai home">Accountability.ai</a>
+      <div class="flex flex-wrap gap-5 text-sm font-medium" role="list">
+        <a href="/getting-started.html" class="hover:text-teal-200 transition" role="listitem">Get Started</a>
+        <a href="/ppp-pillars.html" class="hover:text-teal-200 transition" role="listitem">The Standard</a>
+        <a href="/ppp-legal-compliance.html" class="hover:text-teal-200 transition" role="listitem">Legal</a>
+        <a href="/sandbox.html" class="hover:text-teal-200 transition" role="listitem">Sandbox</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="hover:text-teal-200 transition" role="listitem">GitHub<span class="sr-only"> (opens in new tab)</span></a>
+      </div>
     </div>
+  </nav>
 
-    <!-- CONTENT -->
-    <main id="main-content" class="max-w-4xl mx-auto px-6 py-12" role="main">
-        <article class="prose" itemscope itemtype="https://schema.org/TechArticle">
-              <meta itemprop="author" content="Accountability.ai">
-              <h1 id="agdr-changelog">AgDR Changelog</h1>
-              <h2 id="v0.2.1-march-2026-ppp-framework-completion">v0.2.1 (March 2026) — PPP Framework Completion</h2>
-              <ul>
-              <li>Completed <code>getting-started.md</code> — full implementation guide with SDK usage, PPP guidance, human delta and FOI examples, and next-steps navigation</li>
-              <li>Added <code>foi-formal-definition.md</code> — formal definition, designation process, data structure, liability mapping, and multi-FOI registry for the Fiduciary Office Intervener</li>
-              <li>Added <code>human-delta-chain-spec.md</code> — complete data structure spec for the human delta chain including action codes, invariants, timing requirements, and legal significance</li>
-              <li>Added PPP triplet, human delta chain, and AgDR record JSON schemas to <code>specs/agdr-v0.2.json</code></li>
-              <li>Added <code>ppp-industry-templates.md</code> — sector-specific PPP definitions for capital markets, healthcare, government, legal, financial services, and critical infrastructure</li>
-              <li>Added <code>beauty-truth-wisdom.md</code> — formal explanation of the three closing principles of the Purpose pillar</li>
-              <li>Added <code>eu-ai-act-mapping.md</code> — article-by-article mapping of AgDR v0.2 to EU AI Act (Regulation 2024/1689) high-risk obligations including GDPR interaction</li>
-              <li>Added <code>verification-audit-procedure.md</code> — CLI, Python, and manual cryptographic verification methods; court-ready evidence packaging procedure</li>
-              <li>Added <code>horizontal-scaling.md</code> — Root Merkle Coordinator architecture for scaling beyond 2.85B single-process ceiling with throughput table and evidentiary properties</li>
-              <li>Added <code>sdk/python/</code> — agdr-aki Python SDK reference implementation (capture, delta chain, verify, evidence packaging, pyproject.toml)</li>
-              <li>Removed empty <code>archive</code> stub</li>
-              </ul>
-              <h2 id="v0.2-march-2026">v0.2 (March 2026)</h2>
-              <ul>
-              <li>Renamed from ADR to AgDR (Agent Decision Record)</li>
-              <li>Reduced Policy to PPP (Provenance · Place · Purpose) — meaning of the beholder</li>
-              <li>Introduced Atomic Kernel Inference (AKI) — mathematically indivisible capture</li>
-              <li>Replaced 100ms timing language with true atomic kernel enforcement</li>
-              <li>Added binary human delta policy + escalation to Fiduciary Office Intervener (FOI)</li>
-              <li>Added full reasoning trace capture at inference instant</li>
-              <li>Added universal inference wrapper for any model/runtime</li>
-              <li>Published comparisons to aviation black boxes and medical records</li>
-              <li>Added legal compliance mapping (Canada Evidence Act, CBCA s.122)</li>
-              <li>Added AGI court vision (2076) and precedents pages</li>
-              <li>Added Technical Note on Coherence</li>
-              <li>Switched license to CC0 1.0 Universal</li>
-              <li>Proved scale with 100 million decisions on TSX Toronto desk</li>
-              <li>Added new raw data source value proposition</li>
-              </ul>
-              <h2 id="v0.1-february-2026">v0.1 (February 2026)</h2>
-              <ul>
-              <li>Initial ADR Specification and Reasoning Capture Methodology</li>
-              </ul>
-              <hr />
-              <p>This repository is the canonical source of truth for AgDR v0.2 under CC0 1.0 Universal.</p>
-        </article>
-    </main>
+  <div class="max-w-5xl mx-auto px-6 py-3">
+    <nav aria-label="Breadcrumb">
+      <ol class="flex gap-2 text-xs text-zinc-500" itemscope itemtype="https://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item" class="hover:text-teal-400 transition"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1">
+          <span class="mx-1" aria-hidden="true">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+          <span itemprop="name" class="text-zinc-300">CHANGELOG</span>
+          <meta itemprop="position" content="2">
+        </li>
+      </ol>
+    </nav>
+  </div>
 
-    <!-- DOCUMENT NAVIGATION FOOTER -->
-    <section class="bg-zinc-900 border-t border-zinc-800 py-14" aria-label="Related documentation">
-        <div class="max-w-5xl mx-auto px-6">
-              <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
-              <div class="grid md:grid-cols-4 gap-5">
-                      <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
-                                <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
-                      </a>
-                      <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
-                                <p class="text-zinc-500 text-xs">The terminal accountability role</p>
-                      </a>
-                      <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
-                                <p class="text-zinc-500 text-xs">Human oversight data structure</p>
-                      </a>
-                      <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
-                                <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
-                      </a>
-                      <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
-                                <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
-                      </a>
-                      <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
-                                <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
-                      </a>
-                      <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
-                                <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
-                      </a>
-                      <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
-                                <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
-                                <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
-                      </a>
-              </div>
+  <main id="main-content" class="max-w-4xl mx-auto px-6 py-12" role="main">
+    <article class="prose" itemscope itemtype="https://schema.org/TechArticle">
+      <meta itemprop="author" content="Genesis Glass Foundation">
+      <h1 id="agdr-changelog">AgDR Changelog</h1>
+
+      <h2 id="v1.8.1-april-2026-phoenix-sdk">Phoenix SDK v1.8.1 (April 2026) — Tamper-Resistant Timing</h2>
+      <ul>
+        <li>Added <code>libc</code> dependency for POSIX <code>clock_gettime</code> binding</li>
+        <li>Implemented <code>monotonic_raw_nanos()</code> helper using <code>CLOCK_MONOTONIC_RAW</code> (Linux) with fallback for other platforms</li>
+        <li>Added <code>monotonic_nanos</code> field to <code>SealedRecord</code> for forensic chain integrity</li>
+        <li>Updated Rust edition to 2021 for improved <code>pyo3</code> compatibility</li>
+        <li>Optimized release profile: LTO, strip symbols, panic=abort for production deployments</li>
+        <li>Wall-clock timestamps (<code>timestamp</code> field) retained for legal mapping; monotonic timestamps (<code>monotonic_nanos</code>) ensure tamper-resistant ordering</li>
+      </ul>
+      <p class="text-sm text-zinc-500 mt-2"><em>Phoenix SDK implements the AgDR specification. Spec version unchanged; only implementation enhanced.</em></p>
+
+      <hr />
+
+      <h2 id="v0.2.1-march-2026-ppp-framework-completion">v0.2.1 (March 2026) — PPP Framework Completion</h2>
+      <ul>
+        <li>Completed <code>getting-started.md</code> — full implementation guide with SDK usage, PPP guidance, human delta and FOI examples, and next-steps navigation</li>
+        <li>Added <code>foi-formal-definition.md</code> — formal definition, designation process, data structure, liability mapping, and multi-FOI registry for the Fiduciary Office Intervener</li>
+        <li>Added <code>human-delta-chain-spec.md</code> — complete data structure spec for the human delta chain including action codes, invariants, timing requirements, and legal significance</li>
+        <li>Added PPP triplet, human delta chain, and AgDR record JSON schemas to <code>specs/agdr-v0.2.json</code></li>
+        <li>Added <code>ppp-industry-templates.md</code> — sector-specific PPP definitions for capital markets, healthcare, government, legal, financial services, and critical infrastructure</li>
+        <li>Added <code>beauty-truth-wisdom.md</code> — formal explanation of the three closing principles of the Purpose pillar</li>
+        <li>Added <code>eu-ai-act-mapping.md</code> — article-by-article mapping of AgDR v0.2 to EU AI Act (Regulation 2024/1689) high-risk obligations including GDPR interaction</li>
+        <li>Added <code>verification-audit-procedure.md</code> — CLI, Python, and manual cryptographic verification methods; court-ready evidence packaging procedure</li>
+        <li>Added <code>horizontal-scaling.md</code> — Root Merkle Coordinator architecture for scaling beyond 2.85B single-process ceiling with throughput table and evidentiary properties</li>
+        <li>Added <code>sdk/python/</code> — agdr-aki Python SDK reference implementation (capture, delta chain, verify, evidence packaging, pyproject.toml)</li>
+        <li>Removed empty <code>archive</code> stub</li>
+      </ul>
+
+      <h2 id="v0.2-march-2026">v0.2 (March 2026)</h2>
+      <ul>
+        <li>Renamed from ADR to AgDR (Atomic Genesis Decision Record)</li>
+        <li>Reduced Policy to PPP (Provenance · Place · Purpose) — meaning of the beholder</li>
+        <li>Introduced Atomic Kernel Inference (AKI) — mathematically indivisible capture</li>
+        <li>Replaced 100ms timing language with true atomic kernel enforcement</li>
+        <li>Added binary human delta policy + escalation to Fiduciary Office Intervener (FOI)</li>
+        <li>Added full reasoning trace capture at inference instant</li>
+        <li>Added universal inference wrapper for any model/runtime</li>
+        <li>Published comparisons to aviation black boxes and medical records</li>
+        <li>Added legal compliance mapping (Canada Evidence Act, CBCA s.122)</li>
+        <li>Added AGI court vision (2076) and precedents pages</li>
+        <li>Added Technical Note on Coherence</li>
+        <li>Switched license to CC0 1.0 Universal</li>
+        <li>Proved scale with 100 million decisions on TSX Toronto desk</li>
+        <li>Added new raw data source value proposition</li>
+      </ul>
+
+      <h2 id="v0.1-february-2026">v0.1 (February 2026)</h2>
+      <ul>
+        <li>Initial ADR Specification and Reasoning Capture Methodology</li>
+      </ul>
+
+      <hr />
+      <p>This repository is the canonical source of truth for AgDR under CC0 1.0 Universal. Phoenix SDK is dual-licensed: Apache 2.0 OR CC0 1.0.</p>
+    </article>
+  </main>
+
+  <section class="bg-zinc-900 border-t border-zinc-800 py-14" aria-label="Related documentation">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-zinc-400 text-xs font-semibold tracking-widest uppercase mb-8">Continue Reading</h3>
+      <div class="grid md:grid-cols-4 gap-5">
+        <a href="/getting-started.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-teal-400 text-sm font-semibold mb-1">Get Started</div>
+          <p class="text-zinc-500 text-xs">SDK install, PPP definition, first capture</p>
+        </a>
+        <a href="/foi-formal-definition.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">FOI Definition</div>
+          <p class="text-zinc-500 text-xs">The terminal accountability role</p>
+        </a>
+        <a href="/human-delta-chain-spec.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Delta Chain Spec</div>
+          <p class="text-zinc-500 text-xs">Human oversight data structure</p>
+        </a>
+        <a href="/verification-audit-procedure.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Verification</div>
+          <p class="text-zinc-500 text-xs">Court-ready evidence packaging</p>
+        </a>
+        <a href="/ppp-industry-templates.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Industry Templates</div>
+          <p class="text-zinc-500 text-xs">PPP definitions by sector</p>
+        </a>
+        <a href="/eu-ai-act-mapping.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">EU AI Act Mapping</div>
+          <p class="text-zinc-500 text-xs">Article-by-article compliance analysis</p>
+        </a>
+        <a href="/beauty-truth-wisdom.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Beauty, Truth &amp; Wisdom</div>
+          <p class="text-zinc-500 text-xs">The Purpose pillar's closing principles</p>
+        </a>
+        <a href="/horizontal-scaling.html" class="bg-zinc-800 hover:bg-zinc-700 transition rounded-xl p-5 block focus-visible:ring-2 focus-visible:ring-teal-400">
+          <div class="text-zinc-300 text-sm font-semibold mb-1">Horizontal Scaling</div>
+          <p class="text-zinc-500 text-xs">Beyond 2.85B decisions per process</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-14 bg-black text-zinc-400 text-sm" role="contentinfo">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 mb-10">
+        <div>
+          <p class="font-semibold text-white text-base mb-2">Accountability.ai</p>
+          <p class="text-zinc-500 leading-relaxed">The open standard for AI governance and tamper-evident AI decision records. Built in Canada. For every institution that deploys autonomous intelligence.</p>
         </div>
-    </section>
-
-    <!-- FOOTER — matches index.html design system -->
-    <footer class="py-14 bg-black text-zinc-400 text-sm" role="contentinfo">
-        <div class="max-w-5xl mx-auto px-6">
-              <div class="grid md:grid-cols-4 gap-8 mb-10">
-                      <div>
-                                <p class="font-semibold text-white text-base mb-2">Accountability.ai</p>
-                                <p class="text-zinc-500 leading-relaxed">The open standard for AI governance and tamper-evident AI decision records. Built in Canada. For every institution that deploys autonomous intelligence.</p>
-                      </div>
-                      <div>
-                                <p class="font-semibold text-zinc-200 mb-3">The Standard</p>
-                                <ul class="space-y-2">
-                                            <li><a href="/getting-started.html" class="hover:text-teal-400 transition">Get Started</a></li>
-                                          <li><a href="/aki-formal-definition.html" class="hover:text-teal-400 transition">AKI Formal Definition</a></li>
-                                          <li><a href="/ppp-pillars.html" class="hover:text-teal-400 transition">PPP Pillars</a></li>
-                                          <li><a href="/beauty-truth-wisdom.html" class="hover:text-teal-400 transition">Beauty, Truth &amp; Wisdom</a></li>
-                                          <li><a href="/horizontal-scaling.html" class="hover:text-teal-400 transition">Horizontal Scaling</a></li>
-                                </ul>
-                      </div>
-                    <div>
-                            <p class="font-semibold text-zinc-200 mb-3">Legal &amp; Compliance</p>
-                            <ul class="space-y-2">
-                                      <li><a href="/ppp-legal-compliance.html" class="hover:text-teal-400 transition">Legal Compliance</a></li>
-                                      <li><a href="/cbca-fiduciary-mapping.html" class="hover:text-teal-400 transition">CBCA Fiduciary Mapping</a></li>
-                                      <li><a href="/eu-ai-act-mapping.html" class="hover:text-teal-400 transition">EU AI Act Mapping</a></li>
-                                      <li><a href="/foi-formal-definition.html" class="hover:text-teal-400 transition">FOI Definition</a></li>
-                                      <li><a href="/verification-audit-procedure.html" class="hover:text-teal-400 transition">Verification Procedure</a></li>
-                            </ul>
-                    </div>
-                    <div>
-                            <p class="font-semibold text-zinc-200 mb-3">Evidence &amp; Vision</p>
-                            <ul class="space-y-2">
-                                      <li><a href="/tsx-stress-test.html" class="hover:text-teal-400 transition">TSX Stress Test</a></li>
-                                      <li><a href="/comparison-aviation-black-box.html" class="hover:text-teal-400 transition">Aviation Black Box</a></li>
-                                      <li><a href="/comparison-medical-records.html" class="hover:text-teal-400 transition">Medical Records</a></li>
-                                      <li><a href="/agi-court-precedents.html" class="hover:text-teal-400 transition">AGI Court Precedents</a></li>
-                                      <li><a href="/future-agi-court.html" class="hover:text-teal-400 transition">Court in 2076</a></li>
-                            </ul>
-                    </div>
-              </div>
-            <div class="border-t border-zinc-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                  <p class="text-zinc-600">The AgDR Standard is open, royalty-free, and dual-licensed:
-                    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-600 hover:text-teal-400">CC0 1.0 Universal</a> OR
-                    <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-600 hover:text-teal-400">Apache License 2.0</a> — your choice.
-                  </p>
-                  <p class="text-zinc-600"><a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-600 hover:text-teal-400">GitHub</a> &middot; &copy; 2026 Accountability.ai</p>
-            </div>
+        <div>
+          <p class="font-semibold text-zinc-200 mb-3">The Standard</p>
+          <ul class="space-y-2">
+            <li><a href="/getting-started.html" class="hover:text-teal-400 transition">Get Started</a></li>
+            <li><a href="/aki-formal-definition.html" class="hover:text-teal-400 transition">AKI Formal Definition</a></li>
+            <li><a href="/ppp-pillars.html" class="hover:text-teal-400 transition">PPP Pillars</a></li>
+            <li><a href="/beauty-truth-wisdom.html" class="hover:text-teal-400 transition">Beauty, Truth &amp; Wisdom</a></li>
+            <li><a href="/horizontal-scaling.html" class="hover:text-teal-400 transition">Horizontal Scaling</a></li>
+          </ul>
         </div>
-    </footer>
-  
-  </body>
-</html></li></li>
-                      </div>
-                      </div>
-    </style></title>
-  </head>
+        <div>
+          <p class="font-semibold text-zinc-200 mb-3">Legal &amp; Compliance</p>
+          <ul class="space-y-2">
+            <li><a href="/ppp-legal-compliance.html" class="hover:text-teal-400 transition">Legal Compliance</a></li>
+            <li><a href="/cbca-fiduciary-mapping.html" class="hover:text-teal-400 transition">CBCA Fiduciary Mapping</a></li>
+            <li><a href="/eu-ai-act-mapping.html" class="hover:text-teal-400 transition">EU AI Act Mapping</a></li>
+            <li><a href="/foi-formal-definition.html" class="hover:text-teal-400 transition">FOI Definition</a></li>
+            <li><a href="/verification-audit-procedure.html" class="hover:text-teal-400 transition">Verification Procedure</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-zinc-200 mb-3">Evidence &amp; Vision</p>
+          <ul class="space-y-2">
+            <li><a href="/tsx-stress-test.html" class="hover:text-teal-400 transition">TSX Stress Test</a></li>
+            <li><a href="/comparison-aviation-black-box.html" class="hover:text-teal-400 transition">Aviation Black Box</a></li>
+            <li><a href="/comparison-medical-records.html" class="hover:text-teal-400 transition">Medical Records</a></li>
+            <li><a href="/agi-court-precedents.html" class="hover:text-teal-400 transition">AGI Court Precedents</a></li>
+            <li><a href="/future-agi-court.html" class="hover:text-teal-400 transition">Court in 2076</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-zinc-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-zinc-600">The AgDR Standard is open, royalty-free, and dual-licensed:
+          <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="text-teal-600 hover:text-teal-400">CC0 1.0 Universal</a> OR
+          <a href="https://www.apache.org/licenses/LICENSE-2.0" class="text-teal-600 hover:text-teal-400">Apache License 2.0</a> — your choice.
+        </p>
+        <p class="text-zinc-600"><a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" class="text-teal-600 hover:text-teal-400">GitHub</a> &middot; &copy; 2026 Accountability.ai</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
