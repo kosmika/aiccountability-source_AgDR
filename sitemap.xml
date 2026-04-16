@@ -2,251 +2,243 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- 🏠 Homepage (Highest Priority) -->
   <url>
-    <loc>https://accountability.ai/index.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- 🚀 Core Entry Points (Priority 0.9) -->
   <url>
-    <loc>https://accountability.ai/getting-started.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/getting-started</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/sandbox.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/sandbox</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/manifesto.html</loc>
+    <loc>https://accountability.ai/manifesto</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/agdr-spec.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/agdr-spec</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- ⚙️ Technical Specifications (Priority 0.8) -->
   <url>
-    <loc>https://accountability.ai/rust-core.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/rust-core</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/aki-formal-definition.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/aki-formal-definition</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/aki-95.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/aki-95</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/technical-details.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/technical-details</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/ppp-pillars.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/ppp-pillars</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/aki-capture-deep-explanation.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/aki-capture-deep-explanation</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- 📐 PPP Framework & Compliance (Priority 0.7) -->
   <url>
-    <loc>https://accountability.ai/ppp-legal-compliance.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/ppp-legal-compliance</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/ppp-export-control.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/ppp-export-control</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/ppp-industry-templates.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/ppp-industry-templates</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/cbca-fiduciary-mapping.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/cbca-fiduciary-mapping</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/cbsa-mapping.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/cbsa-mapping</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/eu-ai-act-mapping.html</loc>
+    <loc>https://accountability.ai/eu-ai-act-mapping</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://accountability.ai/cea-compliance</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://accountability.ai/legal-mapping</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/cea-compliance.html</loc>
-    <lastmod>2026-04-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://accountability.ai/legal-mapping.html</loc>
+    <loc>https://accountability.ai/legal-glossary</loc>
     <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/legal-glossary.html</loc>
-    <lastmod>2026-04-10</lastmod>
+    <loc>https://accountability.ai/foi-formal-definition</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/foi-formal-definition.html</loc>
-    <lastmod>2026-04-10</lastmod>
+    <loc>https://accountability.ai/fiduciary-duty-of-care</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/fiduciary-duty-of-care.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/human-delta-chain-spec</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/human-delta-chain-spec.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/verification-audit-procedure</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/verification-audit-procedure.html</loc>
-    <lastmod>2026-04-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://accountability.ai/analytics-consent.html</loc>
+    <loc>https://accountability.ai/analytics-consent</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- 🔍 Discovery & Optimization (Priority 0.6) -->
   <url>
-    <loc>https://accountability.ai/geo-optimization.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/geo-optimization</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/horizontal-scaling.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/horizontal-scaling</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/technical-note-coherence.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/technical-note-coherence</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/comparison-aviation-black-box.html</loc>
+    <loc>https://accountability.ai/comparison-aviation-black-box</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/comparison-medical-records.html</loc>
+    <loc>https://accountability.ai/comparison-medical-records</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/beauty-truth-wisdom.html</loc>
+    <loc>https://accountability.ai/beauty-truth-wisdom</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/bills-of-exchange-mapping.html</loc>
+    <loc>https://accountability.ai/bills-of-exchange-mapping</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/tsx-stress-test.html</loc>
+    <loc>https://accountability.ai/tsx-stress-test</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- 🔮 Future Vision & Governance (Priority 0.6) -->
   <url>
-    <loc>https://accountability.ai/future-agi-court.html</loc>
-    <lastmod>2026-04-12</lastmod>
+    <loc>https://accountability.ai/future-agi-court</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/agi-court-precedents.html</loc>
-    <lastmod>2026-04-11</lastmod>
+    <loc>https://accountability.ai/agi-court-precedents</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <!-- 📋 Administrative & Legal (Priority 0.5) -->
   <url>
-    <loc>https://accountability.ai/CHANGELOG.html</loc>
+    <loc>https://accountability.ai/CHANGELOG</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/CONTRIBUTING.html</loc>
+    <loc>https://accountability.ai/CONTRIBUTING</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://accountability.ai/terms.html</loc>
+    <loc>https://accountability.ai/terms</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- ⚖️ License (Priority 0.4) -->
   <url>
-    <loc>https://accountability.ai/LICENSE-UPDATE.html</loc>
+    <loc>https://accountability.ai/LICENSE-UPDATE</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
