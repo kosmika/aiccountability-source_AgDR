@@ -1,216 +1,390 @@
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="https://schema.org/WebPage">
 <head>
-        <!-- Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPHCT8T1KC"></script>
-        <script>
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-QPHCT8T1KC');
-        </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">`n    <link rel="canonical" href="https://accountability.ai/eu-ai-act-mapping">
-    <title>EU AI Act Compliance Mapping | AgDR v1.8 Standard</title>
-    <meta name="description" content="Formal mapping of AgDR v1.8 components to EU AI Act (Regulation 2024/1689) obligations for High-Risk AI systems.">
-    
-    <style>
-        :root { --teal: #2dd4bf; --indigo: #6366f1; --gold: #fbbf24; --bg: #050505; --card: #111; --text: #d4d4d8; --border: #222; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; background-color: var(--bg); color: var(--text); 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            line-height: 1.8; -webkit-font-smoothing: antialiased;
-        }
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QPHCT8T1KC');</script>
+  <!-- End Google Tag Manager -->
 
-        /* Navigation */
-        nav { 
-            position: sticky; top: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(16px);
-            padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid #1a1a1a; z-index: 100;
-        }
-        .brand { color: #fff; text-decoration: none; font-weight: 800; letter-spacing: -0.5px; }
-        .badge { border: 1px solid var(--gold); color: var(--gold); padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; }
-        .nav-links a { color: #666; text-decoration: none; font-size: 0.75rem; font-weight: 700; margin-left: 1.5rem; transition: 0.2s; }
-        .nav-links a:hover { color: var(--teal); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-        /* Hero Header */
-        header { 
-            padding: 12rem 1.5rem 6rem; text-align: left; max-width: 1000px; margin: 0 auto;
-            background: radial-gradient(circle at 90% 10%, #1e1b4b 0%, transparent 60%);
-        }
-        .label { color: var(--indigo); font-size: 0.7rem; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; }
-        h1 { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; color: #fff; letter-spacing: -2px; line-height: 1; }
-        .lead { font-size: 1.25rem; color: #888; max-width: 750px; font-weight: 300; }
+  <title>EU AI Act Compliance Mapping | accountability.ai</title>
 
-        /* Content Sections */
-        main { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 8rem; }
-        h2 { font-size: 1.75rem; color: #fff; margin: 4rem 0 1.5rem; letter-spacing: -0.5px; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-        h3 { font-size: 1.1rem; color: var(--indigo); margin-top: 3rem; text-transform: uppercase; letter-spacing: 1px; }
-        
-        /* Compliance Table */
-        .table-wrap { overflow-x: auto; margin: 2rem 0; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; background: #080808; }
-        th { text-align: left; padding: 1.2rem 1rem; color: #666; background: #111; border-bottom: 2px solid var(--border); text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
-        td { padding: 1.2rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
-        tr td:first-child { font-weight: 800; color: #fff; background: #0a0a0a; width: 25%; }
-        tr td:last-child { color: var(--text); }
-        .status-pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.65rem; font-weight: 900; background: #1e1b4b; color: var(--indigo); border: 1px solid #312e81; margin-bottom: 0.5rem; }
+  <meta name="description" content="Formal mapping of AgDR v1.8 components to EU AI Act (Regulation 2024/1689) obligations for High-Risk AI systems. Article 12, 13, and 14 fulfilment.">
 
-        /* Regulatory Warning */
-        .disclaimer { 
-            background: #111; border: 1px solid #333; padding: 1.5rem; border-radius: 8px; 
-            font-size: 0.75rem; color: #666; margin-top: 4rem; 
-        }
+  <link rel="alternate" hreflang="en" href="https://accountability.ai/eu-ai-act-mapping" />
+  <link rel="alternate" hreflang="x-default" href="https://accountability.ai/eu-ai-act-mapping" />
 
-        /* Sitemap Footer */
-        .sitemap { background: #080808; border-top: 1px solid #111; padding: 6rem 1.5rem; }
-        .sitemap-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
-        .sitemap-col h5 { color: var(--teal); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; }
-        .sitemap-col a { display: block; color: #444; text-decoration: none; font-size: 0.85rem; margin-bottom: 0.8rem; }
-        .sitemap-col a:hover { color: #fff; }
+  <link rel="canonical" href="https://accountability.ai/eu-ai-act-mapping" />
 
-        footer.legal { text-align: center; padding: 4rem 1.5rem; background: #000; color: #333; font-size: 0.7rem; letter-spacing: 1px; }
-    </style>
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Accountability.ai">
+  <meta property="og:url" content="https://accountability.ai/eu-ai-act-mapping">
+  <meta property="og:title" content="EU AI Act Compliance Mapping | accountability.ai">
+  <meta property="og:description" content="How AgDR v1.8 satisfies mandatory transparency and record-keeping obligations for High-Risk AI systems under EU Regulation 2024/1689.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_CA">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EU AI Act Compliance Mapping | accountability.ai">
+  <meta name="twitter:description" content="How AgDR v1.8 satisfies mandatory transparency and record-keeping obligations for High-Risk AI systems under EU Regulation 2024/1689.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "EU AI Act Compliance Mapping",
+    "url": "https://accountability.ai/eu-ai-act-mapping",
+    "author": { "@type": "Person", "name": "Robert Muncaster" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GENESIS GLASS FOUNDATION",
+      "alternateName": "FONDATION GENESE CRISTAL",
+      "url": "https://accountability.ai",
+      "sameAs": ["https://github.com/aiccountability-source"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oshawa",
+        "addressRegion": "ON",
+        "addressCountry": "CA"
+      }
+    },
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/ OR https://www.apache.org/licenses/LICENSE-2.0",
+    "isPartOf": { "@type": "WebSite", "name": "Accountability.ai", "url": "https://accountability.ai" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://accountability.ai/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "EU AI Act Mapping",
+      "item": "https://accountability.ai/eu-ai-act-mapping"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "EU AI Act Compliance Mapping",
+    "description": "Formal mapping of AgDR v1.8 components to EU AI Act obligations for High-Risk AI systems.",
+    "url": "https://accountability.ai/eu-ai-act-mapping",
+    "datePublished": "2025-01-01",
+    "dateModified": "2026-04-17",
+    "author": { "@type": "Person", "name": "Robert Muncaster" }
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <style>
+    :root{--bg:#050505;--text:#e5e7eb;--text-dim:#a1a1aa;--text-muted:#71717a;--teal:#2dd4bf;--border:rgba(255,255,255,0.05);--card:rgba(255,255,255,0.03);--gradient:radial-gradient(circle at top,#0d7377 0%,#050505 70%)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none;transition:color .2s}
+    a:hover{color:var(--teal)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    *:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:4px}
+    .skip-link{position:absolute;top:-100%;left:0;background:var(--teal);color:#000;padding:.75rem 1.5rem;z-index:100;font-weight:700;border-radius:0 0 .5rem 0}
+    .skip-link:focus{top:0}
+    .site-nav{position:sticky;top:0;z-index:50;background:rgba(5,5,5,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    .nav-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.025em;color:#fff}
+    .nav-links{display:none;gap:1.5rem;font-size:.875rem;font-weight:500;color:var(--text-dim)}
+    .nav-links a:hover{color:var(--teal)}
+    .nav-search{position:relative;flex-shrink:0}
+    .nav-search input{background:#18181b;border:1px solid #27272a;border-radius:.5rem;padding:.5rem .75rem .5rem 2rem;color:#fff;font-size:.875rem;width:180px;transition:width .2s}
+    .nav-search input:focus{width:220px;border-color:var(--teal);outline:none}
+    .nav-search svg{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:1rem;height:1rem;color:#6b7280;pointer-events:none}
+    @media(min-width:768px){.nav-links{display:flex}}
+    @media(max-width:640px){.nav-search input{width:40px;padding:.5rem;transition:width .2s}.nav-search input:focus{width:180px;padding:.5rem .75rem .5rem 2rem}}
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:.5rem 1.5rem;font-size:.75rem;color:var(--text-muted)}
+    .breadcrumb a:hover{color:var(--teal)}
+    .breadcrumb ol{display:flex;gap:.25rem;list-style:none}
+    .hero{background:var(--gradient);padding:4rem 1.5rem 6rem;text-align:center}
+    .hero-content{max-width:800px;margin:0 auto}
+    .hero-badge{display:inline-block;background:rgba(45,212,191,.1);color:var(--teal);padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:1rem}
+    .hero-title{font-size:clamp(3rem,6vw,4.5rem);font-weight:700;letter-spacing:-.025em;line-height:1;margin:0 0 1.5rem;color:#fff}
+    .hero-lead{font-size:1.25rem;color:#d4d4d8;line-height:1.75;margin-bottom:2.5rem;max-width:600px;margin-left:auto;margin-right:auto}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{display:inline-block;padding:1rem 2.5rem;border-radius:.5rem;font-weight:700;text-align:center;transition:all .2s;cursor:pointer;border:none;font-size:1rem}
+    .btn-primary{background:#14b8a6;color:#000}
+    .btn-primary:hover{background:var(--teal)}
+    .btn-secondary{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff}
+    .btn-secondary:hover{background:rgba(255,255,255,0.1)}
+    .content-section{padding:5rem 1.5rem;border-top:1px solid var(--border)}
+    .content-inner{max-width:900px;margin:0 auto}
+    .section-heading{font-size:1.75rem;font-weight:700;color:#fff;margin-bottom:1rem;letter-spacing:-.025em}
+    .section-subheading{font-size:1.1rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:1.5rem;margin-top:3rem}
+    .content-section p{color:var(--text-dim);line-height:1.75;margin-bottom:1rem}
+    .table-wrap{overflow-x:auto;margin:1.5rem 0;border:1px solid var(--border);border-radius:.75rem;overflow:hidden}
+    table{width:100%;border-collapse:collapse;font-size:.875rem;background:#080808}
+    th{text-align:left;padding:1rem;color:#888;background:#111;border-bottom:2px solid var(--border);text-transform:uppercase;letter-spacing:.08em;font-size:.7rem}
+    td{padding:1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6;color:var(--text-dim)}
+    tr:last-child td{border-bottom:none}
+    td:first-child{font-weight:700;color:#fff;background:#0a0a0a;width:30%}
+    .disclaimer-box{background:var(--card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;margin-top:3rem;font-size:.875rem;color:var(--text-muted)}
+    .disclaimer-box strong{color:var(--text)}
+    .site-footer{background:#000;border-top:1px solid var(--border);padding:4rem 1.5rem 3rem}
+    .footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2.5rem}
+    .footer-col h5{color:var(--teal);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+    .footer-col ul{list-style:none;padding:0;margin:0}
+    .footer-col li{margin-bottom:.5rem}
+    .footer-col a{color:var(--text-dim);font-size:.875rem;display:block;transition:color .2s}
+    .footer-col a:hover{color:var(--teal)}
+    .footer-bottom{max-width:1200px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:.75rem;color:var(--text-muted)}
+    .footer-bottom a{color:var(--teal)}
+    #search-results{position:absolute;top:100%;right:0;left:0;background:#18181b;border:1px solid #27272a;border-radius:.5rem;margin-top:.25rem;max-height:300px;overflow-y:auto;z-index:60;display:none}
+    #search-results.show{display:block}
+    #search-results a{display:block;padding:.75rem 1rem;color:var(--text);font-size:.875rem;border-bottom:1px solid var(--border)}
+    #search-results a:hover{background:rgba(45,212,191,0.1);color:#fff}
+    #search-results .no-results{padding:1rem;color:var(--text-muted);font-size:.875rem}
+    @media(max-width:600px){.hero-title{font-size:2.5rem}.footer-grid{grid-template-columns:repeat(2,1fr)}.footer-bottom{flex-direction:column;align-items:center;text-align:center}}
+  </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-QPHCT8T1KC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    <nav>
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <a href="/" class="brand">ACCOUNTABILITY.AI</a>
-            <span class="badge">REGULATORY-NAVIGATOR</span>
-        </div>
-        <div class="nav-links">
-            <a href="/getting-started">GET STARTED</a>
-            <a href="/ppp-pillars">THE STANDARD</a>
-            <a href="https://github.com/aiccountability-source/AgDR" target="_blank">GITHUB</a>
-        </div>
-    </nav>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header>
-        <span class="label">EU Regulation 2024/1689</span>
-        <h1>EU AI Act Mapping.</h1>
-        <p class="lead">Navigating the world’s first comprehensive AI law. AgDR v1.8 provides the technical evidence required to satisfy the mandatory transparency and record-keeping obligations for High-Risk systems.</p>
-    </header>
+  <nav class="site-nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">ACCOUNTABILITY.AI</a>
+      <div class="nav-links">
+        <a href="/#ledger">Forensic Ledger</a>
+        <a href="/#spec">Specification</a>
+        <a href="/sandbox">Phoenix Demo</a>
+        <a href="https://github.com/aiccountability-source/AgDR" target="_blank" rel="noopener" style="color:var(--teal)">GitHub</a>
+      </div>
+      <!-- Search Bar -->
+      <div class="nav-search" role="search">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="search" id="site-search" placeholder="Search docs..." aria-label="Search documentation" autocomplete="off">
+        <div id="search-results" role="listbox" aria-label="Search results"></div>
+      </div>
+    </div>
+  </nav>
 
-    <main>
-        <h2>High-Risk Obligations (Title III)</h2>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+        <meta itemprop="position" content="1">
+      </li>
+      <li aria-hidden="true">/</li>
+      <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">EU AI Act Mapping</span>
+        <meta itemprop="position" content="2">
+      </li>
+    </ol>
+  </nav>
+
+  <section class="hero" id="main-content">
+    <div class="hero-content">
+      <span class="hero-badge">EU Regulation 2024/1689</span>
+      <h1 class="hero-title">EU AI Act Mapping.</h1>
+      <p class="hero-lead">Navigating the world's first comprehensive AI law. AgDR v1.8 provides the technical evidence required to satisfy the mandatory transparency and record-keeping obligations for High-Risk systems.</p>
+      <div class="hero-buttons">
+        <a href="/ppp-legal-compliance" class="btn btn-primary">Legal Overview</a>
+        <a href="/cbca-fiduciary-mapping" class="btn btn-secondary">CBCA Fiduciary</a>
+      </div>
+    </div>
+  </section>
+
+  <main id="content">
+    <section class="content-section">
+      <div class="content-inner">
+        <h2 class="section-heading">High-Risk Obligations (Title III)</h2>
         <p>For providers of High-Risk AI systems, compliance is not optional. AgDR directly fulfills the following articles through its <strong>Atomic Kernel Inference</strong> architecture.</p>
 
-        <h3>Article 12: Record-Keeping</h3>
+        <p class="section-subheading">Article 12: Record-Keeping</p>
         <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Requirement</th>
-                        <th>AgDR Fulfilment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Automatic logging of events throughout system lifecycle.</td>
-                        <td>AKI captures 100% of inferences with zero manual logging gaps.</td>
-                    </tr>
-                    <tr>
-                        <td>Monitoring for serious incidents and modifications.</td>
-                        <td>Merkle chain continuity provides a tamper-evident audit trail of system state.</td>
-                    </tr>
-                    <tr>
-                        <td>Log integrity and durability.</td>
-                        <td>BLAKE3 cryptographic signatures exceed standard database "integrity" tests.</td>
-                    </tr>
-                </tbody>
-            </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Requirement</th>
+                <th>AgDR Fulfilment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Automatic logging of events throughout system lifecycle.</td>
+                <td>AKI captures 100% of inferences with zero manual logging gaps.</td>
+              </tr>
+              <tr>
+                <td>Monitoring for serious incidents and modifications.</td>
+                <td>Merkle chain continuity provides a tamper-evident audit trail of system state.</td>
+              </tr>
+              <tr>
+                <td>Log integrity and durability.</td>
+                <td>BLAKE3 cryptographic signatures exceed standard database integrity tests.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <h3>Article 14: Human Oversight</h3>
+        <p class="section-subheading">Article 14: Human Oversight</p>
         <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Requirement</th>
-                        <th>AgDR Fulfilment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Effective oversight by natural persons.</td>
-                        <td>The <strong>Fiduciary Office Intervener (FOI)</strong> serves as the terminal human node.</td>
-                    </tr>
-                    <tr>
-                        <td>Ability to override or reverse system outputs.</td>
-                        <td>The <strong>Human Delta Chain</strong> records every manual intervention with proof of rationale.</td>
-                    </tr>
-                    <tr>
-                        <td>"Halt" functionality during operation.</td>
-                        <td>Mandatory escalation protocols within the AgDR schema allow for immediate terminal halts.</td>
-                    </tr>
-                </tbody>
-            </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Requirement</th>
+                <th>AgDR Fulfilment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Effective oversight by natural persons.</td>
+                <td>The <strong>Fiduciary Office Intervener (FOI)</strong> serves as the terminal human node.</td>
+              </tr>
+              <tr>
+                <td>Ability to override or reverse system outputs.</td>
+                <td>The <strong>Human Delta Chain</strong> records every manual intervention with proof of rationale.</td>
+              </tr>
+              <tr>
+                <td>Halt functionality during operation.</td>
+                <td>Mandatory escalation protocols within the AgDR schema allow for immediate terminal halts.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <h3>Article 13: Transparency</h3>
+        <p class="section-subheading">Article 13: Transparency</p>
         <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Requirement</th>
-                        <th>AgDR Fulfilment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Interpretable outputs for deployers.</td>
-                        <td>The <strong>Reasoning Trace</strong> provides a step-by-step logic log for every decision.</td>
-                    </tr>
-                    <tr>
-                        <td>Disclosure of system purpose and boundaries.</td>
-                        <td>The <strong>PPP Triplet (Purpose, Place, Provenance)</strong> is hard-coded into every record.</td>
-                    </tr>
-                </tbody>
-            </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Requirement</th>
+                <th>AgDR Fulfilment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Interpretable outputs for deployers.</td>
+                <td>The <strong>Reasoning Trace</strong> provides a step-by-step logic log for every decision.</td>
+              </tr>
+              <tr>
+                <td>Disclosure of system purpose and boundaries.</td>
+                <td>The <strong>PPP Triplet (Purpose, Place, Provenance)</strong> is hard-coded into every record.</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="disclaimer">
-            <strong>LEGAL NOTICE:</strong> This mapping is provided for technical information purposes and illustrates how AgDR v1.8 aligns with the EU AI Act. It does not constitute legal advice. Organizations must consult with qualified legal counsel regarding Article 16 obligations (CE Marking) and Article 43 conformity assessments.
+        <div class="disclaimer-box">
+          <strong>LEGAL NOTICE:</strong> This mapping is provided for technical information purposes and illustrates how AgDR v1.8 aligns with the EU AI Act. It does not constitute legal advice. Organizations must consult with qualified legal counsel regarding Article 16 obligations (CE Marking) and Article 43 conformity assessments.
         </div>
-    </main>
-
-    <section class="sitemap">
-        <div class="sitemap-grid">
-            <div class="sitemap-col">
-                <h5>Architecture</h5>
-                <a href="/getting-started">Initialize v1.8</a>
-                <a href="/aki-formal-definition">AKI Specification</a>
-                <a href="/rust-core">Rust Foundation</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Governance</h5>
-                <a href="/ppp-pillars">PPP Pillars</a>
-                <a href="/foi-formal-definition">FOI Definition</a>
-                <a href="/human-delta-chain-spec">Human Oversight</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Legal Discovery</h5>
-                <a href="/cea-compliance">Canada Evidence Act Section 31.1 Mapping</a>
-                <a href="/comparison-medical-records">Medical Standard</a>
-                <a href="/cbca-fiduciary-mapping">CBCA Fiduciary Mapping</a>
-            </div>
-            <div class="sitemap-col">
-                <h5>Resources</h5>
-                <a href="/sandbox">Interactive Sandbox</a>
-                <a href="/comparison-aviation-black-box">Aviation Comparison</a>
-                <a href="/beauty-truth-wisdom">Beauty & Truth</a>
-            </div>
-        </div>
+      </div>
     </section>
+  </main>
 
-    <footer class="legal">
-        OSHAWA, ONTARIO, CANADA · CC0 1.0 UNIVERSAL · GLOBAL REGULATORY SYNERGY
-    </footer>
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>Core Standard</h5>
+        <ul>
+          <li><a href="/getting-started">Get Started</a></li>
+          <li><a href="/sandbox">Phoenix Demo</a></li>
+          <li><a href="/ppp-pillars">PPP Pillars</a></li>
+          <li><a href="/aki-formal-definition">AKI Definition</a></li>
+          <li><a href="/agdr-spec">AgDR Protocol</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal &amp; Compliance</h5>
+        <ul>
+          <li><a href="/cea-compliance">CEA s.31.1</a></li>
+          <li><a href="/cbca-fiduciary-mapping">CBCA s.122</a></li>
+          <li><a href="/eu-ai-act-mapping" aria-current="page">EU AI Act</a></li>
+          <li><a href="/foi-formal-definition">FOI Role</a></li>
+          <li><a href="/verification-audit-procedure">Verification</a></li>
+          <li><a href="/fiduciary-duty-of-care">Fiduciary Duty</a></li>
+          <li><a href="/ppp-export-control">Export Control</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Engineering</h5>
+        <ul>
+          <li><a href="/tsx-stress-test">TSX Stress Test</a></li>
+          <li><a href="/horizontal-scaling">Horizontal Scaling</a></li>
+          <li><a href="/aki-95">AKI 0.95 Spec</a></li>
+          <li><a href="/human-delta-chain-spec">Human Delta Chain</a></li>
+          <li><a href="/CHANGELOG">Changelog</a></li>
+          <li><a href="/aki-capture-deep-explanation">AKI Deep Dive</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Evidence &amp; Vision</h5>
+        <ul>
+          <li><a href="/comparison-aviation-black-box">Aviation Black Box</a></li>
+          <li><a href="/comparison-medical-records">Medical Records</a></li>
+          <li><a href="/agi-court-precedents">AGI Court Precedents</a></li>
+          <li><a href="/future-agi-court">Court in 2076</a></li>
+          <li><a href="/beauty-truth-wisdom">Purpose Framework</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Don't trust the machine. Don't even trust us. <strong>Trust the record.</strong></p>
+      <p>
+        <a href="mailto:founding@accountability.ai">founding@accountability.ai</a> &middot;
+        Stewarded by <a href="https://accountability.ai">GENESIS GLASS FOUNDATION / FONDATION GENESE CRISTAL</a> &middot;
+        Dual-licensed: <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0</a> OR <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0</a>
+      </p>
+    </div>
+  </footer>
 
+  <script>
+    const searchIndex = [
+      {title:"Get Started",url:"/getting-started.html",desc:"SDK install, PPP definition, first capture"},
+      {title:"Phoenix Demo",url:"/sandbox.html",desc:"Interactive atomic accountability demo"},
+      {title:"PPP Pillars",url:"/ppp-pillars.html",desc:"Provenance, Place, Purpose framework"},
+      {title:"AKI Definition",url:"/aki-formal-definition.html",desc:"Mathematical definition of Atomic Kernel Inference"},
+      {title:"AgDR Protocol",url:"/agdr-spec.html",desc:"Atomic Genesis Decision Record specification"},
+      {title:"CEA Compliance",url:"/cea-compliance.html",desc:"Canada Evidence Act s.31.1 mapping"},
+      {title:"CBCA Fiduciary",url:"/cbca-fiduciary-mapping.html",desc:"Director fiduciary duty accountability"},
+      {title:"EU AI Act",url:"/eu-ai-act-mapping.html",desc:"High-risk AI system compliance"},
+      {title:"FOI Definition",url:"/foi-formal-definition.html",desc:"Fiduciary Office Intervener role"},
+      {title:"Verification",url:"/verification-audit-procedure.html",desc:"CLI and manual audit procedure"},
+      {title:"TSX Stress Test",url:"/tsx-stress-test.html",desc:"620ns latency benchmark on live TSX data"},
+      {title:"Horizontal Scaling",url:"/horizontal-scaling.html",desc:"Root Merkle Coordinator architecture"},
+      {title:"AKI 0.95 Spec",url:"/aki-95.html",desc:"Coherence threshold specification"},
+      {title:"Human Delta Chain",url:"/human-delta-chain-spec.html",desc:"Human intervention record format"},
+      {title:"Changelog",url:"/CHANGELOG.html",desc:"Version history for AgDR standard"},
+      {title:"Aviation Black Box",url:"/comparison-aviation-black-box.html",desc:"Black box analogy for AI accountability"},
+      {title:"Medical Records",url:"/comparison-medical-records.html",desc:"Medical record standard comparison"},
+      {title:"AGI Court Precedents",url:"/agi-court-precedents.html",desc:"Legal precedents for AGI accountability"},
+      {title:"Court in 2076",url:"/future-agi-court.html",desc:"Future legal landscape for AI"},
+      {title:"Purpose Framework",url:"/beauty-truth-wisdom.html",desc:"Philosophical foundation of accountability"},
+      {title:"Fiduciary Duty",url:"/fiduciary-duty-of-care.html",desc:"Fiduciary duty of care for AI systems"},
+      {title:"Export Control",url:"/ppp-export-control.html",desc:"PPP export control compliance"},
+      {title:"AKI Deep Dive",url:"/aki-capture-deep-explanation.html",desc:"Deep technical explanation of AKI capture"}
+    ];
+    const input = document.getElementById('site-search');
+    const results = document.getElementById('search-results');
+    if (input && results) {
+      input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        if (!q) { results.classList.remove('show'); results.innerHTML = ''; return; }
+        const hits = searchIndex.filter(p => p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+        if (!hits.length) { results.innerHTML = '<div class="no-results">No results found.</div>'; results.classList.add('show'); return; }
+        results.innerHTML = hits.map(p => '<a href="'+p.url+'"><strong>'+p.title+'</strong> - '+p.desc+'</a>').join('');
+        results.classList.add('show');
+      });
+      document.addEventListener('click', e => { if (!e.target.closest('.nav-search')) { results.classList.remove('show'); } });
+    }
+  </script>
 </body>
 </html>
-
-
-
