@@ -185,7 +185,7 @@
         
             <!-- METRICS CARDS -->
             <section class="content-section">
-                  <p class="section-heading">Results &mdash; Single AGI Agent &middot; TSX Toronto Desk &middot; March 2026</p>
+                  <p class="section-heading">Results: Single AGI Agent &middot; TSX Toronto Desk &middot; March 2026</p>
                   <div class="content-grid-4">
                           <div class="metric-card">
                                     <div class="metric-label">Throughput</div>
@@ -195,7 +195,7 @@
                           <div class="metric-card">
                                     <div class="metric-label">AKI Latency</div>
                                     <div class="metric-value">3.94 <span style="font-size:1.1rem;color:var(--text-dim)">&micro;s</span></div>
-                                    <div class="metric-desc">Average AKI capture latency. Python baseline &mdash; see Rust note below.</div>
+                                    <div class="metric-desc">Average AKI capture latency. Python baseline. See Rust note below..</div>
                           </div>
                           <div class="metric-card">
                                     <div class="metric-label">Reliability</div>
@@ -211,8 +211,8 @@
             
                   <!-- Rust upgrade callout -->
                   <div class="rust-upgrade">
-                          <h3>&#9889; Rust Implementation: 0.62&ndash;0.95 &micro;s Latency</h3>
-                          <p>The 3.94 &micro;s figure above reflects the <strong>Python SDK baseline</strong> (agdr-aki via PyPI). The AgDR-Phoenix Rust kernel now achieves <span class="teal">0.62&ndash;0.95 microseconds</span> AKI capture latency &mdash; matching the <a href="/">Zero-Latency Floor</a> benchmark on the homepage. Horizontal scaling is unlimited; single-process ceiling was reached at ~2.85 billion decisions (memory-bound).</p>
+                          <h3>&#9889; Rust Implementation: 0.62-0.95 &micro;s Latency</h3>
+                          <p>The 3.94 &micro;s figure above reflects the <strong>Python SDK baseline</strong> (agdr-aki via PyPI). The AgDR-Phoenix Rust kernel now achieves <span class="teal">0.62-0.95 microseconds</span> AKI capture latency: matching the <a href="/">Zero-Latency Floor</a> benchmark on the homepage. Horizontal scaling is unlimited; single-process ceiling was reached at ~2.85 billion decisions (memory-bound).</p>
                   </div>
             </section>
         
@@ -223,7 +223,7 @@
                                     <h3>Test Parameters</h3>
                                     <ul class="params-list">
                                                 <li><strong>Agent:</strong> Single unified AGI agent (the AGI is One)</li>
-                                                <li><strong>Symbols:</strong> Real TSX &mdash; RY.TO, TD.TO, SHOP.TO, CNQ.TO, BNS.TO</li>
+                                                <li><strong>Symbols:</strong> Real TSX: RY.TO, TD.TO, SHOP.TO, CNQ.TO, BNS.TO</li>
                                                 <li><strong>Record:</strong> Full PPP triplet + reasoning trace on every decision</li>
                                                 <li><strong>Oversight:</strong> Binary human delta + FOI escalation on 2% of trades</li>
                                                 <li><strong>Capture:</strong> Full AKI atomic capture on every inference</li>
@@ -236,7 +236,7 @@
                           </div>
                           <div class="content-card">
                                     <h3>What This Proves</h3>
-                                    <p>AgDR can handle real Canadian high-velocity trading environments without slowing the desk down. The Atomic Kernel Inference (AKI) primitives held perfectly &mdash; no partial records, no timing windows.</p>
+                                    <p>AgDR can handle real Canadian high-velocity trading environments without slowing the desk down. The Atomic Kernel Inference (AKI) primitives held perfectly: no partial records, no timing windows.</p>
                                     <p>Every one of the 100 million records remains fully verifiable. The Merkle root is intact and forward-secret: tamper one record and the chain breaks.</p>
                                     <div class="quote-block">
                                                 This is the proof that AgDR works at market scale.
@@ -330,7 +330,7 @@
                                     if (!q) { results.classList.remove('show'); results.innerHTML = ''; return; }
                                                 const matches = searchIndex.filter(p => p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
                                     if (!matches.length) { results.innerHTML = '<div class="no-results">No results found</div>'; results.classList.add('show'); return; }
-                                                results.innerHTML = matches.map(p => `<a href="${p.url}"><strong>${p.title}</strong> &mdash; ${p.desc}</a>`).join('');
+                                                results.innerHTML = matches.map(p => `<a href="${p.url}"><strong>${p.title}</strong>: ${p.desc}</a>`).join('');
                                     results.classList.add('show');
                         });
                         document.addEventListener('click', function(e) {
