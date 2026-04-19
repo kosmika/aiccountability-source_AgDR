@@ -1,4 +1,3 @@
-@"
 # robots.txt - Accountability.ai
 # Updated 2026-04-18
 # Full crawl access for all search and AI crawlers
@@ -66,4 +65,3 @@ Allow: /
 
 # Sitemap
 Sitemap: https://accountability.ai/sitemap.xml
-"@ | Set-Content robots.txt
