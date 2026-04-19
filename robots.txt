@@ -1,5 +1,6 @@
-# robots.txt — Accountability.ai
-# Updated 2026-03-21
+@"
+# robots.txt - Accountability.ai
+# Updated 2026-04-18
 # Full crawl access for all search and AI crawlers
 
 # Global rules
@@ -8,22 +9,33 @@ Disallow: /*?trk=
 Disallow: /archive/
 Allow: /
 
-# Google — primary search crawler
+# Google
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
+
+User-agent: Google-Extended
+Allow: /
 
 # Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 2
 
-# OpenAI web crawler
+# OpenAI
 User-agent: GPTBot
 Allow: /
 
-# Anthropic web crawler
-User-agent: Claude-Web
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: anthropic-ai
@@ -33,7 +45,7 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-# Common Crawl (used by many AI training datasets and research)
+# Common Crawl
 User-agent: CCBot
 Allow: /
 
@@ -41,9 +53,17 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
+User-agent: meta-externalagent
+Allow: /
+
 # Apple
 User-agent: Applebot
 Allow: /
 
-# Sitemap location
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Sitemap
 Sitemap: https://accountability.ai/sitemap.xml
+"@ | Set-Content robots.txt
